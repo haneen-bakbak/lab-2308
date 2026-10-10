@@ -1,0 +1,86 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 560" width="900" height="560">
+  <defs>
+    <style>
+      .bg { fill: #161616; }
+      .top-nav { fill: #161616; border-bottom: 1px solid #393939; }
+      .sidebar { fill: #262626; }
+      .content-card { fill: #262626; stroke: #393939; stroke-width: 1; }
+      .header-title { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; font-weight: 600; font-size: 22px; fill: #f4f4f4; }
+      .subtext { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; font-size: 13px; fill: #a8a8a8; }
+      .item-title { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; font-weight: 600; font-size: 14px; fill: #f4f4f4; }
+      .code-box { fill: #161616; stroke: #525252; stroke-width: 1; rx: 3; }
+      .code-text { font-family: "Courier New", Courier, monospace; font-size: 13px; fill: #42be65; }
+      .table-header { fill: #393939; }
+      .th-text { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; font-weight: 600; font-size: 12px; fill: #f4f4f4; }
+      .td-text { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; font-size: 12px; fill: #c6c6c6; }
+      .btn-copy { fill: #393939; stroke: #6f6f6f; stroke-width: 1; rx: 3; }
+      .btn-copy-text { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; font-size: 11px; fill: #ffffff; text-anchor: middle; }
+      .badge-callout { fill: #0043ce; rx: 3; }
+      .badge-callout-text { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; font-size: 11px; fill: #edf5ff; font-weight: bold; }
+    </style>
+  </defs>
+
+  <rect width="900" height="560" class="bg"/>
+
+  <!-- Cloud Top Navigation -->
+  <rect width="900" height="48" class="top-nav"/>
+  <rect x="0" y="47" width="900" height="1" fill="#393939"/>
+  <text x="24" y="30" font-family="sans-serif" font-weight="bold" font-size="16" fill="#f4f4f4">IBM Cloud</text>
+  <text x="120" y="30" font-family="sans-serif" font-size="14" fill="#a8a8a8">Manage  /  Access (IAM)  /  API keys</text>
+  <rect x="730" y="10" width="150" height="28" rx="2" fill="#393939"/>
+  <text x="745" y="28" font-family="sans-serif" font-size="12" fill="#f4f4f4">itz-&lt;res-id&gt; (TechZone)</text>
+
+  <!-- Left Subnav -->
+  <rect x="0" y="48" width="200" height="512" class="sidebar"/>
+  <text x="24" y="85" font-family="sans-serif" font-weight="600" font-size="13" fill="#c6c6c6">Identity &amp; Access</text>
+  <rect x="0" y="100" width="200" height="36" fill="#393939"/>
+  <text x="36" y="123" font-family="sans-serif" font-weight="600" font-size="13" fill="#78a9ff">▶ API Keys</text>
+  <text x="36" y="158" font-family="sans-serif" font-size="13" fill="#c6c6c6">Service IDs</text>
+  <text x="36" y="193" font-family="sans-serif" font-size="13" fill="#c6c6c6">Users</text>
+  <text x="36" y="228" font-family="sans-serif" font-size="13" fill="#c6c6c6">Access Groups</text>
+
+  <!-- Main Content Area -->
+  <text x="230" y="90" class="header-title">API Keys &amp; Service ID Credentials</text>
+  <text x="230" y="112" class="subtext">Use your TechZone provided Service API Key to connect IBM Bob to watsonx Orchestrate</text>
+
+  <!-- Card 1: Cloud Service API Key -->
+  <rect x="230" y="135" width="640" height="150" rx="3" class="content-card"/>
+  <rect x="245" y="150" width="130" height="22" class="badge-callout"/>
+  <text x="255" y="165" class="badge-callout-text">WATSONX API KEY</text>
+  <text x="390" y="166" class="subtext">Required by Bob during setup prompt #2</text>
+
+  <text x="245" y="200" class="item-title">IBM Cloud Service API Key (Value from Envmt Info):</text>
+  <rect x="245" y="215" width="510" height="42" class="code-box"/>
+  <text x="260" y="241" class="code-text">tVHPnYetl-v_ORy9Mde29bVaBywVC7jB3h2llmeg-bA-••••</text>
+  
+  <rect x="765" y="215" width="90" height="42" class="btn-copy"/>
+  <text x="810" y="240" class="btn-copy-text">📋 Copy Key</text>
+
+  <!-- Card 2: Environment & Service ID Details -->
+  <rect x="230" y="305" width="640" height="225" rx="3" class="content-card"/>
+  <text x="245" y="335" class="item-title">Active Reservation Details</text>
+  <text x="245" y="355" class="subtext">These identifiers link your reservation to the Orchestrate workspace</text>
+
+  <!-- Table -->
+  <rect x="245" y="375" width="610" height="30" class="table-header"/>
+  <text x="260" y="395" class="th-text">PROPERTY</text>
+  <text x="450" y="395" class="th-text">VALUE / FORMAT</text>
+  <text x="730" y="395" class="th-text">PURPOSE</text>
+
+  <!-- Row 1 -->
+  <line x1="245" y1="440" x2="855" y2="440" stroke="#393939" stroke-width="1"/>
+  <text x="260" y="425" font-weight="600" class="td-text">Environment ID</text>
+  <text x="450" y="425" class="code-text" fill="#78a9ff">itz-&lt;res-id&gt;</text>
+  <text x="730" y="425" class="td-text">Workspace Identifier</text>
+
+  <!-- Row 2 -->
+  <line x1="245" y1="475" x2="855" y2="475" stroke="#393939" stroke-width="1"/>
+  <text x="260" y="460" font-weight="600" class="td-text">IBM Cloud Service ID</text>
+  <text x="450" y="460" class="code-text" fill="#78a9ff">itz-&lt;res-id&gt;</text>
+  <text x="730" y="460" class="td-text">IAM Service Binding</text>
+
+  <!-- Row 3 -->
+  <text x="260" y="495" font-weight="600" class="td-text">WxO Instance URL</text>
+  <text x="450" y="495" class="td-text">https://dl.watson-orchestrate.ibm.com</text>
+  <text x="730" y="495" class="td-text">Shared WxO Platform</text>
+</svg>

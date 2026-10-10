@@ -1,0 +1,145 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 680" width="1100" height="680">
+  <defs>
+    <style>
+      .bg { fill: #161616; }
+      .header-bar { fill: #161616; border-bottom: 1px solid #393939; }
+      .sidebar { fill: #202020; border-right: 1px solid #393939; }
+      .panel-chat { fill: #1c1c1c; border-right: 1px solid #393939; }
+      .panel-trace { fill: #121212; }
+      .title { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; font-weight: 600; font-size: 15px; fill: #ffffff; }
+      .subtext { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; font-size: 12px; fill: #8d8d8d; }
+      .bubble-user { fill: #0043ce; rx: 8; }
+      .bubble-agent { fill: #262626; stroke: #393939; stroke-width: 1; rx: 8; }
+      .text-user { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; font-size: 13px; fill: #ffffff; }
+      .text-agent { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; font-size: 12.5px; fill: #f4f4f4; }
+      .debug-btn-active { fill: #0f62fe; stroke: #4589ff; stroke-width: 1; rx: 4; }
+      .trace-card { fill: #1e1e1e; stroke: #393939; stroke-width: 1; rx: 4; }
+      .trace-success { fill: #0e301e; stroke: #24a148; stroke-width: 1; rx: 4; }
+      .trace-header { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, monospace; font-weight: bold; font-size: 12px; fill: #42be65; }
+      .trace-code { font-family: "Courier New", Courier, monospace; font-size: 11px; fill: #d4bbff; }
+      .badge-span { fill: #8a3ffc; rx: 3; }
+      .span-text { font-family: monospace; font-size: 10px; fill: #ffffff; font-weight: bold; }
+    </style>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1100" height="680" class="bg"/>
+
+  <!-- Top App Navigation -->
+  <rect width="1100" height="48" class="header-bar"/>
+  <line x1="0" y1="48" x2="1100" y2="48" stroke="#393939" stroke-width="1"/>
+  <text x="24" y="30" font-family="sans-serif" font-weight="bold" font-size="16" fill="#ffffff">IBM watsonx Orchestrate</text>
+  <text x="250" y="30" class="subtext">Agent Studio  /  lab2308_risk_agent  /  <tspan fill="#78a9ff" font-weight="bold">Live Debug &amp; Telemetry Tracing</tspan></text>
+
+  <!-- Left Sidebar (Agents List) -->
+  <rect x="0" y="48" width="220" height="632" class="sidebar"/>
+  <text x="18" y="80" font-family="sans-serif" font-size="11" font-weight="bold" fill="#8d8d8d">ACTIVE AGENTS</text>
+  
+  <rect x="10" y="95" width="200" height="45" rx="4" fill="#393939"/>
+  <circle cx="28" cy="118" r="5" fill="#24a148"/>
+  <text x="42" y="122" font-family="sans-serif" font-weight="600" font-size="13" fill="#ffffff">lab2308_risk_agent</text>
+  <text x="42" y="134" font-family="sans-serif" font-size="10" fill="#78a9ff">Connected: openpages-grc-mcp</text>
+
+  <rect x="10" y="150" width="200" height="38" rx="4" fill="transparent"/>
+  <text x="42" y="174" font-family="sans-serif" font-size="12" fill="#8d8d8d">AskOrchestrate</text>
+
+  <!-- Middle Panel: Chat Conversation -->
+  <rect x="220" y="48" width="460" height="632" class="panel-chat"/>
+  
+  <!-- Chat Header with Debug Button -->
+  <rect x="220" y="48" width="460" height="48" fill="#262626"/>
+  <line x1="220" y1="96" x2="680" y2="96" stroke="#393939" stroke-width="1"/>
+  <text x="240" y="78" class="title">Chat with Agent</text>
+  
+  <!-- Debug Toggle Button in UI -->
+  <rect x="560" y="58" width="105" height="28" class="debug-btn-active"/>
+  <text x="612" y="76" font-family="sans-serif" font-weight="bold" font-size="11" fill="#ffffff" text-anchor="middle">🐞 Debug: ON</text>
+
+  <!-- User Message Bubble -->
+  <rect x="300" y="115" width="365" height="50" class="bubble-user"/>
+  <text x="315" y="136" class="text-user">Which risk categories have controls</text>
+  <text x="315" y="153" class="text-user">awaiting assessment? Show breakdown.</text>
+
+  <!-- Agent Message Bubble -->
+  <rect x="235" y="180" width="430" height="380" class="bubble-agent"/>
+  <text x="250" y="205" class="text-agent" font-weight="bold">Risk Control Gap Analysis (Live OpenPages):</text>
+  <text x="250" y="225" class="text-agent">I inspected the SOXControl register schema and queried</text>
+  <text x="250" y="242" class="text-agent">unassessed controls grouped by risk category:</text>
+
+  <!-- Results Table inside Chat -->
+  <rect x="250" y="255" width="400" height="110" fill="#161616" stroke="#393939" stroke-width="1" rx="3"/>
+  <text x="260" y="275" font-family="sans-serif" font-size="11" font-weight="bold" fill="#78a9ff">Risk Category</text>
+  <text x="520" y="275" font-family="sans-serif" font-size="11" font-weight="bold" fill="#78a9ff">Unassessed</text>
+  <line x1="250" y1="285" x2="650" y2="285" stroke="#393939" stroke-width="1"/>
+  
+  <text x="260" y="305" font-family="sans-serif" font-size="11" fill="#f4f4f4">Clients, Products &amp; Business</text>
+  <text x="520" y="305" font-family="sans-serif" font-size="11" fill="#ff8389" font-weight="bold">18 (100%) ⚠️</text>
+
+  <text x="260" y="325" font-family="sans-serif" font-size="11" fill="#f4f4f4">Execution &amp; Delivery</text>
+  <text x="520" y="325" font-family="sans-serif" font-size="11" fill="#ff8389" font-weight="bold">14 (100%) ⚠️</text>
+
+  <text x="260" y="345" font-family="sans-serif" font-size="11" fill="#f4f4f4">Fraud (Internal &amp; External)</text>
+  <text x="520" y="345" font-family="sans-serif" font-size="11" fill="#f1c21b" font-weight="bold">13 (100%) ⚠️</text>
+
+  <text x="250" y="385" class="text-agent">Highest exposure is in <tspan fill="#78a9ff" font-weight="bold">Clients, Products</tspan>.</text>
+  <text x="250" y="405" class="text-agent">Would you like me to log a new risk in OpenPages?</text>
+
+  <!-- Input Bar -->
+  <rect x="235" y="615" width="430" height="42" rx="4" fill="#262626" stroke="#0f62fe" stroke-width="1.5"/>
+  <text x="250" y="641" font-family="sans-serif" font-size="12" fill="#8d8d8d">Log a new risk called "Unassessed Control Coverage"...</text>
+
+  <!-- Right Panel: Debug & Telemetry Trace Inspector -->
+  <rect x="680" y="48" width="420" height="632" class="panel-trace"/>
+  
+  <!-- Trace Header -->
+  <rect x="680" y="48" width="420" height="48" fill="#202020"/>
+  <line x1="680" y1="96" x2="1100" y2="96" stroke="#393939" stroke-width="1"/>
+  <text x="700" y="77" class="title">Execution Trace &amp; Telemetry</text>
+  <rect x="990" y="60" width="90" height="24" rx="3" fill="#24a148"/>
+  <text x="1035" y="76" font-family="sans-serif" font-size="11" font-weight="bold" fill="#ffffff" text-anchor="middle">200 OK</text>
+
+  <!-- Trace Step 1: Schema Introspection -->
+  <rect x="695" y="110" width="390" height="110" class="trace-card"/>
+  <rect x="710" y="122" width="60" height="18" class="badge-span"/>
+  <text x="740" y="135" class="span-text" text-anchor="middle">TOOL 1</text>
+  <text x="780" y="135" font-family="monospace" font-size="11" font-weight="bold" fill="#78a9ff">openpages_get_resource</text>
+  <text x="1030" y="135" font-family="monospace" font-size="10" fill="#8d8d8d">124ms</text>
+  
+  <text x="710" y="160" font-family="sans-serif" font-size="11" fill="#c6c6c6">URI: <tspan class="trace-code">openpages://schema/SOXControl</tspan></text>
+  <text x="710" y="180" font-family="sans-serif" font-size="11" fill="#c6c6c6">Result: <tspan fill="#42be65">Resolved safe fields [OPSS-Ctl:Status]</tspan></text>
+  <text x="710" y="200" font-family="sans-serif" font-size="10" fill="#8d8d8d">✓ Zero hallucination schema verification</text>
+
+  <!-- Trace Step 2: Query Execution -->
+  <rect x="695" y="230" width="390" height="135" class="trace-success"/>
+  <rect x="710" y="242" width="60" height="18" class="badge-span" fill="#0f62fe"/>
+  <text x="740" y="255" class="span-text" text-anchor="middle">TOOL 2</text>
+  <text x="780" y="255" font-family="monospace" font-size="11" font-weight="bold" fill="#42be65">execute_openpages_query</text>
+  <text x="1030" y="255" font-family="monospace" font-size="10" fill="#8d8d8d">312ms</text>
+
+  <text x="710" y="280" font-family="sans-serif" font-size="11" fill="#c6c6c6">Query Payload:</text>
+  <rect x="710" y="290" width="360" height="40" fill="#161616" rx="3" stroke="#333" stroke-width="1"/>
+  <text x="718" y="306" class="trace-code" font-size="10">SELECT [SOXControl].[Resource ID],</text>
+  <text x="718" y="322" class="trace-code" font-size="10">       [SOXControl].[OPSS-Ctl:Status] FROM [SOXControl]</text>
+  
+  <text x="710" y="352" font-family="sans-serif" font-size="10" fill="#42be65">✓ Status: 200 OK · 45 rows returned from OpenPages</text>
+
+  <!-- Trace Step 3: LLM Synthesis & Reasoning -->
+  <rect x="695" y="375" width="390" height="110" class="trace-card"/>
+  <rect x="710" y="387" width="60" height="18" class="badge-span" fill="#6929c4"/>
+  <text x="740" y="400" class="span-text" text-anchor="middle">LLM SPAN</text>
+  <text x="780" y="400" font-family="monospace" font-size="11" font-weight="bold" fill="#be95ff">llama-3-3-70b-instruct</text>
+  <text x="1030" y="400" font-family="monospace" font-size="10" fill="#8d8d8d">480ms</text>
+
+  <text x="710" y="425" font-family="sans-serif" font-size="11" fill="#c6c6c6">Reasoning Step: Grouping and gap exposure synthesis</text>
+  <text x="710" y="445" font-family="sans-serif" font-size="11" fill="#c6c6c6">Prompt Tokens: <tspan class="trace-code">1,420</tspan> · Completion: <tspan class="trace-code">185</tspan></text>
+  <text x="710" y="465" font-family="sans-serif" font-size="10" fill="#8d8d8d">✓ ReAct trace step finalized</text>
+
+  <!-- Trace Details Callout Box -->
+  <rect x="695" y="495" width="390" height="160" rx="4" fill="#1c2738" stroke="#4589ff" stroke-width="1"/>
+  <text x="710" y="520" font-family="sans-serif" font-weight="bold" font-size="12" fill="#78a9ff">💡 How to Inspect in watsonx Orchestrate:</text>
+  <text x="710" y="542" font-family="sans-serif" font-size="11" fill="#d0e2ff">1. Open <tspan font-weight="bold">Agent Studio → lab2308_risk_agent</tspan>.</text>
+  <text x="710" y="562" font-family="sans-serif" font-size="11" fill="#d0e2ff">2. Toggle the <tspan font-weight="bold">Debug (🐞)</tspan> button in the top right.</text>
+  <text x="710" y="582" font-family="sans-serif" font-size="11" fill="#d0e2ff">3. Click any response step to view the live MCP tool</text>
+  <text x="710" y="600" font-family="sans-serif" font-size="11" fill="#d0e2ff">   parameters, REST payloads, latency, and status codes.</text>
+  <text x="710" y="622" font-family="sans-serif" font-size="11" fill="#d0e2ff">4. See every OpenPages SQL query executed in real-time!</text>
+</svg>

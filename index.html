@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>IBM TechXchange 2026 — Lab 2308: Build an Autonomous Risk &amp; Compliance Agent</title>
+
+  <!-- IBM Plex from the IBM CDN -->
+  <link rel="stylesheet" href="https://1.www.s81c.com/common/carbon/plex/sans.css" />
+  <link rel="stylesheet" href="https://1.www.s81c.com/common/carbon/plex/mono.css" />
+
+  <style>
+    /* ---- Carbon white theme tokens ---- */
+    :root {
+      --cds-background: #ffffff;
+      --cds-layer-01: #f4f4f4;
+      --cds-layer-02: #ffffff;
+      --cds-layer-accent-01: #e0e0e0;
+      --cds-border-subtle-01: #c6c6c6;
+      --cds-border-strong-01: #8d8d8d;
+      --cds-text-primary: #161616;
+      --cds-text-secondary: #525252;
+      --cds-text-on-color: #ffffff;
+      --cds-link-primary: #0f62fe;
+      --cds-link-primary-hover: #0043ce;
+      --cds-interactive: #0f62fe;
+      --cds-focus: #0f62fe;
+      --cds-support-info: #0043ce;
+      --cds-support-warning: #f1c21b;
+      --cds-support-success: #198038;
+      --cds-notification-background-info: #edf5ff;
+      --cds-notification-background-warning: #fcf4d6;
+      --cds-notification-background-success: #defbe6;
+      --cds-background-inverse: #393939;
+      --cds-shell-bg: #161616;
+      --cds-spacing-03: 0.5rem;
+      --cds-spacing-04: 0.75rem;
+      --cds-spacing-05: 1rem;
+      --cds-spacing-06: 1.5rem;
+      --cds-spacing-07: 2rem;
+      --cds-spacing-08: 2.5rem;
+      --cds-spacing-09: 3rem;
+      --cds-spacing-10: 4rem;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 4rem; }
+    body {
+      margin: 0;
+      background: var(--cds-background);
+      color: var(--cds-text-primary);
+      font-family: 'IBM Plex Sans', 'Helvetica Neue', Arial, sans-serif;
+      font-size: 1rem;
+      line-height: 1.5;
+      letter-spacing: 0;
+    }
+    code, pre, kbd { font-family: 'IBM Plex Mono', Menlo, Consolas, monospace; }
+    strong, b { font-weight: 600; }
+
+    a { color: var(--cds-link-primary); text-decoration: none; }
+    a:hover { color: var(--cds-link-primary-hover); text-decoration: underline; }
+    a:focus-visible, summary:focus-visible { outline: 2px solid var(--cds-focus); outline-offset: 2px; }
+
+    /* ---- UI shell header ---- */
+    .shell-header {
+      position: fixed; top: 0; left: 0; right: 0; height: 3rem; z-index: 100;
+      display: flex; align-items: center;
+      background: var(--cds-shell-bg);
+      border-bottom: 1px solid #393939;
+      color: #f4f4f4;
+      font-size: 0.875rem;
+    }
+    .shell-header .brand { padding: 0 var(--cds-spacing-05); font-weight: 400; letter-spacing: 0.16px; }
+    .shell-header .brand strong { font-weight: 600; }
+    .shell-header .spacer { flex: 1; }
+    .shell-header a.hdr-link {
+      color: #c6c6c6; padding: 0 var(--cds-spacing-05); height: 3rem;
+      display: flex; align-items: center;
+    }
+    .shell-header a.hdr-link:hover { background: #2a2a2a; color: #fff; text-decoration: none; }
+
+    /* ---- Page grid ---- */
+    .cds--grid { max-width: 99rem; margin: 0 auto; padding: 0 var(--cds-spacing-05); }
+    .cds--row { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); column-gap: var(--cds-spacing-05); }
+    .cds--col-sm-4 { grid-column: span 4; }
+    @media (min-width: 42rem) {
+      .cds--row { grid-template-columns: repeat(8, minmax(0, 1fr)); }
+      .cds--col-md-8 { grid-column: span 8; }
+    }
+    @media (min-width: 66rem) {
+      .cds--row { grid-template-columns: repeat(16, minmax(0, 1fr)); }
+      .cds--col-lg-3 { grid-column: span 3; }
+      .cds--col-lg-13 { grid-column: span 13; }
+    }
+    @media (max-width: 65.99rem) { .side-nav { display: none; } }
+
+    /* ---- Hero ---- */
+    .hero {
+      margin-top: 3rem;
+      background: var(--cds-layer-01);
+      border-bottom: 1px solid var(--cds-border-subtle-01);
+      padding: var(--cds-spacing-09) 0 var(--cds-spacing-07);
+    }
+    .eyebrow { font-size: 0.75rem; letter-spacing: 0.32px; text-transform: uppercase; color: var(--cds-text-secondary); margin: 0 0 var(--cds-spacing-04); }
+    .hero h1 { font-size: 2.5rem; line-height: 1.2; font-weight: 400; margin: 0 0 var(--cds-spacing-05); max-width: 58rem; }
+    .hero p.lede { font-size: 1.25rem; line-height: 1.45; color: var(--cds-text-secondary); max-width: 50rem; margin: 0 0 var(--cds-spacing-06); }
+    .tag-row { display: flex; flex-wrap: wrap; gap: var(--cds-spacing-03); }
+
+    /* ---- Side navigation ---- */
+    .side-nav { position: sticky; top: 3rem; align-self: start; height: calc(100vh - 3rem); overflow-y: auto; padding: var(--cds-spacing-07) 0; border-right: 1px solid var(--cds-border-subtle-01); }
+    .side-nav h2 { font-size: 0.75rem; letter-spacing: 0.32px; text-transform: uppercase; color: var(--cds-text-secondary); margin: 0 0 var(--cds-spacing-04); padding-left: var(--cds-spacing-05); font-weight: 400; }
+    .side-nav ul { list-style: none; margin: 0; padding: 0; }
+    .side-nav a { display: block; padding: 0.45rem var(--cds-spacing-05); font-size: 0.875rem; color: var(--cds-text-secondary); border-left: 3px solid transparent; }
+    .side-nav a:hover, .side-nav a.active { background: var(--cds-layer-01); color: var(--cds-text-primary); text-decoration: none; border-left-color: var(--cds-interactive); }
+    .side-nav a.sub { padding-left: var(--cds-spacing-07); font-size: 0.8125rem; }
+
+    /* ---- Content ---- */
+    main { padding: var(--cds-spacing-07) var(--cds-spacing-06) var(--cds-spacing-10); }
+    section.step { padding-top: var(--cds-spacing-07); margin-top: var(--cds-spacing-07); border-top: 1px solid var(--cds-border-subtle-01); }
+    section.step:first-of-type { border-top: none; margin-top: 0; padding-top: 0; }
+    h2 { font-size: 2rem; line-height: 1.25; font-weight: 400; margin: 0 0 var(--cds-spacing-05); color: var(--cds-text-primary); }
+    h3 { font-size: 1.35rem; line-height: 1.4; font-weight: 500; margin: var(--cds-spacing-07) 0 var(--cds-spacing-04); color: var(--cds-text-primary); }
+    h4 { font-size: 1.05rem; font-weight: 600; margin: var(--cds-spacing-06) 0 var(--cds-spacing-03); }
+    p { margin: 0 0 var(--cds-spacing-05); max-width: 52rem; }
+    ul.plain, ol.plain { max-width: 52rem; padding-left: var(--cds-spacing-06); margin: 0 0 var(--cds-spacing-05); }
+    ul.plain li, ol.plain li { margin-bottom: var(--cds-spacing-03); }
+    .step-label { display: inline-block; margin-bottom: var(--cds-spacing-03); }
+    :not(pre) > code { background: var(--cds-layer-01); padding: 0.1rem 0.4rem; font-size: 0.875rem; border-radius: 2px; }
+
+    /* ---- Tables ---- */
+    table.cds-table { width: 100%; border-collapse: collapse; margin: 0 0 var(--cds-spacing-06); font-size: 0.875rem; }
+    table.cds-table th { text-align: left; background: var(--cds-layer-accent-01); padding: 0.75rem var(--cds-spacing-05); font-weight: 600; }
+    table.cds-table td { padding: 0.75rem var(--cds-spacing-05); border-bottom: 1px solid var(--cds-border-subtle-01); background: var(--cds-layer-01); vertical-align: top; }
+    table.cds-table tr:nth-child(even) td { background: var(--cds-background); }
+    .table-wrap { overflow-x: auto; max-width: 54rem; margin-bottom: var(--cds-spacing-06); }
+
+    /* ---- Prompt tile ---- */
+    .prompt {
+      background: var(--cds-layer-01);
+      border-left: 4px solid var(--cds-interactive);
+      padding: var(--cds-spacing-05) var(--cds-spacing-06);
+      margin: 0 0 var(--cds-spacing-05);
+      max-width: 52rem;
+      position: relative;
+    }
+    .prompt .prompt-label { font-size: 0.75rem; letter-spacing: 0.32px; text-transform: uppercase; color: var(--cds-text-secondary); margin: 0 0 var(--cds-spacing-03); font-weight: 600; }
+    .prompt p { margin: 0; font-size: 1.125rem; line-height: 1.5; font-style: italic; color: #161616; }
+    .copy-btn {
+      position: absolute; top: var(--cds-spacing-04); right: var(--cds-spacing-04);
+      background: #ffffff; border: 1px solid var(--cds-border-subtle-01);
+      padding: 0.25rem 0.6rem; font-size: 0.75rem; cursor: pointer; border-radius: 2px;
+      font-family: inherit; font-weight: 500;
+    }
+    .copy-btn:hover { background: #e0e0e0; }
+
+    /* ---- Inline notifications ---- */
+    .note {
+      display: block; max-width: 52rem;
+      border: 1px solid; border-left-width: 4px;
+      padding: var(--cds-spacing-04) var(--cds-spacing-05);
+      margin: 0 0 var(--cds-spacing-05);
+      font-size: 0.875rem; line-height: 1.45;
+    }
+    .note .note-title { font-weight: 600; display: block; margin-bottom: 0.25rem; }
+    .note p { font-size: 0.875rem; margin: 0; max-width: none; }
+    .note p + p { margin-top: var(--cds-spacing-03); }
+    .note.info    { background: var(--cds-notification-background-info);    border-color: #d0e2ff; border-left-color: var(--cds-support-info); }
+    .note.warning { background: var(--cds-notification-background-warning); border-color: #fddc69; border-left-color: var(--cds-support-warning); }
+    .note.success { background: var(--cds-notification-background-success); border-color: #a7f0ba; border-left-color: var(--cds-support-success); }
+
+    /* ---- Checkpoint ---- */
+    .checkpoint { margin: var(--cds-spacing-06) 0 var(--cds-spacing-05); max-width: 52rem; }
+    .checkpoint .cp-title { display: flex; align-items: center; gap: var(--cds-spacing-03); font-size: 1rem; font-weight: 600; margin: 0 0 var(--cds-spacing-03); }
+
+    /* ---- Figures ---- */
+    figure { margin: 0 0 var(--cds-spacing-06); max-width: 52rem; }
+    figure img { display: block; width: 100%; height: auto; border: 1px solid var(--cds-border-subtle-01); background: #fff; box-shadow: 0 2px 6px rgba(0,0,0,0.06); }
+    figcaption { font-size: 0.75rem; letter-spacing: 0.32px; color: var(--cds-text-secondary); margin-top: var(--cds-spacing-03); font-weight: 500; }
+
+    /* ---- Code / accordion ---- */
+    cds-accordion { display: block; max-width: 52rem; margin: 0 0 var(--cds-spacing-05); }
+    cds-code-snippet { display: block; max-width: 100%; }
+    .acc-body { padding: var(--cds-spacing-03) 0; }
+    .acc-body p { font-size: 0.875rem; }
+    pre.block {
+      background: var(--cds-layer-01); margin: 0 0 var(--cds-spacing-05); padding: var(--cds-spacing-05);
+      overflow-x: auto; font-size: 0.8125rem; line-height: 1.54; max-width: 52rem;
+      border-left: 3px solid var(--cds-border-strong-01);
+    }
+
+    /* ---- Footer ---- */
+    footer { background: var(--cds-layer-01); border-top: 1px solid var(--cds-border-subtle-01); padding: var(--cds-spacing-06) 0; font-size: 0.75rem; color: var(--cds-text-secondary); }
+  </style>
+
+  <!-- Carbon Web Components from IBM CDN (v2.24.0) -->
+  <script type="module" src="https://1.www.s81c.com/common/carbon/web-components/version/v2.24.0/accordion.min.js"></script>
+  <script type="module" src="https://1.www.s81c.com/common/carbon/web-components/version/v2.24.0/code-snippet.min.js"></script>
+  <script type="module" src="https://1.www.s81c.com/common/carbon/web-components/version/v2.24.0/tag.min.js"></script>
+</head>
+
+<body class="cds--white">
+
+  <!-- ================= SHELL HEADER ================= -->
+  <header class="shell-header">
+    <div class="brand">IBM <strong>TechXchange 2026</strong> &nbsp;|&nbsp; Lab 2308</div>
+    <div class="spacer"></div>
+    <a class="hdr-link" href="https://github.com/haneen-bakbak/lab-2308" target="_blank" rel="noopener">GitHub Repository</a>
+    <a class="hdr-link" href="https://cloud.ibm.com" target="_blank" rel="noopener">IBM Cloud</a>
+  </header>
+
+  <!-- ================= HERO ================= -->
+  <div class="hero">
+    <div class="cds--grid">
+      <div class="cds--row">
+        <div class="cds--col-sm-4 cds--col-md-8 cds--col-lg-13">
+          <p class="eyebrow">TechXchange 2026 · Hands-on AI Lab</p>
+          <h1>Build an Autonomous Risk &amp; Compliance Agent Across the IBM Stack</h1>
+          <p class="lede">Construct an enterprise AI risk agent using watsonx Orchestrate, connect it directly to IBM OpenPages GRC via the Model Context Protocol (MCP), and observe real-time schema-first reasoning.</p>
+          <div class="tag-row">
+            <cds-tag type="blue">watsonx Orchestrate</cds-tag>
+            <cds-tag type="purple">watsonx.governance</cds-tag>
+            <cds-tag type="teal">OpenPages GRC</cds-tag>
+            <cds-tag type="cyan">Model Context Protocol (MCP)</cds-tag>
+            <cds-tag type="gray">IBM Bob</cds-tag>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="cds--grid">
+    <div class="cds--row">
+
+      <!-- ================= SIDE NAVIGATION ================= -->
+      <nav class="side-nav cds--col-lg-3" aria-label="Lab navigation">
+        <h2>Lab Navigation</h2>
+        <ul>
+          <li><a href="#section-1">1. Introduction &amp; Objectives</a></li>
+          <li><a href="#section-2">2. Architecture Overview</a></li>
+          <li><a href="#section-3">3. Environment Access &amp; Credentials</a></li>
+          <li><a class="sub" href="#step-3-1">3.1 Credentials Table</a></li>
+          <li><a class="sub" href="#step-3-2">3.2 Step 1: App ID Sign-in</a></li>
+          <li><a class="sub" href="#step-3-3">3.3 Step 2: Launch Orchestrate</a></li>
+          <li><a class="sub" href="#step-3-4">3.4 Step 3: Service ID Key</a></li>
+          <li><a class="sub" href="#step-3-5">3.5 Step 4: OpenPages GRC Login</a></li>
+          <li><a href="#section-4">4. Module 1 — Setup with Bob</a></li>
+          <li><a class="sub" href="#step-4-1">4.1 Open IBM Bob</a></li>
+          <li><a class="sub" href="#step-4-2">4.2 Automated Provisioning</a></li>
+          <li><a href="#section-5">5. Module 2 — Explore OpenPages GRC</a></li>
+          <li><a class="sub" href="#step-5-1">5.1 OpenPages Interface</a></li>
+          <li><a class="sub" href="#step-5-2">5.2 Risk Register &amp; Schemas</a></li>
+          <li><a href="#section-6">6. Module 3 — Chat with Risk Agent</a></li>
+          <li><a class="sub" href="#step-6-1">6.1 Open Agent Chat</a></li>
+          <li><a class="sub" href="#step-6-2">6.2 Guided Test Prompts</a></li>
+          <li><a class="sub" href="#step-6-3">6.3 Schema-First Execution</a></li>
+          <li><a href="#section-7">7. Module 4 — Telemetry &amp; Traces</a></li>
+          <li><a class="sub" href="#step-7-1">7.1 Trace &amp; Context Inspector</a></li>
+          <li><a class="sub" href="#step-7-2">7.2 Anatomy of an MCP Trace</a></li>
+          <li><a class="sub" href="#step-7-3">7.3 Experiment Prompts</a></li>
+          <li><a href="#section-8">8. Troubleshooting &amp; FAQs</a></li>
+          <li><a href="#section-9">9. Wrap-Up &amp; Key Takeaways</a></li>
+          <li><a href="#section-10">10. Reference &amp; MCP Specs</a></li>
+        </ul>
+      </nav>
+
+      <!-- ================= MAIN CONTENT ================= -->
+      <main class="cds--col-sm-4 cds--col-md-8 cds--col-lg-13">
+
+        <!-- ================= SECTION 1 ================= -->
+        <section id="section-1" class="step">
+          <div class="step-label"><cds-tag type="blue">Section 1</cds-tag></div>
+          <h2>Introduction &amp; Lab Objectives</h2>
+          <p>GRC (Governance, Risk, and Compliance) teams spend countless hours reading siloed dashboards, chasing risk owners, and manually reconciling spreadsheets. What if an autonomous AI agent could answer questions about your organization's risk posture — in plain English — by communicating directly with your live GRC platform?</p>
+          <p>In this lab, you will interact with an <strong>autonomous AI risk agent</strong> powered by <strong>IBM watsonx Orchestrate</strong> that connects to <strong>IBM OpenPages (watsonx.governance)</strong> through the <strong>Model Context Protocol (MCP)</strong>.</p>
+          
+          <div class="note info">
+            <span class="note-title">Zero Boilerplate · Zero Terminal Hassle</span>
+            <p>You do not need to write complex integration code or debug manual APIs. IBM Bob handles the scaffolding behind the scenes, allowing you to focus on testing agentic reasoning, schema introspection, and compliance validation.</p>
+          </div>
+
+          <h3>Key Terms &amp; Concepts</h3>
+          <div class="table-wrap">
+            <table class="cds-table">
+              <thead><tr><th>Component</th><th>Description &amp; Role in this Lab</th></tr></thead>
+              <tbody>
+                <tr><td><strong>IBM OpenPages</strong></td><td>IBM's comprehensive GRC platform for managing operational risk, controls (<code>SOXControl</code>), risks (<code>SOXRisk</code>), and compliance frameworks.</td></tr>
+                <tr><td><strong>watsonx Orchestrate (WxO)</strong></td><td>Agentic AI platform that reasons over natural language prompts, dynamically selects tools, and executes multi-step workflows.</td></tr>
+                <tr><td><strong>Model Context Protocol (MCP)</strong></td><td>The open standard protocol bridging LLMs to external tools and data sources with dynamic schema discovery and bi-directional object manipulation.</td></tr>
+                <tr><td><strong>IBM Bob</strong></td><td>Your AI pair programmer that wires up the WxO instance, registers the OpenPages MCP toolkit, and imports the agent configuration.</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h3>What You Will Accomplish</h3>
+          <ol class="plain">
+            <li><strong>Understand MCP in Enterprise GRC:</strong> Discover how open protocols unlock real-time tool calling without fragile custom integrations.</li>
+            <li><strong>Witness Schema-First Agent Execution:</strong> Observe why the agent never hallucinates field names by reading OpenPages object schemas at runtime.</li>
+            <li><strong>Execute Real Risk Workflows:</strong> Identify compliance gaps, unassessed controls, and log new risk associations through natural language prompts.</li>
+            <li><strong>Inspect Live Execution Telemetry:</strong> Examine the real-time execution spans, SQL-style queries, and LLM reasoning steps.</li>
+          </ol>
+        </section>
+
+        <!-- ================= SECTION 2 ================= -->
+        <section id="section-2" class="step">
+          <div class="step-label"><cds-tag type="blue">Section 2</cds-tag></div>
+          <h2>Architecture Overview</h2>
+          <p>The diagram below illustrates the end-to-end data flow: from user prompts in the watsonx Orchestrate interface, through the LLM reasoning loop and MCP server, to the live OpenPages GRC repository.</p>
+          
+          <figure>
+            <img src="assets/diagrams/architecture-overview.svg" alt="Lab 2308 Architecture Flow" />
+            <figcaption>Figure 1. End-to-End Architecture: watsonx Orchestrate, MCP Tooling, and OpenPages GRC platform.</figcaption>
+          </figure>
+
+          <h4>Interactive Request Lifecycle</h4>
+          <ol class="plain">
+            <li><strong>User Prompt:</strong> The user submits an operational question (e.g., <em>"Which risk category has unassessed controls?"</em>).</li>
+            <li><strong>Schema Introspection:</strong> The agent calls <code>openpages_get_resource</code> to inspect the live schema definition (e.g. <code>openpages://schema/SOXControl</code>).</li>
+            <li><strong>Verified Query Generation:</strong> The agent crafts an exact SQL query matching the introspected field names (<code>OPSS-Ctl:Status</code>).</li>
+            <li><strong>Data Execution:</strong> The OpenPages MCP server executes the query against OpenPages REST endpoints and returns structured JSON rows.</li>
+            <li><strong>Synthesized Response:</strong> The agent formats a clean, clickable Markdown response with live links back to the OpenPages task view.</li>
+          </ol>
+        </section>
+
+        <!-- ================= SECTION 3 ================= -->
+        <section id="section-3" class="step">
+          <div class="step-label"><cds-tag type="blue">Section 3</cds-tag></div>
+          <h2>Your Lab Environments &amp; Credentials Walkthrough</h2>
+          <p>Follow the step-by-step instructions below to access your provisioned IBM Cloud reservation, launch watsonx Orchestrate, and log into OpenPages GRC.</p>
+
+          <h3 id="step-3-1">3.1 Environment Credentials Reference Table</h3>
+          <p>Refer to your reservation handout for your specific credentials:</p>
+          <div class="table-wrap">
+            <table class="cds-table">
+              <thead><tr><th>Resource / Parameter</th><th>Format / Placeholder Pattern</th><th>Purpose</th></tr></thead>
+              <tbody>
+                <tr><td><strong>IBM Cloud Authorize URL</strong></td><td><code>https://cloud.ibm.com/authorize/&lt;tenant_id&gt;/&lt;slug&gt;</code></td><td>Direct App ID authentication gateway</td></tr>
+                <tr><td><strong>App ID Student User</strong></td><td><code>student&lt;N&gt;@&lt;tenant_id&gt;.techzone.com</code></td><td>Assigned student login username</td></tr>
+                <tr><td><strong>App ID Password</strong></td><td><code>•••••••••••••••</code></td><td>Student password from handout</td></tr>
+                <tr><td><strong>Resource Group</strong></td><td><code>eid-&lt;tenant_id&gt;</code></td><td>Target resource group in IBM Cloud</td></tr>
+                <tr><td><strong>Service ID API Key</strong></td><td><code>&lt;alphanumeric_api_key&gt;</code></td><td>API key given to Bob to configure Orchestrate</td></tr>
+                <tr><td><strong>OpenPages Application URL</strong></td><td><code>https://wxgov-govconsole-demo-&lt;res_id&gt;.vsi.techzone.ibm.com/openpages</code></td><td>GRC Web UI for inspecting risks</td></tr>
+                <tr><td><strong>OpenPages MCP Server URL</strong></td><td><code>https://wxgov-govconsole-demo-&lt;res_id&gt;.vsi.techzone.ibm.com/mcp</code></td><td>OpenPages URL with <code>/openpages</code> replaced by <code>/mcp</code></td></tr>
+                <tr><td><strong>OpenPages Login</strong></td><td><em>Ask your lab instructors for credentials</em></td><td>GRC administrative login</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h3 id="step-3-2">3.2 Step 1: Log In to IBM Cloud via TechZone App ID</h3>
+          <p>Open a <strong>Private / Incognito</strong> browser window and navigate to your <strong>App ID Cloud Directory URL</strong>. Enter your student credentials and click <strong>Sign in</strong>.</p>
+          
+          <figure>
+            <img src="assets/screenshots/01-new-cloud-login.png" alt="IBM Cloud App ID Sign-in" />
+            <figcaption>Figure 2. IBM Cloud App ID authentication gateway for your assigned student account.</figcaption>
+          </figure>
+
+          <h3 id="step-3-3">3.3 Step 2: Access Your Resources &amp; Launch watsonx Orchestrate</h3>
+          <p>In IBM Cloud, navigate to <strong>Resource List</strong> (<code>cloud.ibm.com/resources</code>). Under the <strong>AI / Machine learning</strong> section, click your provisioned <strong>watsonx-orchestrate</strong> service instance.</p>
+          
+          <figure>
+            <img src="assets/screenshots/real-cloud-wxo-instance-detail.png" alt="watsonx Orchestrate Service Instance in IBM Cloud" />
+            <figcaption>Figure 3. watsonx Orchestrate service instance page in IBM Cloud with the Launch button.</figcaption>
+          </figure>
+
+          <p>Click the blue <strong>Launch watsonx Orchestrate</strong> button to open your live Orchestrate Control Plane dashboard:</p>
+          
+          <figure>
+            <img src="assets/screenshots/real-wxo-dashboard-clean.png" alt="watsonx Orchestrate Control Plane Dashboard" />
+            <figcaption>Figure 4. Live watsonx Orchestrate home dashboard.</figcaption>
+          </figure>
+
+          <h3 id="step-3-4">3.4 Step 3: Locating Your Service ID API Key for Bob</h3>
+          <p>Your reservation comes provisioned with a dedicated Service ID API key. You can view and manage API keys under <strong>Manage &rarr; Access (IAM) &rarr; API keys</strong> or <strong>Service IDs</strong> in IBM Cloud.</p>
+          
+          <figure>
+            <img src="assets/screenshots/real-cloud-apikeys.png" alt="IBM Cloud IAM API Keys Interface" />
+            <figcaption>Figure 5. IBM Cloud IAM API Keys management console.</figcaption>
+          </figure>
+
+          <h3 id="step-3-5">3.5 Step 4: Accessing &amp; Logging In to OpenPages (watsonx.governance)</h3>
+          <p>Open your <strong>OpenPages Application URL</strong> in a new browser tab. When prompted with the browser self-signed TLS warning (<em>"Your connection is not private"</em>), click <strong>Advanced &rarr; Proceed to wxgov-govconsole... (unsafe)</strong>.</p>
+          
+          <figure>
+            <img src="assets/screenshots/real-openpages-login.png" alt="OpenPages GRC Login Portal" />
+            <figcaption>Figure 6. IBM watsonx OpenPages Login portal.</figcaption>
+          </figure>
+
+          <div class="checkpoint">
+            <div class="cp-title"><cds-tag type="green">Formula Checkpoint</cds-tag> OpenPages MCP Server URL</div>
+            <p>Your MCP server endpoint is simply your OpenPages Application URL with <code>/openpages</code> replaced by <code>/mcp</code>:</p>
+            <pre class="block">Application URL: https://wxgov-govconsole-demo-&lt;res_id&gt;.vsi.techzone.ibm.com/openpages
+MCP Server URL:  https://wxgov-govconsole-demo-&lt;res_id&gt;.vsi.techzone.ibm.com/mcp</pre>
+          </div>
+        </section>
+
+        <!-- ================= SECTION 4 ================= -->
+        <section id="section-4" class="step">
+          <div class="step-label"><cds-tag type="purple">Module 1</cds-tag></div>
+          <h2>Module 1 — Start Here: Talk to Bob</h2>
+          <p>Now you will have a short conversation with IBM Bob. You share your environment details, and Bob automatically registers the OpenPages MCP toolkit and imports your risk agent.</p>
+
+          <h3 id="step-4-1">4.1 Open IBM Bob</h3>
+          <p>Open IBM Bob in your browser or local workspace.</p>
+
+          <h3 id="step-4-2">4.2 Prompt Bob to Set Everything Up</h3>
+          <div class="prompt">
+            <button class="copy-btn" onclick="navigator.clipboard.writeText('Hi Bob! I\'m in Lab 2308 at TechXchange. Can you set me up?')">Copy Prompt</button>
+            <p class="prompt-label">Prompt Bob</p>
+            <p>"Hi Bob! I'm in Lab 2308 at TechXchange. Can you set me up?"</p>
+          </div>
+
+          <p>Bob will greet you and ask for three items — provide them when prompted:</p>
+          <ol class="plain">
+            <li><strong>Your OpenPages MCP endpoint URL</strong> (e.g. <code>https://wxgov-govconsole-demo-&lt;res_id&gt;.vsi.techzone.ibm.com/mcp</code>)</li>
+            <li><strong>Your watsonx Orchestrate API key</strong> (Service ID key from your handout)</li>
+            <li><strong>Your WxO instance URL</strong> (Confirm the default shared instance)</li>
+          </ol>
+
+          <div class="note success">
+            <span class="note-title">Automated Provisioning</span>
+            <p>Bob will silently wire up the MCP toolkit, configure the endpoints, and import <code>lab2308_risk_agent</code> into your Orchestrate instance. Once Bob announces <em>"🎉 You're all set!"</em>, proceed to Module 2.</p>
+          </div>
+        </section>
+
+        <!-- ================= SECTION 5 ================= -->
+        <section id="section-5" class="step">
+          <div class="step-label"><cds-tag type="purple">Module 2</cds-tag></div>
+          <h2>Module 2 — Explore OpenPages GRC</h2>
+          <p>Before chatting with the agent, spend a couple minutes exploring the source system it will be querying.</p>
+
+          <h3 id="step-5-1">5.1 Log In to OpenPages</h3>
+          <p>Open your OpenPages Application URL in your browser and log in with the credentials provided by your instructor.</p>
+
+          <h3 id="step-5-2">5.2 Navigate the Risk Register</h3>
+          <figure>
+            <img src="assets/screenshots/real-openpages-nav-menu.png" alt="OpenPages Main Navigation Menu" />
+            <figcaption>Figure 7. OpenPages main navigation menu showing Risk and Control registers.</figcaption>
+          </figure>
+          <ol class="plain">
+            <li>Click the top-left <strong>Navigation Menu</strong> (hamburger icon).</li>
+            <li>Locate the Risk register under <strong>Assessments</strong>.</li>
+            <li>Notice the <strong>Resource ID</strong> format (e.g. <code>I01-RSK-01-01</code> or numeric <code>21011</code>).</li>
+            <li>Observe how fields use strict schema prefixes (<code>OPSS-Rsk:Status</code>, <code>OPSS-Rsk:RiskLevel</code>). Your agent queries these schemas directly.</li>
+          </ol>
+        </section>
+
+        <!-- ================= SECTION 6 ================= -->
+        <section id="section-6" class="step">
+          <div class="step-label"><cds-tag type="purple">Module 3</cds-tag></div>
+          <h2>Module 3 — Chat With Your Risk Agent</h2>
+          <p>Now test your live agent inside watsonx Orchestrate!</p>
+
+          <h3 id="step-6-1">6.1 Open the Agent in watsonx Orchestrate</h3>
+          <p>In your watsonx Orchestrate workspace, click the <strong>AI Assistant</strong> launcher icon in the bottom-left corner of the screen. The interactive chat drawer opens on the right:</p>
+
+          <figure>
+            <img src="assets/screenshots/04-real-wxo-chat-prompt.png" alt="watsonx Orchestrate Interactive Chat Drawer" />
+            <figcaption>Figure 8. Interactive conversation drawer in watsonx Orchestrate.</figcaption>
+          </figure>
+
+          <h3 id="step-6-2">6.2 Guided Test Prompts: The Compliance Scenario</h3>
+          <p>You are a risk analyst at a financial institution. Every control in this environment is sitting at <strong>"Awaiting Assessment"</strong>. Your job is to find the gap, log the risk, and link the control.</p>
+
+          <h4>Prompt 1 — Find the Compliance Gap</h4>
+          <div class="prompt">
+            <button class="copy-btn" onclick="navigator.clipboard.writeText('Which of our risk categories have controls that are still awaiting assessment?')">Copy Prompt</button>
+            <p class="prompt-label">Prompt 1</p>
+            <p>"Which of our risk categories have controls that are still awaiting assessment?"</p>
+          </div>
+          <p><strong>Expected behavior:</strong> The agent calls <code>openpages_get_resource</code> to inspect the <code>SOXControl</code> schema, executes a query for controls with status <code>Awaiting Assessment</code>, groups them by <code>OPSS-Shared-Basel:Risk Category</code>, and highlights <strong>External Fraud</strong> as the most exposed category.</p>
+
+          <h4>Prompt 2 — Drill Down on High-Exposure Categories</h4>
+          <div class="prompt">
+            <button class="copy-btn" onclick="navigator.clipboard.writeText('Show me the controls for External Fraud.')">Copy Prompt</button>
+            <p class="prompt-label">Prompt 2</p>
+            <p>"Show me the controls for External Fraud."</p>
+          </div>
+          <p><strong>Expected behavior:</strong> The agent queries controls where <code>OPSS-Shared-Basel:Risk Category = 'External Fraud'</code>, returning names, IDs (e.g. <code>CTL-04-03-03-01</code>), and descriptions.</p>
+
+          <h4>Prompt 3 — Create a New Risk Record in OpenPages</h4>
+          <div class="prompt">
+            <button class="copy-btn" onclick="navigator.clipboard.writeText('Log a new risk in OpenPages: Name it \'Inadequate Fraud Detection Controls\', set the category to External Fraud, and note that controls are unassessed.')">Copy Prompt</button>
+            <p class="prompt-label">Prompt 3</p>
+            <p>"Log a new risk in OpenPages: Name it 'Inadequate Fraud Detection Controls', set the category to External Fraud, and note that controls are unassessed."</p>
+          </div>
+          <p><strong>Expected behavior:</strong> The agent finds a parent process (e.g. Retail Banking), calls <code>openpages_upsert_object</code> with <code>object_type: "soxrisk"</code>, and returns the newly assigned numeric Resource ID with a direct clickable link into OpenPages.</p>
+
+          <h4>Prompt 4 — Associate the Control to the New Risk</h4>
+          <div class="prompt">
+            <button class="copy-btn" onclick="navigator.clipboard.writeText('Link control CTL-04-03-03-01 to our new Inadequate Fraud Detection Controls risk.')">Copy Prompt</button>
+            <p class="prompt-label">Prompt 4</p>
+            <p>"Link control CTL-04-03-03-01 to our new Inadequate Fraud Detection Controls risk."</p>
+          </div>
+          <p><strong>Expected behavior:</strong> The agent resolves the control ID, invokes <code>openpages_associate_objects</code>, and confirms the bidirectional relationship.</p>
+
+          <h3 id="step-6-3">6.3 What the Agent Is Doing (Schema-First Pattern)</h3>
+          <p>Every response follows this robust execution sequence:</p>
+          <pre class="block">User Prompt
+    │
+    ▼
+1. openpages_get_resource("openpages://catalog/object_types")   ← Discover types
+    │
+    ▼
+2. openpages_get_resource("openpages://schema/SOXRisk")          ← Introspect valid fields
+    │
+    ▼
+3. execute_openpages_query(SELECT confirmed_fields FROM...)      ← Query with verified fields
+    │
+    ▼
+4. Rewrite internal opapp URLs to external TechZone hostname     ← Format links
+    │
+    ▼
+5. Synthesize and format Markdown response</pre>
+        </section>
+
+        <!-- ================= SECTION 7 ================= -->
+        <section id="section-7" class="step">
+          <div class="step-label"><cds-tag type="purple">Module 4</cds-tag></div>
+          <h2>Module 4 — Inspect Live Telemetry &amp; Execution Traces</h2>
+          <p>Observing <em>why</em> an AI agent made a decision and <em>how</em> it retrieved external data is critical for enterprise governance and compliance.</p>
+
+          <h3 id="step-7-1">7.1 Open the Telemetry &amp; Context Inspector</h3>
+          <p>In the watsonx Orchestrate chat header, click the <strong>Maximize Chat</strong> or <strong>AI / Info</strong> button to expand the full execution view:</p>
+
+          <figure>
+            <img src="assets/screenshots/08-real-wxo-chat-maximized.png" alt="watsonx Orchestrate Maximized Chat and Context Inspector" />
+            <figcaption>Figure 9. Live watsonx Orchestrate maximized telemetry and context tracking view.</figcaption>
+          </figure>
+
+          <h3 id="step-7-2">7.2 Anatomy of an MCP Execution Trace</h3>
+          <div class="table-wrap">
+            <table class="cds-table">
+              <thead><tr><th>Span Type</th><th>Component</th><th>What It Reveals in the Trace</th></tr></thead>
+              <tbody>
+                <tr><td><strong>TOOL (Schema Discovery)</strong></td><td><code>openpages_get_resource</code></td><td>The exact URI (<code>openpages://schema/SOXControl</code>) introspecting valid fields prior to query generation.</td></tr>
+                <tr><td><strong>TOOL (Data Query)</strong></td><td><code>execute_openpages_query</code></td><td>The SQL query payload, execution latency (ms), HTTP 200 response, and row count.</td></tr>
+                <tr><td><strong>TOOL (Write / Association)</strong></td><td><code>openpages_upsert_object</code></td><td>The JSON mutation payload sent to OpenPages and the returned primary <code>resource_id</code>.</td></tr>
+                <tr><td><strong>LLM SPAN (Reasoning)</strong></td><td><code>llama-3-3-70b-instruct</code></td><td>ReAct reasoning steps, token counts, inference latency, and output formatting.</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h3 id="step-7-3">7.3 Try Your Own Prompts &amp; Watch the Traces</h3>
+          <p>Try sending these additional queries to observe the trace inspector in real time:</p>
+          <div class="prompt">
+            <button class="copy-btn" onclick="navigator.clipboard.writeText('How many risks are currently in an Open status?')">Copy Prompt</button>
+            <p class="prompt-label">Test Prompt A</p>
+            <p>"How many risks are currently in an Open status?"</p>
+          </div>
+          <div class="prompt">
+            <button class="copy-btn" onclick="navigator.clipboard.writeText('List all risks that are High severity.')">Copy Prompt</button>
+            <p class="prompt-label">Test Prompt B</p>
+            <p>"List all risks that are High severity."</p>
+          </div>
+          <div class="prompt">
+            <button class="copy-btn" onclick="navigator.clipboard.writeText('Summarise the risk landscape — how many risks exist per status?')">Copy Prompt</button>
+            <p class="prompt-label">Test Prompt C</p>
+            <p>"Summarise the risk landscape — how many risks exist per status?"</p>
+          </div>
+        </section>
+
+        <!-- ================= SECTION 8 ================= -->
+        <section id="section-8" class="step">
+          <div class="step-label"><cds-tag type="blue">Section 8</cds-tag></div>
+          <h2>Troubleshooting &amp; FAQs</h2>
+          <p>If something behaves unexpectedly during the lab, simply ask Bob for help. Bob can inspect and repair connections automatically:</p>
+
+          <div class="table-wrap">
+            <table class="cds-table">
+              <thead><tr><th>Symptom</th><th>What to tell Bob</th></tr></thead>
+              <tbody>
+                <tr><td>Agent says <em>"I don't have access to that tool"</em></td><td><em>"Bob, my agent says it can't find the MCP tools. Can you re-register the toolkit?"</em></td></tr>
+                <tr><td>Tool calls time out</td><td><em>"Bob, the agent is timing out. Can you check the OpenPages endpoint?"</em></td></tr>
+                <tr><td>Authentication / 401 error</td><td><em>"Bob, I'm getting an authentication error. Can you refresh the connection?"</em></td></tr>
+                <tr><td>Empty risk list returned</td><td><em>"Bob, the agent returned an empty list. My OpenPages URL is &lt;paste URL&gt;."</em></td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- ================= SECTION 9 ================= -->
+        <section id="section-9" class="step">
+          <div class="step-label"><cds-tag type="blue">Section 9</cds-tag></div>
+          <h2>Wrap-Up &amp; Key Takeaways</h2>
+          <div class="note success">
+            <span class="note-title">What You Have Accomplished Today</span>
+            <p>✅ Built an autonomous AI risk agent connected to IBM OpenPages via Model Context Protocol (MCP).<br />
+            ✅ Eliminated field hallucination through dynamic schema-first introspection.<br />
+            ✅ Executed natural language queries, risk creation, and control association against live GRC databases.<br />
+            ✅ Inspected full telemetry traces and execution spans in watsonx Orchestrate.</p>
+          </div>
+        </section>
+
+        <!-- ================= SECTION 10 ================= -->
+        <section id="section-10" class="step">
+          <div class="step-label"><cds-tag type="blue">Section 10</cds-tag></div>
+          <h2>Reference &amp; MCP Tool Specifications</h2>
+          <div class="table-wrap">
+            <table class="cds-table">
+              <thead><tr><th>MCP Tool Name</th><th>Function &amp; Description</th></tr></thead>
+              <tbody>
+                <tr><td><code>execute_openpages_query</code></td><td>Executes SQL-style filter queries against OpenPages object tables.</td></tr>
+                <tr><td><code>openpages_get_resource</code></td><td>Fetches live object schema definitions (e.g. <code>openpages://schema/SOXRisk</code>).</td></tr>
+                <tr><td><code>openpages_list_resources</code></td><td>Lists available schema resources and catalog endpoints.</td></tr>
+                <tr><td><code>openpages_upsert_object</code></td><td>Creates or updates GRC objects (Risks, Controls, Issues).</td></tr>
+                <tr><td><code>openpages_associate_objects</code></td><td>Establishes parent-child or association links between GRC records.</td></tr>
+                <tr><td><code>openpages_dissociate_objects</code></td><td>Removes association links between GRC records.</td></tr>
+                <tr><td><code>echo</code></td><td>Connectivity and latency heartbeat test for the MCP server.</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+      </main>
+    </div>
+  </div>
+
+  <!-- ================= FOOTER ================= -->
+  <footer>
+    <div class="cds--grid">
+      IBM TechXchange 2026 &middot; Lab 2308: Building Autonomous Risk &amp; Compliance Agents &middot; watsonx Orchestrate + watsonx.governance + OpenPages &middot; Rendered with IBM Carbon Design System
+    </div>
+  </footer>
+
+  <!-- Scroll-spy script to highlight active side nav link -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const sections = document.querySelectorAll('section.step, h3[id]');
+      const navLinks = document.querySelectorAll('.side-nav a');
+
+      window.addEventListener('scroll', () => {
+        let current = '';
+        sections.forEach(section => {
+          const sectionTop = section.offsetTop;
+          if (pageYOffset >= sectionTop - 120) {
+            current = section.getAttribute('id');
+          }
+        });
+
+        navLinks.forEach(link => {
+          link.classList.remove('active');
+          if (link.getAttribute('href') === `#${current}`) {
+            link.classList.add('active');
+          }
+        });
+      });
+    });
+  </script>
+</body>
+</html>

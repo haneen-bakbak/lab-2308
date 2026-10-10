@@ -1,0 +1,24 @@
+# LAB-2308: OpenPages MCP Toolkit spec
+# Remote streamable-HTTP transport pointing at the shared TechZone MCP endpoint.
+#
+# NOTE: Bob patches the URL at runtime with the attendee's own MCP endpoint.
+# This file contains the test/instructor default.
+#
+# Import with:
+#   orchestrate toolkits import --kind mcp \
+#     --name openpages-grc-mcp \
+#     --description "IBM OpenPages GRC MCP server for LAB-2308" \
+#     --url https://wxgov-govconsole-demo-2ho7021k.vsi.techzone.ibm.com/mcp \
+#     --transport streamable_http \
+#     --tools "*"
+
+kind: mcp
+name: openpages-grc-mcp
+description: >
+  IBM OpenPages GRC MCP server for LAB-2308 (TechXchange 2026).
+  Provides tools to read, create, and manage GRC objects (Risks, Controls,
+  Issues) in the shared OpenPages TechZone environment.
+url: https://wxgov-govconsole-demo-2ho7021k.vsi.techzone.ibm.com/mcp
+transport: streamable_http
+tools:
+  - "*"
