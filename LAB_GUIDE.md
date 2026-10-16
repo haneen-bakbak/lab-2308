@@ -143,10 +143,10 @@ This lab bridges two cloud environments:
 
 ---
 
-### 3.1 Your `Envmt Info` File — Find Your Two Values for Bob
+### 3.1 Find Your Two Values — Instructor Screen or Printout
 
-Your lab instructor has given you (or emailed you) an **`Envmt Info`** file.
-It contains everything you need. **Bob only needs two values from it**, marked with ★ below:
+Your instructor will display credentials on the projected screen, or hand you a printed sheet.
+**Bob only needs two values**, marked with ★ below. Everything else is for logging in to the browser UIs.
 
 ```
 ============================================================
@@ -181,7 +181,7 @@ OpenPages Login
   Password: passw0rd
 ```
 
-> 💡 **The two ★ starred values are all Bob needs.** Keep this file open when you start Module 1.
+> 💡 **The two ★ starred values are all Bob needs.** Keep the instructor screen or printed sheet visible when you start Module 1.
 
 ---
 
@@ -190,12 +190,12 @@ OpenPages Login
 ![Step 1: IBM Cloud App ID Login](assets/screenshots/01-new-cloud-login.png)
 
 1. Open a **Private/Incognito** browser window.
-2. In your `Envmt Info`, find the **App ID Login URL** under *PART 1*:
+2. On the instructor screen or printed sheet, find the **App ID Login URL** under *PART 1*:
    ```text
    https://cloud.ibm.com/authorize/<tenant_id>/<slug>
    ```
    Paste it into your browser's address bar and press Enter.
-3. On the login page, enter your credentials from `Envmt Info`:
+3. On the login page, enter your credentials from the instructor screen or printed sheet:
    - **Username**: the `App ID Username` line (e.g. `student3@abc123.techzone.com`)
    - **Password**: the `App ID Password` line
 4. Click **Sign in**.
@@ -221,7 +221,7 @@ OpenPages Login
 
 When Bob sets up your agent in Module 1, his **second question** will be your API key.
 
-1. In your `Envmt Info` file, find the line labelled **★ SERVICE ID API KEY** under *PART 1*.
+1. On the instructor screen or printed sheet, find the line labelled **★ SERVICE ID API KEY** under *PART 1*.
    It looks like this (your actual key will be different):
    ```text
    AbCdEfGhIjKlMnOpQrStUvWxYz0123456789AbCd_-x
@@ -240,7 +240,7 @@ When Bob sets up your agent in Module 1, his **second question** will be your AP
 
 Bob's **first question** will be your OpenPages MCP Server URL.
 
-1. In your `Envmt Info` file, find the line labelled **★ MCP SERVER URL** under *PART 2*:
+1. On the instructor screen or printed sheet, find the line labelled **★ MCP SERVER URL** under *PART 2*:
    ```text
    https://wxgov-govconsole-demo-XXXX.vsi.techzone.ibm.com/mcp
    ```
@@ -250,7 +250,7 @@ Bob's **first question** will be your OpenPages MCP Server URL.
 
 3. Keep it ready to paste when Bob asks.
 
-> **Can't find it?** Take your **watsonx.Gov Application URL** from `Envmt Info` and change `/openpages` at the end to `/mcp`. That's your MCP Server URL.
+> **Can't find it on screen?** Take the **watsonx.Gov Application URL** from PART 2 and change `/openpages` at the end to `/mcp`. That's your MCP Server URL.
 
 ---
 
@@ -258,7 +258,7 @@ Bob's **first question** will be your OpenPages MCP Server URL.
 
 ![Step 5: OpenPages Login & SSL Bypass](assets/screenshots/real-openpages-login.png)
 
-1. In your `Envmt Info`, find the **watsonx.Gov Application URL** under *PART 2*:
+1. On the instructor screen or printed sheet, find the **watsonx.Gov Application URL** under *PART 2*:
    ```text
    https://wxgov-govconsole-demo-XXXX.vsi.techzone.ibm.com/openpages
    ```

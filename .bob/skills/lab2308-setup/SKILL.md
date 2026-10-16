@@ -34,7 +34,7 @@ Read the JSON output. Never skip this step.
 Greet the attendee warmly. In 2–3 sentences: they're building a real AI agent that queries
 IBM OpenPages risk data in plain English. No code, no terminal — just tell Bob what they need.
 
-Say you need two things from their TechZone reservation page, and you'll handle everything else.
+Say you need two things from the instructor screen or their printed sheet, and you'll handle everything else.
 
 ---
 
@@ -42,14 +42,14 @@ Say you need two things from their TechZone reservation page, and you'll handle 
 
 Ask **one at a time** using `ask_followup_question`. Never ask both at once.
 
-Attendees have an **`Envmt Info`** file from their TechZone reservation. It has two sections
+The instructor is displaying (or has printed) a credential sheet. It has two sections
 (PART 1 — WxO, PART 2 — OpenPages) and two starred ★ values that are all you need.
-Reference these exact labels in your questions so attendees can find them instantly.
+Reference these exact labels in your questions so attendees can find them on the screen or printout instantly.
 
 ### Q1 — OpenPages MCP URL
 
 Ask:
-> "First, open your **`Envmt Info`** file and look in **PART 2 — OpenPages**.
+> "First, look at the instructor screen (or your printed sheet) and find **PART 2 — OpenPages**.
 > Find the line labelled **★ MCP SERVER URL** — it looks like this:
 > ```
 > https://wxgov-govconsole-demo-XXXX.vsi.techzone.ibm.com/mcp
@@ -68,7 +68,7 @@ Derive and store:
 ### Q2 — WxO API Key
 
 Ask:
-> "Now look in **PART 1 — watsonx Orchestrate** of your `Envmt Info`.
+> "Now look at **PART 1 — watsonx Orchestrate** on the instructor screen or your printed sheet.
 > Find the line labelled **★ SERVICE ID API KEY** — it's about 44 characters,
 > a mix of letters, numbers, underscores, and hyphens.
 > Paste it here."
