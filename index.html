@@ -421,19 +421,55 @@ OpenPages Login   OpenPagesAdministrator / passw0rd</pre>
           </div>
 
           <h3 id="step-4-1">4.1 Get the Lab Files</h3>
-          <p>Clone or download this repository to your machine:</p>
-          <pre class="block">git clone https://github.ibm.com/Haneen-Bakbak/lab-2308.git</pre>
-          <p>No git? Click <strong>Code → Download ZIP</strong> on the repository page and unzip it somewhere you can find (e.g. <code>Documents/lab-2308</code>).</p>
+          <p>Download the lab folder to your machine — no git required.</p>
 
-          <h3 id="step-4-2">4.2 Open in Bob &amp; Switch to Lab 2308 Mode</h3>
-          <ol class="plain">
-            <li>Open <strong>IBM Bob</strong> in your browser.</li>
-            <li>Click <strong>Open Folder</strong> and navigate to the <code>lab-2308</code> folder you just cloned or unzipped. Click <strong>Open</strong>.</li>
-            <li>In the <strong>mode selector</strong> (bottom-left of the chat panel, shows the current mode name), click and select <strong>🔬 Lab 2308 — Risk Agent Setup</strong>.</li>
+          <div style="margin: 1.25rem 0 1rem;">
+            <a href="https://github.com/haneen-bakbak/lab-2308/archive/refs/heads/main.zip"
+               target="_blank" rel="noopener"
+               style="display:inline-flex;align-items:center;gap:0.5rem;background:#0f62fe;color:#fff;font-weight:600;font-size:0.95rem;padding:0.75rem 1.4rem;border-radius:4px;text-decoration:none;">
+              ⬇ Download lab-2308.zip
+            </a>
+          </div>
+
+          <ol class="plain" style="margin-top:1rem;">
+            <li>Click the button above — your browser will download <code>lab-2308-main.zip</code>.</li>
+            <li>Open <strong>File Explorer</strong> (Windows) or <strong>Finder</strong> (macOS) and locate the downloaded ZIP in your <strong>Downloads</strong> folder.</li>
+            <li>
+              <strong>Unzip it</strong> — right-click the ZIP → <em>Extract All…</em> (Windows) or double-click (macOS).<br>
+              You will get a folder called <code>lab-2308-main</code>. Move it somewhere easy to find, for example:<br>
+              <code style="display:block;margin-top:0.4rem;">C:\Users\YourName\Documents\lab-2308-main</code>
+            </li>
           </ol>
+
+          <div class="note info" style="margin-top:1rem;">
+            <span class="note-title">Prefer git?</span>
+            <p>If you have git installed, you can also run:<br>
+            <code>git clone https://github.com/haneen-bakbak/lab-2308.git</code><br>
+            Either way works — you get the same files.</p>
+          </div>
+
+          <h3 id="step-4-2">4.2 Open the Folder in Bob</h3>
+          <ol class="plain">
+            <li>
+              <strong>Launch IBM Bob.</strong><br>
+              Bob opens in your browser at <code>https://bob.ibm.com</code> — sign in with your IBM id if prompted.
+            </li>
+            <li>
+              <strong>Open the lab folder.</strong><br>
+              In the top-left of the Bob sidebar, click the <strong>folder icon</strong> (or go to <em>File → Open Folder</em>).<br>
+              Navigate to the <code>lab-2308-main</code> folder you just unzipped and click <strong>Open</strong>.<br>
+              <span style="color:#57606a;font-size:0.88rem;">You should see files like <code>bootstrap.py</code>, <code>agents/</code>, and <code>mcp-proxy-shim/</code> in the Explorer panel on the left.</span>
+            </li>
+            <li>
+              <strong>Switch to Lab 2308 mode.</strong><br>
+              Look at the <strong>bottom-left corner</strong> of the chat panel — there is a mode selector showing the current mode name (e.g. <em>"Agent"</em>).<br>
+              Click it, then choose <strong>🔬 Lab 2308 — Risk Agent Setup</strong> from the list.
+            </li>
+          </ol>
+
           <div class="note info">
-            <span class="note-title">Don't see the Lab 2308 mode?</span>
-            <p>The folder may not have opened correctly. Close and reopen the <code>lab-2308</code> folder in Bob, then check the mode selector again.</p>
+            <span class="note-title">Don't see the 🔬 Lab 2308 mode in the list?</span>
+            <p>The folder may not have opened correctly. Confirm you opened the <code>lab-2308-main</code> folder itself (not a parent folder or a subfolder inside it). Close it and reopen, then check the mode selector again.</p>
           </div>
 
           <h3 id="step-4-3">4.3 Talk to Bob</h3>
