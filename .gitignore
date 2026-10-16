@@ -45,6 +45,6 @@ Envmt Info
 wxo-env.conf
 node_modules/
 
-scripts/
+/scripts/
 *.js
 

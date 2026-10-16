@@ -143,21 +143,45 @@ This lab bridges two cloud environments:
 
 ---
 
-### 3.1 Environment Credentials Reference Table
+### 3.1 Your `Envmt Info` File — Find Your Two Values for Bob
 
-Refer to your reservation's `Envmt Info` handout for your specific credentials. Here is the format breakdown:
+Your lab instructor has given you (or emailed you) an **`Envmt Info`** file.
+It contains everything you need. **Bob only needs two values from it**, marked with ★ below:
 
-| Resource / Parameter | Format / Placeholder Pattern | Active Lab Example (from `Envmt Info`) | Purpose |
-|---|---|---|---|
-| **IBM Cloud Authorize URL** | `https://cloud.ibm.com/authorize/<tenant_id>/<slug>` | *Provided in your `Envmt Info`* | Direct App ID login gateway |
-| **App ID Username** | `student<N>@<tenant_id>.techzone.com` | *Provided in your `Envmt Info`* | Assigned student login username |
-| **App ID Password** | `•••••••••••••••` | *Provided in your `Envmt Info`* | Student password from `Envmt Info` |
-| **Resource Group** | `eid-<tenant_id>` | *Provided in your `Envmt Info`* | Target resource group in IBM Cloud |
-| **Service ID API Key** | `<alphanumeric_api_key>` | *Provided in your `Envmt Info`* | Key given to Bob to configure Orchestrate |
-| **IBM Cloud Resources** | `https://cloud.ibm.com/resources` | `https://cloud.ibm.com/resources` | Lists your Cloud instances |
-| **OpenPages Application URL** | `https://wxgov-govconsole-demo-<reservation_id>.vsi.techzone.ibm.com/openpages` | Provided in your lab handout / reservation | GRC Web UI for inspecting risks |
-| **OpenPages MCP Server URL** | `https://wxgov-govconsole-demo-<reservation_id>.vsi.techzone.ibm.com/mcp` | `<Your OpenPages App URL>` with `/openpages` replaced by `/mcp` | MCP endpoint given to Bob in Module 1 |
-| **OpenPages Login Credentials** | `Username` / `Password` | *Ask your lab instructors for credentials* | GRC login credentials |
+```
+============================================================
+  IBM TechXchange 2026 — LAB-2308
+  YOUR ENVIRONMENT INFO
+============================================================
+
+── PART 1 — watsonx Orchestrate (WxO) ──────────────────────
+
+App ID Login URL
+  https://cloud.ibm.com/authorize/<tenant_id>/<slug>       ← use this to log in to IBM Cloud
+
+App ID Username
+  student<N>@<tenant_id>.techzone.com
+
+App ID Password
+  <your password>
+
+★ SERVICE ID API KEY                                        ← GIVE THIS TO BOB (Question 2)
+  AbCdEfGhIjKlMnOpQrStUvWxYz0123456789AbCd_-x
+
+── PART 2 — OpenPages / watsonx.governance (WxGov) ─────────
+
+watsonx.Gov Application URL
+  https://wxgov-govconsole-demo-XXXX.vsi.techzone.ibm.com/openpages
+
+★ MCP SERVER URL                                           ← GIVE THIS TO BOB (Question 1)
+  https://wxgov-govconsole-demo-XXXX.vsi.techzone.ibm.com/mcp
+
+OpenPages Login
+  Username: OpenPagesAdministrator
+  Password: passw0rd
+```
+
+> 💡 **The two ★ starred values are all Bob needs.** Keep this file open when you start Module 1.
 
 ---
 
@@ -166,13 +190,14 @@ Refer to your reservation's `Envmt Info` handout for your specific credentials. 
 ![Step 1: IBM Cloud App ID Login](assets/screenshots/01-new-cloud-login.png)
 
 1. Open a **Private/Incognito** browser window.
-2. Paste the **App ID Cloud Directory URL** from your `Envmt Info`:
+2. In your `Envmt Info`, find the **App ID Login URL** under *PART 1*:
    ```text
    https://cloud.ibm.com/authorize/<tenant_id>/<slug>
    ```
-3. Enter your student credentials from `Envmt Info`:
-   - **Username**: `student<N>@<tenant_id>.techzone.com`
-   - **Password**: *(Your student password)*
+   Paste it into your browser's address bar and press Enter.
+3. On the login page, enter your credentials from `Envmt Info`:
+   - **Username**: the `App ID Username` line (e.g. `student3@abc123.techzone.com`)
+   - **Password**: the `App ID Password` line
 4. Click **Sign in**.
 
 ---
@@ -192,45 +217,60 @@ Refer to your reservation's `Envmt Info` handout for your specific credentials. 
 
 ---
 
-### 3.4 Step 3: Locating Your Service ID API Key for Bob
+### 3.4 Step 3: Find Your Service ID API Key for Bob
 
-![Step 3: IBM Cloud IAM API Keys Interface](assets/screenshots/real-cloud-apikeys.png)
+When Bob sets up your agent in Module 1, his **second question** will be your API key.
 
-When Bob sets up your agent in **Module 1**, he will ask for your **watsonx Orchestrate API Key**:
-
-1. In your `Envmt Info` file, copy your **Service ID API Key**:
+1. In your `Envmt Info` file, find the line labelled **★ SERVICE ID API KEY** under *PART 1*.
+   It looks like this (your actual key will be different):
    ```text
-   <your-service-id-api-key>
+   AbCdEfGhIjKlMnOpQrStUvWxYz0123456789AbCd_-x
    ```
-2. You can also view and verify your keys in IBM Cloud under **Manage $\rightarrow$ Access (IAM) $\rightarrow$ API keys** (shown above) or **Service IDs** ([`Service IDs view`](assets/screenshots/real-cloud-serviceids.png)).
-3. Keep this key ready to paste when Bob prompts you in Module 1.
+   It is approximately 44 characters, containing letters, numbers, underscores, and hyphens.
+
+2. Copy the key value — just the key itself, not the label.
+
+3. Keep it ready to paste when Bob asks.
+
+> **Can't find it?** In IBM Cloud, go to **Manage → Access (IAM) → Service IDs**, click your Service ID, then the **API keys** tab.
 
 ---
 
-### 3.5 Step 4: Accessing & Logging In to OpenPages (watsonx.governance)
+### 3.5 Step 4: Find Your MCP Server URL for Bob
 
-![Step 3: OpenPages Login & SSL Bypass](assets/screenshots/real-openpages-login.png)
+Bob's **first question** will be your OpenPages MCP Server URL.
 
-1. Locate your **OpenPages Application URL** provided in your lab reservation / handout:
+1. In your `Envmt Info` file, find the line labelled **★ MCP SERVER URL** under *PART 2*:
    ```text
-   https://wxgov-govconsole-demo-<reservation_id>.vsi.techzone.ibm.com/openpages
+   https://wxgov-govconsole-demo-XXXX.vsi.techzone.ibm.com/mcp
    ```
-2. Open this URL in your browser and **Handle the Browser Security Warning**:
-   Because TechZone sandbox instances use a self-signed TLS certificate, your browser will show a warning (*"Your connection is not private"*).
-   - Click **Advanced**.
-   - Click **Proceed to wxgov-govconsole... (unsafe)**.
-3. You will reach the **IBM watsonx OpenPages Login portal** (shown above):
-   - **Username & Password**: *Ask your lab instructors for credentials*
+   The `XXXX` part is a unique ID for your TechZone reservation.
+
+2. Copy the full URL including `https://`.
+
+3. Keep it ready to paste when Bob asks.
+
+> **Can't find it?** Take your **watsonx.Gov Application URL** from `Envmt Info` and change `/openpages` at the end to `/mcp`. That's your MCP Server URL.
+
+---
+
+### 3.6 Step 5: Log In to OpenPages (for Module 2)
+
+![Step 5: OpenPages Login & SSL Bypass](assets/screenshots/real-openpages-login.png)
+
+1. In your `Envmt Info`, find the **watsonx.Gov Application URL** under *PART 2*:
+   ```text
+   https://wxgov-govconsole-demo-XXXX.vsi.techzone.ibm.com/openpages
+   ```
+2. Open this URL in your browser. You will see a browser security warning (TechZone uses a self-signed certificate):
+   - Click **Advanced**
+   - Click **Proceed to wxgov-govconsole... (unsafe)**
+3. On the OpenPages login page, enter:
+   - **Username**: `OpenPagesAdministrator`
+   - **Password**: `passw0rd`
 4. Click **Log In**.
-5. **Derive your MCP Server URL**:
-   The MCP server endpoint is simply your OpenPages Application URL with the trailing `/openpages` changed to `/mcp`:
-   ```text
-   Application URL: https://wxgov-govconsole-demo-<reservation_id>.vsi.techzone.ibm.com/openpages
-   MCP Server URL:  https://wxgov-govconsole-demo-<reservation_id>.vsi.techzone.ibm.com/mcp
-   ```
-   *(This MCP Server URL is what you will provide to Bob in Module 1).*
 
-> ⚠️ **Shared tenant reminder:** Multiple attendees share this WxO instance. Please only create or modify assets named `lab2308_*`. Do not delete other attendees' agents or toolkits.
+> ⚠️ **Shared tenant reminder:** Multiple attendees share this WxO instance. Only create or modify assets named `lab2308_*`. Do not delete other attendees' agents or toolkits.
 
 ---
 
@@ -252,15 +292,15 @@ Type this to start:
 Hi Bob! I'm in Lab 2308 at TechXchange. Can you set me up?
 ```
 
-Bob will greet you and ask for three things — one at a time:
+Bob will greet you and ask for two things — one at a time:
 
 1. **Your OpenPages MCP endpoint URL**
    This is your OpenPages Application URL with `/openpages` replaced by `/mcp` (e.g. `https://wxgov-govconsole-demo-<reservation_id>.vsi.techzone.ibm.com/mcp`).
 
 2. **Your watsonx Orchestrate API key**
-   Your lab instructor will have given you this, or it's in your TechZone reservation.
+   This is the **IBM Cloud Service API key** on your own TechZone reservation page (watsonx environment section). Bob works out your own watsonx Orchestrate instance from it — you don't need to find an instance URL.
 
-3. **Your WxO instance URL** *(Bob will suggest the shared one — just confirm)*
+> ⚠️ Always use the values from **your own** reservation. Bob never uses a shared key, instance or OpenPages server.
 
 Once you confirm your details, Bob will say something like *"Give me a moment while I wire everything up..."* — and then silently:
 - Connects to your WxO instance
@@ -304,9 +344,13 @@ Before chatting with the agent, spend a few minutes in the source system it will
 
 ### 6.1 Open the Agent in watsonx Orchestrate
 
-1. Navigate to your **watsonx Orchestrate** instance in IBM Cloud (or open the Orchestrate launch URL authenticated via your reservation).
-2. In the Orchestrate workspace, click the **AI Assistant** icon in the bottom-left corner of the window (or the chat launcher).
-3. The interactive conversation drawer opens, connected directly to your workspace tools and the `lab2308_risk_agent` agent logic.
+1. Navigate to your **watsonx Orchestrate** instance in IBM Cloud (**Resource list → your watsonx Orchestrate instance → Launch watsonx Orchestrate**).
+2. Open the agent list (**Build → Agents**, or the **Manage agents** page) and click **`lab2308_risk_agent`**.
+3. Chat with the **Live** version of the agent. Bob has already deployed it for you.
+
+> ⚠️ **Use the Live agent, not Draft.** Execution traces for Module 4 are kept for live conversations only. If you chat with the *Draft* version (the one shown while editing an agent), your telemetry will be missing and cannot be recovered afterwards. If you're ever unsure, tell Bob: *"Bob, please deploy my agent to live"*.
+>
+> ⚠️ **Make sure the chat header says `lab2308_risk_agent`.** The default assistant (`AskOrchestrate`) has no OpenPages tools and will answer that it cannot query SOX data.
 
 ---
 
@@ -368,7 +412,7 @@ explains the compliance gap we just found.
 **What you'll see:**
 ```
 ✅ Created: Unassessed Control Coverage — Client Products (Resource ID: XXXXX)
-View in OpenPages: https://wxgov-govconsole-demo-2ho7021k.vsi.techzone.ibm.com/...
+View in OpenPages: https://wxgov-govconsole-demo-<reservation_id>.vsi.techzone.ibm.com/...
 ```
 
 > **Verify it live:** Click the link — you'll land directly on the new record in OpenPages. It's real data in the system.
@@ -389,7 +433,7 @@ Find a control related to client products and link it to the risk we just create
 **What you'll see:**
 ```
 ✅ Linked: CTL-04-03-03-01 → Unassessed Control Coverage — Client Products
-View control in OpenPages: https://wxgov-govconsole-demo-2ho7021k.vsi.techzone.ibm.com/...
+View control in OpenPages: https://wxgov-govconsole-demo-<reservation_id>.vsi.techzone.ibm.com/...
 ```
 
 > **Verify it live:** Open the new risk record in OpenPages → **Controls** tab. The linked control appears there.
@@ -435,6 +479,8 @@ In enterprise AI systems, observing *why* an agent made a decision and *how* it 
 
 ### 7.1 Open the Agent Telemetry & Context Inspector
 
+> Traces are only recorded for chats with the **Live** `lab2308_risk_agent` (see §6.1). If your traces are empty, you were most likely chatting with Draft — ask Bob to deploy the agent to live, then re-run your prompts.
+
 1. In the **watsonx Orchestrate** chat drawer, click the **Maximize Chat** button or **AI / Info** icon in the header to expand the full execution view (shown above).
 2. Observe the conversational context and tool actions as prompts are sent to OpenPages GRC.
 3. As the agent plans and communicates with OpenPages via MCP, tool requests, schema lookups, and query responses are tracked in real time.
@@ -450,7 +496,7 @@ Each interaction in the trace inspector is broken down into structured execution
 | **TOOL (Schema Discovery)** | `openpages_get_resource` | The exact URI (`openpages://schema/SOXControl`) requested to introspect object fields before generating queries. |
 | **TOOL (Data Query)** | `execute_openpages_query` | The exact SQL/REST query payload sent over MCP, execution duration (ms), HTTP status (200 OK), and row count. |
 | **TOOL (Write / Association)** | `openpages_upsert_object` | The mutation payload sent to OpenPages, parent process ID binding, and the returned primary `resource_id`. |
-| **LLM SPAN (Reasoning & Synthesis)** | `llama-3-3-70b-instruct` | ReAct reasoning steps, prompt/completion token counts, inference latency, and final response formatting. |
+| **LLM SPAN (Reasoning & Synthesis)** | `gpt-oss-120b` | ReAct reasoning steps, prompt/completion token counts, inference latency, and final response formatting. |
 
 > 🔍 **Why This Matters:**
 > Notice how the agent NEVER guessed field names like `status` or `risk_level`. The trace proves that `openpages_get_resource` was called first, ensuring field names (`OPSS-Ctl:Status`, `OPSS-Shared-Basel:Risk Category`) were 100% verified against the live OpenPages schema before the query executed.
@@ -506,6 +552,7 @@ Bob will diagnose and fix it quietly.
 |---|---|
 | Agent says "I don't have access to that tool" | "Bob, my agent says it can't find the MCP tools. Can you re-register the toolkit?" |
 | Responses time out | "Bob, the agent is timing out. Can you check the OpenPages endpoint?" |
+| My traces are empty / missing | "Bob, please deploy my agent to live." Then open the **Live** agent and ask again. |
 | Auth error / 401 | "Bob, I'm getting an authentication error. Can you refresh the connection?" |
 | No risks returned | "Bob, the agent returned an empty list. My OpenPages URL is `<paste URL>`." |
 
@@ -543,7 +590,7 @@ Please scan the QR code at your station or use the link your instructor provides
 
 | Resource | URL |
 |---|---|
-| WxO UI | `https://dl.watson-orchestrate.ibm.com` |
+| WxO UI | Open from your IBM Cloud resource list → **Launch watsonx Orchestrate** (`https://<region>.watson-orchestrate.cloud.ibm.com`) |
 | OpenPages UI | Your TechZone URL + `/openpages` |
 | OpenPages 9.0 Docs | `https://www.ibm.com/docs/en/openpages/9.0.0` |
 | OpenPages MCP GitHub | `https://github.com/IBM/ibm-openpages-mcp-server` |

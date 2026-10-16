@@ -238,14 +238,17 @@
           <li><a href="#section-1">1. Introduction &amp; Objectives</a></li>
           <li><a href="#section-2">2. Architecture Overview</a></li>
           <li><a href="#section-3">3. Environment Access &amp; Credentials</a></li>
-          <li><a class="sub" href="#step-3-1">3.1 Credentials Table</a></li>
-          <li><a class="sub" href="#step-3-2">3.2 Step 1: App ID Sign-in</a></li>
-          <li><a class="sub" href="#step-3-3">3.3 Step 2: Launch Orchestrate</a></li>
-          <li><a class="sub" href="#step-3-4">3.4 Step 3: Service ID Key</a></li>
-          <li><a class="sub" href="#step-3-5">3.5 Step 4: OpenPages GRC Login</a></li>
+          <li><a class="sub" href="#step-3-1">3.1 Your Envmt Info File</a></li>
+          <li><a class="sub" href="#step-3-2">3.2 Log In to IBM Cloud</a></li>
+          <li><a class="sub" href="#step-3-3">3.3 Launch watsonx Orchestrate</a></li>
+          <li><a class="sub" href="#step-3-4">3.4 Find Your API Key</a></li>
+          <li><a class="sub" href="#step-3-5">3.5 Find Your MCP Server URL</a></li>
+          <li><a class="sub" href="#step-3-6">3.6 Log In to OpenPages</a></li>
           <li><a href="#section-4">4. Module 1 — Setup with Bob</a></li>
-          <li><a class="sub" href="#step-4-1">4.1 Open IBM Bob</a></li>
-          <li><a class="sub" href="#step-4-2">4.2 Automated Provisioning</a></li>
+          <li><a class="sub" href="#step-4-0">4.0 Prerequisites</a></li>
+          <li><a class="sub" href="#step-4-1">4.1 Get the Lab Files</a></li>
+          <li><a class="sub" href="#step-4-2">4.2 Open in Bob &amp; Switch Mode</a></li>
+          <li><a class="sub" href="#step-4-3">4.3 Talk to Bob</a></li>
           <li><a href="#section-5">5. Module 2 — Explore OpenPages GRC</a></li>
           <li><a class="sub" href="#step-5-1">5.1 OpenPages Interface</a></li>
           <li><a class="sub" href="#step-5-2">5.2 Risk Register &amp; Schemas</a></li>
@@ -325,99 +328,138 @@
         <section id="section-3" class="step">
           <div class="step-label"><cds-tag type="blue">Section 3</cds-tag></div>
           <h2>Your Lab Environments &amp; Credentials Walkthrough</h2>
-          <p>Follow the step-by-step instructions below to access your provisioned IBM Cloud reservation, launch watsonx Orchestrate, and log into OpenPages GRC.</p>
+          <p>Your lab instructor has given you an <strong><code>Envmt Info</code></strong> file — either printed, on a shared screen, or emailed. It contains everything you need. <strong>Bob only needs two values from it</strong>, marked with ★.</p>
 
-          <h3 id="step-3-1">3.1 Environment Credentials Reference Table</h3>
-          <p>Refer to your reservation handout for your specific credentials:</p>
-          <div class="table-wrap">
-            <table class="cds-table">
-              <thead><tr><th>Resource / Parameter</th><th>Format / Placeholder Pattern</th><th>Purpose</th></tr></thead>
-              <tbody>
-                <tr><td><strong>IBM Cloud Authorize URL</strong></td><td><code>https://cloud.ibm.com/authorize/&lt;tenant_id&gt;/&lt;slug&gt;</code></td><td>Direct App ID authentication gateway</td></tr>
-                <tr><td><strong>App ID Student User</strong></td><td><code>student&lt;N&gt;@&lt;tenant_id&gt;.techzone.com</code></td><td>Assigned student login username</td></tr>
-                <tr><td><strong>App ID Password</strong></td><td><code>•••••••••••••••</code></td><td>Student password from handout</td></tr>
-                <tr><td><strong>Resource Group</strong></td><td><code>eid-&lt;tenant_id&gt;</code></td><td>Target resource group in IBM Cloud</td></tr>
-                <tr><td><strong>Service ID API Key</strong></td><td><code>&lt;alphanumeric_api_key&gt;</code></td><td>API key given to Bob to configure Orchestrate</td></tr>
-                <tr><td><strong>OpenPages Application URL</strong></td><td><code>https://wxgov-govconsole-demo-&lt;res_id&gt;.vsi.techzone.ibm.com/openpages</code></td><td>GRC Web UI for inspecting risks</td></tr>
-                <tr><td><strong>OpenPages MCP Server URL</strong></td><td><code>https://wxgov-govconsole-demo-&lt;res_id&gt;.vsi.techzone.ibm.com/mcp</code></td><td>OpenPages URL with <code>/openpages</code> replaced by <code>/mcp</code></td></tr>
-                <tr><td><strong>OpenPages Login</strong></td><td><em>Ask your lab instructors for credentials</em></td><td>GRC administrative login</td></tr>
-              </tbody>
-            </table>
+          <h3 id="step-3-1">3.1 Your <code>Envmt Info</code> File — Find Your Two Values</h3>
+          <p>Keep this file open. The two ★ starred values are all you'll paste into Bob:</p>
+          <pre class="block">============================================================
+  IBM TechXchange 2026 — LAB-2308  ·  YOUR ENVIRONMENT INFO
+============================================================
+
+── PART 1 — watsonx Orchestrate (WxO) ──────────────────────
+
+App ID Login URL
+  https://cloud.ibm.com/authorize/&lt;tenant_id&gt;/&lt;slug&gt;    ← log in to IBM Cloud
+
+App ID Username   student&lt;N&gt;@&lt;tenant_id&gt;.techzone.com
+App ID Password   &lt;your password&gt;
+
+★ SERVICE ID API KEY                          ← give this to Bob (Question 2)
+  AbCdEfGhIjKlMnOpQrStUvWxYz0123456789AbCd_-x
+
+── PART 2 — OpenPages / watsonx.governance (WxGov) ─────────
+
+watsonx.Gov Application URL
+  https://wxgov-govconsole-demo-XXXX.vsi.techzone.ibm.com/openpages
+
+★ MCP SERVER URL                              ← give this to Bob (Question 1)
+  https://wxgov-govconsole-demo-XXXX.vsi.techzone.ibm.com/mcp
+
+OpenPages Login   OpenPagesAdministrator / passw0rd</pre>
+
+          <div class="note info">
+            <span class="note-title">The two ★ starred values are all Bob needs.</span>
+            <p>You do <strong>not</strong> need to edit any files, run any commands, or touch any YAML. Bob handles everything once you give him those two values.</p>
           </div>
 
-          <h3 id="step-3-2">3.2 Step 1: Log In to IBM Cloud via TechZone App ID</h3>
-          <p>Open a <strong>Private / Incognito</strong> browser window and navigate to your <strong>App ID Cloud Directory URL</strong>. Enter your student credentials and click <strong>Sign in</strong>.</p>
-          
+          <h3 id="step-3-2">3.2 Log In to IBM Cloud</h3>
+          <p>Open a <strong>Private / Incognito</strong> browser window. In your <code>Envmt Info</code>, find the <strong>App ID Login URL</strong> under PART 1 and paste it into your browser. Enter your <strong>App ID Username</strong> and <strong>App ID Password</strong> from the same section, then click <strong>Sign in</strong>.</p>
+
           <figure>
             <img src="assets/screenshots/01-new-cloud-login.png" alt="IBM Cloud App ID Sign-in" />
             <figcaption>Figure 2. IBM Cloud App ID authentication gateway for your assigned student account.</figcaption>
           </figure>
 
-          <h3 id="step-3-3">3.3 Step 2: Access Your Resources &amp; Launch watsonx Orchestrate</h3>
-          <p>In IBM Cloud, navigate to <strong>Resource List</strong> (<code>cloud.ibm.com/resources</code>). Under the <strong>AI / Machine learning</strong> section, click your provisioned <strong>watsonx-orchestrate</strong> service instance.</p>
-          
+          <h3 id="step-3-3">3.3 Launch watsonx Orchestrate</h3>
+          <p>In IBM Cloud, go to <a href="https://cloud.ibm.com/resources" target="_blank" rel="noopener">cloud.ibm.com/resources</a>. Under <strong>AI / Machine learning</strong>, click your <strong>watsonx-orchestrate</strong> instance, then click the blue <strong>Launch watsonx Orchestrate</strong> button.</p>
+
           <figure>
             <img src="assets/screenshots/real-cloud-wxo-instance-detail.png" alt="watsonx Orchestrate Service Instance in IBM Cloud" />
-            <figcaption>Figure 3. watsonx Orchestrate service instance page in IBM Cloud with the Launch button.</figcaption>
+            <figcaption>Figure 3. watsonx Orchestrate service instance in IBM Cloud.</figcaption>
           </figure>
 
-          <p>Click the blue <strong>Launch watsonx Orchestrate</strong> button to open your live Orchestrate Control Plane dashboard:</p>
-          
-          <figure>
-            <img src="assets/screenshots/real-wxo-dashboard-clean.png" alt="watsonx Orchestrate Control Plane Dashboard" />
-            <figcaption>Figure 4. Live watsonx Orchestrate home dashboard.</figcaption>
-          </figure>
+          <h3 id="step-3-4">3.4 Find Your API Key for Bob</h3>
+          <p>In your <code>Envmt Info</code>, find the line labelled <strong>★ SERVICE ID API KEY</strong> under PART 1. It is approximately 44 characters — letters, numbers, underscores, and hyphens. Copy just the key value (not the label).</p>
+          <div class="note warning">
+            <span class="note-title">Can't find it?</span>
+            <p>In IBM Cloud go to <strong>Manage → Access (IAM) → Service IDs</strong>, click your Service ID, then the <strong>API keys</strong> tab.</p>
+          </div>
 
-          <h3 id="step-3-4">3.4 Step 3: Locating Your Service ID API Key for Bob</h3>
-          <p>Your reservation comes provisioned with a dedicated Service ID API key. You can view and manage API keys under <strong>Manage &rarr; Access (IAM) &rarr; API keys</strong> or <strong>Service IDs</strong> in IBM Cloud.</p>
-          
-          <figure>
-            <img src="assets/screenshots/real-cloud-apikeys.png" alt="IBM Cloud IAM API Keys Interface" />
-            <figcaption>Figure 5. IBM Cloud IAM API Keys management console.</figcaption>
-          </figure>
+          <h3 id="step-3-5">3.5 Find Your MCP Server URL for Bob</h3>
+          <p>In your <code>Envmt Info</code>, find the line labelled <strong>★ MCP SERVER URL</strong> under PART 2. Copy the full URL including <code>https://</code>.</p>
+          <div class="note warning">
+            <span class="note-title">Can't find it?</span>
+            <p>Take the <strong>watsonx.Gov Application URL</strong> from PART 2 and change <code>/openpages</code> at the end to <code>/mcp</code>. That's your MCP Server URL.</p>
+          </div>
 
-          <h3 id="step-3-5">3.5 Step 4: Accessing &amp; Logging In to OpenPages (watsonx.governance)</h3>
-          <p>Open your <strong>OpenPages Application URL</strong> in a new browser tab. When prompted with the browser self-signed TLS warning (<em>"Your connection is not private"</em>), click <strong>Advanced &rarr; Proceed to wxgov-govconsole... (unsafe)</strong>.</p>
-          
+          <h3 id="step-3-6">3.6 Log In to OpenPages (for Module 2)</h3>
+          <p>In your <code>Envmt Info</code>, find the <strong>watsonx.Gov Application URL</strong> under PART 2 and open it in your browser. You'll see a TLS warning (TechZone uses a self-signed certificate) — click <strong>Advanced → Proceed to wxgov-govconsole… (unsafe)</strong>. Log in with <code>OpenPagesAdministrator</code> / <code>passw0rd</code>.</p>
+
           <figure>
             <img src="assets/screenshots/real-openpages-login.png" alt="OpenPages GRC Login Portal" />
-            <figcaption>Figure 6. IBM watsonx OpenPages Login portal.</figcaption>
+            <figcaption>Figure 4. IBM watsonx OpenPages login portal.</figcaption>
           </figure>
-
-          <div class="checkpoint">
-            <div class="cp-title"><cds-tag type="green">Formula Checkpoint</cds-tag> OpenPages MCP Server URL</div>
-            <p>Your MCP server endpoint is simply your OpenPages Application URL with <code>/openpages</code> replaced by <code>/mcp</code>:</p>
-            <pre class="block">Application URL: https://wxgov-govconsole-demo-&lt;res_id&gt;.vsi.techzone.ibm.com/openpages
-MCP Server URL:  https://wxgov-govconsole-demo-&lt;res_id&gt;.vsi.techzone.ibm.com/mcp</pre>
-          </div>
         </section>
 
         <!-- ================= SECTION 4 ================= -->
         <section id="section-4" class="step">
           <div class="step-label"><cds-tag type="purple">Module 1</cds-tag></div>
           <h2>Module 1 — Start Here: Talk to Bob</h2>
-          <p>Now you will have a short conversation with IBM Bob. You share your environment details, and Bob automatically registers the OpenPages MCP toolkit and imports your risk agent.</p>
+          <p>You will set up everything through a short conversation with Bob. No terminal, no YAML editing, no scripting.</p>
 
-          <h3 id="step-4-1">4.1 Open IBM Bob</h3>
-          <p>Open IBM Bob in your browser or local workspace.</p>
+          <h3 id="step-4-0">4.0 Prerequisites</h3>
+          <p>Before opening Bob, make sure <strong>Python 3.11 or newer</strong> is installed on your machine:</p>
+          <div class="table-wrap">
+            <table class="cds-table">
+              <thead><tr><th>Platform</th><th>Check</th><th>Install if needed</th></tr></thead>
+              <tbody>
+                <tr><td><strong>Windows</strong></td><td>Open PowerShell → <code>python --version</code></td><td><a href="https://www.python.org/downloads/" target="_blank" rel="noopener">python.org/downloads</a> — check <strong>Add Python to PATH</strong> during install, then restart PowerShell</td></tr>
+                <tr><td><strong>macOS</strong></td><td>Open Terminal → <code>python3 --version</code></td><td><code>brew install python@3.14</code></td></tr>
+                <tr><td><strong>Linux</strong></td><td>Open Terminal → <code>python3 --version</code></td><td><code>sudo apt install python3.14</code></td></tr>
+              </tbody>
+            </table>
+          </div>
 
-          <h3 id="step-4-2">4.2 Prompt Bob to Set Everything Up</h3>
+          <h3 id="step-4-1">4.1 Get the Lab Files</h3>
+          <p>Clone or download this repository to your machine:</p>
+          <pre class="block">git clone https://github.ibm.com/Haneen-Bakbak/lab-2308.git</pre>
+          <p>No git? Click <strong>Code → Download ZIP</strong> on the repository page and unzip it somewhere you can find (e.g. <code>Documents/lab-2308</code>).</p>
+
+          <h3 id="step-4-2">4.2 Open in Bob &amp; Switch to Lab 2308 Mode</h3>
+          <ol class="plain">
+            <li>Open <strong>IBM Bob</strong> in your browser.</li>
+            <li>Click <strong>Open Folder</strong> and navigate to the <code>lab-2308</code> folder you just cloned or unzipped. Click <strong>Open</strong>.</li>
+            <li>In the <strong>mode selector</strong> (bottom-left of the chat panel, shows the current mode name), click and select <strong>🔬 Lab 2308 — Risk Agent Setup</strong>.</li>
+          </ol>
+          <div class="note info">
+            <span class="note-title">Don't see the Lab 2308 mode?</span>
+            <p>The folder may not have opened correctly. Close and reopen the <code>lab-2308</code> folder in Bob, then check the mode selector again.</p>
+          </div>
+
+          <h3 id="step-4-3">4.3 Talk to Bob</h3>
+          <p>In the chat, type:</p>
           <div class="prompt">
-            <button class="copy-btn" onclick="navigator.clipboard.writeText('Hi Bob! I\'m in Lab 2308 at TechXchange. Can you set me up?')">Copy Prompt</button>
-            <p class="prompt-label">Prompt Bob</p>
+            <button class="copy-btn" onclick="navigator.clipboard.writeText('Hi Bob! I\'m in Lab 2308 at TechXchange. Can you set me up?')">Copy</button>
+            <p class="prompt-label">Start Here</p>
             <p>"Hi Bob! I'm in Lab 2308 at TechXchange. Can you set me up?"</p>
           </div>
 
-          <p>Bob will greet you and ask for three items — provide them when prompted:</p>
-          <ol class="plain">
-            <li><strong>Your OpenPages MCP endpoint URL</strong> (e.g. <code>https://wxgov-govconsole-demo-&lt;res_id&gt;.vsi.techzone.ibm.com/mcp</code>)</li>
-            <li><strong>Your watsonx Orchestrate API key</strong> (Service ID key from your handout)</li>
-            <li><strong>Your WxO instance URL</strong> (Confirm the default shared instance)</li>
-          </ol>
+          <p>Bob will ask for two things — one at a time. Have your <code>Envmt Info</code> open:</p>
+          <div class="table-wrap">
+            <table class="cds-table">
+              <thead><tr><th>Bob's question</th><th>Where to find it in <code>Envmt Info</code></th><th>Looks like</th></tr></thead>
+              <tbody>
+                <tr><td>1. MCP Server URL</td><td>PART 2 → line labelled <strong>★ MCP SERVER URL</strong></td><td><code>https://wxgov-govconsole-demo-XXXX.vsi.techzone.ibm.com/mcp</code></td></tr>
+                <tr><td>2. API key</td><td>PART 1 → line labelled <strong>★ SERVICE ID API KEY</strong></td><td><code>AbCdEfGh…</code> (~44 chars)</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <p>After you confirm both values, Bob runs setup silently (~2–3 minutes). You'll see friendly progress messages. When Bob says <strong>"🎉 You're all set!"</strong>, your agent is live — proceed to Module 2.</p>
 
           <div class="note success">
-            <span class="note-title">Automated Provisioning</span>
-            <p>Bob will silently wire up the MCP toolkit, configure the endpoints, and import <code>lab2308_risk_agent</code> into your Orchestrate instance. Once Bob announces <em>"🎉 You're all set!"</em>, proceed to Module 2.</p>
+            <span class="note-title">Something went wrong?</span>
+            <p>Stay in <strong>Lab 2308 mode</strong> and tell Bob what you're seeing. Bob already knows your Python version and install state — he'll diagnose and fix silently.</p>
           </div>
         </section>
 

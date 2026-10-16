@@ -3,11 +3,14 @@ Stdio shim for the TechZone OpenPages MCP server.
 Bridges stdio (WxO ADK) <-> streamable HTTP (TechZone self-signed endpoint)
 with SSL verification disabled.
 
+Compatible with macOS, Linux, and Windows (Python 3.11+).
+
 Usage (from orchestrate toolkits add --command):
-  python shim.py
+  python shim.py <mcp-url>
 """
 
 import asyncio
+import concurrent.futures
 import json
 import ssl
 import sys
@@ -15,15 +18,19 @@ import os
 
 import httpx
 
-# The MCP URL is read from the environment variable set at toolkit registration time.
-# OPENPAGES_MCP_URL must be set — if missing, fall back to the known TechZone host.
-# NOTE: WxO cloud runner does NOT propagate env vars set on the local machine;
-# the variable must be injected via the toolkit's connection/env mechanism.
-# We hardcode the known host as the fallback so the shim works even without the var.
-MCP_URL = os.environ.get(
-    "OPENPAGES_MCP_URL",
-    "https://wxgov-govconsole-demo-2ho7021k.vsi.techzone.ibm.com/mcp",
-)
+# The attendee's own MCP URL is passed as the first command-line argument
+# (toolkits add --command "python shim.py <url>"). The WxO cloud runner does NOT
+# propagate env vars from the registering machine, so argv is the reliable channel.
+# OPENPAGES_MCP_URL is accepted as a fallback for local runs only.
+# There is deliberately NO hardcoded default: running against another
+# attendee's / the instructor's OpenPages by accident must be impossible.
+MCP_URL = (sys.argv[1] if len(sys.argv) > 1 else os.environ.get("OPENPAGES_MCP_URL", "")).strip()
+if not MCP_URL.startswith("https://") or not MCP_URL.rstrip("/").endswith("/mcp"):
+    sys.stderr.write(
+        "shim.py: your OpenPages MCP URL is required, e.g. "
+        "python shim.py https://wxgov-govconsole-demo-<id>.vsi.techzone.ibm.com/mcp\n"
+    )
+    sys.exit(2)
 
 # Disable SSL verification for TechZone self-signed cert
 SSL_CTX = ssl.create_default_context()
@@ -43,7 +50,7 @@ def fix_opapp_urls(text: str) -> str:
     return text.replace("http://opapp:10108", public_host + "/openpages")
 
 
-def _extract_inner_text(data: object) -> str | None:
+def _extract_inner_text(data: object) -> "str | None":
     """
     Dig through the MCP JSON-RPC envelope to find the innermost text payload.
     Envelope shape:
@@ -234,16 +241,19 @@ async def forward(client: httpx.AsyncClient, line: bytes) -> None:
             sys.stdout.buffer.flush()
 
 
-async def main() -> None:
-    async with httpx.AsyncClient(verify=False, timeout=60) as client:
-        loop = asyncio.get_event_loop()
-        reader = asyncio.StreamReader()
-        proto = asyncio.StreamReaderProtocol(reader)
-        await loop.connect_read_pipe(lambda: proto, sys.stdin)
+def _read_line_blocking() -> bytes:
+    """Read one line from stdin.buffer — runs in a thread executor."""
+    return sys.stdin.buffer.readline()
 
+
+async def main() -> None:
+    loop = asyncio.get_running_loop()
+    executor = concurrent.futures.ThreadPoolExecutor(max_workers=1)
+
+    async with httpx.AsyncClient(verify=False, timeout=60) as client:
         while True:
             try:
-                line = await reader.readline()
+                line = await loop.run_in_executor(executor, _read_line_blocking)
             except Exception:
                 break
             if not line:

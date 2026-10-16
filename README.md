@@ -5,45 +5,48 @@
 
 ---
 
-## Getting Started
+## Prerequisites
+
+- **IBM Bob** installed ([bob.ibm.com](https://bob.ibm.com))
+- **Python 3.11 or newer** on your machine  
+  - Windows: [python.org/downloads](https://www.python.org/downloads/) — check **Add to PATH**
+  - macOS: `brew install python@3.11`
+  - Linux: `sudo apt install python3.11`
+- Your **TechZone reservation** open and ready (you'll need two values from it)
+
+---
+
+## Getting Started — 3 steps
 
 ### Step 1 — Get the files
 
-**Option A — Clone this repo**
-```bash
+Clone this repo or download and unzip it:
+
+```
 git clone https://github.ibm.com/Haneen-Bakbak/lab-2308.git
 ```
 
-**Option B — Open in Bob as a workspace**  
-Open IBM Bob, then open the `lab-2308/` folder as your workspace.
+### Step 2 — Open the folder in Bob
 
----
+In IBM Bob, open the `lab-2308/` folder as your workspace.
 
-### Step 2 — Copy the Bob skill into place
+### Step 3 — Switch to Lab 2308 mode and say hi
 
-The Bob skill is in `bob-skill/SKILL.md`. Copy it to your Bob skills folder so Bob can pick it up:
+In the Bob mode selector, choose **🔬 Lab 2308 — Risk Agent Setup**.
 
-```bash
-mkdir -p ~/.bob/skills/lab2308-setup
-cp bob-skill/SKILL.md ~/.bob/skills/lab2308-setup/SKILL.md
-```
-
-> If you opened this folder directly as a Bob workspace, Bob already sees the skill — skip this step.
-
----
-
-### Step 3 — Start a new Bob conversation and say this
+Then type:
 
 ```
 Hi Bob! I'm in Lab 2308 at TechXchange. Can you set me up?
 ```
 
-Bob will ask for your TechZone OpenPages URL and WxO API key (one at a time), then silently handle everything else — no terminal, no YAML editing, no scripts.
+Bob will ask for your TechZone OpenPages MCP URL and API key (one at a time),
+then handle everything else — no terminal, no YAML editing, no scripts.
 
 When Bob says **"🎉 You're all set!"**, go to:
 
 ```
-https://dl.watson-orchestrate.ibm.com
+https://cloud.ibm.com/resources → your watsonx Orchestrate instance → Launch
 ```
 
 Open **AI Agents → lab2308_risk_agent** and start chatting.
@@ -65,11 +68,31 @@ Full lab instructions are in [`LAB_GUIDE.md`](./LAB_GUIDE.md).
 
 ## Repo Contents
 
-| File/Folder | What it is |
+| Path | What it is |
 |---|---|
 | `LAB_GUIDE.md` | Full attendee lab guide |
-| `bob-skill/SKILL.md` | Bob setup skill — does all wiring conversationally |
+| `AGENTS.md` | Project context Bob reads in every conversation |
+| `bootstrap.py` | Cross-platform setup script (macOS / Linux / Windows) |
 | `agents/lab2308_risk_agent.yaml` | WxO risk agent definition |
 | `mcp-proxy-shim/shim.py` | SSL-bypass bridge to TechZone MCP endpoint |
-| `toolkits/openpages_mcp_toolkit.yaml` | MCP toolkit reference spec |
-| `bootstrap.sh` | Instructor fallback script (attendees don't need this) |
+| `.bob/custom_modes.yaml` | **Lab 2308** Bob mode — loads automatically when you open this folder |
+| `.bob/skills/lab2308-setup/` | Bob skill + helper scripts — auto-discovered, no copying needed |
+| `.bob/rules-lab2308/` | Mode-scoped rules (credential safety, Windows paths, lab discipline) |
+| `.bob/hooks/session_start.py` | Probes your environment at session start so Bob already knows your state |
+
+---
+
+## Troubleshooting
+
+If anything goes wrong, stay in **Lab 2308** mode and tell Bob what you're seeing.
+Bob already knows your environment state (Python version, ADK install status, etc.)
+and will diagnose and fix silently.
+
+Common issues and their causes:
+
+| Issue | Likely cause |
+|---|---|
+| Bob can't find the tool | Toolkit registration incomplete — tell Bob to re-register the connection |
+| Empty traces in Module 4 | Chatting with Draft agent — tell Bob to deploy to Live |
+| 401 / auth error | ADK token expired — tell Bob to re-authenticate |
+| Python not found | Python not installed or not on PATH — see Prerequisites above |
