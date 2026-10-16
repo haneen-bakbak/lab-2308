@@ -29,6 +29,8 @@ import sys
 # ─── helpers ──────────────────────────────────────────────────────────────────
 
 def _run(*cmd, **kw) -> "tuple[int, str, str]":
+    kw.setdefault("encoding", "utf-8")
+    kw.setdefault("errors", "replace")
     r = subprocess.run(list(cmd), capture_output=True, text=True, **kw)
     return r.returncode, r.stdout.strip(), r.stderr.strip()
 

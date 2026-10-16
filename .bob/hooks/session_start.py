@@ -35,6 +35,7 @@ def main() -> None:
             result = subprocess.run(
                 [sys.executable, str(check_py)],
                 capture_output=True, text=True, timeout=20,
+                encoding="utf-8", errors="replace",
                 cwd=str(bob_dir.parent),   # run from lab root (cwd)
             )
             if result.returncode == 0 and result.stdout.strip():

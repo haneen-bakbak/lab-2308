@@ -58,7 +58,7 @@ def find_python() -> str:
         try:
             out = subprocess.check_output(
                 [exe, "-c", "import sys; print(sys.version_info.major, sys.version_info.minor)"],
-                stderr=subprocess.DEVNULL, text=True,
+                stderr=subprocess.DEVNULL, text=True, encoding="utf-8", errors="replace",
             ).strip().split()
             return int(out[0]) >= 3 and int(out[1]) >= 11
         except Exception:
@@ -95,7 +95,7 @@ def install_adk(python: str) -> str:
     """Install ibm-watsonx-orchestrate and return the path to the orchestrate binary."""
     result = subprocess.run(
         [python, "-m", "pip", "install", "--upgrade", "ibm-watsonx-orchestrate", "--quiet"],
-        capture_output=True, text=True,
+        capture_output=True, text=True, encoding="utf-8", errors="replace",
     )
     if result.returncode != 0:
         fail(
@@ -115,7 +115,8 @@ def install_adk(python: str) -> str:
     # User-base scripts dir
     try:
         user_base = subprocess.check_output(
-            [python, "-m", "site", "--user-base"], text=True, stderr=subprocess.DEVNULL
+            [python, "-m", "site", "--user-base"], text=True,
+            stderr=subprocess.DEVNULL, encoding="utf-8", errors="replace",
         ).strip()
         scripts = "Scripts" if os.name == "nt" else "bin"
         for name in ("orchestrate", "orchestrate.exe"):
@@ -127,7 +128,7 @@ def install_adk(python: str) -> str:
     try:
         scripts_path = subprocess.check_output(
             [python, "-c", "import sysconfig; print(sysconfig.get_path('scripts'))"],
-            text=True, stderr=subprocess.DEVNULL,
+            text=True, stderr=subprocess.DEVNULL, encoding="utf-8", errors="replace",
         ).strip()
         for name in ("orchestrate", "orchestrate.exe"):
             candidates.append(str(Path(scripts_path) / name))
@@ -187,7 +188,7 @@ def discover_wxo_url(python: str, apikey: str) -> str:
     env = {**os.environ, "WXO_APIKEY": apikey}
     result = subprocess.run(
         [python, "-c", script],
-        capture_output=True, text=True, env=env,
+        capture_output=True, text=True, encoding="utf-8", errors="replace", env=env,
     )
     url = result.stdout.strip()
     if not url:
@@ -213,6 +214,8 @@ def find_lab_dir() -> Path:
 
 # ─── Helpers ──────────────────────────────────────────────────────────────────
 def run(cmd: list[str], check: bool = True, **kwargs) -> subprocess.CompletedProcess:
+    kwargs.setdefault("encoding", "utf-8")
+    kwargs.setdefault("errors", "replace")
     return subprocess.run(cmd, check=check, capture_output=True, text=True, **kwargs)
 
 
@@ -255,7 +258,10 @@ def main() -> None:
     # ── Step 1 ────────────────────────────────────────────────────────────────
     step(1, TOTAL_STEPS, "Checking Python...")
     python = find_python()
-    ver = subprocess.check_output([python, "--version"], text=True, stderr=subprocess.STDOUT).strip()
+    ver = subprocess.check_output(
+        [python, "--version"], text=True, stderr=subprocess.STDOUT,
+        encoding="utf-8", errors="replace",
+    ).strip()
     ok(f"{ver} → {python}")
 
     # ── Step 2 ────────────────────────────────────────────────────────────────
