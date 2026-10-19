@@ -569,13 +569,13 @@ OpenPages Login   OpenPagesAdministrator / passw0rd</pre>
           </div>
           <p><strong>Expected behavior:</strong> The agent calls <code>openpages_get_resource</code> to inspect the <code>SOXControl</code> schema, executes a query for controls with status <code>Awaiting Assessment</code>, groups them by <code>OPSS-Shared-Basel:Risk Category</code>, and highlights <strong>External Fraud</strong> as the most exposed category.</p>
 
-          <h4>Prompt 2 — Drill Down on High-Exposure Categories</h4>
+          <h4>Prompt 2 — Summarise the Biggest Exposure</h4>
           <div class="prompt">
-            <button class="copy-btn" onclick="navigator.clipboard.writeText('Show me the controls for External Fraud.')">Copy Prompt</button>
+            <button class="copy-btn" onclick="navigator.clipboard.writeText('Which risk category is most exposed? Summarise the gap in one paragraph.')">Copy Prompt</button>
             <p class="prompt-label">Prompt 2</p>
-            <p>"Show me the controls for External Fraud."</p>
+            <p>"Which risk category is most exposed? Summarise the gap in one paragraph."</p>
           </div>
-          <p><strong>Expected behavior:</strong> The agent queries controls where <code>OPSS-Shared-Basel:Risk Category = 'External Fraud'</code>, returning names, IDs (e.g. <code>CTL-04-03-03-01</code>), and descriptions.</p>
+          <p><strong>Expected behavior:</strong> The agent uses the category counts from Prompt 1 to write a plain-English paragraph identifying the top category by volume — no additional tool calls needed.</p>
 
           <h4>Prompt 3 — Create a New Risk Record in OpenPages</h4>
           <div class="prompt">

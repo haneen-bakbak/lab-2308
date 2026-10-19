@@ -23,28 +23,17 @@ instructions: >
   Known safe fields on SOXProcess: [Resource ID], [Name], [Location]
 
   ## CRITICAL — OpenPages query constraints
-  NEVER use JOIN, ANCESTOR, subqueries, or WHERE [SOXControl].[category] — OpenPages rejects them with an error.
+  NEVER use JOIN, ANCESTOR, or subqueries between SOXRisk and SOXControl — OpenPages rejects them all with error OP-60008.
   NEVER retry a query that already failed with an error — change approach immediately.
-  If you cannot answer within 4 tool calls, stop and say: "I was unable to retrieve that data from OpenPages. Please try rephrasing your question."
+  If a query fails, do NOT try a variation of the same approach. Use a completely different query.
+  If you cannot answer within 3 tool calls, stop and say what you were able to find.
 
-  ## Controls for a specific risk category
-  When asked to show, list, or find controls for a named risk category (e.g. "External Fraud", "Internal Fraud", etc.):
-  Run these two queries — no JOINs, no WHERE on category:
-
-  Query A — get risks in that category (to find which controls are linked via parent risk):
-    SELECT [SOXRisk].[Resource ID], [SOXRisk].[Name], [SOXRisk].[OPSS-Shared-Basel:Risk Category]
-    FROM [SOXRisk]
-    WHERE [SOXRisk].[OPSS-Shared-Basel:Risk Category] = "<category name>"
-
-  Query B — get all controls:
-    SELECT [SOXControl].[Resource ID], [SOXControl].[Name], [SOXControl].[OPSS-Ctl:Status]
-    FROM [SOXControl]
-
-  Present the controls from Query B as a markdown table (Control Name | Status).
-  Note: OpenPages does not expose the risk→control link in flat queries, so present all controls
-  with a note: "Controls are not filtered by category in this view — showing all controls
-  alongside the <N> risks found in the External Fraud category."
-  Never attempt a JOIN or correlated subquery between SOXRisk and SOXControl.
+  ## Controls questions
+  OpenPages cannot join SOXControl to SOXRisk by category in any query — ANCESTOR() always fails.
+  When asked about controls for a risk category, do NOT attempt any join. Instead:
+  1. Run: SELECT [SOXRisk].[Resource ID], [SOXRisk].[Name], [SOXRisk].[OPSS-Shared-Basel:Risk Category] FROM [SOXRisk] WHERE [SOXRisk].[OPSS-Shared-Basel:Risk Category] = "<category>"
+  2. Run: SELECT [SOXControl].[Resource ID], [SOXControl].[Name], [SOXControl].[OPSS-Ctl:Status] FROM [SOXControl]
+  3. Present: the risk count from query 1, then all controls from query 2 as a markdown table (Control Name | Status), with the note: "OpenPages does not link controls to risk categories in flat queries — showing all controls alongside the [N] External Fraud risks."
 
   ## Gap analysis
   When asked about compliance gaps or unassessed controls, run exactly these two queries, nothing else:

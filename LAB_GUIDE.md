@@ -400,17 +400,17 @@ Show me a breakdown by category with counts.
 
 ---
 
-#### Prompt 2 — Name the biggest exposure
+#### Prompt 2 — Summarise the Biggest Exposure
 
 ```
 Which risk category is most exposed? Summarise the gap in one paragraph.
 ```
 
 **What the agent does:**
-- Identifies "Clients, Products and Business Practices" as the top category by volume
-- Writes a plain-English gap statement
+- Uses the category counts already retrieved in Prompt 1
+- Writes a plain-English paragraph identifying the top category by volume
 
-**What you'll see:** A concise paragraph you could drop straight into a risk report.
+**What you'll see:** A concise paragraph you could drop straight into a risk report — no extra tool calls needed.
 
 ---
 
