@@ -550,13 +550,30 @@ OpenPages Login   OpenPagesAdministrator / passw0rd</pre>
           <h2>Module 3 — Chat With Your Risk Agent</h2>
           <p>Now test your live agent inside watsonx Orchestrate!</p>
 
-          <h3 id="step-6-1">6.1 Open the Agent in watsonx Orchestrate</h3>
-          <p>In your watsonx Orchestrate workspace, click the <strong>AI Assistant</strong> launcher icon in the bottom-left corner of the screen. The interactive chat drawer opens on the right:</p>
+          <h3 id="step-6-1">6.1 Open the Chat and Select Your Agent</h3>
+          <ol class="plain">
+            <li>
+              In the left navigation bar, click <strong>Chat</strong> (the speech bubble icon, second from the top).
+              The chat drawer opens on the left side of the screen.
+            </li>
+            <li>
+              At the top of the chat drawer, click the <strong>agent selector dropdown</strong> — it may default to <em>"watsonx"</em> or <em>"AskOrchestrate"</em>.
+              Select <strong>lab2308_risk_agent</strong> from the list.
+            </li>
+            <li>
+              Confirm the header shows <strong>lab2308_risk_agent</strong> before typing anything.
+            </li>
+          </ol>
 
           <figure>
-            <img src="assets/screenshots/04-real-wxo-chat-prompt.png" alt="watsonx Orchestrate Interactive Chat Drawer" />
-            <figcaption>Figure 8. Interactive conversation drawer in watsonx Orchestrate.</figcaption>
+            <img src="assets/screenshots/06-real-wxo-inventory-search-lab2308.png" alt="lab2308_risk_agent shown in the agent inventory" />
+            <figcaption>Figure 8. Your <strong>lab2308_risk_agent</strong> in the Build &amp; Run inventory — confirm it shows <strong>Live</strong> status.</figcaption>
           </figure>
+
+          <div class="note warning">
+            <span class="note-title">Make sure you're on the Live agent, not Draft.</span>
+            <p>If the chat header says <em>AskOrchestrate</em> or <em>watsonx</em>, it has no OpenPages tools and cannot answer your prompts. Switch the dropdown to <strong>lab2308_risk_agent</strong>.</p>
+          </div>
 
           <h3 id="step-6-2">6.2 Guided Test Prompts: The Compliance Scenario</h3>
           <p>You are a risk analyst at a financial institution. Every control in this environment is sitting at <strong>"Awaiting Assessment"</strong>. Your job is to find the gap, log the risk, and link the control.</p>
@@ -619,13 +636,34 @@ OpenPages Login   OpenPagesAdministrator / passw0rd</pre>
           <h2>Module 4 — Inspect Live Telemetry &amp; Execution Traces</h2>
           <p>Observing <em>why</em> an AI agent made a decision and <em>how</em> it retrieved external data is critical for enterprise governance and compliance.</p>
 
-          <h3 id="step-7-1">7.1 Open the Telemetry &amp; Context Inspector</h3>
-          <p>In the watsonx Orchestrate chat header, click the <strong>Maximize Chat</strong> or <strong>AI / Info</strong> button to expand the full execution view:</p>
+          <h3 id="step-7-1">7.1 Navigate to AgentOps Observability</h3>
+          <ol class="plain">
+            <li>
+              In the left navigation bar, scroll down to the <strong>AGENTOPS</strong> section and click <strong>Observability</strong>.
+            </li>
+            <li>
+              On the Observability page, find your agent in the list and click <strong>lab2308_risk_agent</strong>.
+            </li>
+            <li>
+              Click the <strong>Conversations</strong> tab to see the list of conversations your agent has had.
+            </li>
+            <li>
+              Find your conversation and click <strong>Debug</strong> on the right side of that row.
+            </li>
+            <li>
+              You will land on a <strong>node / tree diagram</strong> showing every step the agent took — each tool call, LLM reasoning step, and response. Click any node to see the full input and output for that step.
+            </li>
+          </ol>
 
           <figure>
-            <img src="assets/screenshots/08-real-wxo-chat-maximized.png" alt="watsonx Orchestrate Maximized Chat and Context Inspector" />
-            <figcaption>Figure 9. Live watsonx Orchestrate maximized telemetry and context tracking view.</figcaption>
+            <img src="assets/screenshots/07-real-wxo-agent-selected.png" alt="watsonx Orchestrate AgentOps Observability — agent selected" />
+            <figcaption>Figure 9. Left nav → AgentOps → Observability → select <strong>lab2308_risk_agent</strong> → Conversations tab → Debug.</figcaption>
           </figure>
+
+          <div class="note info">
+            <span class="note-title">What you'll see in the debug view.</span>
+            <p>Each node in the tree represents one step: tool calls to OpenPages (with the exact query sent and the raw JSON response), LLM reasoning steps (the model's Thought/Action loop), and the final formatted reply. This is live telemetry — every conversation you had in Module 3 is here.</p>
+          </div>
 
           <h3 id="step-7-2">7.2 Anatomy of an MCP Execution Trace</h3>
           <div class="table-wrap">
