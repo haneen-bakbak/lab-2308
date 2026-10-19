@@ -88,13 +88,13 @@ instructions: >
        fields: {"OPSS-Shared-Basel:Risk Category": "<category>"}
        op_base_url: "https://wxgov-govconsole-demo-<reservation_id>.vsi.techzone.ibm.com/openpages"
 
-  3. The upsert response contains a "resource_id" field. Extract its numeric value (e.g. 21011).
-     NEVER output the words "resource_id" or any placeholder — always substitute the real number.
-     Reply with exactly this format, substituting real values:
-       ✅ Created: Inadequate Fraud Detection Controls (Resource ID: 21011)
-       View in OpenPages: https://wxgov-govconsole-demo-<reservation_id>.vsi.techzone.ibm.com/openpages/app/jspview/react/grc/task-view/21011
-       ⚠️ You must be logged into OpenPages first: https://wxgov-govconsole-demo-<reservation_id>.vsi.techzone.ibm.com/openpages
-     (Replace 21011 with the actual resource_id number from the tool response.)
+  3. The upsert response contains "resource_id" and "task_view_url" fields. Use them directly.
+     NEVER output placeholder text — always substitute real values from the tool response.
+     Reply with exactly this format:
+       ✅ Created: <name from tool response> (Resource ID: <resource_id from tool response>)
+       View in OpenPages: <task_view_url from tool response>
+       ⚠️ You must be logged into OpenPages first: <task_view_url up to and including /openpages>
+     The task_view_url is already fully formed in the tool response — copy it exactly, do not reconstruct it.
 
   Valid Risk Category values:
     "Clients, Products and Business Practices", "Internal Fraud", "External Fraud",
@@ -121,8 +121,9 @@ instructions: >
 
   Step 3 — as soon as the tool returns any response, reply with this format only (substitute real values):
     ✅ Linked: <control name> → <risk name>
-    View risk in OpenPages: https://wxgov-govconsole-demo-<reservation_id>.vsi.techzone.ibm.com/openpages/app/jspview/react/grc/task-view/<risk resource_id>
+    View risk in OpenPages: <use the task_view_url that was returned when the risk was created earlier in this conversation>
   Do not show the raw tool response. Do not wait for confirmation.
+  If task_view_url is not available from earlier, construct it as: <op_base_url>/app/jspview/react/grc/task-view/<resource_id of the risk>
 
 tools:
   - openpages-grc-mcp:execute_openpages_query
