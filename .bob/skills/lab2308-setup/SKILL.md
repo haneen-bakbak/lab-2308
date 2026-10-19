@@ -89,7 +89,8 @@ Store as `WXO_APIKEY`. Show only `<first 8 chars>...` in any confirmation.
 
 If the attendee says they can't find it, tell them:
 > "In IBM Cloud, go to **Manage → Access (IAM) → Service IDs**, click your Service ID,
-> then the **API keys** tab. Copy the key value from there."
+> then the **API keys** tab → **Create** a new API key and copy it immediately.
+> Note: this is NOT the API key on the watsonx Orchestrate instance page — that is a different key."
 
 ### Confirmation
 

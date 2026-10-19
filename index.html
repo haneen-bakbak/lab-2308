@@ -373,34 +373,41 @@ OpenPages Login   OpenPagesAdministrator / passw0rd</pre>
             <figcaption>Figure 2. IBM Cloud App ID authentication gateway for your assigned student account.</figcaption>
           </figure>
 
-          <h3 id="step-3-3">3.3 Launch watsonx Orchestrate &amp; Copy Your Credentials</h3>
+          <h3 id="step-3-3">3.3 Launch watsonx Orchestrate &amp; Copy the Instance URL</h3>
           <p>Go to <a href="https://cloud.ibm.com/resources" target="_blank" rel="noopener">cloud.ibm.com/resources</a> → <strong>AI / Machine Learning</strong> → click your <strong>watsonx Orchestrate</strong> instance.</p>
-          <p>You will land on the page shown below. <strong>Before clicking Launch, copy both values from the Credentials section</strong> — you will need to paste them into Bob shortly:</p>
+          <p>You will land on the page shown below. <strong>Copy the URL from the Credentials section</strong> — this is your WxO Instance URL that Bob needs:</p>
 
           <figure>
             <img src="assets/screenshots/real-cloud-wxo-instance-detail.png" alt="watsonx Orchestrate Service Instance in IBM Cloud" />
-            <figcaption>Figure 3. The Credentials section on the WxO instance page — copy the <strong>URL</strong> and <strong>API key</strong> from here.</figcaption>
+            <figcaption>Figure 3. Copy the <strong>URL</strong> field from the Credentials section — that is your ★ WXO INSTANCE URL.</figcaption>
           </figure>
 
           <ol class="plain" style="margin-top:0.5rem;">
             <li>
-              <strong>URL</strong> — click the copy icon next to the URL field (starts with <code>https://api.</code>…<code>watson-orchestrate.cloud.ibm.com/instances/…</code>).<br>
+              In the <strong>Credentials</strong> section, click the copy icon next to the <strong>URL</strong> field.<br>
+              It starts with <code>https://api.</code>…<code>watson-orchestrate.cloud.ibm.com/instances/…</code><br>
               This is your <strong>★ WXO INSTANCE URL</strong>. Save it — Bob will ask for this.
             </li>
             <li>
-              <strong>API key</strong> — click <strong>Show credentials</strong>, then click the copy icon next to the API key field.<br>
-              This is your <strong>★ SERVICE ID API KEY</strong>. Save it — Bob will ask for this too.
+              Then click the blue <strong>Launch watsonx Orchestrate</strong> button to open your WxO workspace.
             </li>
           </ol>
 
-          <p style="margin-top:1rem;">Then click the blue <strong>Launch watsonx Orchestrate</strong> button to open your WxO workspace.</p>
-
-          <div class="note info">
-            <span class="note-title">These two values replace Questions 2 and 3 that Bob will ask.</span>
-            <p>Have them ready to paste — you do not need to find them anywhere else.</p>
+          <div class="note warning" style="margin-top:1rem;">
+            <span class="note-title">⚠️ Do NOT use the API key shown on this page.</span>
+            <p>The API key in the Credentials section here is <strong>not</strong> what Bob needs. Bob needs a <strong>Service ID API key</strong> created separately in IAM — see step 3.5 below.</p>
           </div>
 
-          <h3 id="step-3-4b">3.5 Find Your MCP Server URL for Bob</h3>
+          <h3 id="step-3-4b">3.5 Get Your Service ID API Key for Bob</h3>
+          <p>This is <strong>not</strong> the API key on the WxO instance page. You need to create one from a Service ID in IAM:</p>
+          <ol class="plain">
+            <li>Go to <strong>Manage → Access (IAM) → Service IDs</strong> in IBM Cloud.</li>
+            <li>Click your Service ID (or create one if needed).</li>
+            <li>Click the <strong>API keys</strong> tab → <strong>Create</strong> → copy the key value immediately (it is only shown once).</li>
+          </ol>
+          <p>This is your <strong>★ SERVICE ID API KEY</strong>. Save it — Bob will ask for this.</p>
+
+          <h3 id="step-3-5">3.6 Find Your MCP Server URL for Bob</h3>
           <p>On the instructor screen or printed sheet, find the line labelled <strong>★ MCP SERVER URL</strong> (under PART 2). Copy the full URL including <code>https://</code>.</p>
           <div class="note warning">
             <span class="note-title">Can't read it / not on screen?</span>
