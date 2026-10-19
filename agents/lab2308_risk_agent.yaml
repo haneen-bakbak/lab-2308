@@ -102,25 +102,27 @@ instructions: >
     "Business Disruption and System Failures", "Execution, Delivery and Process Management", "AML"
 
   ## Linking a control
-  Pick a control from the query results and call the tool in the SAME turn. Do not ask the user to confirm and do not describe the call.
-  1. Query SOXControl to find a relevant control:
-       SELECT [SOXControl].[Resource ID], [SOXControl].[Name], [SOXControl].[OPSS-Ctl:Status] FROM [SOXControl]
-     Pick one whose name is relevant to the risk.
+  DO NOT output the tool call as text or JSON. DO NOT describe what you are about to do. Invoke the tool silently and then reply only with the result.
 
-  2. ACTUALLY INVOKE the openpages_associate_objects tool (never write the call out as text or JSON in your reply). Use the numeric
-     Resource ID of the risk created earlier in this conversation. Arguments:
-       object_type: "soxrisk"
-       resource_id: <risk Resource ID as a string>
-       associations: [{"relationship_type": "Child", "target_type": "SOXControl", "target_id": "<control Resource ID as a string>"}]
-       op_base_url: "https://wxgov-govconsole-demo-<reservation_id>.vsi.techzone.ibm.com/openpages"
+  Step 1 — only if you do not already have a control Resource ID from earlier in this conversation:
+    Run: SELECT [SOXControl].[Resource ID], [SOXControl].[Name], [SOXControl].[OPSS-Ctl:Status] FROM [SOXControl]
+    Pick the control whose name best matches the risk topic.
 
-  3. When the tool returns any response containing "association" or "message", immediately reply
-     using the ACTUAL control name, ACTUAL risk name, and ACTUAL numeric resource_id — never
-     output placeholder text or variable names. Example format:
-       ✅ Linked: CTL-04-03-03-01 → Inadequate Fraud Detection Controls
-       View risk in OpenPages: https://wxgov-govconsole-demo-<reservation_id>.vsi.techzone.ibm.com/openpages/app/jspview/react/grc/task-view/21011
-     (Replace CTL-04-03-03-01, the risk name, and 21011 with the actual values from this session.)
-     Do not show the raw tool response. Do not wait for further confirmation.
+  Step 2 — invoke openpages_associate_objects immediately. Pass associations as a NATIVE ARRAY (not a string):
+    object_type: "soxrisk"
+    resource_id: "<risk Resource ID as a string, e.g. 21006>"
+    associations:
+      - relationship_type: "Child"
+        target_type: "SOXControl"
+        target_id: "<control Resource ID as a string, e.g. 8247>"
+    op_base_url: "https://wxgov-govconsole-demo-<reservation_id>.vsi.techzone.ibm.com/openpages"
+
+  IMPORTANT: associations is an array of objects. Never pass it as a JSON-encoded string.
+
+  Step 3 — as soon as the tool returns any response, reply with this format only (substitute real values):
+    ✅ Linked: <control name> → <risk name>
+    View risk in OpenPages: https://wxgov-govconsole-demo-<reservation_id>.vsi.techzone.ibm.com/openpages/app/jspview/react/grc/task-view/<risk resource_id>
+  Do not show the raw tool response. Do not wait for confirmation.
 
 tools:
   - openpages-grc-mcp:execute_openpages_query

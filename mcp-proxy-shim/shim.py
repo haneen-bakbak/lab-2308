@@ -158,10 +158,18 @@ def fix_stringified_params(msg: dict) -> dict:
 
     changed = False
 
-    # Coerce primaryParentId to string — OpenPages MCP server requires it
-    if "primaryParentId" in args and isinstance(args["primaryParentId"], int):
-        args["primaryParentId"] = str(args["primaryParentId"])
-        changed = True
+    # Coerce integer IDs to string — OpenPages MCP server requires strings
+    for id_key in ("primaryParentId", "resource_id"):
+        if id_key in args and isinstance(args[id_key], int):
+            args[id_key] = str(args[id_key])
+            changed = True
+
+    # Coerce target_id inside associations array items to string
+    if "associations" in args and isinstance(args["associations"], list):
+        for item in args["associations"]:
+            if isinstance(item, dict) and isinstance(item.get("target_id"), int):
+                item["target_id"] = str(item["target_id"])
+                changed = True
 
     # Deserialise any dict/list arguments that were accidentally JSON-stringified.
     # Also handle double-brace escaping ({{ → {, }} → }) that the LLM sometimes
