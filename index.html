@@ -328,10 +328,10 @@
         <section id="section-3" class="step">
           <div class="step-label"><cds-tag type="blue">Section 3</cds-tag></div>
           <h2>Your Lab Environments &amp; Credentials Walkthrough</h2>
-          <p>Your instructor will display credentials on the projected screen — or hand you a printed sheet. <strong>Bob only needs two values</strong>, marked with ★ below. Everything else is for logging in to the browser UIs.</p>
+          <p>Your instructor will display credentials on the projected screen — or hand you a printed sheet. <strong>Bob needs three values</strong>, marked with ★ below. Everything else is for logging in to the browser UIs.</p>
 
-          <h3 id="step-3-1">3.1 Find Your Two Values on the Instructor Screen / Printout</h3>
-          <p>Look for the ★ starred lines — those are the only two things you'll paste into Bob:</p>
+          <h3 id="step-3-1">3.1 Find Your Three Values on the Instructor Screen / Printout</h3>
+          <p>Look for the ★ starred lines — those are the only three things you'll paste into Bob:</p>
           <pre class="block">============================================================
   IBM TechXchange 2026 — LAB-2308  ·  YOUR ENVIRONMENT INFO
 ============================================================
@@ -344,7 +344,10 @@ App ID Login URL
 App ID Username   student&lt;N&gt;@&lt;tenant_id&gt;.techzone.com
 App ID Password   &lt;your password&gt;
 
-★ SERVICE ID API KEY                          ← give this to Bob (Question 2)
+★ WXO INSTANCE URL                            ← give this to Bob (Question 2)
+  https://api.us-south.watson-orchestrate.cloud.ibm.com/instances/XXXX
+
+★ SERVICE ID API KEY                          ← give this to Bob (Question 3)
   AbCdEfGhIjKlMnOpQrStUvWxYz0123456789AbCd_-x
 
 ── PART 2 — OpenPages / watsonx.governance (WxGov) ─────────
@@ -358,8 +361,8 @@ watsonx.Gov Application URL
 OpenPages Login   OpenPagesAdministrator / passw0rd</pre>
 
           <div class="note info">
-            <span class="note-title">The two ★ starred values are all Bob needs.</span>
-            <p>You do <strong>not</strong> need to edit any files, run any commands, or touch any YAML. Bob handles everything once you give him those two values.</p>
+            <span class="note-title">The three ★ starred values are all Bob needs.</span>
+            <p>You do <strong>not</strong> need to edit any files, run any commands, or touch any YAML. Bob handles everything once you give him those three values.</p>
           </div>
 
           <h3 id="step-3-2">3.2 Log In to IBM Cloud</h3>
@@ -378,21 +381,29 @@ OpenPages Login   OpenPagesAdministrator / passw0rd</pre>
             <figcaption>Figure 3. watsonx Orchestrate service instance in IBM Cloud.</figcaption>
           </figure>
 
-          <h3 id="step-3-4">3.4 Find Your API Key for Bob</h3>
+          <h3 id="step-3-4">3.4 Find Your WxO Instance URL for Bob</h3>
+          <p>On the instructor screen or printed sheet, find the line labelled <strong>★ WXO INSTANCE URL</strong> (under PART 1). It looks like:</p>
+          <pre class="block">https://api.us-south.watson-orchestrate.cloud.ibm.com/instances/XXXX</pre>
+          <div class="note warning">
+            <span class="note-title">Can't read it / not on screen?</span>
+            <p>Go to <a href="https://cloud.ibm.com/resources" target="_blank" rel="noopener">cloud.ibm.com/resources</a> → <strong>AI / Machine Learning</strong> → click your <strong>watsonx Orchestrate</strong> instance → copy the <strong>Instance URL</strong> field.</p>
+          </div>
+
+          <h3 id="step-3-4b">3.5 Find Your API Key for Bob</h3>
           <p>On the instructor screen or printed sheet, find the line labelled <strong>★ SERVICE ID API KEY</strong> (under PART 1). It is approximately 44 characters — letters, numbers, underscores, and hyphens. Copy or note just the key value.</p>
           <div class="note warning">
             <span class="note-title">Can't read it / not on screen?</span>
             <p>In IBM Cloud go to <strong>Manage → Access (IAM) → Service IDs</strong>, click your Service ID, then the <strong>API keys</strong> tab.</p>
           </div>
 
-          <h3 id="step-3-5">3.5 Find Your MCP Server URL for Bob</h3>
+          <h3 id="step-3-5">3.6 Find Your MCP Server URL for Bob</h3>
           <p>On the instructor screen or printed sheet, find the line labelled <strong>★ MCP SERVER URL</strong> (under PART 2). Copy the full URL including <code>https://</code>.</p>
           <div class="note warning">
             <span class="note-title">Can't read it / not on screen?</span>
             <p>Take the <strong>watsonx.Gov Application URL</strong> from PART 2 and change <code>/openpages</code> at the end to <code>/mcp</code>. That's your MCP Server URL.</p>
           </div>
 
-          <h3 id="step-3-6">3.6 Log In to OpenPages (for Module 2)</h3>
+          <h3 id="step-3-6">3.7 Log In to OpenPages (for Module 2)</h3>
           <p>Find the <strong>watsonx.Gov Application URL</strong> on the instructor screen or printed sheet (under PART 2) and open it in your browser. You'll see a TLS warning (TechZone uses a self-signed certificate) — click <strong>Advanced → Proceed to wxgov-govconsole… (unsafe)</strong>. Log in with <code>OpenPagesAdministrator</code> / <code>passw0rd</code>.</p>
 
           <figure>
@@ -480,13 +491,14 @@ OpenPages Login   OpenPagesAdministrator / passw0rd</pre>
             <p>"Hi Bob! I'm in Lab 2308 at TechXchange. Can you set me up?"</p>
           </div>
 
-          <p>Bob will ask for two things — one at a time. Have the instructor screen or printed sheet visible:</p>
+          <p>Bob will ask for three things — one at a time. Have the instructor screen or printed sheet visible:</p>
           <div class="table-wrap">
             <table class="cds-table">
               <thead><tr><th>Bob's question</th><th>Where to find it</th><th>Looks like</th></tr></thead>
               <tbody>
                 <tr><td>1. MCP Server URL</td><td>Instructor screen / printout → PART 2 → <strong>★ MCP SERVER URL</strong></td><td><code>https://wxgov-govconsole-demo-XXXX.vsi.techzone.ibm.com/mcp</code></td></tr>
-                <tr><td>2. API key</td><td>Instructor screen / printout → PART 1 → <strong>★ SERVICE ID API KEY</strong></td><td><code>AbCdEfGh…</code> (~44 chars)</td></tr>
+                <tr><td>2. WxO Instance URL</td><td>Instructor screen / printout → PART 1 → <strong>★ WXO INSTANCE URL</strong><br><span style="color:#57606a;font-size:0.88rem;">Or: cloud.ibm.com/resources → WxO instance → Instance URL</span></td><td><code>https://api.us-south.watson-orchestrate.cloud.ibm.com/instances/XXXX</code></td></tr>
+                <tr><td>3. API key</td><td>Instructor screen / printout → PART 1 → <strong>★ SERVICE ID API KEY</strong></td><td><code>AbCdEfGh…</code> (~44 chars)</td></tr>
               </tbody>
             </table>
           </div>

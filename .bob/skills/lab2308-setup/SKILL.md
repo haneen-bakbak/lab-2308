@@ -34,16 +34,16 @@ Read the JSON output. Never skip this step.
 Greet the attendee warmly. In 2–3 sentences: they're building a real AI agent that queries
 IBM OpenPages risk data in plain English. No code, no terminal — just tell Bob what they need.
 
-Say you need two things from the instructor screen or their printed sheet, and you'll handle everything else.
+Say you need **three things** from the instructor screen or their printed sheet, and you'll handle everything else.
 
 ---
 
 ## Phase 2 — Collect Credentials
 
-Ask **one at a time** using `ask_followup_question`. Never ask both at once.
+Ask **one at a time** using `ask_followup_question`. Never ask all at once.
 
 The instructor is displaying (or has printed) a credential sheet. It has two sections
-(PART 1 — WxO, PART 2 — OpenPages) and two starred ★ values that are all you need.
+(PART 1 — WxO, PART 2 — OpenPages) and three starred ★ values that are all you need.
 Reference these exact labels in your questions so attendees can find them on the screen or printout instantly.
 
 ### Q1 — OpenPages MCP URL
@@ -65,12 +65,24 @@ Derive and store:
 - `OP_HOST` = URL without trailing `/mcp`
 - `OP_HOSTNAME` = host without `https://`
 
-### Q2 — WxO API Key
+### Q2 — WxO Instance URL
 
 Ask:
-> "Now look at **PART 1 — watsonx Orchestrate** on the instructor screen or your printed sheet.
-> Find the line labelled **★ SERVICE ID API KEY** — it's about 44 characters,
-> a mix of letters, numbers, underscores, and hyphens.
+> "Next, find the line labelled **★ WXO INSTANCE URL** in **PART 1 — watsonx Orchestrate**.
+> It looks like this:
+> ```
+> https://api.us-south.watson-orchestrate.cloud.ibm.com/instances/XXXX
+> ```
+> You can also find it in IBM Cloud: go to **cloud.ibm.com/resources → AI / Machine Learning → your watsonx Orchestrate instance → Instance URL**.
+> Paste it here."
+
+Store as `WXO_URL`. Validate it starts with `https://api.` and contains `watson-orchestrate`. If not, ask them to check again.
+
+### Q3 — WxO API Key
+
+Ask:
+> "Finally, find the line labelled **★ SERVICE ID API KEY** — also in **PART 1**.
+> It's about 44 characters, a mix of letters, numbers, underscores, and hyphens.
 > Paste it here."
 
 Store as `WXO_APIKEY`. Show only `<first 8 chars>...` in any confirmation.
@@ -83,6 +95,7 @@ If the attendee says they can't find it, tell them:
 
 > "Got it — here's what I'll use:
 > - MCP URL: `<OP_MCP_URL>`
+> - WxO Instance URL: `<WXO_URL>`
 > - API key: `<first 8 chars>...`
 >
 > Does that look right? Say **yes** and I'll wire everything up."
@@ -93,14 +106,13 @@ If the attendee says they can't find it, tell them:
 
 Say: *"Perfect! Give me a moment while I wire everything up for you... ✨"*
 
-Run the full bootstrap. Pass credentials via environment variables, never inline:
+Run the full bootstrap. Pass all three credentials, never inline the key:
 
 ```
-WXO_APIKEY=<key> python bootstrap.py --wxo-apikey <key> --op-mcp-url <OP_MCP_URL>
+python bootstrap.py --wxo-apikey <WXO_APIKEY> --op-mcp-url <OP_MCP_URL> --wxo-url <WXO_URL>
 ```
 
-On Windows, set the env var in the same subprocess call — `bootstrap.py` reads both
-`--wxo-apikey` flag and the `WXO_APIKEY` environment variable.
+On Windows use the same command — bootstrap.py accepts all three as flags.
 
 Show the attendee only these friendly progress markers as bootstrap.py runs:
 1. *"Installing the AI agent toolkit... ⚙️"* (bootstrap step 2)

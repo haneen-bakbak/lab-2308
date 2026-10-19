@@ -47,7 +47,9 @@ def parse_args() -> argparse.Namespace:
     p = argparse.ArgumentParser(description="LAB-2308 bootstrap")
     p.add_argument("--wxo-apikey", default=os.environ.get("WXO_APIKEY", ""))
     p.add_argument("--op-mcp-url", default=os.environ.get("OP_MCP_URL", ""))
-    p.add_argument("--wxo-url",    default=os.environ.get("WXO_URL", ""))
+    p.add_argument("--wxo-url",    default=os.environ.get("WXO_URL", ""),
+                   help="Your watsonx Orchestrate instance URL "
+                        "(cloud.ibm.com/resources → WxO instance → Instance URL)")
     return p.parse_args()
 
 
@@ -231,6 +233,12 @@ def main() -> None:
         fail("WXO_APIKEY is required. Pass --wxo-apikey or set the WXO_APIKEY environment variable.")
     if not args.op_mcp_url:
         fail("OP_MCP_URL is required. Pass --op-mcp-url or set the OP_MCP_URL environment variable.")
+    if not args.wxo_url.strip():
+        fail(
+            "WXO_URL is required. Pass --wxo-url or set the WXO_URL environment variable.\n"
+            "  Find it in IBM Cloud: cloud.ibm.com/resources → AI / Machine Learning\n"
+            "  → your watsonx Orchestrate instance → Instance URL"
+        )
 
     wxo_apikey  = args.wxo_apikey
     op_mcp_url  = args.op_mcp_url.rstrip("/")
@@ -271,9 +279,6 @@ def main() -> None:
 
     # ── Step 3 ────────────────────────────────────────────────────────────────
     step(3, TOTAL_STEPS, f"Configuring WxO environment ({env_name})...")
-
-    if not wxo_url:
-        wxo_url = discover_wxo_url(python, wxo_apikey)
 
     print(f"  WxO URL:      {wxo_url}")
 

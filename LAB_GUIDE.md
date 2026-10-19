@@ -146,7 +146,7 @@ This lab bridges two cloud environments:
 ### 3.1 Find Your Two Values — Instructor Screen or Printout
 
 Your instructor will display credentials on the projected screen, or hand you a printed sheet.
-**Bob only needs two values**, marked with ★ below. Everything else is for logging in to the browser UIs.
+**Bob needs three values**, marked with ★ below. Everything else is for logging in to the browser UIs.
 
 ```
 ============================================================
@@ -165,7 +165,10 @@ App ID Username
 App ID Password
   <your password>
 
-★ SERVICE ID API KEY                                        ← GIVE THIS TO BOB (Question 2)
+★ WXO INSTANCE URL                                         ← GIVE THIS TO BOB (Question 2)
+  https://api.us-south.watson-orchestrate.cloud.ibm.com/instances/XXXX
+
+★ SERVICE ID API KEY                                        ← GIVE THIS TO BOB (Question 3)
   AbCdEfGhIjKlMnOpQrStUvWxYz0123456789AbCd_-x
 
 ── PART 2 — OpenPages / watsonx.governance (WxGov) ─────────
@@ -181,7 +184,7 @@ OpenPages Login
   Password: passw0rd
 ```
 
-> 💡 **The two ★ starred values are all Bob needs.** Keep the instructor screen or printed sheet visible when you start Module 1.
+> 💡 **The three ★ starred values are all Bob needs.** Keep the instructor screen or printed sheet visible when you start Module 1.
 
 ---
 
@@ -217,9 +220,24 @@ OpenPages Login
 
 ---
 
-### 3.4 Step 3: Find Your Service ID API Key for Bob
+### 3.4 Step 3: Find Your WxO Instance URL for Bob
 
-When Bob sets up your agent in Module 1, his **second question** will be your API key.
+When Bob sets up your agent in Module 1, his **second question** will be your WxO Instance URL.
+
+1. On the instructor screen or printed sheet, find the line labelled **★ WXO INSTANCE URL** under *PART 1*:
+   ```text
+   https://api.us-south.watson-orchestrate.cloud.ibm.com/instances/XXXX
+   ```
+
+2. Copy the full URL including `https://`.
+
+> **Can't find it on screen?** Go to [cloud.ibm.com/resources](https://cloud.ibm.com/resources) → **AI / Machine Learning** → click your **watsonx Orchestrate** instance → copy the **Instance URL** field.
+
+---
+
+### 3.5 Step 4: Find Your Service ID API Key for Bob
+
+When Bob sets up your agent in Module 1, his **third question** will be your API key.
 
 1. On the instructor screen or printed sheet, find the line labelled **★ SERVICE ID API KEY** under *PART 1*.
    It looks like this (your actual key will be different):
@@ -236,7 +254,7 @@ When Bob sets up your agent in Module 1, his **second question** will be your AP
 
 ---
 
-### 3.5 Step 4: Find Your MCP Server URL for Bob
+### 3.6 Step 5: Find Your MCP Server URL for Bob
 
 Bob's **first question** will be your OpenPages MCP Server URL.
 
@@ -254,7 +272,7 @@ Bob's **first question** will be your OpenPages MCP Server URL.
 
 ---
 
-### 3.6 Step 5: Log In to OpenPages (for Module 2)
+### 3.7 Step 6: Log In to OpenPages (for Module 2)
 
 ![Step 5: OpenPages Login & SSL Bypass](assets/screenshots/real-openpages-login.png)
 
