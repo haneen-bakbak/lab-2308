@@ -400,17 +400,17 @@ Show me a breakdown by category with counts.
 
 ---
 
-#### Prompt 2 — Summarise the Biggest Exposure
+#### Prompt 2 — Explain the Gap
 
 ```
-Which risk category is most exposed? Summarise the gap in one paragraph.
+Explain the gap briefly.
 ```
 
 **What the agent does:**
-- Uses the category counts already retrieved in Prompt 1
-- Writes a plain-English paragraph identifying the top category by volume
+- Uses the data already retrieved in Prompt 1
+- Identifies the top risk category by volume and notes the control assessment backlog
 
-**What you'll see:** A concise paragraph you could drop straight into a risk report — no extra tool calls needed.
+**What you'll see:** A short plain-English summary — which category is most exposed and how many controls are awaiting assessment.
 
 ---
 

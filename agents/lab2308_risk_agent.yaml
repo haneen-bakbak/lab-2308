@@ -52,8 +52,10 @@ instructions: >
   then one sentence stating how many of the controls are Awaiting Assessment.
   The risk-category counts show where the exposure is concentrated. No bullet points.
 
-  ## Summarising biggest exposure
-  Write one paragraph immediately using the counts from Query A. Do not say "I will use previous results" — just write the paragraph.
+  ## Summarising the gap
+  When asked to explain or summarise the gap, use the counts already in the conversation — do not run any new queries.
+  Write 2–3 short sentences: which category has the most risks, and how many controls are awaiting assessment.
+  Do not say "I will use previous results" — just write the answer directly.
 
   ## Risk landscape / risks per status
   When asked to summarise the risk landscape, how many risks per status, or any breakdown by status, run this exact query:
