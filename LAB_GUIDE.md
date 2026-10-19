@@ -358,17 +358,20 @@ Before chatting with the agent, spend a few minutes in the source system it will
 
 **⏱ ~25 minutes**
 
-![watsonx Orchestrate Agent Chat and Interactive Workspace](assets/screenshots/04-real-wxo-chat-prompt.png)
+### 6.1 Open the Chat and Select Your Agent
 
-### 6.1 Open the Agent in watsonx Orchestrate
+1. In the **left navigation bar**, click **Chat** (the speech bubble icon, second from the top).
+   The chat drawer opens on the left side of the screen.
 
-1. Navigate to your **watsonx Orchestrate** instance in IBM Cloud (**Resource list → your watsonx Orchestrate instance → Launch watsonx Orchestrate**).
-2. Open the agent list (**Build → Agents**, or the **Manage agents** page) and click **`lab2308_risk_agent`**.
-3. Chat with the **Live** version of the agent. Bob has already deployed it for you.
+2. At the top of the chat drawer, click the **agent selector dropdown** — it may default to *"watsonx"* or *"AskOrchestrate"*. Select **`lab2308_risk_agent`** from the list.
 
-> ⚠️ **Use the Live agent, not Draft.** Execution traces for Module 4 are kept for live conversations only. If you chat with the *Draft* version (the one shown while editing an agent), your telemetry will be missing and cannot be recovered afterwards. If you're ever unsure, tell Bob: *"Bob, please deploy my agent to live"*.
+3. Confirm the header shows **`lab2308_risk_agent`** before typing anything.
+
+![lab2308_risk_agent in the Build & Run inventory](assets/screenshots/06-real-wxo-inventory-search-lab2308.png)
+
+> ⚠️ **Make sure the dropdown says `lab2308_risk_agent`.** If it says *AskOrchestrate* or *watsonx*, it has no OpenPages tools and cannot answer your prompts — switch it before sending anything.
 >
-> ⚠️ **Make sure the chat header says `lab2308_risk_agent`.** The default assistant (`AskOrchestrate`) has no OpenPages tools and will answer that it cannot query SOX data.
+> ⚠️ **Traces are only recorded for the Live agent.** Bob already deployed it live. If traces are missing in Module 4, tell Bob: *"re-deploy my agent"*.
 
 ---
 
@@ -489,19 +492,19 @@ This **schema-first pattern** is what separates a reliable enterprise AI agent f
 
 **⏱ ~15 minutes**
 
-In enterprise AI systems, observing *why* an agent made a decision and *how* it retrieved external data is critical for compliance and trust. watsonx Orchestrate provides real-time execution observation and context tracking for every agent interaction.
+In enterprise AI systems, observing *why* an agent made a decision and *how* it retrieved external data is critical for compliance and trust. watsonx Orchestrate captures every tool call, reasoning step, and response in a live trace you can inspect after each conversation.
 
-![watsonx Orchestrate Live Chat and Context Inspector](assets/screenshots/08-real-wxo-chat-maximized.png)
+![lab2308_risk_agent selected in AgentOps Observability](assets/screenshots/07-real-wxo-agent-selected.png)
 
 ---
 
-### 7.1 Open the Agent Telemetry & Context Inspector
+### 7.1 Open AgentOps Observability
 
-> Traces are only recorded for chats with the **Live** `lab2308_risk_agent` (see §6.1). If your traces are empty, you were most likely chatting with Draft — ask Bob to deploy the agent to live, then re-run your prompts.
-
-1. In the **watsonx Orchestrate** chat drawer, click the **Maximize Chat** button or **AI / Info** icon in the header to expand the full execution view (shown above).
-2. Observe the conversational context and tool actions as prompts are sent to OpenPages GRC.
-3. As the agent plans and communicates with OpenPages via MCP, tool requests, schema lookups, and query responses are tracked in real time.
+1. In the **left navigation bar**, scroll down to the **AGENTOPS** section and click **Observability**.
+2. On the Observability page, find and click **`lab2308_risk_agent`** in the agent list.
+3. Click the **Conversations** tab to see every conversation the agent has had.
+4. Find your conversation and click **Debug** on the right side of that row.
+5. You will land on a **node / tree diagram** showing every step the agent took. Click any node to see the full input and output for that step — exact queries sent, raw JSON responses from OpenPages, and the model's reasoning.
 
 ---
 
