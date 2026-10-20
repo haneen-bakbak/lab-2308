@@ -548,32 +548,28 @@ OpenPages Login   OpenPagesAdministrator / passw0rd</pre>
         <section id="section-6" class="step">
           <div class="step-label"><cds-tag type="purple">Module 3</cds-tag></div>
           <h2>Module 3 — Chat With Your Risk Agent</h2>
-          <p>Now test your live agent inside watsonx Orchestrate!</p>
+          <p>Now test your live agent inside watsonx Orchestrate. Follow every step below exactly — the agent dropdown is easy to miss.</p>
 
           <h3 id="step-6-1">6.1 Open the Chat and Select Your Agent</h3>
-          <ol class="plain">
-            <li>
-              In the left navigation bar, click <strong>Chat</strong> (the speech bubble icon, second from the top).
-              The chat drawer opens on the left side of the screen.
-            </li>
-            <li>
-              At the top of the chat drawer, click the <strong>agent selector dropdown</strong> — it may default to <em>"watsonx"</em> or <em>"AskOrchestrate"</em>.
-              Select <strong>lab2308_risk_agent</strong> from the list.
-            </li>
-            <li>
-              Confirm the header shows <strong>lab2308_risk_agent</strong> before typing anything.
-            </li>
-          </ol>
 
+          <p><strong>Step 1.</strong> In the left navigation bar, click <strong>Chat</strong> (the speech bubble icon near the top).</p>
           <figure>
-            <img src="assets/screenshots/06-real-wxo-inventory-search-lab2308.png" alt="lab2308_risk_agent shown in the agent inventory" />
-            <figcaption>Figure 8. Your <strong>lab2308_risk_agent</strong> in the Build &amp; Run inventory — confirm it shows <strong>Live</strong> status.</figcaption>
+            <img src="assets/screenshots/trace-02-chat-tab.png" alt="Chat tab selected in left nav with lab2308_risk_agent in dropdown" />
+            <figcaption>Figure 8. Click <strong>Chat</strong> in the left nav. The chat drawer opens with an agent selector at the top.</figcaption>
+          </figure>
+
+          <p><strong>Step 2.</strong> At the top of the chat drawer, click the <strong>agent dropdown</strong> — it defaults to <em>AskOrchestrate</em>. Click it and select <strong>lab2308_risk_agent</strong>.</p>
+          <figure>
+            <img src="assets/screenshots/trace-01-home.png" alt="Agent dropdown open showing lab2308_risk_agent selected" />
+            <figcaption>Figure 9. The agent dropdown is open — <strong>lab2308_risk_agent</strong> is selected (blue dot, checkmark). <em>AskOrchestrate</em> is also listed but has no OpenPages tools.</figcaption>
           </figure>
 
           <div class="note warning">
-            <span class="note-title">Make sure you're on the Live agent, not Draft.</span>
-            <p>If the chat header says <em>AskOrchestrate</em> or <em>watsonx</em>, it has no OpenPages tools and cannot answer your prompts. Switch the dropdown to <strong>lab2308_risk_agent</strong>.</p>
+            <span class="note-title">⚠️ You must select lab2308_risk_agent — not AskOrchestrate.</span>
+            <p>AskOrchestrate is the default and has no OpenPages tools. If you send prompts to it, it will say it cannot query risk data. Always confirm the dropdown shows <strong>lab2308_risk_agent</strong> before typing.</p>
           </div>
+
+          <p><strong>Step 3.</strong> Confirm <strong>lab2308_risk_agent</strong> appears in the Agents header at the top of the chat panel, then type your prompt in the input box at the bottom and press Enter.</p>
 
           <h3 id="step-6-2">6.2 Guided Test Prompts: The Compliance Scenario</h3>
           <p>You are a risk analyst at a financial institution. Every control in this environment is sitting at <strong>"Awaiting Assessment"</strong>. Your job is to find the gap, log the risk, and link the control.</p>
@@ -634,35 +630,37 @@ OpenPages Login   OpenPagesAdministrator / passw0rd</pre>
         <section id="section-7" class="step">
           <div class="step-label"><cds-tag type="purple">Module 4</cds-tag></div>
           <h2>Module 4 — Inspect Live Telemetry &amp; Execution Traces</h2>
-          <p>Observing <em>why</em> an AI agent made a decision and <em>how</em> it retrieved external data is critical for enterprise governance and compliance.</p>
+          <p>Every prompt you sent in Module 3 is recorded as a full execution trace — every tool call, every reasoning step, every response. Here's how to find and read them.</p>
 
           <h3 id="step-7-1">7.1 Navigate to AgentOps Observability</h3>
-          <ol class="plain">
-            <li>
-              In the left navigation bar, scroll down to the <strong>AGENTOPS</strong> section and click <strong>Observability</strong>.
-            </li>
-            <li>
-              On the Observability page, find your agent in the list and click <strong>lab2308_risk_agent</strong>.
-            </li>
-            <li>
-              Click the <strong>Conversations</strong> tab to see the list of conversations your agent has had.
-            </li>
-            <li>
-              Find your conversation and click <strong>Debug</strong> on the right side of that row.
-            </li>
-            <li>
-              You will land on a <strong>node / tree diagram</strong> showing every step the agent took — each tool call, LLM reasoning step, and response. Click any node to see the full input and output for that step.
-            </li>
-          </ol>
 
+          <p><strong>Step 1.</strong> In the left navigation bar, scroll down to the <strong>AGENTOPS</strong> section and click <strong>Observability</strong>.</p>
           <figure>
-            <img src="assets/screenshots/07-real-wxo-agent-selected.png" alt="watsonx Orchestrate AgentOps Observability — agent selected" />
-            <figcaption>Figure 9. Left nav → AgentOps → Observability → select <strong>lab2308_risk_agent</strong> → Conversations tab → Debug.</figcaption>
+            <img src="assets/screenshots/trace-04-conversations.png" alt="Left nav with Observability highlighted under AGENTOPS" />
+            <figcaption>Figure 13. Left nav → <strong>AGENTOPS</strong> → <strong>Observability</strong>. The Analytics page opens showing agent activity.</figcaption>
+          </figure>
+
+          <p><strong>Step 2.</strong> On the Analytics page, find <strong>lab2308_risk_agent</strong> in the Agent Activity table on the right and click it.</p>
+          <figure>
+            <img src="assets/screenshots/trace-06-node-tree.png" alt="Observability analytics page with lab2308_risk_agent in the table" />
+            <figcaption>Figure 14. Click <strong>lab2308_risk_agent</strong> in the Agent Activity table to open its detail page.</figcaption>
+          </figure>
+
+          <p><strong>Step 3.</strong> Click the <strong>Conversations</strong> tab. You will see a list of every conversation. Find yours and click the <strong>Debug</strong> button on that row.</p>
+          <figure>
+            <img src="assets/screenshots/trace-05-debug-click.png" alt="Conversations tab with Debug button highlighted on a conversation row" />
+            <figcaption>Figure 15. <strong>Conversations</strong> tab → hover over a row → click <strong>Debug</strong>.</figcaption>
+          </figure>
+
+          <p><strong>Step 4.</strong> The debug view opens — an <strong>Agent flow</strong> node/tree diagram on the left and an <strong>Execution timeline</strong> on the right listing every step. Click any node or timeline entry to expand its full input and output.</p>
+          <figure>
+            <img src="assets/screenshots/trace-07-node-detail.png" alt="Debug view showing node tree and execution timeline with a node expanded" />
+            <figcaption>Figure 16. The debug view — node tree on the left, execution timeline on the right. Click any step to see the exact query sent to OpenPages and the raw response returned.</figcaption>
           </figure>
 
           <div class="note info">
-            <span class="note-title">What you'll see in the debug view.</span>
-            <p>Each node in the tree represents one step: tool calls to OpenPages (with the exact query sent and the raw JSON response), LLM reasoning steps (the model's Thought/Action loop), and the final formatted reply. This is live telemetry — every conversation you had in Module 3 is here.</p>
+            <span class="note-title">What to look for in the timeline.</span>
+            <p>Each step is labelled: <strong>Thinking</strong> (LLM reasoning), <strong>WatsonxChatModel.chat</strong> (model call), <strong>Action: openpages …</strong> (tool invoked), <strong>Tool: openpages …</strong> (result returned). The <strong>Input / Output</strong> tabs on the right show the exact data flowing in and out of each step.</p>
           </div>
 
           <h3 id="step-7-2">7.2 Anatomy of an MCP Execution Trace</h3>
