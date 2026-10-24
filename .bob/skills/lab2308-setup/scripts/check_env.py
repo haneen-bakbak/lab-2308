@@ -119,6 +119,18 @@ def _find_orchestrate(python_exe: "str | None") -> "tuple[str | None, str | None
         except Exception:
             pass
 
+        # Windows only: per-user pip install lands in %APPDATA%\Python\PythonXYZ\Scripts
+        if os.name == "nt":
+            try:
+                rc, user_scripts, _ = _run(
+                    python_exe, "-c",
+                    "import sysconfig; print(sysconfig.get_path('scripts', 'nt_user'))",
+                    timeout=5)
+                if rc == 0 and user_scripts:
+                    candidates.append(str(pathlib.Path(user_scripts) / "orchestrate.exe"))
+            except Exception:
+                pass
+
     for name in ("orchestrate", "orchestrate.exe"):
         found = shutil.which(name)
         if found:

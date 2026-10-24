@@ -25,6 +25,42 @@ import tempfile
 import textwrap
 from pathlib import Path
 
+# ─── Windows-only compatibility ───────────────────────────────────────────────
+# Everything below is gated on IS_WINDOWS. macOS / Linux behaviour is unchanged.
+IS_WINDOWS = os.name == "nt"
+
+# Explicit tool list. On Windows the CLI shell expands a bare "*" into filenames
+# from the current folder, so "--tools *" breaks there. macOS / Linux keep "*".
+OPENPAGES_TOOLS = (
+    "echo,list_resources,get_resource,execute_openpages_query,"
+    "openpages_delete_object,openpages_associate_objects,"
+    "openpages_dissociate_objects,openpages_upsert_object"
+)
+
+
+def tools_arg() -> str:
+    return OPENPAGES_TOOLS if IS_WINDOWS else "*"
+
+
+def confirm_kwargs() -> dict:
+    """Windows: auto-answer the CLI's interactive 'are you sure?' prompt. Others: no stdin."""
+    return {"input": "y\n"} if IS_WINDOWS else {}
+
+
+def setup_windows_utf8() -> None:
+    """Windows consoles default to a legacy codepage; force UTF-8 so ✓ → ✅ don't crash."""
+    os.environ["PYTHONUTF8"] = "1"
+    os.environ["PYTHONIOENCODING"] = "utf-8"
+    for stream in (sys.stdout, sys.stderr):
+        try:
+            stream.reconfigure(encoding="utf-8", errors="replace")
+        except (AttributeError, ValueError):
+            pass
+
+
+if IS_WINDOWS:
+    setup_windows_utf8()
+
 # ─── Colour helpers (disabled on Windows unless ANSICON/WT is present) ────────
 _USE_COLOUR = sys.stdout.isatty() and (os.name != "nt" or os.environ.get("WT_SESSION"))
 
@@ -136,6 +172,18 @@ def install_adk(python: str) -> str:
             candidates.append(str(Path(scripts_path) / name))
     except Exception:
         pass
+
+    # Windows only: when pip can't write to the main Python folder it installs to the
+    # per-user scheme, e.g. %APPDATA%\Python\Python314\Scripts (not <user-base>\Scripts).
+    if IS_WINDOWS:
+        try:
+            user_scripts = subprocess.check_output(
+                [python, "-c", "import sysconfig; print(sysconfig.get_path('scripts', 'nt_user'))"],
+                text=True, stderr=subprocess.DEVNULL, encoding="utf-8", errors="replace",
+            ).strip()
+            candidates.append(str(Path(user_scripts) / "orchestrate.exe"))
+        except Exception:
+            pass
 
     # PATH fallback
     for name in ("orchestrate", "orchestrate.exe"):
@@ -284,7 +332,7 @@ def main() -> None:
 
     env = {**os.environ, "WXO_APIKEY": wxo_apikey}
 
-    run([orchestrate_bin, "env", "remove", "--name", env_name], check=False, env=env)
+    run([orchestrate_bin, "env", "remove", "--name", env_name], check=False, env=env, **confirm_kwargs())
     run([orchestrate_bin, "env", "add", "--name", env_name, "--url", wxo_url, "--type", "ibm_iam"], env=env)
     run([orchestrate_bin, "env", "activate", env_name, "--api-key", wxo_apikey], env=env)
 
@@ -299,7 +347,7 @@ def main() -> None:
     lab_dir  = find_lab_dir()
     shim_dir = str(lab_dir / "mcp-proxy-shim")
 
-    run([orchestrate_bin, "toolkits", "remove", "--name", toolkit_name], check=False, env=env)
+    run([orchestrate_bin, "toolkits", "remove", "--name", toolkit_name], check=False, env=env, **confirm_kwargs())
     result = run([
         orchestrate_bin, "toolkits", "add",
         "--kind", "mcp",
@@ -307,7 +355,7 @@ def main() -> None:
         "--description", "IBM OpenPages GRC MCP server for LAB-2308 (TechXchange 2026). Reads and writes Risks, Controls, and Issues.",
         "--package-root", shim_dir,
         "--command", f"python shim.py {op_mcp_url}",
-        "--tools", "*",
+        "--tools", tools_arg(),
     ], check=False, env=env)
 
     if result.returncode != 0:
