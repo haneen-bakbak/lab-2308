@@ -34,7 +34,7 @@ Read the JSON output. Never skip this step.
 Greet the attendee warmly. In 2–3 sentences: they're building a real AI agent that queries
 IBM OpenPages risk data in plain English. No code, no terminal — just tell Bob what they need.
 
-Say you need **three things** from the instructor screen or their printed sheet, and you'll handle everything else.
+Say you need **three things** — the OpenPages MCP URL and the WxO Instance URL from the instructor screen or printed sheet, plus an IBM Cloud API key they create themselves in IBM Cloud (LAB_GUIDE step 0.5) — and you'll handle everything else.
 
 ---
 
@@ -43,7 +43,8 @@ Say you need **three things** from the instructor screen or their printed sheet,
 Ask **one at a time** using `ask_followup_question`. Never ask all at once.
 
 The instructor is displaying (or has printed) a credential sheet. It has two sections
-(PART 1 — WxO, PART 2 — OpenPages) and three starred ★ values that are all you need.
+(PART 1 — WxO, PART 2 — OpenPages). Two of the three values you need (★ WXO INSTANCE URL, ★ MCP SERVER URL) are on it;
+the third, the IBM Cloud API key, is created by the attendee in IBM Cloud (IAM → API keys) and is not pre-printed.
 Reference these exact labels in your questions so attendees can find them on the screen or printout instantly.
 
 ### Q1 — OpenPages MCP URL
@@ -81,16 +82,16 @@ Store as `WXO_URL`. Validate it starts with `https://api.` and contains `watson-
 ### Q3 — WxO API Key
 
 Ask:
-> "Finally, find the line labelled **★ SERVICE ID API KEY** — also in **PART 1**.
-> It's about 44 characters, a mix of letters, numbers, underscores, and hyphens.
-> Paste it here."
+> "Finally, I need your IBM Cloud API key — the one you create yourself under **Manage → Access (IAM) → API keys → Create**
+> (not the key made with the Service ID, and not the key on the watsonx Orchestrate instance page).
+> It's a mix of letters, numbers, underscores, and hyphens. Paste it here."
 
 Store as `WXO_APIKEY`. Show only `<first 8 chars>...` in any confirmation.
 
 If the attendee says they can't find it, tell them:
-> "In IBM Cloud, go to **Manage → Access (IAM) → Service IDs**, click your Service ID,
-> then the **API keys** tab → **Create** a new API key and copy it immediately.
-> Note: this is NOT the API key on the watsonx Orchestrate instance page — that is a different key."
+> "In IBM Cloud, click **Manage** (top bar) → **Access (IAM)** → **API keys** (its own separate page, not a tab under Service IDs),
+> then click **Create +**, name it, click **Create**, and copy the key immediately — it is only shown once.
+> Note: this is NOT the key created with the Service ID, and NOT the API key on the watsonx Orchestrate instance page."
 
 ### Confirmation
 

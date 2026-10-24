@@ -10,7 +10,7 @@ Usage:
     python bootstrap.py --wxo-apikey <key> --op-mcp-url <url>
 
 Environment variables (alternative to flags):
-    WXO_APIKEY   your IBM Cloud Service API key
+    WXO_APIKEY   your IBM Cloud API key (created in IBM Cloud → Manage → Access (IAM) → API keys)
     OP_MCP_URL   your OpenPages MCP Server URL (…/mcp)
     WXO_URL      your watsonx Orchestrate instance URL (auto-discovered if omitted)
 """

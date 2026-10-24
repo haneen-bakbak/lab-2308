@@ -26,16 +26,15 @@ step() { echo -e "\n${BOLD}[$1/5]${RESET} $2"; }
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
-# ─── Credentials — passed in by Bob as environment variables ─────────────────
-# Bob sets: WXO_URL, WXO_APIKEY, OP_MCP_URL
-# Fallback defaults (test/instructor environment) used when run directly.
-DEFAULT_WXO_URL="https://api.ca-tor.watson-orchestrate.cloud.ibm.com/instances/616b18d0-1d1b-414d-9064-10f973502afb"
-DEFAULT_WXO_APIKEY="oC99Z6EaFazlzAFh6siLM222TL9WZZkW2Zwux2bd67VE"
-DEFAULT_OP_MCP_URL="https://wxgov-govconsole-demo-2ho7021k.vsi.techzone.ibm.com/mcp"
-
-WXO_URL="${WXO_URL:-$DEFAULT_WXO_URL}"
-WXO_APIKEY="${WXO_APIKEY:-$DEFAULT_WXO_APIKEY}"
-OP_MCP_URL="${OP_MCP_URL:-$DEFAULT_OP_MCP_URL}"
+# ─── Credentials — YOUR OWN values, from YOUR TechZone reservation ───────────
+# Required environment variables (there are NO defaults on purpose):
+#   WXO_APIKEY  your IBM Cloud API key (IBM Cloud → Manage → Access (IAM) → API keys → Create)
+#   OP_MCP_URL  your OpenPages MCP Server URL (…/mcp)
+# Optional:
+#   WXO_URL     your watsonx Orchestrate instance URL (auto-discovered if omitted)
+: "${WXO_APIKEY:?Set WXO_APIKEY to the IBM Cloud API key you created under IAM > API keys}"
+: "${OP_MCP_URL:?Set OP_MCP_URL to the MCP Server URL from your own reservation (…/mcp)}"
+WXO_URL="${WXO_URL:-}"
 
 # Derive URLs from MCP URL
 OP_HOST="${OP_MCP_URL%/mcp}"
@@ -53,7 +52,6 @@ echo -e "${BOLD}  IBM TechXchange 2026 — LAB-2308 Bootstrap${RESET}"
 echo -e "${BOLD}  Build an Autonomous Risk & Compliance Agent${RESET}"
 echo -e "${BOLD}════════════════════════════════════════════════════════════${RESET}"
 echo ""
-echo "  WxO URL:      $WXO_URL"
 echo "  OP MCP URL:   $OP_MCP_URL"
 echo "  OP Base URL:  $OP_BASE_URL"
 echo ""
@@ -66,8 +64,6 @@ for candidate in \
     "$(which python3.13 2>/dev/null)" \
     "$(which python3.12 2>/dev/null)" \
     "$(which python3.11 2>/dev/null)" \
-    "$(which python3.10 2>/dev/null)" \
-    "$(which python3.9 2>/dev/null)" \
     "$(which python3 2>/dev/null)" \
     "/opt/homebrew/bin/python3" \
     "/usr/local/bin/python3" \
@@ -80,7 +76,7 @@ do
         ver=$("$candidate" -c "import sys; print(f'{sys.version_info.major}.{sys.version_info.minor}')" 2>/dev/null || true)
         major=$(echo "$ver" | cut -d. -f1)
         minor=$(echo "$ver" | cut -d. -f2)
-        if [[ "$major" -ge 3 && "$minor" -ge 9 ]]; then
+        if [[ "$major" -ge 3 && "$minor" -ge 11 ]]; then
             PYTHON="$candidate"
             break
         fi
@@ -88,7 +84,7 @@ do
 done
 
 if [[ -z "$PYTHON" ]]; then
-    fail "Python 3.9+ not found.\n  macOS:  brew install python@3.11\n  Linux:  sudo apt install python3.11  (or equivalent)"
+    fail "Python 3.11+ not found.\n  macOS:  brew install python@3.11\n  Linux:  sudo apt install python3.11  (or equivalent)"
 fi
 ok "Python $("$PYTHON" --version 2>&1 | awk '{print $2}') → $PYTHON"
 
@@ -117,63 +113,74 @@ if [[ -z "$ORCHESTRATE" ]]; then
 fi
 ok "ADK installed → $ORCHESTRATE"
 
-# ─── Step 3: Configure WxO environment ───────────────────────────────────────
+# ─── Step 3: Connect to YOUR watsonx Orchestrate instance ────────────────────
 step 3 "Configuring WxO environment ($ENV_NAME)..."
 
-"$ORCHESTRATE" env remove --name "$ENV_NAME" 2>/dev/null || true
-"$ORCHESTRATE" env add \
-    --name "$ENV_NAME" \
-    --url "$WXO_URL" \
-    --api-key "$WXO_APIKEY" 2>&1 | grep -v "^$" || true
-"$ORCHESTRATE" env activate "$ENV_NAME" 2>&1 | grep -v "^$" || true
+if [[ -z "$WXO_URL" ]]; then
+    WXO_URL=$(WXO_APIKEY="$WXO_APIKEY" "$PYTHON" - <<'PYEOF'
+import os, re, sys, requests
+key = os.environ["WXO_APIKEY"]
+r = requests.post("https://iam.cloud.ibm.com/identity/token",
+    data={"grant_type": "urn:ibm:params:oauth:grant-type:apikey", "apikey": key}, timeout=30)
+r.raise_for_status()
+tok = r.json()["access_token"]
+res = requests.get("https://resource-controller.cloud.ibm.com/v2/resource_instances",
+    params={"type": "service_instance"}, headers={"Authorization": f"Bearer {tok}"}, timeout=30).json()
+found = []
+for i in res.get("resources", []):
+    m = re.match(r"crn:v1:bluemix:public:watsonx-orchestrate:([^:]+):[^:]*:([^:]+)::", i.get("crn", ""))
+    if m:
+        found.append(f"https://api.{m.group(1)}.watson-orchestrate.cloud.ibm.com/instances/{m.group(2)}")
+print(found[0] if len(found) == 1 else "")
+PYEOF
+)
+fi
+[[ -n "$WXO_URL" ]] || fail "Could not find your watsonx Orchestrate instance. Re-run with WXO_URL=<your instance URL>."
+echo "  WxO URL:      $WXO_URL"
+
+"$ORCHESTRATE" env remove --name "$ENV_NAME" >/dev/null 2>&1 || true
+"$ORCHESTRATE" env add --name "$ENV_NAME" --url "$WXO_URL" --type ibm_iam 2>&1 | grep -v "^$" || true
+"$ORCHESTRATE" env activate "$ENV_NAME" --api-key "$WXO_APIKEY" 2>&1 | grep -v "^$" || true
+"$ORCHESTRATE" agents list >/dev/null 2>&1 || fail "Could not authenticate to watsonx Orchestrate with your API key."
 ok "Environment '$ENV_NAME' activated"
 
-# ─── Step 4: Set up shim + register MCP toolkit ──────────────────────────────
+# ─── Step 4: Register the OpenPages MCP toolkit ──────────────────────────────
 step 4 "Registering OpenPages MCP toolkit..."
 
-SHIM_VENV="$SHIM_DIR/venv"
-SHIM_PY="$SHIM_VENV/bin/python"
-
-if [[ ! -x "$SHIM_PY" ]]; then
-    echo "  Setting up SSL-bypass shim virtual environment..."
-    "$PYTHON" -m venv "$SHIM_VENV" --clear
-    "$SHIM_PY" -m pip install --upgrade pip --quiet
-    "$SHIM_PY" -m pip install -r "$SHIM_DIR/requirements.txt" --quiet
-fi
-
-# Patch the shim with this attendee's MCP URL (env var takes precedence at runtime)
-export OPENPAGES_MCP_URL="$OP_MCP_URL"
-
-# Remove any stale toolkit registration
-"$ORCHESTRATE" toolkits remove --name "$TOOLKIT_NAME" 2>/dev/null || true
-
-# Register via package-root (stdio shim) — WxO calls the shim, which forwards
-# over HTTPS to the TechZone endpoint with SSL verification disabled.
+# Your MCP URL is passed to the shim as an argument (the WxO cloud runner does not
+# forward local env vars, and the shim refuses to start without a URL).
+"$ORCHESTRATE" toolkits remove --name "$TOOLKIT_NAME" >/dev/null 2>&1 || true
 "$ORCHESTRATE" toolkits add \
     --kind mcp \
     --name "$TOOLKIT_NAME" \
     --description "IBM OpenPages GRC MCP server for LAB-2308 (TechXchange 2026). Reads and writes Risks, Controls, and Issues." \
     --package-root "$SHIM_DIR" \
-    --command "$SHIM_VENV/bin/python shim.py" \
-    --tools "*" 2>&1 | grep -v "^$" || warn "Toolkit add returned non-zero — may already be registered."
+    --command "python shim.py $OP_MCP_URL" \
+    --tools "*" 2>&1 | grep -v "^$" || fail "Toolkit registration failed."
 
-ok "Toolkit '$TOOLKIT_NAME' registered"
+ok "Toolkit '$TOOLKIT_NAME' registered → $OP_MCP_URL"
 
 # ─── Step 5: Patch + import agent ────────────────────────────────────────────
 step 5 "Importing risk agent..."
 
 TMP_AGENT="/tmp/lab2308_risk_agent_patched.yaml"
 
-# Replace the default test hostname with this attendee's OP host in the agent YAML
-DEFAULT_OP_HOST="https://wxgov-govconsole-demo-2ho7021k.vsi.techzone.ibm.com"
-
-sed "s|${DEFAULT_OP_HOST}/openpages|${OP_BASE_URL}|g" "$AGENT_FILE" > "$TMP_AGENT"
-sed -i.bak "s|${DEFAULT_OP_HOST}|${OP_HOST}|g" "$TMP_AGENT" 2>/dev/null || true
+# Replace the placeholder host in the agent YAML with YOUR OpenPages host
+OP_HOSTNAME="${OP_HOST#https://}"
+sed "s|wxgov-govconsole-demo-<reservation_id>.vsi.techzone.ibm.com|${OP_HOSTNAME}|g" "$AGENT_FILE" > "$TMP_AGENT"
+if grep -q "<reservation_id>" "$TMP_AGENT" || ! grep -q "$OP_HOSTNAME" "$TMP_AGENT"; then
+    fail "Could not patch the agent with your OpenPages host."
+fi
 
 "$ORCHESTRATE" agents import --file "$TMP_AGENT" 2>&1 | grep -v "^$" \
-    || warn "Agent import returned non-zero — may already exist."
+    || fail "Agent import failed."
 
-ok "Agent 'lab2308_risk_agent' imported"
+# Import only updates the DRAFT. Deploy to LIVE so attendees chat with the live agent
+# (live conversations keep their execution traces for Module 4).
+"$ORCHESTRATE" agents deploy --name lab2308_risk_agent 2>&1 | grep -v "^$" \
+    || fail "Agent deploy to live failed."
+
+ok "Agent 'lab2308_risk_agent' imported and deployed (live)"
 
 # ─── Done ─────────────────────────────────────────────────────────────────────
 echo ""
@@ -181,7 +188,7 @@ echo -e "${BOLD}═════════════════════�
 echo -e "${BOLD}  ✅  Setup complete!${RESET}"
 echo -e "${BOLD}════════════════════════════════════════════════════════════${RESET}"
 echo ""
-echo "  → Open WxO:  https://dl.watson-orchestrate.ibm.com"
+echo "  → Open WxO:  Launch watsonx Orchestrate from https://cloud.ibm.com/resources"
 echo "  → Agent:     lab2308_risk_agent"
 echo "  → OpenPages: $OP_BASE_URL"
 echo "  → Login:     (Ask your lab instructors for credentials)"

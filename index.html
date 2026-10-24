@@ -235,102 +235,47 @@
       <nav class="side-nav cds--col-lg-3" aria-label="Lab navigation">
         <h2>Lab Navigation</h2>
         <ul>
-          <li><a href="#section-1">1. Introduction &amp; Objectives</a></li>
-          <li><a href="#section-2">2. Architecture Overview</a></li>
-          <li><a href="#section-3">3. Environment Access &amp; Credentials</a></li>
-          <li><a class="sub" href="#step-3-1">3.1 Find Your Three Values</a></li>
-          <li><a class="sub" href="#step-3-2">3.2 Log In to IBM Cloud</a></li>
-          <li><a class="sub" href="#step-3-3">3.3 Open WxO Instance &amp; Copy URL</a></li>
-          <li><a class="sub" href="#step-3-4b">3.5 Get Your Service ID API Key</a></li>
-          <li><a class="sub" href="#step-3-5">3.6 Find Your MCP Server URL</a></li>
-          <li><a class="sub" href="#step-3-6">3.7 Log In to OpenPages</a></li>
-          <li><a href="#section-4">4. Module 1 — Setup with Bob</a></li>
-          <li><a class="sub" href="#step-4-0">4.0 Prerequisites</a></li>
-          <li><a class="sub" href="#step-4-1">4.1 Get the Lab Files</a></li>
-          <li><a class="sub" href="#step-4-2">4.2 Open in Bob &amp; Switch Mode</a></li>
-          <li><a class="sub" href="#step-4-3">4.3 Talk to Bob</a></li>
-          <li><a href="#section-5">5. Module 2 — Explore OpenPages GRC</a></li>
-          <li><a class="sub" href="#step-5-1">5.1 OpenPages Interface</a></li>
-          <li><a class="sub" href="#step-5-2">5.2 Risk Register &amp; Schemas</a></li>
-          <li><a href="#section-6">6. Module 3 — Chat with Risk Agent</a></li>
-          <li><a class="sub" href="#step-6-1">6.1 Open Agent Chat</a></li>
-          <li><a class="sub" href="#step-6-2">6.2 Guided Test Prompts</a></li>
-          <li><a class="sub" href="#step-6-3">6.3 Schema-First Execution</a></li>
-          <li><a href="#section-7">7. Module 4 — Telemetry &amp; Traces</a></li>
-          <li><a class="sub" href="#step-7-1">7.1 Trace &amp; Context Inspector</a></li>
-          <li><a class="sub" href="#step-7-2">7.2 Anatomy of an MCP Trace</a></li>
-          <li><a class="sub" href="#step-7-3">7.3 Experiment Prompts</a></li>
-          <li><a href="#section-8">8. Troubleshooting &amp; FAQs</a></li>
-          <li><a href="#section-9">9. Wrap-Up &amp; Key Takeaways</a></li>
-          <li><a href="#section-10">10. Reference &amp; MCP Specs</a></li>
+          <li><a href="#section-0">0. Prerequisites &amp; Credentials</a></li>
+          <li><a class="sub" href="#step-0-1">0.1 Find Your Three Values</a></li>
+          <li><a class="sub" href="#step-0-2">0.2 Log In to IBM Cloud</a></li>
+          <li><a class="sub" href="#step-0-3">0.3–0.4 Open WxO Instance &amp; Copy URL</a></li>
+          <li><a class="sub" href="#step-0-5">0.5 Create Your IBM Cloud API Key</a></li>
+          <li><a class="sub" href="#step-0-6">0.6 Find Your MCP Server URL</a></li>
+          <li><a class="sub" href="#step-0-7">0.7 Log In to OpenPages</a></li>
+          <li><a href="#section-1">1.0 Module 1 — Setup with Bob</a></li>
+          <li><a class="sub" href="#step-1-1">1.1 Python Prerequisite</a></li>
+          <li><a class="sub" href="#step-1-2">1.2 Get the Lab Files</a></li>
+          <li><a class="sub" href="#step-1-3">1.3 Open in Bob &amp; Switch Mode</a></li>
+          <li><a class="sub" href="#step-1-4">1.4 Talk to Bob</a></li>
+          <li><a href="#section-2">2.0 Module 2 — Explore OpenPages GRC</a></li>
+          <li><a class="sub" href="#step-2-1">2.1 Log In to OpenPages</a></li>
+          <li><a class="sub" href="#step-2-2">2.2 Find the Risk Records</a></li>
+          <li><a href="#section-3">3.0 Module 3 — Chat with Risk Agent</a></li>
+          <li><a class="sub" href="#step-3-1">3.1 Open Agent Chat</a></li>
+          <li><a class="sub" href="#step-3-2">3.2 Guided Test Prompts</a></li>
+          <li><a class="sub" href="#step-3-3">3.3 Schema-First Execution</a></li>
+          <li><a href="#section-4">4.0 Module 4 — Telemetry &amp; Traces</a></li>
+          <li><a class="sub" href="#step-4-1">4.1 Trace &amp; Context Inspector</a></li>
+          <li><a class="sub" href="#step-4-2">4.2 Anatomy of an MCP Trace</a></li>
+          <li><a class="sub" href="#step-4-3">4.3 Experiment Prompts</a></li>
+          <li><a href="#section-5">5. Troubleshooting &amp; FAQs</a></li>
+          <li><a href="#section-6">6. Wrap-Up &amp; Key Takeaways</a></li>
+          <li><a href="#section-7">7. Reference &amp; MCP Specs</a></li>
+          <li><a href="#section-a1">A.1 Appendix — Introduction &amp; Objectives</a></li>
+          <li><a href="#section-a2">A.2 Appendix — Architecture Overview</a></li>
         </ul>
       </nav>
 
       <!-- ================= MAIN CONTENT ================= -->
       <main class="cds--col-sm-4 cds--col-md-8 cds--col-lg-13">
 
-        <!-- ================= SECTION 1 ================= -->
-        <section id="section-1" class="step">
-          <div class="step-label"><cds-tag type="blue">Section 1</cds-tag></div>
-          <h2>Introduction &amp; Lab Objectives</h2>
-          <p>GRC (Governance, Risk, and Compliance) teams spend countless hours reading siloed dashboards, chasing risk owners, and manually reconciling spreadsheets. What if an autonomous AI agent could answer questions about your organization's risk posture — in plain English — by communicating directly with your live GRC platform?</p>
-          <p>In this lab, you will interact with an <strong>autonomous AI risk agent</strong> powered by <strong>IBM watsonx Orchestrate</strong> that connects to <strong>IBM OpenPages (watsonx.governance)</strong> through the <strong>Model Context Protocol (MCP)</strong>.</p>
-          
-          <div class="note info">
-            <span class="note-title">Zero Boilerplate · Zero Terminal Hassle</span>
-            <p>You do not need to write complex integration code or debug manual APIs. IBM Bob handles the scaffolding behind the scenes, allowing you to focus on testing agentic reasoning, schema introspection, and compliance validation.</p>
-          </div>
-
-          <h3>Key Terms &amp; Concepts</h3>
-          <div class="table-wrap">
-            <table class="cds-table">
-              <thead><tr><th>Component</th><th>Description &amp; Role in this Lab</th></tr></thead>
-              <tbody>
-                <tr><td><strong>IBM OpenPages</strong></td><td>IBM's comprehensive GRC platform for managing operational risk, controls (<code>SOXControl</code>), risks (<code>SOXRisk</code>), and compliance frameworks.</td></tr>
-                <tr><td><strong>watsonx Orchestrate (WxO)</strong></td><td>Agentic AI platform that reasons over natural language prompts, dynamically selects tools, and executes multi-step workflows.</td></tr>
-                <tr><td><strong>Model Context Protocol (MCP)</strong></td><td>The open standard protocol bridging LLMs to external tools and data sources with dynamic schema discovery and bi-directional object manipulation.</td></tr>
-                <tr><td><strong>IBM Bob</strong></td><td>Your AI pair programmer that wires up the WxO instance, registers the OpenPages MCP toolkit, and imports the agent configuration.</td></tr>
-              </tbody>
-            </table>
-          </div>
-
-          <h3>What You Will Accomplish</h3>
-          <ol class="plain">
-            <li><strong>Understand MCP in Enterprise GRC:</strong> Discover how open protocols unlock real-time tool calling without fragile custom integrations.</li>
-            <li><strong>Witness Schema-First Agent Execution:</strong> Observe why the agent never hallucinates field names by reading OpenPages object schemas at runtime.</li>
-            <li><strong>Execute Real Risk Workflows:</strong> Identify compliance gaps, unassessed controls, and log new risk associations through natural language prompts.</li>
-            <li><strong>Inspect Live Execution Telemetry:</strong> Examine the real-time execution spans, SQL-style queries, and LLM reasoning steps.</li>
-          </ol>
-        </section>
-
-        <!-- ================= SECTION 2 ================= -->
-        <section id="section-2" class="step">
-          <div class="step-label"><cds-tag type="blue">Section 2</cds-tag></div>
-          <h2>Architecture Overview</h2>
-          <p>The diagram below illustrates the end-to-end data flow: from user prompts in the watsonx Orchestrate interface, through the LLM reasoning loop and MCP server, to the live OpenPages GRC repository.</p>
-          
-          <figure>
-            <img src="assets/diagrams/architecture-overview.svg" alt="Lab 2308 Architecture Flow" />
-            <figcaption>Figure 1. End-to-End Architecture: watsonx Orchestrate, MCP Tooling, and OpenPages GRC platform.</figcaption>
-          </figure>
-
-          <h4>Interactive Request Lifecycle</h4>
-          <ol class="plain">
-            <li><strong>User Prompt:</strong> The user submits an operational question (e.g., <em>"Which risk category has unassessed controls?"</em>).</li>
-            <li><strong>Schema Introspection:</strong> The agent calls <code>openpages_get_resource</code> to inspect the live schema definition (e.g. <code>openpages://schema/SOXControl</code>).</li>
-            <li><strong>Verified Query Generation:</strong> The agent crafts an exact SQL query matching the introspected field names (<code>OPSS-Ctl:Status</code>).</li>
-            <li><strong>Data Execution:</strong> The OpenPages MCP server executes the query against OpenPages REST endpoints and returns structured JSON rows.</li>
-            <li><strong>Synthesized Response:</strong> The agent formats a clean, clickable Markdown response with live links back to the OpenPages task view.</li>
-          </ol>
-        </section>
-
-        <!-- ================= SECTION 3 ================= -->
-        <section id="section-3" class="step">
-          <div class="step-label"><cds-tag type="blue">Section 3</cds-tag></div>
-          <h2>Your Lab Environments &amp; Credentials Walkthrough</h2>
+                <!-- ================= SECTION 0 — PREREQUISITES ================= -->
+        <section id="section-0" class="step">
+          <div class="step-label"><cds-tag type="blue">Prerequisites</cds-tag></div>
+          <h2>0 Prerequisites — Key Information You Need for This Lab</h2>
           <p>Your instructor will display credentials on the projected screen — or hand you a printed sheet. <strong>Bob needs three values</strong>, marked with ★ below. Everything else is for logging in to the browser UIs.</p>
 
-          <h3 id="step-3-1">3.1 Find Your Three Values on the Instructor Screen / Printout</h3>
+          <h3 id="step-0-1">0.1 Find Your Three Values on the Instructor Screen / Printout</h3>
           <p>Look for the ★ starred lines — those are the only three things you'll paste into Bob:</p>
           <pre class="block">============================================================
   IBM TechXchange 2026 — LAB-2308  ·  YOUR ENVIRONMENT INFO
@@ -347,8 +292,8 @@ App ID Password   &lt;your password&gt;
 ★ WXO INSTANCE URL                            ← give this to Bob (Question 2)
   https://api.us-south.watson-orchestrate.cloud.ibm.com/instances/XXXX
 
-★ SERVICE ID API KEY                          ← give this to Bob (Question 3)
-  AbCdEfGhIjKlMnOpQrStUvWxYz0123456789AbCd_-x
+★ IBM CLOUD API KEY (NOT on the sheet — you create it, step 0.5)  ← give this to Bob (Question 3)
+  AbCdEfGhIjKlMnOpQrStUvWxYz0123456789AbCd_-x   (example of what it looks like)
 
 ── PART 2 — OpenPages / watsonx.governance (WxGov) ─────────
 
@@ -362,10 +307,10 @@ OpenPages Login   ask your instructor for credentials</pre>
 
           <div class="note info">
             <span class="note-title">The three ★ starred values are all Bob needs.</span>
-            <p>You do <strong>not</strong> need to edit any files, run any commands, or touch any YAML. Bob handles everything once you give him those three values.</p>
+            <p>You do <strong>not</strong> need to edit any files, run any commands, or touch any YAML. Bob handles everything once you give him those three values. The first two come from the instructor sheet; the API key you create yourself in step 0.5.</p>
           </div>
 
-          <h3 id="step-3-2">3.2 Log In to IBM Cloud</h3>
+          <h3 id="step-0-2">0.2 Log In to IBM Cloud</h3>
           <p>Open a <strong>Private / Incognito</strong> browser window. Find the <strong>App ID Login URL</strong> on the instructor screen or printed sheet (under PART 1) and paste it into your browser. Enter the <strong>App ID Username</strong> and <strong>App ID Password</strong> from the same section, then click <strong>Sign in</strong>.</p>
 
           <figure>
@@ -373,7 +318,7 @@ OpenPages Login   ask your instructor for credentials</pre>
             <figcaption>Figure 2. IBM Cloud App ID authentication gateway for your assigned student account.</figcaption>
           </figure>
 
-          <h3 id="step-3-3">3.3 Open Your WxO Instance &amp; Copy the URL</h3>
+          <h3 id="step-0-3">0.3–0.4 Open Your WxO Instance &amp; Copy the URL</h3>
           <p>Go to <a href="https://cloud.ibm.com/resources" target="_blank" rel="noopener">cloud.ibm.com/resources</a> → <strong>AI / Machine Learning</strong> → click your <strong>watsonx Orchestrate</strong> instance.</p>
           <p>You will land on the page shown below. <strong>Copy the URL from the Credentials section</strong> — this is your WxO Instance URL that Bob needs:</p>
 
@@ -395,26 +340,33 @@ OpenPages Login   ask your instructor for credentials</pre>
 
           <div class="note warning" style="margin-top:1rem;">
             <span class="note-title">⚠️ Do NOT use the API key shown on this page.</span>
-            <p>The API key in the Credentials section here is <strong>not</strong> what Bob needs. Bob needs a <strong>Service ID API key</strong> created separately in IAM — see step 3.5 below.</p>
+            <p>The API key in the Credentials section here is <strong>not</strong> what Bob needs. Bob needs an <strong>IBM Cloud API key</strong> that you create yourself under IAM → API keys — see step 0.5 below.</p>
           </div>
 
-          <h3 id="step-3-4b">3.5 Get Your Service ID API Key for Bob</h3>
-          <p>This is <strong>not</strong> the API key on the WxO instance page. You need to create one from a Service ID in IAM:</p>
+          <h3 id="step-0-5">0.5 Create Your IBM Cloud API Key for Bob</h3>
+          <p>This is <strong>not</strong> the key created when you create the Service ID, and <strong>not</strong> the API key on the WxO instance page. The right one is created under <strong>IAM → API keys</strong>, which is <strong>its own separate page</strong>:</p>
           <ol class="plain">
-            <li>Go to <strong>Manage → Access (IAM) → Service IDs</strong> in IBM Cloud.</li>
-            <li>Click your Service ID (or create one if needed).</li>
-            <li>Click the <strong>API keys</strong> tab → <strong>Create</strong> → copy the key value immediately (it is only shown once).</li>
+            <li>In IBM Cloud, click <strong>Manage</strong> in the top navigation bar, then <strong>Access (IAM)</strong>.</li>
+            <li>In the left-hand menu, click <strong>API keys</strong>.</li>
           </ol>
-          <p>This is your <strong>★ SERVICE ID API KEY</strong>. Save it — Bob will ask for this.</p>
+          <img src="assets/screenshots/api1-manage-annotated.png" alt="IBM Cloud IAM API keys page with the Manage menu highlighted" style="max-width:100%;">
+          <ol class="plain" start="3">
+            <li>Click <strong>Create +</strong>, enter a name (for example <code>Lab 2308 API Key</code>), keep the defaults, and click <strong>Create</strong>.</li>
+          </ol>
+          <img src="assets/screenshots/api2.png" alt="Create IBM Cloud API key dialog" style="max-width:100%;">
+          <ol class="plain" start="4">
+            <li>Copy the key value immediately (it is only shown once).</li>
+          </ol>
+          <p>This is your <strong>★ IBM CLOUD API KEY</strong>. Save it — Bob will ask for this.</p>
 
-          <h3 id="step-3-5">3.6 Find Your MCP Server URL for Bob</h3>
+          <h3 id="step-0-6">0.6 Find Your MCP Server URL for Bob</h3>
           <p>On the instructor screen or printed sheet, find the line labelled <strong>★ MCP SERVER URL</strong> (under PART 2). Copy the full URL including <code>https://</code>.</p>
           <div class="note warning">
             <span class="note-title">Can't read it / not on screen?</span>
             <p>Take the <strong>watsonx.Gov Application URL</strong> from PART 2 and change <code>/openpages</code> at the end to <code>/mcp</code>. That's your MCP Server URL.</p>
           </div>
 
-          <h3 id="step-3-6">3.7 Log In to OpenPages (for Module 2)</h3>
+          <h3 id="step-0-7">0.7 Log In to OpenPages (for Module 2)</h3>
           <p>Find the <strong>watsonx.Gov Application URL</strong> on the instructor screen or printed sheet (under PART 2) and open it in your browser. You'll see a TLS warning (TechZone uses a self-signed certificate) — click <strong>Advanced → Proceed to wxgov-govconsole… (unsafe)</strong>. Log in with the credentials your instructor provides.</p>
 
           <figure>
@@ -423,13 +375,13 @@ OpenPages Login   ask your instructor for credentials</pre>
           </figure>
         </section>
 
-        <!-- ================= SECTION 4 ================= -->
-        <section id="section-4" class="step">
+        <!-- ================= MODULE 1 ================= -->
+        <section id="section-1" class="step">
           <div class="step-label"><cds-tag type="purple">Module 1</cds-tag></div>
-          <h2>Module 1 — Start Here: Talk to Bob</h2>
+          <h2>1.0 Module 1 — Start Here: Talk to Bob</h2>
           <p>You will set up everything through a short conversation with Bob. No terminal, no YAML editing, no scripting.</p>
 
-          <h3 id="step-4-0">4.0 Prerequisites</h3>
+          <h3 id="step-1-1">1.1 Python Prerequisite</h3>
           <p>Before opening Bob, make sure <strong>Python 3.11 or newer</strong> is installed on your machine:</p>
           <div class="table-wrap">
             <table class="cds-table">
@@ -442,7 +394,7 @@ OpenPages Login   ask your instructor for credentials</pre>
             </table>
           </div>
 
-          <h3 id="step-4-1">4.1 Get the Lab Files</h3>
+          <h3 id="step-1-2">1.2 Get the Lab Files</h3>
           <p>Download the lab folder to your machine — no git required.</p>
 
           <div style="margin: 1.25rem 0 1rem;">
@@ -470,7 +422,7 @@ OpenPages Login   ask your instructor for credentials</pre>
             Either way works — you get the same files.</p>
           </div>
 
-          <h3 id="step-4-2">4.2 Open the Folder in Bob</h3>
+          <h3 id="step-1-3">1.3 Open the Folder in Bob</h3>
           <ol class="plain">
             <li>
               <strong>Launch IBM Bob.</strong><br>
@@ -494,7 +446,7 @@ OpenPages Login   ask your instructor for credentials</pre>
             <p>The folder may not have opened correctly. Confirm you opened the <code>lab-2308-main</code> folder itself (not a parent folder or a subfolder inside it). Close it and reopen, then check the mode selector again.</p>
           </div>
 
-          <h3 id="step-4-3">4.3 Talk to Bob</h3>
+          <h3 id="step-1-4">1.4 Talk to Bob</h3>
           <p>In the chat, type:</p>
           <div class="prompt">
             <button class="copy-btn" onclick="navigator.clipboard.writeText('Hi Bob! I\'m in Lab 2308 at TechXchange. Can you set me up?')">Copy</button>
@@ -502,19 +454,19 @@ OpenPages Login   ask your instructor for credentials</pre>
             <p>"Hi Bob! I'm in Lab 2308 at TechXchange. Can you set me up?"</p>
           </div>
 
-          <p>Bob will ask for three things — one at a time. Have the instructor screen or printed sheet visible:</p>
+          <p>Bob will ask for three things — one at a time. Have the instructor screen or printed sheet visible — and the API key you created in step 0.5:</p>
           <div class="table-wrap">
             <table class="cds-table">
               <thead><tr><th>Bob's question</th><th>Where to find it</th><th>Looks like</th></tr></thead>
               <tbody>
                 <tr><td>1. MCP Server URL</td><td>Instructor screen / printout → PART 2 → <strong>★ MCP SERVER URL</strong></td><td><code>https://wxgov-govconsole-demo-XXXX.vsi.techzone.ibm.com/mcp</code></td></tr>
                 <tr><td>2. WxO Instance URL</td><td>Instructor screen / printout → PART 1 → <strong>★ WXO INSTANCE URL</strong><br><span style="color:#57606a;font-size:0.88rem;">Or: cloud.ibm.com/resources → WxO instance → Instance URL</span></td><td><code>https://api.us-south.watson-orchestrate.cloud.ibm.com/instances/XXXX</code></td></tr>
-                <tr><td>3. API key</td><td>Instructor screen / printout → PART 1 → <strong>★ SERVICE ID API KEY</strong></td><td><code>AbCdEfGh…</code> (~44 chars)</td></tr>
+                <tr><td>3. API key</td><td>The key <strong>you created</strong> in <a href="#step-0-5">step 0.5</a>: IBM Cloud → Manage → Access (IAM) → API keys → Create<br><span style="color:#57606a;font-size:0.88rem;">Not the key created with the Service ID, and not the key on the WxO instance page.</span></td><td><code>AbCdEfGh…</code> (~44 chars)</td></tr>
               </tbody>
             </table>
           </div>
 
-          <p>After you confirm both values, Bob runs setup silently (~2–3 minutes). You'll see friendly progress messages. When Bob says <strong>"🎉 You're all set!"</strong>, your agent is live — proceed to Module 2.</p>
+          <p>After you confirm all three values, Bob runs setup silently (~2–3 minutes). You'll see friendly progress messages. When Bob says <strong>"🎉 You're all set!"</strong>, your agent is live — proceed to Module 2.</p>
 
           <div class="note success">
             <span class="note-title">Something went wrong?</span>
@@ -522,35 +474,40 @@ OpenPages Login   ask your instructor for credentials</pre>
           </div>
         </section>
 
-        <!-- ================= SECTION 5 ================= -->
-        <section id="section-5" class="step">
+        <!-- ================= MODULE 2 ================= -->
+        <section id="section-2" class="step">
           <div class="step-label"><cds-tag type="purple">Module 2</cds-tag></div>
-          <h2>Module 2 — Explore OpenPages GRC</h2>
+          <h2>2.0 Module 2 — Explore OpenPages GRC</h2>
           <p>Before chatting with the agent, spend a couple minutes exploring the source system it will be querying.</p>
 
-          <h3 id="step-5-1">5.1 Log In to OpenPages</h3>
+          <h3 id="step-2-1">2.1 Log In to OpenPages</h3>
           <p>Open your OpenPages Application URL in your browser and log in with the credentials provided by your instructor.</p>
 
-          <h3 id="step-5-2">5.2 Navigate the Risk Register</h3>
+          <h3 id="step-2-2">2.2 Find the Risk Records</h3>
           <figure>
-            <img src="assets/screenshots/real-openpages-nav-menu.png" alt="OpenPages Main Navigation Menu" />
-            <figcaption>Figure 7. OpenPages main navigation menu showing Risk and Control registers.</figcaption>
+            <img src="assets/screenshots/openpages-nav-search-annotated.png" alt="OpenPages navigation menu with the Search object type box highlighted" />
+            <figcaption>Figure 7. OpenPages navigation menu — type <strong>Risk</strong> into the highlighted search box.</figcaption>
           </figure>
           <ol class="plain">
             <li>Click the top-left <strong>Navigation Menu</strong> (hamburger icon).</li>
-            <li>Locate the Risk register under <strong>Assessments</strong>.</li>
+            <li>In the <strong>Search object type</strong> box at the top of the menu, type <strong>Risk</strong> and click the <strong>Risk</strong> entry. There is no tab called "Risk register" — the object type is simply called <strong>Risk</strong>.</li>
             <li>Notice the <strong>Resource ID</strong> format (e.g. <code>I01-RSK-01-01</code> or numeric <code>21011</code>).</li>
             <li>Observe how fields use strict schema prefixes (<code>OPSS-Rsk:Status</code>, <code>OPSS-Rsk:RiskLevel</code>). Your agent queries these schemas directly.</li>
           </ol>
         </section>
 
-        <!-- ================= SECTION 6 ================= -->
-        <section id="section-6" class="step">
+        <!-- ================= MODULE 3 ================= -->
+        <section id="section-3" class="step">
           <div class="step-label"><cds-tag type="purple">Module 3</cds-tag></div>
-          <h2>Module 3 — Chat With Your Risk Agent</h2>
+          <h2>3.0 Module 3 — Chat With Your Risk Agent</h2>
           <p>Now test your live agent inside watsonx Orchestrate. Follow every step below exactly — the agent dropdown is easy to miss.</p>
 
-          <h3 id="step-6-1">6.1 Open the Chat and Select Your Agent</h3>
+          <h3 id="step-3-1">3.1 Open the Chat and Select Your Agent</h3>
+
+          <div class="note info">
+            <span class="note-title">🔗 Back to watsonx Orchestrate</span>
+            <p>Open your IBM Cloud <a href="https://cloud.ibm.com/resources" target="_blank" rel="noopener">Resource List</a> → <strong>AI / Machine Learning</strong> → your <strong>watsonx Orchestrate</strong> instance → <strong>Launch watsonx Orchestrate</strong> (same path as step 0.3). Tip: keep watsonx Orchestrate open in its own browser tab so you can switch back to it easily from OpenPages.</p>
+          </div>
 
           <p><strong>Step 1.</strong> In the left navigation bar, click <strong>Chat</strong> (the speech bubble icon near the top).</p>
           <figure>
@@ -571,7 +528,7 @@ OpenPages Login   ask your instructor for credentials</pre>
 
           <p><strong>Step 3.</strong> Confirm <strong>lab2308_risk_agent</strong> appears in the Agents header at the top of the chat panel, then type your prompt in the input box at the bottom and press Enter.</p>
 
-          <h3 id="step-6-2">6.2 Guided Test Prompts: The Compliance Scenario</h3>
+          <h3 id="step-3-2">3.2 Guided Test Prompts: The Compliance Scenario</h3>
           <p>You are a risk analyst at a financial institution. Every control in this environment is sitting at <strong>"Awaiting Assessment"</strong>. Your job is to find the gap, log the risk, and link the control.</p>
 
           <h4>Prompt 1 — Find the Compliance Gap</h4>
@@ -580,7 +537,7 @@ OpenPages Login   ask your instructor for credentials</pre>
             <p class="prompt-label">Prompt 1</p>
             <p>"Which of our risk categories have controls that are still awaiting assessment?"</p>
           </div>
-          <p><strong>Expected behavior:</strong> The agent calls <code>openpages_get_resource</code> to inspect the <code>SOXControl</code> schema, executes a query for controls with status <code>Awaiting Assessment</code>, groups them by <code>OPSS-Shared-Basel:Risk Category</code>, and highlights <strong>External Fraud</strong> as the most exposed category.</p>
+          <p><strong>Expected behavior:</strong> The agent calls <code>openpages_get_resource</code> to inspect the <code>SOXControl</code> schema, executes a query for controls with status <code>Awaiting Assessment</code>, groups them by <code>OPSS-Shared-Basel:Risk Category</code>, and highlights the most exposed category. <em>The category depends on the data in your OpenPages environment — seeing <strong>Internal Fraud</strong>, <strong>External Fraud</strong> or another category is expected and fine.</em></p>
 
           <h4>Prompt 2 — Explain the Gap</h4>
           <div class="prompt">
@@ -596,6 +553,7 @@ OpenPages Login   ask your instructor for credentials</pre>
             <p class="prompt-label">Prompt 3</p>
             <p>"Log a new risk in OpenPages: Name it 'Inadequate Fraud Detection Controls', set the category to External Fraud, and note that controls are unassessed."</p>
           </div>
+          <p><em>If your agent named a different category in Prompt 2, you can swap it (and a matching risk name) into the prompt above.</em></p>
           <p><strong>Expected behavior:</strong> The agent finds a parent process (e.g. Retail Banking), calls <code>openpages_upsert_object</code> with <code>object_type: "soxrisk"</code>, and returns the newly assigned numeric Resource ID with a direct clickable link into OpenPages.</p>
 
           <h4>Prompt 4 — Associate the Control to the New Risk</h4>
@@ -606,7 +564,7 @@ OpenPages Login   ask your instructor for credentials</pre>
           </div>
           <p><strong>Expected behavior:</strong> The agent resolves the control ID, invokes <code>openpages_associate_objects</code>, and confirms the bidirectional relationship.</p>
 
-          <h3 id="step-6-3">6.3 What the Agent Is Doing (Schema-First Pattern)</h3>
+          <h3 id="step-3-3">3.3 What the Agent Is Doing (Schema-First Pattern)</h3>
           <p>Every response follows this robust execution sequence:</p>
           <pre class="block">User Prompt
     │
@@ -626,13 +584,13 @@ OpenPages Login   ask your instructor for credentials</pre>
 5. Synthesize and format Markdown response</pre>
         </section>
 
-        <!-- ================= SECTION 7 ================= -->
-        <section id="section-7" class="step">
+        <!-- ================= MODULE 4 ================= -->
+        <section id="section-4" class="step">
           <div class="step-label"><cds-tag type="purple">Module 4</cds-tag></div>
-          <h2>Module 4 — Inspect Live Telemetry &amp; Execution Traces</h2>
+          <h2>4.0 Module 4 — Inspect Live Telemetry &amp; Execution Traces</h2>
           <p>Every prompt you sent in Module 3 is recorded as a full execution trace — every tool call, every reasoning step, every response. Here's how to find and read them.</p>
 
-          <h3 id="step-7-1">7.1 Navigate to AgentOps Observability</h3>
+          <h3 id="step-4-1">4.1 Navigate to AgentOps Observability</h3>
 
           <p><strong>Step 1.</strong> In the left navigation bar, scroll down to the <strong>AGENTOPS</strong> section and click <strong>Observability</strong>.</p>
           <figure>
@@ -663,7 +621,7 @@ OpenPages Login   ask your instructor for credentials</pre>
             <p>Each step is labelled: <strong>Thinking</strong> (LLM reasoning), <strong>WatsonxChatModel.chat</strong> (model call), <strong>Action: openpages …</strong> (tool invoked), <strong>Tool: openpages …</strong> (result returned). The <strong>Input / Output</strong> tabs on the right show the exact data flowing in and out of each step.</p>
           </div>
 
-          <h3 id="step-7-2">7.2 Anatomy of an MCP Execution Trace</h3>
+          <h3 id="step-4-2">4.2 Anatomy of an MCP Execution Trace</h3>
           <div class="table-wrap">
             <table class="cds-table">
               <thead><tr><th>Span Type</th><th>Component</th><th>What It Reveals in the Trace</th></tr></thead>
@@ -676,7 +634,11 @@ OpenPages Login   ask your instructor for credentials</pre>
             </table>
           </div>
 
-          <h3 id="step-7-3">7.3 Try Your Own Prompts &amp; Watch the Traces</h3>
+          <h3 id="step-4-3">4.3 Try Your Own Prompts &amp; Watch the Traces</h3>
+          <div class="note warning">
+            <span class="note-title">⚠️ Go back to the Chat first.</span>
+            <p>You are currently in AgentOps Observability, which only <em>shows</em> past conversations — you can't type prompts there. To add the queries below, return to the <strong>Chat</strong> page: click <strong>Chat</strong> in the left navigation bar, make sure <strong>lab2308_risk_agent</strong> is selected, and type each prompt in the chat box. Then come back to <strong>Observability → Conversations → Debug</strong> to inspect the new trace.</p>
+          </div>
           <p>Try sending these additional queries to observe the trace inspector in real time:</p>
           <div class="prompt">
             <button class="copy-btn" onclick="navigator.clipboard.writeText('How many risks are currently in an Open status?')">Copy Prompt</button>
@@ -695,9 +657,9 @@ OpenPages Login   ask your instructor for credentials</pre>
           </div>
         </section>
 
-        <!-- ================= SECTION 8 ================= -->
-        <section id="section-8" class="step">
-          <div class="step-label"><cds-tag type="blue">Section 8</cds-tag></div>
+        <!-- ================= SECTION 5 ================= -->
+        <section id="section-5" class="step">
+          <div class="step-label"><cds-tag type="blue">Section 5</cds-tag></div>
           <h2>Troubleshooting &amp; FAQs</h2>
           <p>If something behaves unexpectedly during the lab, simply ask Bob for help. Bob can inspect and repair connections automatically:</p>
 
@@ -714,9 +676,9 @@ OpenPages Login   ask your instructor for credentials</pre>
           </div>
         </section>
 
-        <!-- ================= SECTION 9 ================= -->
-        <section id="section-9" class="step">
-          <div class="step-label"><cds-tag type="blue">Section 9</cds-tag></div>
+        <!-- ================= SECTION 6 ================= -->
+        <section id="section-6" class="step">
+          <div class="step-label"><cds-tag type="blue">Section 6</cds-tag></div>
           <h2>Wrap-Up &amp; Key Takeaways</h2>
           <div class="note success">
             <span class="note-title">What You Have Accomplished Today</span>
@@ -727,9 +689,9 @@ OpenPages Login   ask your instructor for credentials</pre>
           </div>
         </section>
 
-        <!-- ================= SECTION 10 ================= -->
-        <section id="section-10" class="step">
-          <div class="step-label"><cds-tag type="blue">Section 10</cds-tag></div>
+        <!-- ================= SECTION 7 ================= -->
+        <section id="section-7" class="step">
+          <div class="step-label"><cds-tag type="blue">Section 7</cds-tag></div>
           <h2>Reference &amp; MCP Tool Specifications</h2>
           <div class="table-wrap">
             <table class="cds-table">
@@ -745,6 +707,63 @@ OpenPages Login   ask your instructor for credentials</pre>
               </tbody>
             </table>
           </div>
+        </section>
+
+      
+
+<!-- ================= APPENDIX A.1 ================= -->
+        <section id="section-a1" class="step">
+          <div class="step-label"><cds-tag type="blue">Appendix A.1</cds-tag></div>
+          <h2>A.1 Introduction &amp; Lab Objectives</h2>
+          <p>GRC (Governance, Risk, and Compliance) teams spend countless hours reading siloed dashboards, chasing risk owners, and manually reconciling spreadsheets. What if an autonomous AI agent could answer questions about your organization's risk posture — in plain English — by communicating directly with your live GRC platform?</p>
+          <p>In this lab, you will interact with an <strong>autonomous AI risk agent</strong> powered by <strong>IBM watsonx Orchestrate</strong> that connects to <strong>IBM OpenPages (watsonx.governance)</strong> through the <strong>Model Context Protocol (MCP)</strong>.</p>
+          
+          <div class="note info">
+            <span class="note-title">Zero Boilerplate · Zero Terminal Hassle</span>
+            <p>You do not need to write complex integration code or debug manual APIs. IBM Bob handles the scaffolding behind the scenes, allowing you to focus on testing agentic reasoning, schema introspection, and compliance validation.</p>
+          </div>
+
+          <h3>Key Terms &amp; Concepts</h3>
+          <div class="table-wrap">
+            <table class="cds-table">
+              <thead><tr><th>Component</th><th>Description &amp; Role in this Lab</th></tr></thead>
+              <tbody>
+                <tr><td><strong>IBM OpenPages</strong></td><td>IBM's comprehensive GRC platform for managing operational risk, controls (<code>SOXControl</code>), risks (<code>SOXRisk</code>), and compliance frameworks.</td></tr>
+                <tr><td><strong>watsonx Orchestrate (WxO)</strong></td><td>Agentic AI platform that reasons over natural language prompts, dynamically selects tools, and executes multi-step workflows.</td></tr>
+                <tr><td><strong>Model Context Protocol (MCP)</strong></td><td>The open standard protocol bridging LLMs to external tools and data sources with dynamic schema discovery and bi-directional object manipulation.</td></tr>
+                <tr><td><strong>IBM Bob</strong></td><td>Your AI pair programmer that wires up the WxO instance, registers the OpenPages MCP toolkit, and imports the agent configuration.</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h3>What You Will Accomplish</h3>
+          <ol class="plain">
+            <li><strong>Understand MCP in Enterprise GRC:</strong> Discover how open protocols unlock real-time tool calling without fragile custom integrations.</li>
+            <li><strong>Witness Schema-First Agent Execution:</strong> Observe why the agent never hallucinates field names by reading OpenPages object schemas at runtime.</li>
+            <li><strong>Execute Real Risk Workflows:</strong> Identify compliance gaps, unassessed controls, and log new risk associations through natural language prompts.</li>
+            <li><strong>Inspect Live Execution Telemetry:</strong> Examine the real-time execution spans, SQL-style queries, and LLM reasoning steps.</li>
+          </ol>
+        </section>
+
+        <!-- ================= APPENDIX A.2 ================= -->
+        <section id="section-a2" class="step">
+          <div class="step-label"><cds-tag type="blue">Appendix A.2</cds-tag></div>
+          <h2>A.2 Architecture Overview</h2>
+          <p>The diagram below illustrates the end-to-end data flow: from user prompts in the watsonx Orchestrate interface, through the LLM reasoning loop and MCP server, to the live OpenPages GRC repository.</p>
+          
+          <figure>
+            <img src="assets/diagrams/architecture-overview.svg" alt="Lab 2308 Architecture Flow" />
+            <figcaption>Figure 1. End-to-End Architecture: watsonx Orchestrate, MCP Tooling, and OpenPages GRC platform.</figcaption>
+          </figure>
+
+          <h4>Interactive Request Lifecycle</h4>
+          <ol class="plain">
+            <li><strong>User Prompt:</strong> The user submits an operational question (e.g., <em>"Which risk category has unassessed controls?"</em>).</li>
+            <li><strong>Schema Introspection:</strong> The agent calls <code>openpages_get_resource</code> to inspect the live schema definition (e.g. <code>openpages://schema/SOXControl</code>).</li>
+            <li><strong>Verified Query Generation:</strong> The agent crafts an exact SQL query matching the introspected field names (<code>OPSS-Ctl:Status</code>).</li>
+            <li><strong>Data Execution:</strong> The OpenPages MCP server executes the query against OpenPages REST endpoints and returns structured JSON rows.</li>
+            <li><strong>Synthesized Response:</strong> The agent formats a clean, clickable Markdown response with live links back to the OpenPages task view.</li>
+          </ol>
         </section>
 
       </main>

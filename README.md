@@ -12,7 +12,7 @@
   - Windows: [python.org/downloads](https://www.python.org/downloads/) — check **Add to PATH**
   - macOS: `brew install python@3.11`
   - Linux: `sudo apt install python3.11`
-- Your **TechZone reservation** open and ready (you'll need two values from it)
+- Your **instructor sheet / TechZone reservation** open and ready, plus an **IBM Cloud API key** you create yourself (IBM Cloud → Manage → Access (IAM) → API keys → Create). See the **Prerequisites** section of [`LAB_GUIDE.md`](./LAB_GUIDE.md) for the exact steps.
 
 ---
 
@@ -40,7 +40,7 @@ Then type:
 Hi Bob! I'm in Lab 2308 at TechXchange. Can you set me up?
 ```
 
-Bob will ask for your TechZone OpenPages MCP URL and API key (one at a time),
+Bob will ask for your OpenPages MCP URL, your watsonx Orchestrate instance URL and your IBM Cloud API key (one at a time),
 then handle everything else — no terminal, no YAML editing, no scripts.
 
 When Bob says **"🎉 You're all set!"**, go to:
