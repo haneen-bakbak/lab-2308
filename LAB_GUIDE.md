@@ -14,7 +14,7 @@
 | 0.1 | Find Your Three Values — Instructor Screen or Printout |
 | 0.2 | Step 1: Log In to IBM Cloud via TechZone App ID |
 | 0.3 | Step 2: Access Your Resources & Launch watsonx Orchestrate |
-| 0.4 | Step 3: Find Your WxO Instance URL for Bob |
+| 0.4 | Step 3: Copy Your WxO Instance URL from IBM Cloud |
 | 0.5 | Step 4: Create Your IBM Cloud API Key for Bob |
 | 0.6 | Step 5: Find Your MCP Server URL for Bob |
 | 0.7 | Step 6: Log In to OpenPages (for Module 2) |
@@ -50,10 +50,10 @@ This lab bridges two cloud environments:
 
 ---
 
-### 0.1 Find Your Three Values — Instructor Screen or Printout
+### 0.1 Find Your Three Values — Instructor Sheet and IBM Cloud
 
 Your instructor will display credentials on the projected screen, or hand you a printed sheet.
-**Bob needs three values**, marked with ★ below. Everything else is for logging in to the browser UIs.
+**Bob needs three values**, marked with ★ below. Only one of them is on the sheet: the other two you copy or create yourself in IBM Cloud (steps 0.4 and 0.5).
 
 ```
 ============================================================
@@ -61,7 +61,7 @@ Your instructor will display credentials on the projected screen, or hand you a 
   YOUR ENVIRONMENT INFO
 ============================================================
 
-── PART 1 — watsonx Orchestrate (WxO) ──────────────────────
+── PART 1 — IBM Cloud / watsonx Orchestrate (WxO) ──────────
 
 App ID Login URL
   https://cloud.ibm.com/authorize/<tenant_id>/<slug>       ← use this to log in to IBM Cloud
@@ -72,10 +72,12 @@ App ID Username
 App ID Password
   <your password>
 
-★ WXO INSTANCE URL                                         ← GIVE THIS TO BOB (Question 2)
-  https://api.us-south.watson-orchestrate.cloud.ibm.com/instances/XXXX
+(NOT on the sheet — you copy these from IBM Cloud yourself)
 
-★ IBM CLOUD API KEY  (NOT on the sheet — you create it in step 0.5)  ← GIVE THIS TO BOB (Question 3)
+★ WXO INSTANCE URL  (copy it in step 0.4)                  ← GIVE THIS TO BOB (Question 2)
+  https://api.ca-tor.watson-orchestrate.cloud.ibm.com/instances/XXXX   (example of what it looks like)
+
+★ IBM CLOUD API KEY  (create it in step 0.5)               ← GIVE THIS TO BOB (Question 3)
   AbCdEfGhIjKlMnOpQrStUvWxYz0123456789AbCd_-x   (example of what it looks like)
 
 ── PART 2 — OpenPages / watsonx.governance (WxGov) ─────────
@@ -91,7 +93,7 @@ OpenPages Login
   Password: passw0rd
 ```
 
-> 💡 **The three ★ starred values are all Bob needs.** Two come from the instructor sheet (★ WXO INSTANCE URL, ★ MCP SERVER URL). The third, the **IBM Cloud API key**, is *not* on the sheet — you create it yourself in step 0.5. Have all three ready before you start Module 1.
+> 💡 **The three ★ starred values are all Bob needs.** Only the **★ MCP SERVER URL** is on the instructor sheet. The **★ WXO INSTANCE URL** you copy from IBM Cloud (step 0.4) and the **★ IBM CLOUD API KEY** you create in IBM Cloud (step 0.5). Have all three ready before you start Module 1.
 
 ---
 
@@ -127,18 +129,25 @@ OpenPages Login
 
 ---
 
-### 0.4 Step 3: Find Your WxO Instance URL for Bob
+### 0.4 Step 3: Copy Your WxO Instance URL from IBM Cloud
 
-When Bob sets up your agent in Module 1, his **second question** will be your WxO Instance URL.
+When Bob sets up your agent in Module 1, his **second question** will be your WxO Instance URL. **It is not on the instructor sheet — you copy it from IBM Cloud.** You are already on the right page from step 0.3.
 
-1. On the instructor screen or printed sheet, find the line labelled **★ WXO INSTANCE URL** under *PART 1*:
+1. In IBM Cloud, open your **watsonx Orchestrate** service instance (Resource List → **AI / Machine Learning** → your instance).
+
+2. In the **Credentials** box, find the field labelled **URL** (not "API key"):
+
+![Credentials box on the watsonx Orchestrate instance page — copy the URL field](assets/screenshots/real-cloud-wxo-instance-detail.png)
+
+3. Click the **copy icon** to the right of the **URL** field. Use the copy icon rather than selecting the text — the field is too narrow to show the whole URL, so the visible text is cut off.
+
+4. Keep it ready to paste when Bob asks. It starts with `https://api.` and ends with `/instances/` followed by a long ID, for example:
    ```text
-   https://api.us-south.watson-orchestrate.cloud.ibm.com/instances/XXXX
+   https://api.ca-tor.watson-orchestrate.cloud.ibm.com/instances/XXXX
    ```
+   Your region (`ca-tor` here) may differ — paste exactly what IBM Cloud gives you.
 
-2. Copy the full URL including `https://`.
-
-> **Can't find it on screen?** Go to [cloud.ibm.com/resources](https://cloud.ibm.com/resources) → **AI / Machine Learning** → click your **watsonx Orchestrate** instance → copy the **Instance URL** field.
+> ⚠️ **Don't copy the "API key" field from this same box.** That is a different key and is not what Bob needs — you create the right one in step 0.5.
 
 ---
 
@@ -231,7 +240,7 @@ Bob will greet you and ask for three things — one at a time (all three are cov
    This is your OpenPages Application URL with `/openpages` replaced by `/mcp` (e.g. `https://wxgov-govconsole-demo-<reservation_id>.vsi.techzone.ibm.com/mcp`).
 
 2. **Your watsonx Orchestrate Instance URL** (step 0.4)
-   The **★ WXO INSTANCE URL** from the instructor sheet.
+   The **URL** field you copied from the Credentials box on your watsonx Orchestrate instance page in IBM Cloud.
 
 3. **Your IBM Cloud API key** (step 0.5)
    The key you create under **Manage → Access (IAM) → API keys → Create** — not the key created with the Service ID.

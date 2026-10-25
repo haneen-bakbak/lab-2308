@@ -84,8 +84,8 @@ def parse_args() -> argparse.Namespace:
     p.add_argument("--wxo-apikey", default=os.environ.get("WXO_APIKEY", ""))
     p.add_argument("--op-mcp-url", default=os.environ.get("OP_MCP_URL", ""))
     p.add_argument("--wxo-url",    default=os.environ.get("WXO_URL", ""),
-                   help="Your watsonx Orchestrate instance URL "
-                        "(cloud.ibm.com/resources → WxO instance → Instance URL)")
+                   help="Your watsonx Orchestrate URL "
+                        "(cloud.ibm.com/resources → WxO instance → Credentials → URL)")
     return p.parse_args()
 
 
@@ -285,7 +285,7 @@ def main() -> None:
         fail(
             "WXO_URL is required. Pass --wxo-url or set the WXO_URL environment variable.\n"
             "  Find it in IBM Cloud: cloud.ibm.com/resources → AI / Machine Learning\n"
-            "  → your watsonx Orchestrate instance → Instance URL"
+            "  → your watsonx Orchestrate instance → Credentials box → URL (copy icon)"
         )
 
     wxo_apikey  = args.wxo_apikey
