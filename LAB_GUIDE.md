@@ -20,7 +20,10 @@
 | 0.7 | Step 6: Log In to OpenPages (for Module 2) |
 | **1.0** | **Module 1 — Start Here: Talk to Bob** |
 | 1.1 | Open IBM Bob |
-| 1.2 | Bob Sets Everything Up |
+| 1.2 | Sign In with Your IBM ID |
+| 1.3 | Select the Lab Team |
+| 1.4 | Check Your Python Version |
+| 1.5 | Bob Sets Everything Up |
 | **2.0** | **Module 2 — Explore OpenPages** |
 | 2.1 | Log In to OpenPages |
 | 2.2 | Find the Risk Records |
@@ -224,9 +227,44 @@ This is where the magic happens. You will have a short conversation with Bob, sh
 
 ### 1.1 Open IBM Bob
 
-Open IBM Bob in your browser. Bob should already be running — your lab instructor will confirm the URL.
+IBM Bob is an application installed on your lab machine (it does not run in a browser).
 
-### 1.2 Bob Sets Everything Up
+**Option A — Desktop icon:** double-click the **IBM Bob** icon on your desktop.
+
+**Option B — No icon on the desktop (Windows):**
+1. Click the **Start** button (Windows logo, bottom-left of the screen) or press the **Windows key**.
+2. Type **Bob** — or click **All apps** and scroll to **IBM Bob**.
+3. Click **IBM Bob** to launch it.
+
+When Bob opens, choose **File → Open Folder** and open the `lab-2308` folder (your instructor will confirm where it is).
+
+### 1.2 Sign In with Your IBM ID
+
+After Bob launches, click **Sign in** and log in with your **IBM ID** (the same email you used to register for TechXchange).
+
+### 1.3 Select the Lab Team
+
+Bob must be using the lab team before it can run the lab setup.
+
+1. Click the **gear icon** in the top-right corner of the Bob panel to open **Bob Settings**.
+2. In the left menu, select **General**.
+3. Next to **Team**, open the dropdown and select the lab team: **`IBM-TechXchange-2026 (region: us-east)`**. *(Your instructor will confirm if the team is named differently, for example `Lab-2308`.)*
+4. Confirm the **checkmark** is next to the lab team.
+
+![Bob Settings → General → Team dropdown](assets/screenshots/bob-settings-team.png)
+
+> ⚠️ The screenshot shows `IBM Internal` checked — that is the default. Change it to the lab team before continuing.
+
+### 1.4 Check Your Python Version
+
+Bob needs Python. **Bob checks this for you automatically** and installs it if it's missing, but it's worth confirming yourself:
+
+- **Windows:** open the **Start** menu, search **Command Prompt**, and run `python --version`. If that fails, try `py --version`.
+- **Mac:** open **Terminal** (**Cmd + Space**, type *Terminal*, press Enter) and run `python3 --version`.
+
+You should see **Python 3.14.3**. Any Python from **3.11 to 3.14** also works. If Python is missing, just continue — Bob will install it for you in the next step (about 2 minutes).
+
+### 1.5 Bob Sets Everything Up
 
 Type this to start:
 
@@ -511,6 +549,7 @@ Bob will diagnose and fix it quietly.
 | My traces are empty / missing | "Bob, please deploy my agent to live." Then open the **Live** agent and ask again. |
 | Auth error / 401 | "Bob, I'm getting an authentication error. Can you refresh the connection?" |
 | No risks returned | "Bob, the agent returned an empty list. My OpenPages URL is `<paste URL>`." |
+| I don't see the lab team in the Team list | Sign out of Bob and sign in again with your IBM ID. If it's still missing, ask an instructor. |
 
 ---
 

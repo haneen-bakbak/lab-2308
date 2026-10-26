@@ -7,11 +7,8 @@
 
 ## Prerequisites
 
-- **IBM Bob** installed ([bob.ibm.com](https://bob.ibm.com))
-- **Python 3.11 or newer** on your machine  
-  - Windows: [python.org/downloads](https://www.python.org/downloads/) — check **Add to PATH**
-  - macOS: `brew install python@3.11`
-  - Linux: `sudo apt install python3.11`
+- **IBM Bob** installed (desktop app — on Windows, use the desktop icon or Start → search "Bob"). Sign in with your IBM ID, then in **Bob Settings (gear icon) → General → Team**, select the lab team (`IBM-TechXchange-2026`).
+- **Python 3.11 – 3.14** (3.14.3 recommended) — Bob checks this and installs it automatically if it's missing
 - Your **instructor sheet / TechZone reservation** open and ready, plus an **IBM Cloud API key** you create yourself (IBM Cloud → Manage → Access (IAM) → API keys → Create). See the **Prerequisites** section of [`LAB_GUIDE.md`](./LAB_GUIDE.md) for the exact steps.
 
 ---

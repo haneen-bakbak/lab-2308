@@ -9,6 +9,12 @@ These rules ensure setup works correctly on Windows (Python 3.14), macOS, and Li
 - **No POSIX-only paths**: no `/tmp/`, `/opt/homebrew/`, `/usr/local/bin/`
 - **No shell scripts**: `.sh` files cannot be run on Windows without WSL
 
+## Single Exception: Installing Python (SKILL.md Phase 0)
+
+Python cannot be used to install itself. **Only** when Python is missing, Phase 0 of the
+`lab2308-setup` skill may run native commands (`winget`, PowerShell, `curl`, `osascript`, `installer`).
+Run them exactly as written in Phase 0, once, with a timeout. Everything else still goes through Python.
+
 ## Always Use These Instead
 
 - **Python for everything**: all subprocess calls go through `bootstrap.py` or scripts in

@@ -243,10 +243,13 @@
           <li><a class="sub" href="#step-0-6">0.6 Find Your MCP Server URL</a></li>
           <li><a class="sub" href="#step-0-7">0.7 Log In to OpenPages</a></li>
           <li><a href="#section-1">1.0 Module 1 — Setup with Bob</a></li>
-          <li><a class="sub" href="#step-1-1">1.1 Python Prerequisite</a></li>
-          <li><a class="sub" href="#step-1-2">1.2 Get the Lab Files</a></li>
-          <li><a class="sub" href="#step-1-3">1.3 Open in Bob &amp; Switch Mode</a></li>
-          <li><a class="sub" href="#step-1-4">1.4 Talk to Bob</a></li>
+          <li><a class="sub" href="#step-1-1">1.1 Open IBM Bob</a></li>
+          <li><a class="sub" href="#step-1-2">1.2 Sign In with Your IBM ID</a></li>
+          <li><a class="sub" href="#step-1-3">1.3 Select the Lab Team</a></li>
+          <li><a class="sub" href="#step-1-4">1.4 Check Your Python Version</a></li>
+          <li><a class="sub" href="#step-1-5">1.5 Get the Lab Files</a></li>
+          <li><a class="sub" href="#step-1-6">1.6 Open in Bob &amp; Switch Mode</a></li>
+          <li><a class="sub" href="#step-1-7">1.7 Talk to Bob</a></li>
           <li><a href="#section-2">2.0 Module 2 — Explore OpenPages GRC</a></li>
           <li><a class="sub" href="#step-2-1">2.1 Log In to OpenPages</a></li>
           <li><a class="sub" href="#step-2-2">2.2 Find the Risk Records</a></li>
@@ -383,20 +386,47 @@ OpenPages Login   ask your instructor for credentials</pre>
           <h2>1.0 Module 1 — Start Here: Talk to Bob</h2>
           <p>You will set up everything through a short conversation with Bob. No terminal, no YAML editing, no scripting.</p>
 
-          <h3 id="step-1-1">1.1 Python Prerequisite</h3>
-          <p>Before opening Bob, make sure <strong>Python 3.11 or newer</strong> is installed on your machine:</p>
+          <h3 id="step-1-1">1.1 Open IBM Bob</h3>
+          <p>IBM Bob is an application installed on your lab machine (it does not run in a browser).</p>
+          <p><strong>Option A — Desktop icon:</strong> double-click the <strong>IBM Bob</strong> icon on your desktop.</p>
+          <p><strong>Option B — No icon on the desktop (Windows):</strong></p>
+          <ol class="plain">
+            <li>Click the <strong>Start</strong> button (Windows logo, bottom-left of the screen) or press the <strong>Windows key</strong>.</li>
+            <li>Type <strong>Bob</strong> — or click <strong>All apps</strong> and scroll to <strong>IBM Bob</strong>.</li>
+            <li>Click <strong>IBM Bob</strong> to launch it.</li>
+          </ol>
+
+          <h3 id="step-1-2">1.2 Sign In with Your IBM ID</h3>
+          <p>After Bob launches, click <strong>Sign in</strong> and log in with your <strong>IBM ID</strong> (the same email you used to register for TechXchange).</p>
+
+          <h3 id="step-1-3">1.3 Select the Lab Team</h3>
+          <p>Bob must be using the lab team before it can run the lab setup.</p>
+          <ol class="plain">
+            <li>Click the <strong>gear icon</strong> in the top-right corner of the Bob panel to open <strong>Bob Settings</strong>.</li>
+            <li>In the left menu, select <strong>General</strong>.</li>
+            <li>Next to <strong>Team</strong>, open the dropdown and select the lab team: <strong><code>IBM-TechXchange-2026 (region: us-east)</code></strong>. <em>(Your instructor will confirm if the team is named differently, for example <code>Lab-2308</code>.)</em></li>
+            <li>Confirm the <strong>checkmark</strong> is next to the lab team.</li>
+          </ol>
+          <img src="assets/screenshots/bob-settings-team.png" alt="Bob Settings, General tab, Team dropdown" style="max-width:100%;">
+          <div class="note warning">
+            <span class="note-title">Change the team before continuing</span>
+            <p>The screenshot shows <code>IBM Internal</code> checked — that is the default. Change it to the lab team. If you don't see the lab team in the list, sign out of Bob and sign in again; if it's still missing, ask an instructor.</p>
+          </div>
+
+          <h3 id="step-1-4">1.4 Check Your Python Version</h3>
+          <p>Bob needs Python. <strong>Bob checks this for you automatically</strong> and installs it if it's missing, but it's worth confirming yourself:</p>
           <div class="table-wrap">
             <table class="cds-table">
-              <thead><tr><th>Platform</th><th>Check</th><th>Install if needed</th></tr></thead>
+              <thead><tr><th>Platform</th><th>Check</th></tr></thead>
               <tbody>
-                <tr><td><strong>Windows</strong></td><td>Open PowerShell → <code>python --version</code></td><td><a href="https://www.python.org/downloads/" target="_blank" rel="noopener">python.org/downloads</a> — check <strong>Add Python to PATH</strong> during install, then restart PowerShell</td></tr>
-                <tr><td><strong>macOS</strong></td><td>Open Terminal → <code>python3 --version</code></td><td><code>brew install python@3.14</code></td></tr>
-                <tr><td><strong>Linux</strong></td><td>Open Terminal → <code>python3 --version</code></td><td><code>sudo apt install python3.14</code></td></tr>
+                <tr><td><strong>Windows</strong></td><td>Open the <strong>Start</strong> menu, search <strong>Command Prompt</strong>, run <code>python --version</code>. If that fails, try <code>py --version</code>.</td></tr>
+                <tr><td><strong>macOS</strong></td><td>Open <strong>Terminal</strong> (<strong>Cmd + Space</strong>, type <em>Terminal</em>, press Enter) and run <code>python3 --version</code>.</td></tr>
               </tbody>
             </table>
           </div>
+          <p>You should see <strong>Python 3.14.3</strong>. Any Python from <strong>3.11 to 3.14</strong> also works. If Python is missing, just continue — Bob will install it for you in the next step (about 2 minutes).</p>
 
-          <h3 id="step-1-2">1.2 Get the Lab Files</h3>
+          <h3 id="step-1-5">1.5 Get the Lab Files</h3>
           <p>Download the lab folder to your machine — no git required.</p>
 
           <div style="margin: 1.25rem 0 1rem;">
@@ -424,12 +454,8 @@ OpenPages Login   ask your instructor for credentials</pre>
             Either way works — you get the same files.</p>
           </div>
 
-          <h3 id="step-1-3">1.3 Open the Folder in Bob</h3>
+          <h3 id="step-1-6">1.6 Open the Folder in Bob</h3>
           <ol class="plain">
-            <li>
-              <strong>Launch IBM Bob.</strong><br>
-              Bob opens in your browser at <code>https://bob.ibm.com</code> — sign in with your IBM id if prompted.
-            </li>
             <li>
               <strong>Open the lab folder.</strong><br>
               In the top-left of the Bob sidebar, click the <strong>folder icon</strong> (or go to <em>File → Open Folder</em>).<br>
@@ -448,7 +474,7 @@ OpenPages Login   ask your instructor for credentials</pre>
             <p>The folder may not have opened correctly. Confirm you opened the <code>lab-2308-main</code> folder itself (not a parent folder or a subfolder inside it). Close it and reopen, then check the mode selector again.</p>
           </div>
 
-          <h3 id="step-1-4">1.4 Talk to Bob</h3>
+          <h3 id="step-1-7">1.7 Talk to Bob</h3>
           <p>In the chat, type:</p>
           <div class="prompt">
             <button class="copy-btn" onclick="navigator.clipboard.writeText('Hi Bob! I\'m in Lab 2308 at TechXchange. Can you set me up?')">Copy</button>

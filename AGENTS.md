@@ -15,7 +15,7 @@ OpenPages risk agent on watsonx Orchestrate — conversationally, with no termin
 
 ## Rules that always apply
 
-- **Never use Bash.** All subprocess calls use Python (`bootstrap.py` or scripts in `.bob/skills/lab2308-setup/scripts/`).
+- **Never use Bash.** All subprocess calls use Python (`bootstrap.py` or scripts in `.bob/skills/lab2308-setup/scripts/`). *One exception:* the Python install in `SKILL.md` Phase 0, which runs only when Python is missing.
 - **Never show raw command output** to the attendee.
 - **Always probe** with `check_env.py` before reporting status.
 - **Platform**: Windows (Python 3.14), macOS, Linux must all work identically.

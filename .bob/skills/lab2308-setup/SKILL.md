@@ -29,6 +29,35 @@ Read the JSON output. Never skip this step.
 
 ---
 
+## Phase 0 — Python Check (only acts when Python is missing)
+
+Read `ENV_STATE`. **If `python=` shows a path and version (3.11–3.14), skip this phase entirely — say nothing, run nothing.**
+
+Run the install below only when `python=NOT_FOUND`, or `ENV_STATE` is missing and `python3 --version` / `py --version` also fail (on a Mac without `python`, the session hook cannot run, so a missing `ENV_STATE` is not by itself proof that Python is missing). Do **not** ask the attendee which OS they use — take it from your own environment info (`darwin` = Mac, `win32` = Windows).
+
+Rules: **one install attempt, one verification, no retry loops.** Always set a `timeout_seconds` on the command. Tell the attendee, in plain words: *"I need to install Python first — this takes about 2 minutes."* Never show command output.
+
+**Windows** (per-user, no admin needed) — run in this order, stop at the first success:
+1. `winget install -e --id Python.Python.3.14 --scope user --silent --accept-package-agreements --accept-source-agreements` (timeout 240s)
+2. Only if `winget` is not recognised:
+   `powershell -NoProfile -Command "$f=Join-Path $env:TEMP 'py3143.exe'; Invoke-WebRequest https://www.python.org/ftp/python/3.14.3/python-3.14.3-amd64.exe -OutFile $f; Start-Process $f -ArgumentList '/quiet','InstallAllUsers=0','PrependPath=1' -Wait; Remove-Item $f"` (timeout 240s; use the `-arm64.exe` file on ARM machines)
+
+Verify with the full path (a fresh install is not on this session's PATH yet — do **not** ask the attendee to restart Bob):
+`%LOCALAPPDATA%\Programs\Python\Python314\python.exe --version` (in PowerShell write `$env:LOCALAPPDATA\Programs\Python\Python314\python.exe`). Any 3.14.x is fine — winget installs the latest 3.14 release.
+
+**macOS** — run in this order:
+1. `curl -fsSL -o /tmp/py3143.pkg https://www.python.org/ftp/python/3.14.3/python-3.14.3-macos11.pkg` (timeout 120s)
+2. `osascript -e 'do shell script "installer -pkg /tmp/py3143.pkg -target /" with administrator privileges'` — this shows the normal macOS password dialog; tell the attendee to enter their Mac login password there. Never use `sudo` (you cannot type a password into it).
+3. `rm -f /tmp/py3143.pkg`
+
+Verify with the full path: `/Library/Frameworks/Python.framework/Versions/3.14/bin/python3 --version`
+
+**After a successful verify:** use that full-path interpreter in place of `python` for every later command in this skill (e.g. `<full-path-python> bootstrap.py ...`). `bootstrap.py` picks up the interpreter it is run with, so nothing else needs changing.
+
+**If anything fails** (no internet, blocked, password dialog cancelled, verify fails): do not retry and do not show errors. Say: *"I couldn't install Python on this machine — please flag an instructor and they'll sort it out in a minute."*
+
+---
+
 ## Phase 1 — Welcome
 
 Greet the attendee warmly. In 2–3 sentences: they're building a real AI agent that queries
@@ -173,7 +202,7 @@ Diagnose silently. Surface only one user action if genuinely needed.
 | Agent asks for op_username | Re-import agent: `patch_agent.py` → `orchestrate agents import` → `agents deploy` |
 | URLs show opapp:10108 | "Ask the agent to reformat those links" |
 | No risks returned | Confirm OpenPages URL ends `/openpages`, re-run step F |
-| Python not found (Windows) | https://www.python.org/downloads/ — check "Add to PATH" during install |
+| Python not found | Follow Phase 0 (install Python 3.14.3 per-user; verify by full path) |
 | orchestrate not on PATH (Windows) | Open new PowerShell: `python -m pip install ibm-watsonx-orchestrate` |
 
 For agent patching specifically, use the script directly:
