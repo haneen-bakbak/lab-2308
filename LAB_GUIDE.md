@@ -248,7 +248,7 @@ Bob must be using the lab team before it can run the lab setup.
 
 1. Click the **gear icon** in the top-right corner of the Bob panel to open **Bob Settings**.
 2. In the left menu, select **General**.
-3. Next to **Team**, open the dropdown and select the lab team: **`IBM-TechXchange-2026 (region: us-east)`**. *(Your instructor will confirm if the team is named differently, for example `Lab-2308`.)*
+3. Next to **Team**, open the dropdown and select the lab team. Its name will be similar to **`IBM-TechXchange-2026 (region: us-east)`** or **`Lab-2308`** — your instructor will confirm the exact name. Do **not** pick `IBM Internal` or `TECHZONE-BobathonV2`.
 4. Confirm the **checkmark** is next to the lab team.
 
 ![Bob Settings → General → Team dropdown](assets/screenshots/bob-settings-team.png)
