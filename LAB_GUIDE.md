@@ -143,7 +143,7 @@ You must already have an **IBM ID** before anything else. You will use it to sig
 1. Open this link: **https://ibm.biz/lab2308-env**
 2. If asked for a password, enter:
    ```text
-   techxLAB-2308-c16
+   techxLAB-2308-c167
    ```
 3. Download the Excel file that matches **your student number**. The file is named:
    ```text
