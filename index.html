@@ -622,10 +622,18 @@ OpenPages Password:  passw0rd</pre>
             <li>Click the top-left <strong>Navigation Menu</strong> (hamburger icon).</li>
             <li>In the <strong>Search object type</strong> box at the top of the menu, type <strong>Risk</strong> and click the <strong>Risk</strong> entry. There is no tab called "Risk register" — the object type is simply called <strong>Risk</strong>.</li>
             <li>Notice the <strong>Resource ID</strong> format (e.g. <code>I01-RSK-01-01</code> or numeric <code>21011</code>).</li>
-            <li>Look at the <strong>Risks</strong> list. Each row shows the risk <strong>Name</strong> (for example <code>I01-RSK-01-01</code>), <strong>Description</strong>, <strong>Domain</strong>, <strong>Status</strong> and <strong>Residual Risk Rating</strong>. The count at the top (for example <em>Risks (378)</em>) may differ in your environment. Notice how many risks show the status <strong>Awaiting Assessment</strong> &mdash; this is the kind of gap your agent will find in Module 3.</li>
-            <li>Click a risk name to open it. On the <strong>Task</strong> tab, find the <strong>General</strong> section (<strong>Name</strong>, <strong>Owner</strong>, <strong>Status</strong>, <strong>Description</strong>, <strong>Domain</strong>) and the <strong>Risk Assessment</strong> section (<strong>Inherent</strong> and <strong>Residual</strong> Impact, Likelihood and Risk Rating).</li>
+            <li>Look at the <strong>Risks</strong> list. Each row shows the risk <strong>Name</strong> (for example <code>I01-RSK-01-01</code>), <strong>Description</strong>, <strong>Domain</strong>, <strong>Status</strong> and <strong>Residual Risk Rating</strong>. The count at the top (for example <em>Risks (378)</em>) may differ in your environment (Figure 7). Notice how many risks show the status <strong>Awaiting Assessment</strong> &mdash; this is the kind of gap your agent will find in Module 3.</li>
+            <li>Click a risk name to open it. On the <strong>Task</strong> tab, find the <strong>General</strong> section (<strong>Name</strong>, <strong>Owner</strong>, <strong>Status</strong>, <strong>Description</strong>, <strong>Domain</strong>) and the <strong>Risk Assessment</strong> section (<strong>Inherent</strong> and <strong>Residual</strong> Impact, Likelihood and Risk Rating) (Figure 8).</li>
             <li>These are the labels you see on screen. Behind them, OpenPages stores each one under an internal field name (for example, <strong>Status</strong> is <code>OPSS-Rsk:Status</code>). You never type these names: your agent reads them from the OpenPages schema at runtime, so it uses the exact field names instead of guessing.</li>
           </ol>
+          <figure>
+            <img src="assets/screenshots/openpages-risks-list.png" alt="OpenPages Risks list showing Name, AI Risk Category, Description, Domain, Status and Residual Risk Rating columns" />
+            <figcaption>Figure 7. The <strong>Risks</strong> list. Many rows show the status <strong>Awaiting Assessment</strong>. The total (here 378) may differ in your environment.</figcaption>
+          </figure>
+          <figure>
+            <img src="assets/screenshots/openpages-risk-record.png" alt="OpenPages risk record I01-RSK-01-01 showing the General and Risk Assessment sections on the Task tab" />
+            <figcaption>Figure 8. A single risk record on the <strong>Task</strong> tab: the <strong>General</strong> section (Name, Owner, Status, Description, Domain) and the <strong>Risk Assessment</strong> section.</figcaption>
+          </figure>
         </section>
 
         <!-- ================= MODULE 3 ================= -->
@@ -644,13 +652,13 @@ OpenPages Password:  passw0rd</pre>
           <p><strong>Step 1.</strong> In the left navigation bar, click <strong>Chat</strong> (the speech bubble icon near the top).</p>
           <figure>
             <img src="assets/screenshots/trace-02-chat-tab.png" alt="Chat tab selected in left nav with lab2308_risk_agent in dropdown" />
-            <figcaption>Figure 7. Click <strong>Chat</strong> in the left nav. The chat drawer opens with an agent selector at the top.</figcaption>
+            <figcaption>Figure 9. Click <strong>Chat</strong> in the left nav. The chat drawer opens with an agent selector at the top.</figcaption>
           </figure>
 
           <p><strong>Step 2.</strong> At the top of the chat drawer, click the <strong>agent dropdown</strong> — it defaults to <em>AskOrchestrate</em>. Click it and select <strong>lab2308_risk_agent</strong>.</p>
           <figure>
             <img src="assets/screenshots/trace-01-home.png" alt="Agent dropdown open showing lab2308_risk_agent selected" />
-            <figcaption>Figure 8. The agent dropdown is open — <strong>lab2308_risk_agent</strong> is selected (blue dot, checkmark). <em>AskOrchestrate</em> is also listed but has no OpenPages tools.</figcaption>
+            <figcaption>Figure 10. The agent dropdown is open — <strong>lab2308_risk_agent</strong> is selected (blue dot, checkmark). <em>AskOrchestrate</em> is also listed but has no OpenPages tools.</figcaption>
           </figure>
 
           <div class="note warning">
@@ -727,25 +735,25 @@ OpenPages Password:  passw0rd</pre>
           <p><strong>Step 1.</strong> In the left navigation bar, scroll down to the <strong>AGENTOPS</strong> section and click <strong>Observability</strong>.</p>
           <figure>
             <img src="assets/screenshots/trace-04-conversations.png" alt="Left nav with Observability highlighted under AGENTOPS" />
-            <figcaption>Figure 9. Left nav → <strong>AGENTOPS</strong> → <strong>Observability</strong>. The Analytics page opens showing agent activity.</figcaption>
+            <figcaption>Figure 11. Left nav → <strong>AGENTOPS</strong> → <strong>Observability</strong>. The Analytics page opens showing agent activity.</figcaption>
           </figure>
 
           <p><strong>Step 2.</strong> On the Analytics page, find <strong>lab2308_risk_agent</strong> in the Agent Activity table on the right and click it.</p>
           <figure>
             <img src="assets/screenshots/trace-06-node-tree.png" alt="Observability analytics page with lab2308_risk_agent in the table" />
-            <figcaption>Figure 10. Click <strong>lab2308_risk_agent</strong> in the Agent Activity table to open its detail page.</figcaption>
+            <figcaption>Figure 12. Click <strong>lab2308_risk_agent</strong> in the Agent Activity table to open its detail page.</figcaption>
           </figure>
 
           <p><strong>Step 3.</strong> Click the <strong>Conversations</strong> tab. You will see a list of every conversation. Find yours and click the <strong>Debug</strong> button on that row.</p>
           <figure>
             <img src="assets/screenshots/trace-05-debug-click.png" alt="Conversations tab with Debug button highlighted on a conversation row" />
-            <figcaption>Figure 11. <strong>Conversations</strong> tab → hover over a row → click <strong>Debug</strong>.</figcaption>
+            <figcaption>Figure 13. <strong>Conversations</strong> tab → hover over a row → click <strong>Debug</strong>.</figcaption>
           </figure>
 
           <p><strong>Step 4.</strong> The debug view opens — an <strong>Agent flow</strong> node/tree diagram on the left and an <strong>Execution timeline</strong> on the right listing every step. Click any node or timeline entry to expand its full input and output.</p>
           <figure>
             <img src="assets/screenshots/trace-07-node-detail.png" alt="Debug view showing node tree and execution timeline with a node expanded" />
-            <figcaption>Figure 12. The debug view — node tree on the left, execution timeline on the right. Click any step to see the exact query sent to OpenPages and the raw response returned.</figcaption>
+            <figcaption>Figure 14. The debug view — node tree on the left, execution timeline on the right. Click any step to see the exact query sent to OpenPages and the raw response returned.</figcaption>
           </figure>
 
           <div class="note info">
