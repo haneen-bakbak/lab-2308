@@ -2,7 +2,7 @@
 # Build an Autonomous Risk & Compliance Agent Across the IBM Stack
 
 
-> **New here? Start with [Prerequisites](#0-prerequisites--key-information-you-need-for-this-lab), then go straight to [Module 1](#10-module-1--start-here-talk-to-bob) to set up your lab.** Background on the lab (what it is, key terms, architecture) is in [Appendix A](#appendix-a--background).
+> **New here? Read the short [Overview & Architecture](#overview--architecture), then do [Before You Start](#before-you-start--ibm-id-environment-credentials--your-excel-file), [Prerequisites](#0-prerequisites--key-information-you-need-for-this-lab) and [Module 1](#10-module-1--start-here-talk-to-bob) to set up your lab.** Key terms are in [Appendix A](#appendix-a--key-terms).
 
 ---
 
@@ -10,6 +10,7 @@
 
 | Section | Title |
 |---------|-------|
+| **Overview** | **Overview & Architecture** |
 | **Before You Start** | **IBM ID, Environment Credentials & Your Excel File** |
 | **0** | **Prerequisites — Key Information You Need for This Lab** |
 | 0.1 | Find Your Three Values — Your Excel File and IBM Cloud |
@@ -39,7 +40,84 @@
 | **5** | **Troubleshooting** |
 | **6** | **Wrap-Up & Feedback** |
 | **7** | **Reference** |
-| **A** | **Appendix A — Background (About, Key Terms, Objectives, Architecture)** |
+| **A** | **Appendix A — Key Terms** |
+
+---
+
+## Overview & Architecture
+
+### Introduction & Lab Objectives
+
+Risk and compliance teams need to understand where assessments are incomplete and document the work required to address them. In this lab, you will use an AI risk agent to query live IBM OpenPages data, explain an assessment gap, create a risk record, and link an existing control to that risk through plain-language requests.
+
+IBM Bob handles setup using the supplied lab project. IBM watsonx Orchestrate runs the agent, and the Model Context Protocol (MCP) connects it to the OpenPages tools. You will inspect the recorded execution to understand how the agent obtained its evidence and carried out your requests.
+
+#### The Scenario
+
+You are a risk analyst at a financial institution. Controls in your assigned lab environment are marked **Awaiting Assessment**. Your task is to identify the affected risk categories, explain the findings, and document a gap for follow-up.
+
+The guided prompts follow a connected workflow: **find the gap, explain it, log a risk, and link a control.** The category and record counts depend on the data in your environment. Use those results to guide the risk you document.
+
+> **Interpreting the results:** An unassessed control indicates an assessment gap. It does not, by itself, establish that a control has failed or that the organisation is non-compliant.
+
+#### The Components and Their Roles
+
+| Component | Role in this Lab |
+|---|---|
+| **IBM Bob** — prepare the solution | Uses the supplied project and Lab 2308 mode to configure your environment, register the OpenPages MCP toolkit, and import the risk agent into watsonx Orchestrate. |
+| **IBM watsonx Orchestrate** — run and inspect the agent | Hosts `lab2308_risk_agent`, interprets requests, selects tools, and presents results in Chat. AgentOps Observability provides access to recorded execution details. |
+| **Model Context Protocol (MCP)** — connect the agent to tools | Provides the interface through which the agent accesses the schemas and operations exposed by the lab's OpenPages MCP server. |
+| **IBM OpenPages** — maintain the GRC records | Holds the risks (`SOXRisk`), controls (`SOXControl`), object schemas, and relationships that the agent reads or changes. The lab materials also refer to this environment as the Governance Console within watsonx.governance. |
+
+#### What You Will Learn
+
+- Use Bob to configure the supplied agent and integration assets.
+- Query live risk and control data using natural language.
+- Inspect how schema retrieval helps the agent use valid field names and permitted values.
+- Create a risk record and associate an existing control through explicit requests.
+- Check the resulting records in OpenPages and inspect the corresponding tool activity in Orchestrate.
+
+**Lab scope:** You direct the workflow through prompts. The agent selects and executes the corresponding tools. This exercise demonstrates agent-assisted risk work rather than a complete control assessment or compliance determination.
+
+### Architecture & Request Flow
+
+The solution separates setup from runtime. Bob prepares the agent on your workstation. Once setup is complete, you chat with the risk agent in watsonx Orchestrate (in your browser), and the agent accesses OpenPages through the MCP server.
+
+#### Solution Architecture
+
+![Solution architecture showing setup, runtime components and deployment boundaries](assets/diagrams/lab-2308-architecture-standard.png)
+
+*Figure 1. Bob configures the solution during setup. At runtime, Orchestrate connects to the OpenPages MCP server, while AgentOps records execution details. The diagram shows logical interactions, not network topology.*
+
+#### Setup: Bob Configures the Agent
+
+Open the supplied project in Bob and select Lab 2308 mode. Give Bob the MCP Server URL, watsonx Orchestrate Instance URL, and IBM Cloud API key you collect in the Prerequisites. Bob uses these values to configure the environment, register the MCP tools, and import `lab2308_risk_agent`.
+
+Bob supports setup and troubleshooting. It is outside the runtime request path once the agent is available in Orchestrate.
+
+#### Runtime: Orchestrate Calls OpenPages Through MCP
+
+In Orchestrate Chat, select `lab2308_risk_agent` and submit a request. The agent selects the appropriate tools, and the MCP server translates those tool requests into OpenPages API calls. Results return through the same integration. Successful write operations change records or relationships in your assigned OpenPages environment.
+
+The MCP server and OpenPages run in the same assigned TechZone environment. The `/mcp` endpoint serves tool requests. The `/openpages` endpoint opens the application where you can verify the records.
+
+#### The Lab Conversation, Traced End to End
+
+The sequence below follows the guided scenario across the participant, risk agent, MCP server, and OpenPages. It shows the system interactions behind the conversation, including the explicit requests to create a risk and link a control.
+
+![Sequence diagram of schema retrieval, control queries, risk creation and control association](assets/diagrams/lab-2308-process-guide-style.png)
+
+*Figure 2. The participant directs the workflow. The agent retrieves schemas and data, then carries out the requested risk creation and control association through MCP. The precise tool sequence can vary by request.*
+
+#### Why the Agent Reads the Schema First
+
+OpenPages uses specific object types, field names, and permitted values. The agent uses `openpages_get_resource` to inspect relevant schemas, such as `openpages://schema/SOXControl`, before constructing operations that depend on those definitions. This reduces reliance on guessed field names and values. It does not guarantee that every request will succeed.
+
+The scenario uses `execute_openpages_query` to retrieve records, `openpages_upsert_object` to create the risk, and `openpages_associate_objects` to link the control. Schema checks also apply to the relevant write operations.
+
+#### Verify the Outcome and Inspect the Evidence
+
+Open the new risk in OpenPages and check its fields and control relationship. Then return to Orchestrate and follow **AgentOps → Observability → your agent → Conversations → Debug**. Inspect the available schema responses, query payloads, write results, and execution timing to connect what the agent reported with what the tools returned.
 
 ---
 
@@ -649,19 +727,7 @@ Please scan the QR code at your station or use the link your instructor provides
 
 ---
 
-## Appendix A — Background
-
-### A.1 About This Lab
-
-GRC teams spend hours reading dashboards, chasing risk owners, and manually cross-referencing registers. What if an AI agent could answer questions about your risk posture — in plain English — by talking directly to your GRC system?
-
-In this lab you will build exactly that: an **autonomous AI risk agent** powered by **IBM watsonx Orchestrate** that communicates with **IBM OpenPages** through the **OpenPages Model Context Protocol (MCP) server**.
-
-The best part: **you don't write a single line of code, and you don't touch a terminal.** You simply tell IBM Bob what you need, and Bob handles every bit of wiring behind the scenes. By the time you walk into the watsonx Orchestrate UI, your agent is already built, connected, and ready to chat.
-
----
-
-### A.2 Key Terms & Concepts
+## Appendix A — Key Terms
 
 **IBM OpenPages**
 IBM's GRC platform for managing operational risk, compliance, internal audit, and policy. Risk records (*SOXRisk*), controls (*SOXControl*), and issues (*SOXIssue*) live here.
@@ -674,63 +740,6 @@ An open standard for exposing tools to AI agents. The IBM OpenPages MCP server w
 
 **IBM Bob**
 Your AI development assistant for this lab. Bob has a special skill loaded for Lab 2308 — when you tell him you're starting the lab and share your environment details, he silently wires up your entire agent stack, then hands you off to the WxO UI to start chatting.
-
----
-
-### A.3 Lab Objectives
-
-By the end of this lab you will be able to:
-
-1. Explain how MCP bridges AI agents and enterprise GRC systems.
-2. Describe the schema-first query pattern that prevents AI field-name hallucination.
-3. Query live OpenPages risk data through a watsonx Orchestrate agent in natural language.
-4. Trace the tool calls an agent makes to satisfy a user request.
-
----
-
-
-### A.4 Architecture Overview
-
-![Lab 2308 End-to-End Architecture Flow](assets/diagrams/architecture-overview.svg)
-
-```
-┌──────────────────────────────────────────────────────────────┐
-│  Your Browser                                                 │
-│                                                               │
-│  ┌──────────────────────────────────────────────────────┐    │
-│  │  watsonx Orchestrate Chat UI                          │    │
-│  └─────────────────────┬────────────────────────────────┘    │
-│                        │  natural language                    │
-│                        ▼                                      │
-│  ┌──────────────────────────────────────────────────────┐    │
-│  │  lab2308_risk_agent                                   │    │
-│  │  • Reads OpenPages schema before every query          │    │
-│  │  • Never guesses field names                          │    │
-│  │  • Rewrites internal Docker URLs automatically        │    │
-│  └─────────────────────┬────────────────────────────────┘    │
-│                        │  MCP tool calls                      │
-└────────────────────────┼─────────────────────────────────────┘
-                         │
-             ┌───────────▼──────────────────┐
-             │  OpenPages MCP Server         │
-             │  (running in your TechZone)   │
-             │  8 tools exposed via MCP      │
-             └───────────┬──────────────────┘
-                         │  OpenPages REST API
-                         ▼
-             ┌──────────────────────────────┐
-             │  IBM OpenPages GRC            │
-             │  SOXRisk · SOXControl ·       │
-             │  SOXIssue · Register          │
-             └──────────────────────────────┘
-```
-
-**What Bob does behind the scenes (invisible to you):**
-- Installs the watsonx Orchestrate ADK
-- Registers your OpenPages environment as an MCP toolkit in WxO
-- Builds and imports the risk agent with your environment's URLs baked in
-
----
 
 ---
 

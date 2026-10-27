@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE svg
+  PUBLIC '-//W3C//DTD SVG 1.0//EN'
+  'http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd'>
+<svg width="1120" height="1160" preserveAspectRatio="xMinYMin meet" viewBox="0 0 1120 1160" xmlns="http://www.w3.org/2000/svg" version="1.0" fill-rule="evenodd" xmlns:xlink="http://www.w3.org/1999/xlink">
+	<title>...</title>
+	<desc>...</desc>
+	<clipPath id="clip">
+		<rect x="0" y="0" width="1120" height="1160"/>
+	</clipPath>
+	<g id="group" transform="scale(1,-1) translate(0,-1160)" style="clip-path: url(#clip)">
+		<g transform="">
+			<rect x="0" y="0" width="1120" height="1160" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(100%,100%,100%); fill-rule: evenodd;"/>
+			<text x="40" y="1115" style="font-family: Helvetica-Bold; font-size: 27px;fill: rgb(8%,8%,8%); stroke:none;" transform="translate(0,2230) scale(1,-1)">LAB 2308 | The lab conversation, traced end to end</text>
+			<text x="40" y="1084" style="font-family: Helvetica; font-size: 17px;fill: rgb(32%,32%,32%); stroke:none;" transform="translate(0,2168) scale(1,-1)">Read the schema, retrieve the evidence, then explicitly request the record changes.</text>
+			<rect x="55" y="986" width="230" height="64" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(32%,32%,32%); fill-rule: evenodd;"/>
+			<text x="69" y="1023" style="font-family: Helvetica-Bold; font-size: 20px;fill: rgb(100%,100%,100%); stroke:none;" transform="translate(0,2046) scale(1,-1)">You</text>
+			<text x="69" y="1001" style="font-family: Helvetica; font-size: 12px;fill: rgb(100%,100%,100%); stroke:none;" transform="translate(0,2002) scale(1,-1)">Orchestrate Chat</text>
+			<path d="M 170,986 L 170,155 Z" style="stroke: rgb(77%,77%,77%); stroke-linecap: butt; stroke-width: 1.5;"/>
+			<rect x="315" y="986" width="230" height="64" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(5%,38%,99%); fill-rule: evenodd;"/>
+			<text x="329" y="1023" style="font-family: Helvetica-Bold; font-size: 20px;fill: rgb(100%,100%,100%); stroke:none;" transform="translate(0,2046) scale(1,-1)">Risk agent</text>
+			<text x="329" y="1001" style="font-family: Helvetica; font-size: 12px;fill: rgb(100%,100%,100%); stroke:none;" transform="translate(0,2002) scale(1,-1)">lab2308_risk_agent</text>
+			<path d="M 430,986 L 430,155 Z" style="stroke: rgb(77%,77%,77%); stroke-linecap: butt; stroke-width: 1.5;"/>
+			<rect x="575" y="986" width="230" height="64" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(0%,61%,60%); fill-rule: evenodd;"/>
+			<text x="589" y="1023" style="font-family: Helvetica-Bold; font-size: 20px;fill: rgb(100%,100%,100%); stroke:none;" transform="translate(0,2046) scale(1,-1)">MCP server</text>
+			<text x="589" y="1001" style="font-family: Helvetica; font-size: 12px;fill: rgb(100%,100%,100%); stroke:none;" transform="translate(0,2002) scale(1,-1)">Tool interface</text>
+			<path d="M 690,986 L 690,155 Z" style="stroke: rgb(77%,77%,77%); stroke-linecap: butt; stroke-width: 1.5;"/>
+			<rect x="835" y="986" width="230" height="64" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(0%,17%,61%); fill-rule: evenodd;"/>
+			<text x="849" y="1023" style="font-family: Helvetica-Bold; font-size: 20px;fill: rgb(100%,100%,100%); stroke:none;" transform="translate(0,2046) scale(1,-1)">IBM OpenPages</text>
+			<text x="849" y="1001" style="font-family: Helvetica; font-size: 12px;fill: rgb(100%,100%,100%); stroke:none;" transform="translate(0,2002) scale(1,-1)">GRC system of record</text>
+			<path d="M 950,986 L 950,155 Z" style="stroke: rgb(77%,77%,77%); stroke-linecap: butt; stroke-width: 1.5;"/>
+			<path d="M 170,945 L 430,945 Z" style="stroke: rgb(5%,38%,99%); stroke-linecap: butt; stroke-width: 1.5;"/>
+			<polygon points="430 945, 422 949, 422 941" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(5%,38%,99%); fill-rule: evenodd;"/>
+			<text x="179" y="955" style="font-family: Helvetica; font-size: 12px;fill: rgb(14%,14%,14%); stroke:none;" transform="translate(0,1910) scale(1,-1)">1  Ask: which categories have unassessed controls?</text>
+			<path d="M 430,883 L 690,883 Z" style="stroke: rgb(5%,38%,99%); stroke-linecap: butt; stroke-width: 1.5;"/>
+			<polygon points="690 883, 682 887, 682 879" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(5%,38%,99%); fill-rule: evenodd;"/>
+			<text x="439" y="893" style="font-family: Helvetica; font-size: 12px;fill: rgb(14%,14%,14%); stroke:none;" transform="translate(0,1786) scale(1,-1)">2  Retrieve the relevant control schema</text>
+			<path d="M 690,835 L 950,835 Z" style="stroke: rgb(0%,61%,60%); stroke-linecap: butt; stroke-width: 1.5;"/>
+			<polygon points="950 835, 942 839, 942 831" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(0%,61%,60%); fill-rule: evenodd;"/>
+			<text x="699" y="845" style="font-family: Helvetica; font-size: 12px;fill: rgb(14%,14%,14%); stroke:none;" transform="translate(0,1690) scale(1,-1)">Read schema definitions</text>
+			<path d="M 950,787 L 430,787 Z" style="stroke: rgb(0%,17%,61%); stroke-linecap: butt; stroke-width: 1.5; stroke-dasharray: 5, 4;"/>
+			<polygon points="430 787, 438 791, 438 783" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(0%,17%,61%); fill-rule: evenodd;"/>
+			<text x="439" y="797" style="font-family: Helvetica; font-size: 12px;fill: rgb(14%,14%,14%); stroke:none;" transform="translate(0,1594) scale(1,-1)">Return field names and permitted values</text>
+			<path d="M 430,725 L 690,725 Z" style="stroke: rgb(5%,38%,99%); stroke-linecap: butt; stroke-width: 1.5;"/>
+			<polygon points="690 725, 682 729, 682 721" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(5%,38%,99%); fill-rule: evenodd;"/>
+			<text x="439" y="735" style="font-family: Helvetica; font-size: 12px;fill: rgb(14%,14%,14%); stroke:none;" transform="translate(0,1470) scale(1,-1)">3  Query controls awaiting assessment</text>
+			<path d="M 690,677 L 950,677 Z" style="stroke: rgb(0%,61%,60%); stroke-linecap: butt; stroke-width: 1.5;"/>
+			<polygon points="950 677, 942 681, 942 673" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(0%,61%,60%); fill-rule: evenodd;"/>
+			<text x="699" y="687" style="font-family: Helvetica; font-size: 12px;fill: rgb(14%,14%,14%); stroke:none;" transform="translate(0,1374) scale(1,-1)">Execute query in OpenPages</text>
+			<path d="M 950,629 L 430,629 Z" style="stroke: rgb(0%,17%,61%); stroke-linecap: butt; stroke-width: 1.5; stroke-dasharray: 5, 4;"/>
+			<polygon points="430 629, 438 633, 438 625" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(0%,17%,61%); fill-rule: evenodd;"/>
+			<text x="439" y="639" style="font-family: Helvetica; font-size: 12px;fill: rgb(14%,14%,14%); stroke:none;" transform="translate(0,1278) scale(1,-1)">Return matching records through MCP</text>
+			<path d="M 430,567 L 170,567 Z" style="stroke: rgb(5%,38%,99%); stroke-linecap: butt; stroke-width: 1.5; stroke-dasharray: 5, 4;"/>
+			<polygon points="170 567, 178 571, 178 563" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(5%,38%,99%); fill-rule: evenodd;"/>
+			<text x="179" y="577" style="font-family: Helvetica; font-size: 12px;fill: rgb(14%,14%,14%); stroke:none;" transform="translate(0,1154) scale(1,-1)">4  Explain the retrieved findings</text>
+			<path d="M 170,505 L 430,505 Z" style="stroke: rgb(5%,38%,99%); stroke-linecap: butt; stroke-width: 1.5;"/>
+			<polygon points="430 505, 422 509, 422 501" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(5%,38%,99%); fill-rule: evenodd;"/>
+			<text x="179" y="515" style="font-family: Helvetica; font-size: 12px;fill: rgb(14%,14%,14%); stroke:none;" transform="translate(0,1030) scale(1,-1)">5  Request creation of the new risk</text>
+			<path d="M 430,457 L 690,457 Z" style="stroke: rgb(5%,38%,99%); stroke-linecap: butt; stroke-width: 1.5;"/>
+			<polygon points="690 457, 682 461, 682 453" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(5%,38%,99%); fill-rule: evenodd;"/>
+			<text x="439" y="467" style="font-family: Helvetica; font-size: 12px;fill: rgb(14%,14%,14%); stroke:none;" transform="translate(0,934) scale(1,-1)">Create risk using confirmed schema</text>
+			<path d="M 690,409 L 950,409 Z" style="stroke: rgb(0%,61%,60%); stroke-linecap: butt; stroke-width: 1.5;"/>
+			<polygon points="950 409, 942 413, 942 405" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(0%,61%,60%); fill-rule: evenodd;"/>
+			<text x="699" y="419" style="font-family: Helvetica; font-size: 12px;fill: rgb(14%,14%,14%); stroke:none;" transform="translate(0,838) scale(1,-1)">Persist risk; return Resource ID via MCP</text>
+			<path d="M 170,347 L 430,347 Z" style="stroke: rgb(5%,38%,99%); stroke-linecap: butt; stroke-width: 1.5;"/>
+			<polygon points="430 347, 422 351, 422 343" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(5%,38%,99%); fill-rule: evenodd;"/>
+			<text x="179" y="357" style="font-family: Helvetica; font-size: 12px;fill: rgb(14%,14%,14%); stroke:none;" transform="translate(0,714) scale(1,-1)">6  Request the control association</text>
+			<path d="M 430,299 L 690,299 Z" style="stroke: rgb(5%,38%,99%); stroke-linecap: butt; stroke-width: 1.5;"/>
+			<polygon points="690 299, 682 303, 682 295" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(5%,38%,99%); fill-rule: evenodd;"/>
+			<text x="439" y="309" style="font-family: Helvetica; font-size: 12px;fill: rgb(14%,14%,14%); stroke:none;" transform="translate(0,618) scale(1,-1)">Associate the control with the new risk</text>
+			<path d="M 690,251 L 950,251 Z" style="stroke: rgb(0%,61%,60%); stroke-linecap: butt; stroke-width: 1.5;"/>
+			<polygon points="950 251, 942 255, 942 247" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(0%,61%,60%); fill-rule: evenodd;"/>
+			<text x="699" y="261" style="font-family: Helvetica; font-size: 12px;fill: rgb(14%,14%,14%); stroke:none;" transform="translate(0,522) scale(1,-1)">Persist the relationship</text>
+			<path d="M 430,189 L 170,189 Z" style="stroke: rgb(5%,38%,99%); stroke-linecap: butt; stroke-width: 1.5; stroke-dasharray: 5, 4;"/>
+			<polygon points="170 189, 178 193, 178 185" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(5%,38%,99%); fill-rule: evenodd;"/>
+			<text x="179" y="199" style="font-family: Helvetica; font-size: 12px;fill: rgb(14%,14%,14%); stroke:none;" transform="translate(0,398) scale(1,-1)">7  Confirm result; verify records in OpenPages</text>
+			<rect x="55" y="48" width="1010" height="82" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(92%,96%,100%); fill-rule: evenodd;"/>
+			<rect x="55" y="48" width="5" height="82" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(5%,38%,99%); fill-rule: evenodd;"/>
+			<text x="73" y="103" style="font-family: Helvetica-Bold; font-size: 18px;fill: rgb(5%,38%,99%); stroke:none;" transform="translate(0,206) scale(1,-1)">8  Inspect the execution in AgentOps Observability</text>
+			<text x="73" y="79" style="font-family: Helvetica; font-size: 15px;fill: rgb(8%,8%,8%); stroke:none;" transform="translate(0,158) scale(1,-1)">Open the conversation in Debug to review schema retrieval, tool inputs, returned results and timing.</text>
+			<text x="55" y="20" style="font-family: Helvetica; font-size: 14px;fill: rgb(32%,32%,32%); stroke:none;" transform="translate(0,40) scale(1,-1)">The exact tool sequence varies by request. Schema checks also apply to the relevant write operations.</text>
+		</g>
+	</g>
+</svg>

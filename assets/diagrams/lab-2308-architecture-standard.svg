@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE svg
+  PUBLIC '-//W3C//DTD SVG 1.0//EN'
+  'http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd'>
+<svg width="1440" height="880" preserveAspectRatio="xMinYMin meet" viewBox="0 0 1440 880" xmlns="http://www.w3.org/2000/svg" version="1.0" fill-rule="evenodd" xmlns:xlink="http://www.w3.org/1999/xlink">
+	<title>...</title>
+	<desc>...</desc>
+	<clipPath id="clip">
+		<rect x="0" y="0" width="1440" height="880"/>
+	</clipPath>
+	<g id="group" transform="scale(1,-1) translate(0,-880)" style="clip-path: url(#clip)">
+		<g transform="">
+			<rect x="0" y="0" width="1440" height="880" style="stroke: none; stroke-linecap: butt; stroke-width: 1.2; fill: rgb(100%,100%,100%); fill-rule: evenodd;"/>
+			<text x="44" y="828" style="font-family: Helvetica-Bold; font-size: 13px;fill: rgb(32%,32%,32%); stroke:none;" transform="translate(0,1656) scale(1,-1)">LAB 2308</text>
+			<text x="44" y="787" style="font-family: Helvetica-Bold; font-size: 32px;fill: rgb(8%,8%,8%); stroke:none;" transform="translate(0,1574) scale(1,-1)">Solution architecture</text>
+			<text x="44" y="757" style="font-family: Helvetica; font-size: 18px;fill: rgb(32%,32%,32%); stroke:none;" transform="translate(0,1514) scale(1,-1)">Deployment boundaries, runtime connections and the setup hand-off</text>
+			<rect x="44" y="550" width="1352" height="167" rx="8" ry="8" style="stroke: rgb(65%,65%,65%); stroke-linecap: butt; stroke-width: 1.2; fill: rgb(98%,98%,98%); fill-rule: evenodd; stroke-dasharray: 6, 5;"/>
+			<text x="64" y="690" style="font-family: Helvetica-Bold; font-size: 12px;fill: rgb(43%,43%,43%); stroke:none;" transform="translate(0,1380) scale(1,-1)">SETUP  /  PARTICIPANT WORKSTATION</text>
+			<rect x="70" y="573" width="260" height="100" rx="6" ry="6" style="stroke: rgb(72%,77%,83%); stroke-linecap: butt; stroke-width: 1.2; fill: rgb(100%,100%,100%); fill-rule: evenodd;"/>
+			<rect x="300" y="639" width="14" height="20" style="stroke: rgb(5%,38%,99%); stroke-linecap: butt; stroke-width: 1.2; fill: rgb(100%,100%,100%); fill-rule: evenodd;"/>
+			<rect x="296" y="650" width="7" height="5" style="stroke: rgb(5%,38%,99%); stroke-linecap: butt; stroke-width: 1.2; fill: rgb(100%,100%,100%); fill-rule: evenodd;"/>
+			<rect x="296" y="642" width="7" height="5" style="stroke: rgb(5%,38%,99%); stroke-linecap: butt; stroke-width: 1.2; fill: rgb(100%,100%,100%); fill-rule: evenodd;"/>
+			<text x="88" y="638" style="font-family: Helvetica-Bold; font-size: 19px;fill: rgb(8%,8%,8%); stroke:none;" transform="translate(0,1276) scale(1,-1)">IBM Bob</text>
+			<text x="88" y="608" style="font-family: Helvetica; font-size: 15px;fill: rgb(32%,32%,32%); stroke:none;" transform="translate(0,1216) scale(1,-1)">Lab project + Lab 2308 mode</text>
+			<text x="370" y="645" style="font-family: Helvetica-Bold; font-size: 18px;fill: rgb(32%,32%,32%); stroke:none;" transform="translate(0,1290) scale(1,-1)">Configure environment</text>
+			<text x="370" y="617" style="font-family: Helvetica; font-size: 16px;fill: rgb(32%,32%,32%); stroke:none;" transform="translate(0,1234) scale(1,-1)">Register MCP tools and import the risk agent</text>
+			<text x="1010" y="645" style="font-family: Helvetica-Bold; font-size: 16px;fill: rgb(32%,32%,32%); stroke:none;" transform="translate(0,1290) scale(1,-1)">Runs during setup</text>
+			<text x="1010" y="617" style="font-family: Helvetica; font-size: 15px;fill: rgb(32%,32%,32%); stroke:none;" transform="translate(0,1234) scale(1,-1)">Outside the runtime request path</text>
+			<rect x="44" y="124" width="274" height="351" rx="8" ry="8" style="stroke: rgb(77%,77%,77%); stroke-linecap: butt; stroke-width: 1.2; fill: rgb(98%,98%,98%); fill-rule: evenodd;"/>
+			<text x="64" y="446" style="font-family: Helvetica-Bold; font-size: 12px;fill: rgb(32%,32%,32%); stroke:none;" transform="translate(0,892) scale(1,-1)">PARTICIPANT</text>
+			<ellipse cx="181.0" cy="402.0" rx="10.0" ry="10.0" style="stroke: rgb(32%,32%,32%); stroke-linecap: butt; stroke-width: 2; fill: none; fill-rule: evenodd;"/>
+			<path d="M 181,391 L 181,363 Z" style="stroke: rgb(43%,43%,43%); stroke-linecap: butt; stroke-width: 1.6;"/>
+			<path d="M 165,380 L 197,380 Z" style="stroke: rgb(43%,43%,43%); stroke-linecap: butt; stroke-width: 1.6;"/>
+			<path d="M 181,363 L 167,346 Z" style="stroke: rgb(43%,43%,43%); stroke-linecap: butt; stroke-width: 1.6;"/>
+			<path d="M 181,363 L 195,346 Z" style="stroke: rgb(43%,43%,43%); stroke-linecap: butt; stroke-width: 1.6;"/>
+			<text x="130" y="326" style="font-family: Helvetica-Bold; font-size: 19px;fill: rgb(8%,8%,8%); stroke:none;" transform="translate(0,652) scale(1,-1)">Risk analyst</text>
+			<rect x="68" y="182" width="226" height="112" rx="6" ry="6" style="stroke: rgb(72%,77%,83%); stroke-linecap: butt; stroke-width: 1.2; fill: rgb(100%,100%,100%); fill-rule: evenodd;"/>
+			<rect x="264" y="260" width="14" height="20" style="stroke: rgb(5%,38%,99%); stroke-linecap: butt; stroke-width: 1.2; fill: rgb(100%,100%,100%); fill-rule: evenodd;"/>
+			<rect x="260" y="271" width="7" height="5" style="stroke: rgb(5%,38%,99%); stroke-linecap: butt; stroke-width: 1.2; fill: rgb(100%,100%,100%); fill-rule: evenodd;"/>
+			<rect x="260" y="263" width="7" height="5" style="stroke: rgb(5%,38%,99%); stroke-linecap: butt; stroke-width: 1.2; fill: rgb(100%,100%,100%); fill-rule: evenodd;"/>
+			<text x="86" y="259" style="font-family: Helvetica-Bold; font-size: 19px;fill: rgb(8%,8%,8%); stroke:none;" transform="translate(0,518) scale(1,-1)">Web browser</text>
+			<text x="86" y="229" style="font-family: Helvetica; font-size: 15px;fill: rgb(32%,32%,32%); stroke:none;" transform="translate(0,458) scale(1,-1)">Orchestrate Chat</text>
+			<rect x="400" y="124" width="444" height="351" rx="8" ry="8" style="stroke: rgb(55%,70%,93%); stroke-linecap: butt; stroke-width: 1.2; fill: rgb(96%,97%,100%); fill-rule: evenodd;"/>
+			<text x="420" y="446" style="font-family: Helvetica-Bold; font-size: 12px;fill: rgb(5%,38%,99%); stroke:none;" transform="translate(0,892) scale(1,-1)">WATSONX ORCHESTRATE</text>
+			<text x="420" y="424" style="font-family: Helvetica; font-size: 14px;fill: rgb(32%,32%,32%); stroke:none;" transform="translate(0,848) scale(1,-1)">Assigned SaaS instance</text>
+			<rect x="424" y="286" width="396" height="114" rx="6" ry="6" style="stroke: rgb(72%,77%,83%); stroke-linecap: butt; stroke-width: 1.2; fill: rgb(100%,100%,100%); fill-rule: evenodd;"/>
+			<rect x="790" y="366" width="14" height="20" style="stroke: rgb(5%,38%,99%); stroke-linecap: butt; stroke-width: 1.2; fill: rgb(100%,100%,100%); fill-rule: evenodd;"/>
+			<rect x="786" y="377" width="7" height="5" style="stroke: rgb(5%,38%,99%); stroke-linecap: butt; stroke-width: 1.2; fill: rgb(100%,100%,100%); fill-rule: evenodd;"/>
+			<rect x="786" y="369" width="7" height="5" style="stroke: rgb(5%,38%,99%); stroke-linecap: butt; stroke-width: 1.2; fill: rgb(100%,100%,100%); fill-rule: evenodd;"/>
+			<text x="442" y="365" style="font-family: Helvetica-Bold; font-size: 19px;fill: rgb(8%,8%,8%); stroke:none;" transform="translate(0,730) scale(1,-1)">Risk agent</text>
+			<text x="442" y="335" style="font-family: Helvetica; font-size: 15px;fill: rgb(32%,32%,32%); stroke:none;" transform="translate(0,670) scale(1,-1)">lab2308_risk_agent</text>
+			<text x="442" y="312" style="font-family: Helvetica; font-size: 15px;fill: rgb(32%,32%,32%); stroke:none;" transform="translate(0,624) scale(1,-1)">Model + schema-first instructions</text>
+			<rect x="424" y="149" width="396" height="88" rx="6" ry="6" style="stroke: rgb(72%,77%,83%); stroke-linecap: butt; stroke-width: 1.2; fill: rgb(100%,100%,100%); fill-rule: evenodd;"/>
+			<rect x="790" y="203" width="14" height="20" style="stroke: rgb(5%,38%,99%); stroke-linecap: butt; stroke-width: 1.2; fill: rgb(100%,100%,100%); fill-rule: evenodd;"/>
+			<rect x="786" y="214" width="7" height="5" style="stroke: rgb(5%,38%,99%); stroke-linecap: butt; stroke-width: 1.2; fill: rgb(100%,100%,100%); fill-rule: evenodd;"/>
+			<rect x="786" y="206" width="7" height="5" style="stroke: rgb(5%,38%,99%); stroke-linecap: butt; stroke-width: 1.2; fill: rgb(100%,100%,100%); fill-rule: evenodd;"/>
+			<text x="442" y="202" style="font-family: Helvetica-Bold; font-size: 19px;fill: rgb(8%,8%,8%); stroke:none;" transform="translate(0,404) scale(1,-1)">AgentOps Observability</text>
+			<text x="442" y="172" style="font-family: Helvetica; font-size: 15px;fill: rgb(32%,32%,32%); stroke:none;" transform="translate(0,344) scale(1,-1)">Execution traces and tool results</text>
+			<rect x="926" y="124" width="470" height="351" rx="8" ry="8" style="stroke: rgb(60%,74%,71%); stroke-linecap: butt; stroke-width: 1.2; fill: rgb(96%,98%,97%); fill-rule: evenodd;"/>
+			<text x="946" y="446" style="font-family: Helvetica-Bold; font-size: 12px;fill: rgb(0%,49%,47%); stroke:none;" transform="translate(0,892) scale(1,-1)">ASSIGNED TECHZONE ENVIRONMENT</text>
+			<text x="946" y="424" style="font-family: Helvetica; font-size: 14px;fill: rgb(32%,32%,32%); stroke:none;" transform="translate(0,848) scale(1,-1)">OpenPages and MCP server on the same host</text>
+			<rect x="950" y="286" width="422" height="114" rx="6" ry="6" style="stroke: rgb(72%,77%,83%); stroke-linecap: butt; stroke-width: 1.2; fill: rgb(100%,100%,100%); fill-rule: evenodd;"/>
+			<rect x="1342" y="366" width="14" height="20" style="stroke: rgb(5%,38%,99%); stroke-linecap: butt; stroke-width: 1.2; fill: rgb(100%,100%,100%); fill-rule: evenodd;"/>
+			<rect x="1338" y="377" width="7" height="5" style="stroke: rgb(5%,38%,99%); stroke-linecap: butt; stroke-width: 1.2; fill: rgb(100%,100%,100%); fill-rule: evenodd;"/>
+			<rect x="1338" y="369" width="7" height="5" style="stroke: rgb(5%,38%,99%); stroke-linecap: butt; stroke-width: 1.2; fill: rgb(100%,100%,100%); fill-rule: evenodd;"/>
+			<text x="968" y="365" style="font-family: Helvetica-Bold; font-size: 19px;fill: rgb(8%,8%,8%); stroke:none;" transform="translate(0,730) scale(1,-1)">OpenPages MCP server</text>
+			<text x="968" y="335" style="font-family: Helvetica; font-size: 15px;fill: rgb(32%,32%,32%); stroke:none;" transform="translate(0,670) scale(1,-1)">Schema resources + callable tools</text>
+			<text x="968" y="312" style="font-family: Helvetica; font-size: 15px;fill: rgb(32%,32%,32%); stroke:none;" transform="translate(0,624) scale(1,-1)">Endpoint: /mcp</text>
+			<rect x="1012" y="161" width="298" height="64" style="stroke: rgb(55%,66%,65%); stroke-linecap: butt; stroke-width: 1.2; fill: rgb(100%,100%,100%); fill-rule: evenodd;"/>
+			<ellipse cx="1161.0" cy="225.0" rx="149.0" ry="12.0" style="stroke: rgb(55%,66%,65%); stroke-linecap: butt; stroke-width: 1; fill: rgb(100%,100%,100%); fill-rule: evenodd;"/>
+			<ellipse cx="1161.0" cy="161.0" rx="149.0" ry="12.0" style="stroke: rgb(55%,66%,65%); stroke-linecap: butt; stroke-width: 1; fill: rgb(100%,100%,100%); fill-rule: evenodd;"/>
+			<text x="1039" y="194" style="font-family: Helvetica-Bold; font-size: 20px;fill: rgb(8%,8%,8%); stroke:none;" transform="translate(0,388) scale(1,-1)">IBM OpenPages</text>
+			<text x="1039" y="179" style="font-family: Helvetica; font-size: 14px;fill: rgb(32%,32%,32%); stroke:none;" transform="translate(0,358) scale(1,-1)">Risks, controls and relationships</text>
+			<path d="M 330,592 L 366,592 Z" style="stroke: rgb(54%,24%,98%); stroke-linecap: butt; stroke-width: 2; stroke-dasharray: 6, 5;"/>
+			<path d="M 366,592 L 366,514 Z" style="stroke: rgb(54%,24%,98%); stroke-linecap: butt; stroke-width: 2; stroke-dasharray: 6, 5;"/>
+			<path d="M 366,514 L 622,514 Z" style="stroke: rgb(54%,24%,98%); stroke-linecap: butt; stroke-width: 2; stroke-dasharray: 6, 5;"/>
+			<path d="M 622,514 L 622,403 Z" style="stroke: rgb(54%,24%,98%); stroke-linecap: butt; stroke-width: 2; stroke-dasharray: 6, 5;"/>
+			<polygon points="622 403, 618 411, 626 411" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(54%,24%,98%); fill-rule: evenodd;"/>
+			<text x="646" y="507" style="font-family: Helvetica; font-size: 14px;fill: rgb(54%,24%,98%); stroke:none;" transform="translate(0,1014) scale(1,-1)">Setup / deployment</text>
+			<path d="M 294,249 L 355,249 Z" style="stroke: rgb(5%,38%,99%); stroke-linecap: butt; stroke-width: 2;"/>
+			<path d="M 355,249 L 355,343 Z" style="stroke: rgb(5%,38%,99%); stroke-linecap: butt; stroke-width: 2;"/>
+			<path d="M 355,343 L 421,343 Z" style="stroke: rgb(5%,38%,99%); stroke-linecap: butt; stroke-width: 2;"/>
+			<polygon points="421 343, 413 347, 413 339" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(5%,38%,99%); fill-rule: evenodd;"/>
+			<polygon points="294 249, 302 253, 302 245" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(5%,38%,99%); fill-rule: evenodd;"/>
+			<text x="325" y="375" style="font-family: Helvetica; font-size: 14px;fill: rgb(5%,38%,99%); stroke:none;" transform="translate(0,750) scale(1,-1)">Chat</text>
+			<text x="325" y="355" style="font-family: Helvetica; font-size: 13px;fill: rgb(32%,32%,32%); stroke:none;" transform="translate(0,710) scale(1,-1)">requests</text>
+			<path d="M 820,343 L 947,343 Z" style="stroke: rgb(5%,38%,99%); stroke-linecap: butt; stroke-width: 2;"/>
+			<polygon points="947 343, 939 347, 939 339" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(5%,38%,99%); fill-rule: evenodd;"/>
+			<polygon points="820 343, 828 347, 828 339" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(5%,38%,99%); fill-rule: evenodd;"/>
+			<text x="862" y="368" style="font-family: Helvetica-Bold; font-size: 15px;fill: rgb(5%,38%,99%); stroke:none;" transform="translate(0,736) scale(1,-1)">MCP</text>
+			<text x="852" y="315" style="font-family: Helvetica; font-size: 12px;fill: rgb(32%,32%,32%); stroke:none;" transform="translate(0,630) scale(1,-1)">Tools / results</text>
+			<path d="M 1161,286 L 1161,243 Z" style="stroke: rgb(0%,49%,47%); stroke-linecap: butt; stroke-width: 2;"/>
+			<polygon points="1161 243, 1157 251, 1165 251" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(0%,49%,47%); fill-rule: evenodd;"/>
+			<polygon points="1161 286, 1157 278, 1165 278" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(0%,49%,47%); fill-rule: evenodd;"/>
+			<text x="1181" y="258" style="font-family: Helvetica; font-size: 13px;fill: rgb(0%,49%,47%); stroke:none;" transform="translate(0,516) scale(1,-1)">OpenPages API</text>
+			<path d="M 622,286 L 622,240 Z" style="stroke: rgb(43%,43%,43%); stroke-linecap: butt; stroke-width: 2; stroke-dasharray: 6, 5;"/>
+			<polygon points="622 240, 618 248, 626 248" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(43%,43%,43%); fill-rule: evenodd;"/>
+			<text x="639" y="257" style="font-family: Helvetica; font-size: 13px;fill: rgb(32%,32%,32%); stroke:none;" transform="translate(0,514) scale(1,-1)">Execution trace</text>
+			<path d="M 48,77 L 96,77 Z" style="stroke: rgb(5%,38%,99%); stroke-linecap: butt; stroke-width: 2;"/>
+			<text x="108" y="71" style="font-family: Helvetica; font-size: 14px;fill: rgb(32%,32%,32%); stroke:none;" transform="translate(0,142) scale(1,-1)">Runtime request / response</text>
+			<path d="M 408,77 L 456,77 Z" style="stroke: rgb(54%,24%,98%); stroke-linecap: butt; stroke-width: 2; stroke-dasharray: 6, 5;"/>
+			<text x="468" y="71" style="font-family: Helvetica; font-size: 14px;fill: rgb(32%,32%,32%); stroke:none;" transform="translate(0,142) scale(1,-1)">Setup / deployment</text>
+			<path d="M 713,77 L 761,77 Z" style="stroke: rgb(43%,43%,43%); stroke-linecap: butt; stroke-width: 2; stroke-dasharray: 6, 5;"/>
+			<text x="773" y="71" style="font-family: Helvetica; font-size: 14px;fill: rgb(32%,32%,32%); stroke:none;" transform="translate(0,142) scale(1,-1)">Telemetry</text>
+			<text x="44" y="28" style="font-family: Helvetica; font-size: 13px;fill: rgb(43%,43%,43%); stroke:none;" transform="translate(0,56) scale(1,-1)">Conceptual view of the lab. Connections show logical interactions rather than network topology.</text>
+		</g>
+	</g>
+</svg>
