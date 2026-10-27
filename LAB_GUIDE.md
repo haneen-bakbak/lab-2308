@@ -423,7 +423,9 @@ Before chatting with the agent, spend a few minutes in the source system it will
 1. In the top-left corner, click the **Navigation Menu** (hamburger icon).
 2. In the **Search object type** box (highlighted above), type **Risk** and click the **Risk** entry. There is no tab called "Risk register" — the object type is simply called **Risk**.
 3. Notice the **Resource ID** format (e.g. `I01-RSK-01-01`). This is how the agent references individual risks.
-4. Click into any risk record and look at the field names — notice they use prefixes like `OPSS-Rsk:Status`, `OPSS-Rsk:RiskLevel`. Your agent reads the schema at runtime to get these exact names — it never guesses.
+4. Look at the **Risks** list. Each row shows the risk **Name** (for example `I01-RSK-01-01`), **Description**, **Domain**, **Status** and **Residual Risk Rating**. The count at the top (for example *Risks (378)*) may differ in your environment. Notice how many risks show the status **Awaiting Assessment** — this is the kind of gap your agent will find in Module 3.
+5. Click a risk name to open it. On the **Task** tab, find the **General** section (**Name**, **Owner**, **Status**, **Description**, **Domain**) and the **Risk Assessment** section (**Inherent** and **Residual** Impact, Likelihood and Risk Rating).
+6. These are the labels you see on screen. Behind them, OpenPages stores each one under an internal field name (for example, **Status** is `OPSS-Rsk:Status`). You never type these names: your agent reads them from the OpenPages schema at runtime, so it uses the exact field names instead of guessing.
 
 ---
 

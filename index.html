@@ -622,7 +622,9 @@ OpenPages Password:  passw0rd</pre>
             <li>Click the top-left <strong>Navigation Menu</strong> (hamburger icon).</li>
             <li>In the <strong>Search object type</strong> box at the top of the menu, type <strong>Risk</strong> and click the <strong>Risk</strong> entry. There is no tab called "Risk register" — the object type is simply called <strong>Risk</strong>.</li>
             <li>Notice the <strong>Resource ID</strong> format (e.g. <code>I01-RSK-01-01</code> or numeric <code>21011</code>).</li>
-            <li>Observe how fields use strict schema prefixes (<code>OPSS-Rsk:Status</code>, <code>OPSS-Rsk:RiskLevel</code>). Your agent queries these schemas directly.</li>
+            <li>Look at the <strong>Risks</strong> list. Each row shows the risk <strong>Name</strong> (for example <code>I01-RSK-01-01</code>), <strong>Description</strong>, <strong>Domain</strong>, <strong>Status</strong> and <strong>Residual Risk Rating</strong>. The count at the top (for example <em>Risks (378)</em>) may differ in your environment. Notice how many risks show the status <strong>Awaiting Assessment</strong> &mdash; this is the kind of gap your agent will find in Module 3.</li>
+            <li>Click a risk name to open it. On the <strong>Task</strong> tab, find the <strong>General</strong> section (<strong>Name</strong>, <strong>Owner</strong>, <strong>Status</strong>, <strong>Description</strong>, <strong>Domain</strong>) and the <strong>Risk Assessment</strong> section (<strong>Inherent</strong> and <strong>Residual</strong> Impact, Likelihood and Risk Rating).</li>
+            <li>These are the labels you see on screen. Behind them, OpenPages stores each one under an internal field name (for example, <strong>Status</strong> is <code>OPSS-Rsk:Status</code>). You never type these names: your agent reads them from the OpenPages schema at runtime, so it uses the exact field names instead of guessing.</li>
           </ol>
         </section>
 
