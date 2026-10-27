@@ -141,15 +141,16 @@ You must already have an **IBM ID** before anything else. You will use it to sig
 ### Step C: Download your Excel file
 
 1. Open this link: **https://ibm.biz/lab2308-env**
-2. If asked for a password, enter:
-   ```text
-   techxLAB-2308-c167
-   ```
-3. Download the Excel file that matches **your student number**. The file is named:
+2. Download the Excel file that matches **your student number**. The file is named:
    ```text
    LAB2308_Student_X.xls
    ```
    (`X` = your student number, for example `LAB2308_Student_7.xls`).
+3. Open the file. Its password is your student number followed by `lab2308`, **with no leading zeros**:
+   ```text
+   Xlab2308
+   ```
+   For example, student 7 uses `7lab2308`, and student 12 uses `12lab2308`.
 
 This Excel file has everything you need for the next sections: your IBM Cloud login, your OpenPages link and your **MCP SERVER URL**. Keep it open.
 
