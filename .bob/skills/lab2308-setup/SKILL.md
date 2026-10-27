@@ -63,7 +63,7 @@ Verify with the full path: `/Library/Frameworks/Python.framework/Versions/3.14/b
 Greet the attendee warmly. In 2–3 sentences: they're building a real AI agent that queries
 IBM OpenPages risk data in plain English. No code, no terminal — just tell Bob what they need.
 
-Say you need **three things** — the OpenPages MCP URL from the instructor screen or printed sheet, plus the WxO URL and an API key that they each get themselves from IBM Cloud (LAB_GUIDE steps 0.4 and 0.5) — and you'll handle everything else.
+Say you need **three things** — the OpenPages MCP URL from their Excel environment file (`LAB2308_Student_X.xls`), plus the WxO URL and an API key that they each get themselves from IBM Cloud (LAB_GUIDE steps 0.4 and 0.5) — and you'll handle everything else.
 
 ---
 
@@ -71,17 +71,17 @@ Say you need **three things** — the OpenPages MCP URL from the instructor scre
 
 Ask **one at a time** using `ask_followup_question`. Never ask all at once.
 
-The instructor is displaying (or has printed) a credential sheet. It has two sections
-(PART 1 — WxO, PART 2 — OpenPages). Only one of the three values you need (★ MCP SERVER URL) is on it.
-The WxO URL is NOT on the sheet — the attendee copies it from their watsonx Orchestrate instance page in IBM Cloud.
+The attendee has an Excel environment file (`LAB2308_Student_X.xls`). It has two sections
+(PART 1 - IBM Cloud / WxO, PART 2 - OpenPages). Only one of the three values you need (the line labelled `MCP SERVER URL (give this to Bob)`) is in it.
+The WxO URL is NOT in the Excel file — the attendee copies it from their watsonx Orchestrate instance page in IBM Cloud.
 The IBM Cloud API key is created by the attendee in IBM Cloud (IAM → API keys) and is not pre-printed.
 Reference these exact labels in your questions so attendees can find them on the screen or printout instantly.
 
 ### Q1 — OpenPages MCP URL
 
 Ask:
-> "First, look at the instructor screen (or your printed sheet) and find **PART 2 — OpenPages**.
-> Find the line labelled **★ MCP SERVER URL** — it looks like this:
+> "First, look at your Excel file and find **PART 2 - OpenPages**.
+> Find the line labelled **MCP SERVER URL (give this to Bob)** — it looks like this:
 > ```
 > https://wxgov-govconsole-demo-XXXX.vsi.techzone.ibm.com/mcp
 > ```
@@ -99,7 +99,7 @@ Derive and store:
 ### Q2 — WxO URL (from IBM Cloud, not the instructor)
 
 Ask:
-> "Next, your watsonx Orchestrate URL. This one is **not** on the instructor sheet — you copy it from IBM Cloud:
+> "Next, your watsonx Orchestrate URL. This one is **not** in your Excel file — you copy it from IBM Cloud:
 > go to **cloud.ibm.com/resources → AI / Machine Learning → your watsonx Orchestrate instance**.
 > In the **Credentials** box, find the field labelled **URL** and click the **copy icon** next to it (the text on screen is cut off, so don't select it by hand).
 > It looks like this (your region may differ, e.g. `ca-tor` or `us-south`):

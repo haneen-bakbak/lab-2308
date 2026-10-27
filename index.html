@@ -235,6 +235,10 @@
       <nav class="side-nav cds--col-lg-3" aria-label="Lab navigation">
         <h2>Lab Navigation</h2>
         <ul>
+          <li><a href="#section-before">Before You Start</a></li>
+          <li><a class="sub" href="#step-a">A. Get an IBM ID</a></li>
+          <li><a class="sub" href="#step-b">B. Get Your Environment Credentials</a></li>
+          <li><a class="sub" href="#step-c">C. Download Your Excel File</a></li>
           <li><a href="#section-0">0. Prerequisites &amp; Credentials</a></li>
           <li><a class="sub" href="#step-0-1">0.1 Find Your Three Values</a></li>
           <li><a class="sub" href="#step-0-2">0.2 Log In to IBM Cloud</a></li>
@@ -272,27 +276,51 @@
       <!-- ================= MAIN CONTENT ================= -->
       <main class="cds--col-sm-4 cds--col-md-8 cds--col-lg-13">
 
-                <!-- ================= SECTION 0 — PREREQUISITES ================= -->
+        <!-- ================= BEFORE YOU START ================= -->
+        <section id="section-before" class="step">
+          <div class="step-label"><cds-tag type="blue">Before You Start</cds-tag></div>
+          <h2>Before You Start — IBM ID, Environment Credentials &amp; Your Excel File</h2>
+          <p>Do these three things first, in order. Everything else in the lab depends on them.</p>
+
+          <h3 id="step-a">Step A: You need an IBM ID</h3>
+          <p>You must already have an <strong>IBM ID</strong> before anything else. You will use it to sign in to TechZone (next step) and to sign in to Bob.</p>
+
+          <h3 id="step-b">Step B: Get your environment credentials</h3>
+          <ol class="plain">
+            <li>Open this link: <a href="https://ibm.biz/~e87ccFkGv" target="_blank" rel="noopener"><strong>https://ibm.biz/~e87ccFkGv</strong></a></li>
+            <li>When asked for the <strong>lab access code</strong>, enter: <code>techxLAB-2308-c167</code></li>
+            <li>Click <strong>Validate access code</strong>.</li>
+          </ol>
+
+          <h3 id="step-c">Step C: Download your Excel file</h3>
+          <ol class="plain">
+            <li>Open this link: <a href="https://ibm.biz/lab2308-env" target="_blank" rel="noopener"><strong>https://ibm.biz/lab2308-env</strong></a></li>
+            <li>If asked for a password, enter: <code>techxLAB-2308-c16</code></li>
+            <li>Download the Excel file that matches <strong>your student number</strong>. The file is named <code>LAB2308_Student_X.xls</code> (<code>X</code> = your student number, for example <code>LAB2308_Student_7.xls</code>).</li>
+            <li>Open the file. Its password is your student number followed by <code>lab2308</code>, <strong>with no leading zeros</strong>: <code>Xlab2308</code>. For example, student 7 uses <code>7lab2308</code>, and student 12 uses <code>12lab2308</code>.</li>
+          </ol>
+          <p>This Excel file has everything you need for the next sections: your IBM Cloud login, your OpenPages link and your <strong>MCP SERVER URL</strong>. Keep it open.</p>
+        </section>
+
+        <!-- ================= SECTION 0 — PREREQUISITES ================= -->
         <section id="section-0" class="step">
           <div class="step-label"><cds-tag type="blue">Prerequisites</cds-tag></div>
           <h2>0 Prerequisites — Key Information You Need for This Lab</h2>
-          <p>Your instructor will display credentials on the projected screen — or hand you a printed sheet. <strong>Bob needs three values</strong>, marked with ★ below. Only one is on the sheet: the other two you copy or create yourself in IBM Cloud (steps 0.4 and 0.5).</p>
+          <p>Your credentials are in the Excel file you downloaded in Step C. <strong>Bob needs three values</strong>, marked with ★ below. Only one is in the Excel file: the other two you copy or create yourself in IBM Cloud (steps 0.4 and 0.5).</p>
 
-          <h3 id="step-0-1">0.1 Find Your Three Values — Instructor Sheet and IBM Cloud</h3>
+          <h3 id="step-0-1">0.1 Find Your Three Values — Your Excel File and IBM Cloud</h3>
           <p>Look for the ★ starred lines — those are the only three things you'll paste into Bob:</p>
           <pre class="block">============================================================
-  IBM TechXchange 2026 — LAB-2308  ·  YOUR ENVIRONMENT INFO
+  IBM TechXchange 2026 — LAB-2308  ·  YOUR ENVIRONMENT INFO  (LAB2308_Student_X.xls)
 ============================================================
 
-── PART 1 — IBM Cloud / watsonx Orchestrate (WxO) ──────────
+PART 1 - IBM Cloud / watsonx Orchestrate (WxO)
 
-App ID Login URL
-  https://cloud.ibm.com/authorize/&lt;tenant_id&gt;/&lt;slug&gt;    ← log in to IBM Cloud
+IBM Cloud Login URL:  https://cloud.ibm.com/authorize/&lt;tenant&gt;    ← log in to IBM Cloud
+App ID Username:      student_&lt;id&gt;@techzone.ibm.com
+App ID Password:      &lt;your password&gt;
 
-App ID Username   student&lt;N&gt;@&lt;tenant_id&gt;.techzone.com
-App ID Password   &lt;your password&gt;
-
-(NOT on the sheet — you copy these from IBM Cloud yourself)
+(NOT in the Excel file — you copy these from IBM Cloud yourself)
 
 ★ WXO INSTANCE URL (copy it, step 0.4)        ← give this to Bob (Question 2)
   https://api.ca-tor.watson-orchestrate.cloud.ibm.com/instances/XXXX   (example of what it looks like)
@@ -300,23 +328,20 @@ App ID Password   &lt;your password&gt;
 ★ IBM CLOUD API KEY (create it, step 0.5)     ← give this to Bob (Question 3)
   AbCdEfGhIjKlMnOpQrStUvWxYz0123456789AbCd_-x   (example of what it looks like)
 
-── PART 2 — OpenPages / watsonx.governance (WxGov) ─────────
+PART 2 - OpenPages / watsonx.governance
 
-watsonx.Gov Application URL
-  https://wxgov-govconsole-demo-XXXX.vsi.techzone.ibm.com/openpages
-
-★ MCP SERVER URL                              ← give this to Bob (Question 1)
-  https://wxgov-govconsole-demo-XXXX.vsi.techzone.ibm.com/mcp
-
-OpenPages Login   ask your instructor for credentials</pre>
+watsonx.Gov Application URL:  https://wxgov-govconsole-demo-XXXX.vsi.techzone.ibm.com/openpages
+★ MCP SERVER URL (give this to Bob):  https://wxgov-govconsole-demo-XXXX.vsi.techzone.ibm.com/mcp   ← give this to Bob (Question 1)
+OpenPages Username:  OpenPagesAdministrator
+OpenPages Password:  passw0rd</pre>
 
           <div class="note info">
             <span class="note-title">The three ★ starred values are all Bob needs.</span>
-            <p>You do <strong>not</strong> need to edit any files, run any commands, or touch any YAML. Bob handles everything once you give him those three values. Only the MCP Server URL is on the instructor sheet; you copy the WxO Instance URL from IBM Cloud (step 0.4) and create the API key in IBM Cloud (step 0.5).</p>
+            <p>You do <strong>not</strong> need to edit any files, run any commands, or touch any YAML. Bob handles everything once you give him those three values. Only the MCP Server URL is in your Excel file; you copy the WxO Instance URL from IBM Cloud (step 0.4) and create the API key in IBM Cloud (step 0.5).</p>
           </div>
 
           <h3 id="step-0-2">0.2 Log In to IBM Cloud</h3>
-          <p>Open a <strong>Private / Incognito</strong> browser window. Find the <strong>App ID Login URL</strong> on the instructor screen or printed sheet (under PART 1) and paste it into your browser. Enter the <strong>App ID Username</strong> and <strong>App ID Password</strong> from the same section, then click <strong>Sign in</strong>.</p>
+          <p>Open a <strong>Private / Incognito</strong> browser window. Find the <strong>IBM Cloud Login URL</strong> in your Excel file (under PART 1) and paste it into your browser. Enter the <strong>App ID Username</strong> and <strong>App ID Password</strong> from the same section, then click <strong>Sign in</strong>.</p>
 
           <figure>
             <img src="assets/screenshots/01-new-cloud-login.png" alt="IBM Cloud App ID Sign-in" />
@@ -325,7 +350,7 @@ OpenPages Login   ask your instructor for credentials</pre>
 
           <h3 id="step-0-3">0.3–0.4 Open Your WxO Instance &amp; Copy the URL from IBM Cloud</h3>
           <p>Go to <a href="https://cloud.ibm.com/resources" target="_blank" rel="noopener">cloud.ibm.com/resources</a> → <strong>AI / Machine Learning</strong> → click your <strong>watsonx Orchestrate</strong> instance.</p>
-          <p>You will land on the page shown below. <strong>The WxO Instance URL is not on the instructor sheet — you copy it from the Credentials box here.</strong></p>
+          <p>You will land on the page shown below. <strong>The WxO Instance URL is not in your Excel file — you copy it from the Credentials box here.</strong></p>
 
           <figure>
             <img src="assets/screenshots/real-cloud-wxo-instance-detail.png" alt="watsonx Orchestrate Service Instance in IBM Cloud" />
@@ -365,14 +390,14 @@ OpenPages Login   ask your instructor for credentials</pre>
           <p>This is your <strong>★ IBM CLOUD API KEY</strong>. Save it — Bob will ask for this.</p>
 
           <h3 id="step-0-6">0.6 Find Your MCP Server URL for Bob</h3>
-          <p>On the instructor screen or printed sheet, find the line labelled <strong>★ MCP SERVER URL</strong> (under PART 2). Copy the full URL including <code>https://</code>.</p>
+          <p>In your Excel file, find the line labelled <strong>MCP SERVER URL (give this to Bob)</strong> (under PART 2). Copy the full URL including <code>https://</code>.</p>
           <div class="note warning">
             <span class="note-title">Can't read it / not on screen?</span>
             <p>Take the <strong>watsonx.Gov Application URL</strong> from PART 2 and change <code>/openpages</code> at the end to <code>/mcp</code>. That's your MCP Server URL.</p>
           </div>
 
           <h3 id="step-0-7">0.7 Log In to OpenPages (for Module 2)</h3>
-          <p>Find the <strong>watsonx.Gov Application URL</strong> on the instructor screen or printed sheet (under PART 2) and open it in your browser. You'll see a TLS warning (TechZone uses a self-signed certificate) — click <strong>Advanced → Proceed to wxgov-govconsole… (unsafe)</strong>. Log in with the credentials your instructor provides.</p>
+          <p>Find the <strong>watsonx.Gov Application URL</strong> in your Excel file (under PART 2) and open it in your browser. You'll see a TLS warning (TechZone uses a self-signed certificate) — click <strong>Advanced → Proceed to wxgov-govconsole… (unsafe)</strong>. Log in with <code>OpenPagesAdministrator</code> / <code>passw0rd</code>.</p>
 
           <figure>
             <img src="assets/screenshots/real-openpages-login.png" alt="OpenPages GRC Login Portal" />
@@ -395,9 +420,14 @@ OpenPages Login   ask your instructor for credentials</pre>
             <li>Type <strong>Bob</strong> — or click <strong>All apps</strong> and scroll to <strong>IBM Bob</strong>.</li>
             <li>Click <strong>IBM Bob</strong> to launch it.</li>
           </ol>
+          <p>If Bob asks whether to <strong>import settings from another editor</strong>, click <strong>Skip for now</strong>.</p>
 
           <h3 id="step-1-2">1.2 Sign In with Your IBM ID</h3>
-          <p>After Bob launches, click <strong>Sign in</strong> and log in with your <strong>IBM ID</strong> (the same email you used to register for TechXchange).</p>
+          <ol class="plain">
+            <li>Click the small <strong>Bob icon</strong> at the top of the window, beside the search bar. This opens the Bob chat in the <strong>right-hand side panel</strong>.</li>
+            <li>In that panel, click <strong>Log in</strong>.</li>
+            <li>Sign in to Bob with the <strong>IBM ID</strong> you already have (the one from Step A).</li>
+          </ol>
 
           <h3 id="step-1-3">1.3 Select the Lab Team</h3>
           <p>Bob must be using the lab team before it can run the lab setup.</p>
@@ -482,13 +512,13 @@ OpenPages Login   ask your instructor for credentials</pre>
             <p>"Hi Bob! I'm in Lab 2308 at TechXchange. Can you set me up?"</p>
           </div>
 
-          <p>Bob will ask for three things — one at a time. Have the instructor screen or printed sheet visible — and the API key you created in step 0.5:</p>
+          <p>Bob will ask for three things — one at a time. Have your Excel file open — and the API key you created in step 0.5:</p>
           <div class="table-wrap">
             <table class="cds-table">
               <thead><tr><th>Bob's question</th><th>Where to find it</th><th>Looks like</th></tr></thead>
               <tbody>
-                <tr><td>1. MCP Server URL</td><td>Instructor screen / printout → PART 2 → <strong>★ MCP SERVER URL</strong></td><td><code>https://wxgov-govconsole-demo-XXXX.vsi.techzone.ibm.com/mcp</code></td></tr>
-                <tr><td>2. WxO Instance URL</td><td>The <strong>URL</strong> field you copied from the Credentials box on your watsonx Orchestrate instance page in IBM Cloud (<a href="#step-0-3">step 0.4</a>)<br><span style="color:#57606a;font-size:0.88rem;">Not on the instructor sheet.</span></td><td><code>https://api.ca-tor.watson-orchestrate.cloud.ibm.com/instances/XXXX</code></td></tr>
+                <tr><td>1. MCP Server URL</td><td>Your Excel file → PART 2 → <strong>MCP SERVER URL (give this to Bob)</strong></td><td><code>https://wxgov-govconsole-demo-XXXX.vsi.techzone.ibm.com/mcp</code></td></tr>
+                <tr><td>2. WxO Instance URL</td><td>The <strong>URL</strong> field you copied from the Credentials box on your watsonx Orchestrate instance page in IBM Cloud (<a href="#step-0-3">step 0.4</a>)<br><span style="color:#57606a;font-size:0.88rem;">Not in your Excel file.</span></td><td><code>https://api.ca-tor.watson-orchestrate.cloud.ibm.com/instances/XXXX</code></td></tr>
                 <tr><td>3. API key</td><td>The key <strong>you created</strong> in <a href="#step-0-5">step 0.5</a>: IBM Cloud → Manage → Access (IAM) → API keys → Create<br><span style="color:#57606a;font-size:0.88rem;">Not the key created with the Service ID, and not the key on the WxO instance page.</span></td><td><code>AbCdEfGh…</code> (~44 chars)</td></tr>
               </tbody>
             </table>

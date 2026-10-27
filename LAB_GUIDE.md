@@ -10,8 +10,9 @@
 
 | Section | Title |
 |---------|-------|
+| **Before You Start** | **IBM ID, Environment Credentials & Your Excel File** |
 | **0** | **Prerequisites — Key Information You Need for This Lab** |
-| 0.1 | Find Your Three Values — Instructor Screen or Printout |
+| 0.1 | Find Your Three Values — Your Excel File and IBM Cloud |
 | 0.2 | Step 1: Log In to IBM Cloud via TechZone App ID |
 | 0.3 | Step 2: Access Your Resources & Launch watsonx Orchestrate |
 | 0.4 | Step 3: Copy Your WxO Instance URL from IBM Cloud |
@@ -42,6 +43,45 @@
 
 ---
 
+## Before You Start — IBM ID, Environment Credentials & Your Excel File
+
+Do these three things first, in order. Everything else in the lab depends on them.
+
+### Step A: You need an IBM ID
+
+You must already have an **IBM ID** before anything else. You will use it to sign in to TechZone (next step) and to sign in to Bob.
+
+### Step B: Get your environment credentials
+
+1. Open this link: **https://ibm.biz/~e87ccFkGv**
+2. When asked for the **lab access code**, enter:
+   ```text
+   techxLAB-2308-c167
+   ```
+3. Click **Validate access code**.
+
+### Step C: Download your Excel file
+
+1. Open this link: **https://ibm.biz/lab2308-env**
+2. If asked for a password, enter:
+   ```text
+   techxLAB-2308-c16
+   ```
+3. Download the Excel file that matches **your student number**. The file is named:
+   ```text
+   LAB2308_Student_X.xls
+   ```
+   (`X` = your student number, for example `LAB2308_Student_7.xls`).
+4. Open the file. Its password is your student number followed by `lab2308`, **with no leading zeros**:
+   ```text
+   Xlab2308
+   ```
+   For example, student 7 uses `7lab2308`, and student 12 uses `12lab2308`.
+
+This Excel file has everything you need for the next sections: your IBM Cloud login, your OpenPages link and your **MCP SERVER URL**. Keep it open.
+
+---
+
 ## 0 Prerequisites — Key Information You Need for This Lab
 
 This lab bridges two cloud environments:
@@ -53,29 +93,24 @@ This lab bridges two cloud environments:
 
 ---
 
-### 0.1 Find Your Three Values — Instructor Sheet and IBM Cloud
+### 0.1 Find Your Three Values — Your Excel File and IBM Cloud
 
-Your instructor will display credentials on the projected screen, or hand you a printed sheet.
-**Bob needs three values**, marked with ★ below. Only one of them is on the sheet: the other two you copy or create yourself in IBM Cloud (steps 0.4 and 0.5).
+Your credentials are in the Excel file you downloaded in **Step C** above.
+**Bob needs three values**, marked with ★ below. Only one of them is in the Excel file: the other two you copy or create yourself in IBM Cloud (steps 0.4 and 0.5).
 
 ```
 ============================================================
   IBM TechXchange 2026 — LAB-2308
-  YOUR ENVIRONMENT INFO
+  YOUR ENVIRONMENT INFO   (LAB2308_Student_X.xls)
 ============================================================
 
-── PART 1 — IBM Cloud / watsonx Orchestrate (WxO) ──────────
+PART 1 - IBM Cloud / watsonx Orchestrate (WxO)
 
-App ID Login URL
-  https://cloud.ibm.com/authorize/<tenant_id>/<slug>       ← use this to log in to IBM Cloud
+IBM Cloud Login URL:  https://cloud.ibm.com/authorize/<tenant>   ← use this to log in to IBM Cloud
+App ID Username:      student_<id>@techzone.ibm.com
+App ID Password:      <your password>
 
-App ID Username
-  student<N>@<tenant_id>.techzone.com
-
-App ID Password
-  <your password>
-
-(NOT on the sheet — you copy these from IBM Cloud yourself)
+(NOT in the Excel file — you copy these from IBM Cloud yourself)
 
 ★ WXO INSTANCE URL  (copy it in step 0.4)                  ← GIVE THIS TO BOB (Question 2)
   https://api.ca-tor.watson-orchestrate.cloud.ibm.com/instances/XXXX   (example of what it looks like)
@@ -83,20 +118,15 @@ App ID Password
 ★ IBM CLOUD API KEY  (create it in step 0.5)               ← GIVE THIS TO BOB (Question 3)
   AbCdEfGhIjKlMnOpQrStUvWxYz0123456789AbCd_-x   (example of what it looks like)
 
-── PART 2 — OpenPages / watsonx.governance (WxGov) ─────────
+PART 2 - OpenPages / watsonx.governance
 
-watsonx.Gov Application URL
-  https://wxgov-govconsole-demo-XXXX.vsi.techzone.ibm.com/openpages
-
-★ MCP SERVER URL                                           ← GIVE THIS TO BOB (Question 1)
-  https://wxgov-govconsole-demo-XXXX.vsi.techzone.ibm.com/mcp
-
-OpenPages Login
-  Username: OpenPagesAdministrator
-  Password: passw0rd
+watsonx.Gov Application URL:  https://wxgov-govconsole-demo-XXXX.vsi.techzone.ibm.com/openpages
+★ MCP SERVER URL (give this to Bob):  https://wxgov-govconsole-demo-XXXX.vsi.techzone.ibm.com/mcp   ← GIVE THIS TO BOB (Question 1)
+OpenPages Username:  OpenPagesAdministrator
+OpenPages Password:  passw0rd
 ```
 
-> 💡 **The three ★ starred values are all Bob needs.** Only the **★ MCP SERVER URL** is on the instructor sheet. The **★ WXO INSTANCE URL** you copy from IBM Cloud (step 0.4) and the **★ IBM CLOUD API KEY** you create in IBM Cloud (step 0.5). Have all three ready before you start Module 1.
+> 💡 **The three ★ starred values are all Bob needs.** Only the **★ MCP SERVER URL** is in your Excel file. The **★ WXO INSTANCE URL** you copy from IBM Cloud (step 0.4) and the **★ IBM CLOUD API KEY** you create in IBM Cloud (step 0.5). Have all three ready before you start Module 1.
 
 ---
 
@@ -105,13 +135,13 @@ OpenPages Login
 ![Step 1: IBM Cloud App ID Login](assets/screenshots/01-new-cloud-login.png)
 
 1. Open a **Private/Incognito** browser window.
-2. On the instructor screen or printed sheet, find the **App ID Login URL** under *PART 1*:
+2. In your Excel file, find the **IBM Cloud Login URL** under *PART 1*:
    ```text
-   https://cloud.ibm.com/authorize/<tenant_id>/<slug>
+   https://cloud.ibm.com/authorize/<tenant>
    ```
    Paste it into your browser's address bar and press Enter.
-3. On the login page, enter your credentials from the instructor screen or printed sheet:
-   - **Username**: the `App ID Username` line (e.g. `student3@abc123.techzone.com`)
+3. On the login page, enter your credentials from the Excel file:
+   - **Username**: the `App ID Username` line (e.g. `student_om6dft3k_…@techzone.ibm.com`)
    - **Password**: the `App ID Password` line
 4. Click **Sign in**.
 
@@ -134,7 +164,7 @@ OpenPages Login
 
 ### 0.4 Step 3: Copy Your WxO Instance URL from IBM Cloud
 
-When Bob sets up your agent in Module 1, his **second question** will be your WxO Instance URL. **It is not on the instructor sheet — you copy it from IBM Cloud.** You are already on the right page from step 0.3.
+When Bob sets up your agent in Module 1, his **second question** will be your WxO Instance URL. **It is not in your Excel file — you copy it from IBM Cloud.** You are already on the right page from step 0.3.
 
 1. In IBM Cloud, open your **watsonx Orchestrate** service instance (Resource List → **AI / Machine Learning** → your instance).
 
@@ -185,7 +215,7 @@ When Bob sets up your agent in Module 1, his **third question** will be your API
 
 Bob's **first question** will be your OpenPages MCP Server URL.
 
-1. On the instructor screen or printed sheet, find the line labelled **★ MCP SERVER URL** under *PART 2*:
+1. In your Excel file, find the line labelled **MCP SERVER URL (give this to Bob)** under *PART 2*:
    ```text
    https://wxgov-govconsole-demo-XXXX.vsi.techzone.ibm.com/mcp
    ```
@@ -203,7 +233,7 @@ Bob's **first question** will be your OpenPages MCP Server URL.
 
 ![Step 5: OpenPages Login & SSL Bypass](assets/screenshots/real-openpages-login.png)
 
-1. On the instructor screen or printed sheet, find the **watsonx.Gov Application URL** under *PART 2*:
+1. In your Excel file, find the **watsonx.Gov Application URL** under *PART 2*:
    ```text
    https://wxgov-govconsole-demo-XXXX.vsi.techzone.ibm.com/openpages
    ```
@@ -236,11 +266,15 @@ IBM Bob is an application installed on your lab machine (it does not run in a br
 2. Type **Bob** — or click **All apps** and scroll to **IBM Bob**.
 3. Click **IBM Bob** to launch it.
 
+If Bob asks whether to **import settings from another editor**, click **Skip for now**.
+
 When Bob opens, choose **File → Open Folder** and open the `lab-2308` folder (your instructor will confirm where it is).
 
 ### 1.2 Sign In with Your IBM ID
 
-After Bob launches, click **Sign in** and log in with your **IBM ID** (the same email you used to register for TechXchange).
+1. Click the small **Bob icon** at the top of the window, beside the search bar. This opens the Bob chat in the **right-hand side panel**.
+2. In that panel, click **Log in**.
+3. Sign in to Bob with the **IBM ID** you already have (the one from Step A).
 
 ### 1.3 Select the Lab Team
 

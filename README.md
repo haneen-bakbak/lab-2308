@@ -9,7 +9,7 @@
 
 - **IBM Bob** installed (desktop app — on Windows, use the desktop icon or Start → search "Bob"). Sign in with your IBM ID, then in **Bob Settings (gear icon) → General → Team**, select the lab team (named like `IBM-TechXchange-2026` or `Lab-2308` — your instructor will confirm the exact name).
 - **Python 3.11 – 3.14** (3.14.3 recommended) — Bob checks this and installs it automatically if it's missing
-- Your **instructor sheet / TechZone reservation** open and ready, plus an **IBM Cloud API key** you create yourself (IBM Cloud → Manage → Access (IAM) → API keys → Create). See the **Prerequisites** section of [`LAB_GUIDE.md`](./LAB_GUIDE.md) for the exact steps.
+- Your **IBM ID**, and your **`LAB2308_Student_X.xls`** environment file (see **Before You Start** in [`LAB_GUIDE.md`](./LAB_GUIDE.md)), plus an **IBM Cloud API key** you create yourself (IBM Cloud → Manage → Access (IAM) → API keys → Create). See the **Prerequisites** section of [`LAB_GUIDE.md`](./LAB_GUIDE.md) for the exact steps.
 
 ---
 
