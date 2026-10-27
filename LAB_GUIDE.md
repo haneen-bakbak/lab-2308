@@ -238,7 +238,7 @@ OpenPages Password:  passw0rd
 
 ### 0.4 Step 3: Copy Your WxO Instance URL from IBM Cloud
 
-When Bob sets up your agent in Module 1, his **second question** will be your WxO Instance URL. **It is not in your Excel file — you copy it from IBM Cloud.** You are already on the right page from step 0.3.
+When Bob sets up your agent in Module 1, the **second question** will be your WxO Instance URL. **It is not in your Excel file — you copy it from IBM Cloud.** You are already on the right page from step 0.3.
 
 1. In IBM Cloud, open your **watsonx Orchestrate** service instance (Resource List → **AI / Machine Learning** → your instance).
 
@@ -260,7 +260,7 @@ When Bob sets up your agent in Module 1, his **second question** will be your Wx
 
 ### 0.5 Step 4: Create Your IBM Cloud API Key for Bob
 
-When Bob sets up your agent in Module 1, his **third question** will be your API key.
+When Bob sets up your agent in Module 1, the **third question** will be your API key.
 
 > ⚠️ **Use the key you create under IAM → API keys — not any other key.**
 > Do **not** use the key created when you create the Service ID, and do **not** use the key shown on the watsonx Orchestrate instance page. The right one is: **Manage → Access (IAM) → API keys → Create**.
@@ -400,7 +400,7 @@ Once you confirm your details, Bob will say something like *"Give me a moment wh
 
 When Bob says **"🎉 You're all set!"**, your agent is live. Move on to Module 2.
 
-> **If Bob asks you to run a single terminal command:** This only happens if one step needs a quick manual assist. Copy and paste the command exactly as Bob gives it, run it, then tell Bob "done" and he'll continue.
+> **If Bob asks you to run a single terminal command:** This only happens if one step needs a quick manual assist. Copy and paste the command exactly as Bob gives it, run it, then tell Bob "done" and Bob will continue.
 
 ---
 
@@ -735,7 +735,7 @@ An agentic AI platform. Agents use natural language to plan actions and call too
 An open standard for exposing tools to AI agents. The IBM OpenPages MCP server wraps the entire OpenPages REST API as callable MCP tools — so a WxO agent can query risks, read schemas, and create records with no custom integration code.
 
 **IBM Bob**
-Your AI development assistant for this lab. Bob has a special skill loaded for Lab 2308 — when you tell him you're starting the lab and share your environment details, he silently wires up your entire agent stack, then hands you off to the WxO UI to start chatting.
+Your AI development assistant for this lab. Bob has a special skill loaded for Lab 2308 — when you tell Bob you're starting the lab and share your environment details, Bob silently wires up your entire agent stack, then hands you off to the WxO UI to start chatting.
 
 ---
 
