@@ -423,17 +423,32 @@ Before chatting with the agent, spend a few minutes in the source system it will
 1. In the top-left corner, click the **Navigation Menu** (hamburger icon).
 2. In the **Search object type** box (highlighted above), type **Risk** and click the **Risk** entry. There is no tab called "Risk register" — the object type is simply called **Risk**.
 3. Notice the **Resource ID** format (e.g. `I01-RSK-01-01`). This is how the agent references individual risks.
-4. Look at the **Risks** list. Each row shows the risk **Name** (for example `I01-RSK-01-01`), **Description**, **Domain**, **Status** and **Residual Risk Rating**. The count at the top (for example *Risks (378)*) may differ in your environment (see the first image below). Notice how many risks show the status **Awaiting Assessment** — this is the kind of gap your agent will find in Module 3.
-5. Click a risk name to open it. On the **Task** tab, find the **General** section (**Name**, **Owner**, **Status**, **Description**, **Domain**) and the **Risk Assessment** section (**Inherent** and **Residual** Impact, Likelihood and Risk Rating).
-6. These are the labels you see on screen. Behind them, OpenPages stores each one under an internal field name (for example, **Status** is `OPSS-Rsk:Status`). You never type these names: your agent reads them from the OpenPages schema at runtime, so it uses the exact field names instead of guessing.
+
+#### What you should see: the Risks list
 
 ![OpenPages Risks list showing Name, Description, Domain, Status and Residual Risk Rating](assets/screenshots/openpages-risks-list.png)
 
-*The Risks list. Many rows show the status Awaiting Assessment. The total (here 378) may differ in your environment.*
+*The Risks list in OpenPages. The total (here 378) may differ in your environment.*
+
+Take a minute to explore this list. It is the data your agent will query in Module 3.
+
+- Read the columns: **Name** (the Resource ID, for example `I01-RSK-01-01`), **Description**, **Domain**, **Status** and **Residual Risk Rating**.
+- Look at the **Status** column. Many risks show **Awaiting Assessment**. This is the kind of assessment gap your agent will find in Module 3.
+- Look at the **Domain** column (Financial Management, Operational, Compliance, Technology). The same risk name can appear more than once, under different business entities shown beneath the name (for example *Global Financial Services > EMEA > Finance*).
+
+#### What you should see: a single risk record
+
+Click a risk name, for example **I01-RSK-01-01**, to open it.
 
 ![OpenPages risk record I01-RSK-01-01, Task tab, General and Risk Assessment sections](assets/screenshots/openpages-risk-record.png)
 
-*A single risk record on the Task tab: the General section and the Risk Assessment section.*
+*A risk record on the Task tab, showing the General and Risk Assessment sections.*
+
+- In the **General** section, find **Name**, **Owner**, **Status**, **Description** and **Domain**.
+- In the **Risk Assessment** section, find the **Inherent** and **Residual** Impact, Likelihood and Risk Rating.
+- Note the **Status** and **Description** of this risk. In Module 3 you will ask the agent about risks like this one, and later create a new one.
+
+> **Labels vs. field names:** These are the labels you see on screen. Behind them, OpenPages stores each one under an internal field name (for example, **Status** is `OPSS-Rsk:Status`). You never type these names: your agent reads them from the OpenPages schema at runtime, so it uses the exact field names instead of guessing.
 
 ---
 

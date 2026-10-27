@@ -622,18 +622,35 @@ OpenPages Password:  passw0rd</pre>
             <li>Click the top-left <strong>Navigation Menu</strong> (hamburger icon).</li>
             <li>In the <strong>Search object type</strong> box at the top of the menu, type <strong>Risk</strong> and click the <strong>Risk</strong> entry. There is no tab called "Risk register" — the object type is simply called <strong>Risk</strong>.</li>
             <li>Notice the <strong>Resource ID</strong> format (e.g. <code>I01-RSK-01-01</code> or numeric <code>21011</code>).</li>
-            <li>Look at the <strong>Risks</strong> list. Each row shows the risk <strong>Name</strong> (for example <code>I01-RSK-01-01</code>), <strong>Description</strong>, <strong>Domain</strong>, <strong>Status</strong> and <strong>Residual Risk Rating</strong>. The count at the top (for example <em>Risks (378)</em>) may differ in your environment (Figure 7). Notice how many risks show the status <strong>Awaiting Assessment</strong> &mdash; this is the kind of gap your agent will find in Module 3.</li>
-            <li>Click a risk name to open it. On the <strong>Task</strong> tab, find the <strong>General</strong> section (<strong>Name</strong>, <strong>Owner</strong>, <strong>Status</strong>, <strong>Description</strong>, <strong>Domain</strong>) and the <strong>Risk Assessment</strong> section (<strong>Inherent</strong> and <strong>Residual</strong> Impact, Likelihood and Risk Rating) (Figure 8).</li>
-            <li>These are the labels you see on screen. Behind them, OpenPages stores each one under an internal field name (for example, <strong>Status</strong> is <code>OPSS-Rsk:Status</code>). You never type these names: your agent reads them from the OpenPages schema at runtime, so it uses the exact field names instead of guessing.</li>
           </ol>
+
+          <h4>What you should see: the Risks list</h4>
           <figure>
             <img src="assets/screenshots/openpages-risks-list.png" alt="OpenPages Risks list showing Name, AI Risk Category, Description, Domain, Status and Residual Risk Rating columns" />
-            <figcaption>Figure 7. The <strong>Risks</strong> list. Many rows show the status <strong>Awaiting Assessment</strong>. The total (here 378) may differ in your environment.</figcaption>
+            <figcaption>Figure 7. The <strong>Risks</strong> list in OpenPages. The total (here 378) may differ in your environment.</figcaption>
           </figure>
+          <p>Take a minute to explore this list. It is the data your agent will query in Module 3.</p>
+          <ul class="plain">
+            <li>Read the columns: <strong>Name</strong> (the Resource ID, for example <code>I01-RSK-01-01</code>), <strong>Description</strong>, <strong>Domain</strong>, <strong>Status</strong> and <strong>Residual Risk Rating</strong>.</li>
+            <li>Look at the <strong>Status</strong> column. Many risks show <strong>Awaiting Assessment</strong>. This is the kind of assessment gap your agent will find in Module 3.</li>
+            <li>Look at the <strong>Domain</strong> column (Financial Management, Operational, Compliance, Technology). The same risk name can appear more than once, under different business entities shown beneath the name (for example <em>Global Financial Services &gt; EMEA &gt; Finance</em>).</li>
+          </ul>
+
+          <h4>What you should see: a single risk record</h4>
+          <p>Click a risk name, for example <strong>I01-RSK-01-01</strong>, to open it.</p>
           <figure>
             <img src="assets/screenshots/openpages-risk-record.png" alt="OpenPages risk record I01-RSK-01-01 showing the General and Risk Assessment sections on the Task tab" />
-            <figcaption>Figure 8. A single risk record on the <strong>Task</strong> tab: the <strong>General</strong> section (Name, Owner, Status, Description, Domain) and the <strong>Risk Assessment</strong> section.</figcaption>
+            <figcaption>Figure 8. A risk record on the <strong>Task</strong> tab, showing the <strong>General</strong> and <strong>Risk Assessment</strong> sections.</figcaption>
           </figure>
+          <ul class="plain">
+            <li>In the <strong>General</strong> section, find <strong>Name</strong>, <strong>Owner</strong>, <strong>Status</strong>, <strong>Description</strong> and <strong>Domain</strong>.</li>
+            <li>In the <strong>Risk Assessment</strong> section, find the <strong>Inherent</strong> and <strong>Residual</strong> Impact, Likelihood and Risk Rating.</li>
+            <li>Note the <strong>Status</strong> and <strong>Description</strong> of this risk. In Module 3 you will ask the agent about risks like this one, and later create a new one.</li>
+          </ul>
+          <div class="note info">
+            <span class="note-title">Labels vs. field names</span>
+            <p>These are the labels you see on screen. Behind them, OpenPages stores each one under an internal field name (for example, <strong>Status</strong> is <code>OPSS-Rsk:Status</code>). You never type these names: your agent reads them from the OpenPages schema at runtime, so it uses the exact field names instead of guessing.</p>
+          </div>
         </section>
 
         <!-- ================= MODULE 3 ================= -->
