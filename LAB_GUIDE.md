@@ -150,11 +150,6 @@ You must already have an **IBM ID** before anything else. You will use it to sig
    LAB2308_Student_X.xls
    ```
    (`X` = your student number, for example `LAB2308_Student_7.xls`).
-4. Open the file. Its password is your student number followed by `lab2308`, **with no leading zeros**:
-   ```text
-   Xlab2308
-   ```
-   For example, student 7 uses `7lab2308`, and student 12 uses `12lab2308`.
 
 This Excel file has everything you need for the next sections: your IBM Cloud login, your OpenPages link and your **MCP SERVER URL**. Keep it open.
 
