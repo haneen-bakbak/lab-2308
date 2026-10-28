@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>LAB-2308 Badge | IBM TechXchange 2026</title>
+<link rel="stylesheet" href="https://1.www.s81c.com/common/carbon/plex/sans.css" />
+<style>
+  :root { color-scheme: dark; }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: #000; color: #fff;
+    font-family: 'IBM Plex Sans', 'Helvetica Neue', Arial, sans-serif;
+    min-height: 100vh; display: flex; flex-direction: column; align-items: center;
+    padding: 28px 18px 48px;
+  }
+  .wrap { width: 100%; max-width: 440px; }
+  .eyebrow { font-size: 14px; color: #be95ff; letter-spacing: .02em; margin: 0 0 6px; }
+  h1 { font-weight: 300; font-size: 34px; line-height: 1.15; margin: 0 0 8px; }
+  h1 b { font-weight: 600; }
+  p.sub { color: #c6c6c6; font-size: 16px; line-height: 1.45; margin: 0 0 22px; }
+  label { display: block; font-size: 14px; color: #c6c6c6; margin-bottom: 8px; }
+  input[type=text] {
+    width: 100%; font: inherit; font-size: 20px; font-weight: 300; color: #fff;
+    background: #161616; border: 0; border-bottom: 2px solid #8d8d8d;
+    padding: 14px 14px; outline: none; border-radius: 0;
+  }
+  input[type=text]:focus { border-bottom-color: #78a9ff; }
+  button {
+    font: inherit; font-size: 16px; cursor: pointer; border: 0; border-radius: 0;
+    padding: 15px 18px; color: #fff; background: #0f62fe; width: 100%; text-align: left;
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  button:hover { background: #0353e9; }
+  button.ghost { background: transparent; border: 1px solid #8d8d8d; }
+  button.ghost:hover { background: #262626; }
+  button:disabled { background: #393939; color: #8d8d8d; cursor: not-allowed; }
+  .actions { display: grid; gap: 10px; margin-top: 14px; }
+  .preview { margin-top: 24px; display: none; }
+  .preview.on { display: block; }
+  canvas { width: 100%; height: auto; display: block; background: #000; border: 1px solid #393939; }
+  .hint { font-size: 13px; color: #8d8d8d; margin-top: 12px; line-height: 1.5; }
+  .post { margin-top: 14px; background: #161616; padding: 14px; font-size: 14px; line-height: 1.5; color: #e0e0e0; white-space: pre-wrap; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <p class="eyebrow">IBM TechXchange 2026</p>
+  <h1>Get your <b>LAB-2308</b> badge</h1>
+  <p class="sub">Type your name as you want it to appear, then download your badge and post it on LinkedIn.</p>
+
+  <label for="name">Your name</label>
+  <input id="name" type="text" maxlength="40" placeholder="First Last" autocomplete="name" autocapitalize="words" />
+
+  <div class="actions">
+    <button id="make" disabled>Create my badge <span>&rarr;</span></button>
+  </div>
+
+  <div class="preview" id="preview">
+    <canvas id="c" width="1080" height="1350"></canvas>
+    <div class="actions">
+      <button id="dl">Download PNG <span>&darr;</span></button>
+      <button id="li" class="ghost">Open LinkedIn post <span>&nearr;</span></button>
+      <button id="copy" class="ghost">Copy post text <span>&#9112;</span></button>
+    </div>
+    <div class="post" id="post"></div>
+    <p class="hint">LinkedIn does not accept a picture from a link, so download the PNG first and attach it to your post.</p>
+  </div>
+</div>
+
+<script>
+(function () {
+  const W = 1080, H = 1350;
+  const FONT = "'IBM Plex Sans','Helvetica Neue',Arial,sans-serif";
+  const cv = document.getElementById('c');
+  const ctx = cv.getContext('2d');
+  const nameEl = document.getElementById('name');
+  const makeBtn = document.getElementById('make');
+  const preview = document.getElementById('preview');
+  const postEl = document.getElementById('post');
+  let lastName = '';
+
+  const POST = (n) =>
+`I just completed Lab 2308 at IBM TechXchange 2026 in Atlanta.
+
+In 90 minutes I built an autonomous risk and compliance agent across IBM OpenPages, watsonx Orchestrate, MCP and IBM Bob.
+
+Thanks to the IBM team for a hands-on lab that was actually hands-on.
+
+#IBMTechXchange #watsonx #IBMBob #AI`;
+
+  nameEl.addEventListener('input', () => { makeBtn.disabled = nameEl.value.trim().length < 2; });
+  nameEl.addEventListener('keydown', (e) => { if (e.key === 'Enter' && !makeBtn.disabled) make(); });
+  makeBtn.addEventListener('click', make);
+
+  async function loadFonts() {
+    try {
+      await Promise.all([
+        document.fonts.load("300 60px 'IBM Plex Sans'"),
+        document.fonts.load("400 30px 'IBM Plex Sans'"),
+        document.fonts.load("600 30px 'IBM Plex Sans'")
+      ]);
+    } catch (e) {}
+  }
+
+  function polygon(pts, fill) {
+    ctx.beginPath(); ctx.moveTo(pts[0][0], pts[0][1]);
+    for (let i = 1; i < pts.length; i++) ctx.lineTo(pts[i][0], pts[i][1]);
+    ctx.closePath(); ctx.fillStyle = fill; ctx.fill();
+  }
+
+  // Geometric motif taken from the event flyer: two purple domes, a blue diamond tile, a gradient chevron.
+  function motif(x, y, u) {
+    // domes
+    ctx.fillStyle = '#8a3ffc';
+    ctx.beginPath(); ctx.arc(x + u, y + u, u, Math.PI, 0); ctx.closePath(); ctx.fill();
+    ctx.beginPath(); ctx.arc(x + u, y + 2 * u, u, Math.PI, 0); ctx.closePath(); ctx.fill();
+    // blue tile with black diamond
+    ctx.fillStyle = '#0f62fe'; ctx.fillRect(x + 2 * u, y + 2 * u, 2 * u, 2 * u);
+    polygon([[x + 3 * u, y + 2 * u], [x + 4 * u, y + 3 * u], [x + 3 * u, y + 4 * u], [x + 2 * u, y + 3 * u]], '#000');
+    // chevron
+    const g = ctx.createLinearGradient(x, y + 7 * u, x + 4 * u, y + 5 * u);
+    g.addColorStop(0, '#8a3ffc'); g.addColorStop(0.45, '#0f62fe'); g.addColorStop(1, '#78a9ff');
+    polygon([[x + 2 * u, y + 4 * u], [x + 4 * u, y + 6 * u], [x + 4 * u, y + 8 * u], [x + 2 * u, y + 6 * u],
+             [x, y + 8 * u], [x, y + 6 * u]], g);
+  }
+
+  function fitText(text, weight, maxW, startPx, minPx) {
+    let px = startPx;
+    while (px > minPx) {
+      ctx.font = weight + ' ' + px + 'px ' + FONT;
+      if (ctx.measureText(text).width <= maxW) break;
+      px -= 2;
+    }
+    return px;
+  }
+
+  function wrap(text, maxW) {
+    const words = text.split(' '); const lines = []; let cur = '';
+    for (const w of words) {
+      const t = cur ? cur + ' ' + w : w;
+      if (ctx.measureText(t).width > maxW && cur) { lines.push(cur); cur = w; } else cur = t;
+    }
+    if (cur) lines.push(cur);
+    return lines;
+  }
+
+  function draw(name) {
+    const pad = 88;
+    ctx.clearRect(0, 0, W, H);
+    ctx.fillStyle = '#000'; ctx.fillRect(0, 0, W, H);
+    ctx.textBaseline = 'alphabetic'; ctx.textAlign = 'left';
+
+    // event line
+    ctx.fillStyle = '#fff';
+    ctx.font = '300 50px ' + FONT;
+    const ibm = 'IBM ';
+    ctx.fillText(ibm, pad, 190);
+    let x = pad + ctx.measureText(ibm).width;
+    ctx.font = '600 50px ' + FONT;
+    ctx.fillText('TechXchange', x, 190);
+    x += ctx.measureText('TechXchange ').width;
+    ctx.font = '300 50px ' + FONT;
+    ctx.fillText('2026', x, 190);
+    ctx.font = '300 30px ' + FONT; ctx.fillStyle = '#c6c6c6';
+    ctx.fillText('October 29, 2026  |  Atlanta, GA', pad, 238);
+
+    // motif, top right of the body
+    motif(W - pad - 4 * 46, 300, 46);
+
+    // lab id
+    ctx.fillStyle = '#be95ff';
+    ctx.font = '400 30px ' + FONT;
+    ctx.fillText('HANDS-ON LAB', pad, 345);
+    ctx.fillStyle = '#fff';
+    ctx.font = '300 120px ' + FONT;
+    ctx.fillText('LAB-2308', pad, 470);
+
+    // lab title
+    ctx.fillStyle = '#e0e0e0';
+    ctx.font = '300 38px ' + FONT;
+    const tl = wrap('Build an Autonomous Risk & Compliance Agent', 560);
+    tl.forEach((l, i) => ctx.fillText(l, pad, 545 + i * 50));
+
+    // stack tags
+    const tags = ['OpenPages', 'watsonx Orchestrate', 'Control Plane', 'MCP', 'IBM Bob'];
+    ctx.font = '400 26px ' + FONT;
+    let tx = pad, ty = 790;
+    tags.forEach((t) => {
+      const w = ctx.measureText(t).width + 40;
+      if (tx + w > W - pad) { tx = pad; ty += 62; }
+      ctx.strokeStyle = '#78a9ff'; ctx.lineWidth = 2;
+      ctx.beginPath(); ctx.roundRect(tx, ty - 36, w, 52, 26); ctx.stroke();
+      ctx.fillStyle = '#a6c8ff'; ctx.fillText(t, tx + 20, ty);
+      tx += w + 14;
+    });
+
+    // hairline
+    ctx.fillStyle = '#393939'; ctx.fillRect(pad, 925, W - 2 * pad, 2);
+
+    // completed + name
+    ctx.fillStyle = '#be95ff'; ctx.font = '400 28px ' + FONT;
+    ctx.fillText('SUCCESSFULLY COMPLETED BY', pad, 975);
+    ctx.fillStyle = '#fff';
+    const px = fitText(name, 300, W - 2 * pad, 112, 48);
+    ctx.font = '300 ' + px + 'px ' + FONT;
+    ctx.fillText(name, pad, 1075);
+
+    // footer
+    ctx.fillStyle = '#c6c6c6'; ctx.font = '300 30px ' + FONT;
+    ctx.fillText('ibm.com/techxchange', pad, H - 96);
+    // verified-style mark
+    const cx = W - pad - 36, cy = H - 108;
+    ctx.fillStyle = '#198038'; ctx.beginPath(); ctx.arc(cx, cy, 36, 0, Math.PI * 2); ctx.fill();
+    ctx.strokeStyle = '#fff'; ctx.lineWidth = 7; ctx.lineCap = 'round'; ctx.lineJoin = 'round';
+    ctx.beginPath(); ctx.moveTo(cx - 15, cy + 1); ctx.lineTo(cx - 4, cy + 13); ctx.lineTo(cx + 17, cy - 12); ctx.stroke();
+  }
+
+  async function make() {
+    const raw = nameEl.value.trim().replace(/\s+/g, ' ');
+    if (raw.length < 2) return;
+    await loadFonts();
+    lastName = raw;
+    draw(raw);
+    postEl.textContent = POST(raw);
+    preview.classList.add('on');
+    preview.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  function toBlob() { return new Promise((res) => cv.toBlob(res, 'image/png')); }
+  const fileName = () => 'LAB-2308-badge-' + lastName.replace(/[^a-z0-9]+/gi, '-').toLowerCase() + '.png';
+
+  document.getElementById('dl').addEventListener('click', async () => {
+    const blob = await toBlob();
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob); a.download = fileName();
+    document.body.appendChild(a); a.click(); a.remove();
+  });
+
+  document.getElementById('li').addEventListener('click', () => {
+    const url = 'https://www.linkedin.com/feed/?shareActive=true&text=' + encodeURIComponent(POST(lastName));
+    window.open(url, '_blank', 'noopener');
+  });
+
+  document.getElementById('copy').addEventListener('click', async () => {
+    try { await navigator.clipboard.writeText(POST(lastName)); document.getElementById('copy').firstChild.textContent = 'Copied '; }
+    catch (e) { window.getSelection().selectAllChildren(postEl); }
+  });
+
+})();
+</script>
+</body>
+</html>
