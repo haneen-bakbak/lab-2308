@@ -299,7 +299,6 @@
           <li><a class="sub" href="#step-4-3">4.3 Experiment Prompts</a></li>
           <li><a href="#section-5">5. Troubleshooting &amp; FAQs</a></li>
           <li><a href="#section-6">6. Wrap-Up &amp; Key Takeaways</a></li>
-          <li><a href="#section-bonus">Bonus. Finished Early?</a></li>
           <li><a href="#section-7">7. Reference &amp; MCP Specs</a></li>
         </ul>
       </nav>
@@ -906,84 +905,6 @@
             ✅ Executed natural language queries, risk creation, and control association against live GRC databases.<br />
             ✅ Inspected full telemetry traces and execution spans in watsonx Orchestrate.</p>
           </div>
-        </section>
-
-        <!-- ================= BONUS - EXPLORE THE CONTROL PLANE ================= -->
-        <section id="section-bonus" class="step">
-          <div class="step-label"><cds-tag type="teal">Bonus</cds-tag></div>
-          <h2>Finished Early? Explore the Control Plane</h2>
-          <p>Nothing here is required. You have a working agent and a trace history, so use the time to poke around watsonx Orchestrate and see what else the control plane gives you. Pick any idea below, in any order.</p>
-          <div class="note info">
-            <span class="note-title">Your instance may differ</span>
-            <p>Some screens depend on the permissions and features enabled in your assigned instance. If a menu item is missing, skip it and try another. Answers will vary, because they depend on the activity in your own tenant.</p>
-          </div>
-
-          <h3 id="bonus-ask">Ask Orchestrate About Your Own Fleet</h3>
-          <p>Click the Agent assistant icon at the top right of watsonx Orchestrate and ask questions about the agents in your instance. Click <strong>Show Reasoning</strong> to see how the answer was worked out. Your chats from this lab are part of the data.</p>
-          <div class="prompt">
-            <button class="copy-btn" type="button">Copy Prompt</button>
-            <p class="prompt-label">Explore 1</p>
-            <p>"Which agents are underperforming?"</p>
-          </div>
-          <div class="prompt">
-            <button class="copy-btn" type="button">Copy Prompt</button>
-            <p class="prompt-label">Explore 2</p>
-            <p>"How many conversations did lab2308_risk_agent handle, and were there any errors?"</p>
-          </div>
-          <div class="prompt">
-            <button class="copy-btn" type="button">Copy Prompt</button>
-            <p class="prompt-label">Explore 3</p>
-            <p>"Which agent uses the most tokens, and which has the highest latency?"</p>
-          </div>
-          <div class="prompt">
-            <button class="copy-btn" type="button">Copy Prompt</button>
-            <p class="prompt-label">Explore 4</p>
-            <p>"Which agents have no test cases or have never been evaluated?"</p>
-          </div>
-          <div class="prompt">
-            <button class="copy-btn" type="button">Copy Prompt</button>
-            <p class="prompt-label">Explore 5</p>
-            <p>"Which controls are in place, and which agents do they cover?"</p>
-          </div>
-
-          <h3 id="bonus-dashboard">Tour the AgentOps Dashboard</h3>
-          <p>In the left navigation bar, open <strong>AgentOps</strong> and look beyond the Conversations tab you used in Module 4.</p>
-          <ul class="plain">
-            <li>Change the <strong>time range</strong> and the <strong>agent selector</strong>, and watch every panel re-scope.</li>
-            <li>Switch between the dashboard tabs, such as <strong>Overview</strong>, <strong>Adoption</strong>, <strong>Quality</strong>, <strong>Reliability</strong>, <strong>FinOps</strong> and <strong>Security and Risk</strong>, and see what each lens shows about your agent.</li>
-            <li>Use <strong>Customize view</strong> to add, remove or rearrange widgets.</li>
-            <li>On the <strong>FinOps</strong> tab, check token usage by agent and by model. It reports tokens, not dollars.</li>
-          </ul>
-
-          <h3 id="bonus-controls">Try a Policy Control</h3>
-          <p>Controls are enforced by the platform whether or not the model decides to follow them. In the left navigation bar, open <strong>Controls</strong> and look at what is already there. If you have permission, you can create a <strong>PII Filter</strong>, choose what to detect (for example phone numbers), choose whether it masks or blocks, assign <code>lab2308_risk_agent</code>, and activate it.</p>
-          <p>Then start a new chat with the agent and try this prompt. Compare what you typed with what the agent reports back, and open the trace to see where the control acted.</p>
-          <div class="prompt">
-            <button class="copy-btn" type="button">Copy Prompt</button>
-            <p class="prompt-label">Explore 6</p>
-            <p>"Log a new risk in OpenPages named 'Test Contact Risk'. In the description, say the owner can be reached on 9876543210."</p>
-          </div>
-          <div class="note warning">
-            <span class="note-title">Keep it to your own environment</span>
-            <p>This prompt writes a record to the OpenPages environment assigned to you. Deactivate the control when you are done so it does not affect anything else.</p>
-          </div>
-
-          <h3 id="bonus-evaluate">Evaluate and Optimize</h3>
-          <ul class="plain">
-            <li>Open <code>lab2308_risk_agent</code> and look at the <strong>Evaluate</strong> tab. Review the available metrics, such as tool call precision and recall.</li>
-            <li>Open <strong>AgentOps</strong> and then <strong>Optimization</strong>, click <strong>Optimize an agent</strong>, and read the readiness plan. It tells you how many test cases the agent has and what it would run. Optimization needs test cases to be useful, so an agent with very few may only produce a warning.</li>
-          </ul>
-
-          <h3 id="bonus-gateway">Look at Agents, Connections and Access</h3>
-          <ul class="plain">
-            <li>Open the <strong>Agent Directory</strong> under AI Gateway and see what agents your instance knows about.</li>
-            <li>Open <strong>Agent Inventory</strong> and compare the <code>lab2308_risk_agent</code> card with the others. Note which agents are native and which are external.</li>
-            <li>Check the <strong>Connections</strong> page for the MCP connection Bob created.</li>
-            <li>If you have admin rights, look at where users, roles and data retention settings live.</li>
-          </ul>
-
-          <h3 id="bonus-own">Make Up Your Own Tests</h3>
-          <p>Go back to Chat with <code>lab2308_risk_agent</code> and ask your own questions about the risks and controls in OpenPages. Then open <strong>AgentOps &rarr; Observability &rarr; Conversations &rarr; Debug</strong> and look at the schema lookups, the queries it wrote and how long each step took. Ask an instructor if you want help reading a trace.</p>
         </section>
 
         <!-- ================= SECTION 7 ================= -->
