@@ -739,6 +739,23 @@
             <p class="prompt-label">Prompt 1</p>
             <p>"Which of our risk categories have controls that are still awaiting assessment?"</p>
           </div>
+
+          <div class="note success">
+            <span class="note-title">Recommended: open "Show Reasoning" on this first answer</span>
+            <p>When the agent replies, click <strong>Show Reasoning</strong> next to the agent name, just above the answer. watsonx Orchestrate will share the agent's thought process: which tool it chose, the exact query it sent to OpenPages, and the raw data that came back. It is worth a look. It helps you understand what is happening behind the scenes, and it is the same evidence you will study in Module 4. Click <strong>Hide Reasoning</strong> to close it again.</p>
+          </div>
+          <div style="display:flex;flex-wrap:wrap;gap:1.5rem;max-width:52rem;align-items:flex-start;">
+            <figure style="flex:1 1 20rem;max-width:25rem;margin:0 0 1.5rem;">
+              <img src="assets/screenshots/wxo-show-reasoning.png" alt="Agent answer with the Show Reasoning control next to the agent name" />
+              <figcaption>Figure 10. Click <strong>Show Reasoning</strong> next to <strong>lab2308_risk_agent</strong>, above the answer.</figcaption>
+            </figure>
+            <figure style="flex:1 1 20rem;max-width:25rem;margin:0 0 1.5rem;">
+              <img src="assets/screenshots/wxo-reasoning-open.png" alt="Reasoning expanded showing Step 1, the tool name, the input query and the output" />
+              <figcaption>Figure 11. The reasoning shows each step: the <strong>tool</strong> used, the <strong>input</strong> sent to OpenPages, and the <strong>output</strong> returned.</figcaption>
+            </figure>
+          </div>
+
+
           <p><strong>Expected behavior:</strong> The agent calls <code>openpages_get_resource</code> to inspect the <code>SOXControl</code> schema, executes a query for controls with status <code>Awaiting Assessment</code>, groups them by <code>OPSS-Shared-Basel:Risk Category</code>, and highlights the most exposed category. <em>The category depends on the data in your OpenPages environment - seeing <strong>Internal Fraud</strong>, <strong>External Fraud</strong> or another category is expected and fine.</em></p>
 
           <h4>Prompt 2 - Explain the Gap</h4>
@@ -797,25 +814,25 @@
           <p><strong>Step 1.</strong> In the left navigation bar, scroll down to the <strong>AGENTOPS</strong> section and click <strong>Observability</strong>.</p>
           <figure>
             <img src="assets/screenshots/trace-04-conversations.png" alt="Left nav with Observability highlighted under AGENTOPS" />
-            <figcaption>Figure 10. Left nav → <strong>AGENTOPS</strong> → <strong>Observability</strong>. The Analytics page opens showing agent activity.</figcaption>
+            <figcaption>Figure 12. Left nav → <strong>AGENTOPS</strong> → <strong>Observability</strong>. The Analytics page opens showing agent activity.</figcaption>
           </figure>
 
           <p><strong>Step 2.</strong> On the Analytics page, find <strong>lab2308_risk_agent</strong> in the Agent Activity table on the right and click it.</p>
           <figure>
             <img src="assets/screenshots/trace-06-node-tree.png" alt="Observability analytics page with lab2308_risk_agent in the table" />
-            <figcaption>Figure 11. Click <strong>lab2308_risk_agent</strong> in the Agent Activity table to open its detail page.</figcaption>
+            <figcaption>Figure 13. Click <strong>lab2308_risk_agent</strong> in the Agent Activity table to open its detail page.</figcaption>
           </figure>
 
           <p><strong>Step 3.</strong> Click the <strong>Conversations</strong> tab. You will see a list of every conversation. Find yours and click the <strong>Debug</strong> button on that row.</p>
           <figure>
             <img src="assets/screenshots/trace-05-debug-click.png" alt="Conversations tab with Debug button highlighted on a conversation row" />
-            <figcaption>Figure 12. <strong>Conversations</strong> tab → hover over a row → click <strong>Debug</strong>.</figcaption>
+            <figcaption>Figure 14. <strong>Conversations</strong> tab → hover over a row → click <strong>Debug</strong>.</figcaption>
           </figure>
 
           <p><strong>Step 4.</strong> The debug view opens - an <strong>Agent flow</strong> node/tree diagram on the left and an <strong>Execution timeline</strong> on the right listing every step. Click any node or timeline entry to expand its full input and output.</p>
           <figure>
             <img src="assets/screenshots/trace-07-node-detail.png" alt="Debug view showing node tree and execution timeline with a node expanded" />
-            <figcaption>Figure 13. The debug view - node tree on the left, execution timeline on the right. Click any step to see the exact query sent to OpenPages and the raw response returned.</figcaption>
+            <figcaption>Figure 15. The debug view - node tree on the left, execution timeline on the right. Click any step to see the exact query sent to OpenPages and the raw response returned.</figcaption>
           </figure>
 
           <div class="note info">
