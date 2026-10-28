@@ -145,13 +145,32 @@
     }
     .prompt .prompt-label { font-size: 0.75rem; letter-spacing: 0.32px; text-transform: uppercase; color: var(--cds-text-secondary); margin: 0 0 var(--cds-spacing-03); font-weight: 600; }
     .prompt p { margin: 0; font-size: 1.125rem; line-height: 1.5; font-style: italic; color: #161616; }
+    .prompt { padding-right: 7.5rem; }
     .copy-btn {
       position: absolute; top: var(--cds-spacing-04); right: var(--cds-spacing-04);
-      background: #ffffff; border: 1px solid var(--cds-border-subtle-01);
-      padding: 0.25rem 0.6rem; font-size: 0.75rem; cursor: pointer; border-radius: 2px;
-      font-family: inherit; font-weight: 500;
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      background: #ffffff; border: 1px solid var(--cds-interactive); color: var(--cds-interactive);
+      padding: 0.4rem 0.75rem; font-size: 0.8125rem; cursor: pointer; border-radius: 2px;
+      font-family: inherit; font-weight: 500; line-height: 1;
+      transition: background 0.15s, color 0.15s;
     }
-    .copy-btn:hover { background: #e0e0e0; }
+    .copy-btn svg, .copy-chip svg { width: 14px; height: 14px; flex: none; fill: currentColor; }
+    .copy-btn:hover { background: var(--cds-interactive); color: #fff; }
+    .copy-btn:focus-visible, .copy-chip:focus-visible { outline: 2px solid var(--cds-focus); outline-offset: 2px; }
+    .copy-btn.copied, .copy-chip.copied { background: var(--cds-support-success); border-color: var(--cds-support-success); color: #fff; }
+    @media (max-width: 41.99rem) {
+      .prompt { padding-right: var(--cds-spacing-06); padding-top: 3.25rem; }
+    }
+
+    /* Inline copy chips for codes, credentials, commands and links */
+    .copy-chip {
+      display: inline-flex; align-items: center; gap: 0.3rem; vertical-align: baseline;
+      margin-left: 0.4rem; padding: 0.15rem 0.5rem;
+      background: #ffffff; border: 1px solid var(--cds-border-subtle-01); color: var(--cds-link-primary);
+      font-family: inherit; font-size: 0.75rem; font-weight: 500; line-height: 1.4;
+      border-radius: 2px; cursor: pointer;
+    }
+    .copy-chip:hover { background: var(--cds-interactive); border-color: var(--cds-interactive); color: #fff; }
 
     /* ---- Inline notifications ---- */
     .note {
@@ -360,14 +379,14 @@
 
           <h3 id="step-b">Step B: Get your environment credentials</h3>
           <ol class="plain">
-            <li>Open this link: <a href="https://ibm.biz/~e87ccFkGv" target="_blank" rel="noopener"><strong>https://ibm.biz/~e87ccFkGv</strong></a></li>
-            <li>When asked for the <strong>lab access code</strong>, enter: <code>techxLAB-2308-c167</code></li>
+            <li>Open this link: <a data-copy-link href="https://ibm.biz/~e87ccFkGv" target="_blank" rel="noopener"><strong>https://ibm.biz/~e87ccFkGv</strong></a></li>
+            <li>When asked for the <strong>lab access code</strong>, enter: <code data-copy>techxLAB-2308-c167</code></li>
             <li>Click <strong>Validate access code</strong>.</li>
           </ol>
 
           <h3 id="step-c">Step C: Download your Excel file</h3>
           <ol class="plain">
-            <li>Open this link: <a href="https://ibm.biz/lab2308-env" target="_blank" rel="noopener"><strong>https://ibm.biz/lab2308-env</strong></a></li>
+            <li>Open this link: <a data-copy-link href="https://ibm.biz/lab2308-env" target="_blank" rel="noopener"><strong>https://ibm.biz/lab2308-env</strong></a></li>
             <li>Download the Excel file that matches <strong>your student number</strong>. The file is named <code>LAB2308_Student_X.xls</code> (<code>X</code> = your student number, for example <code>LAB2308_Student_7.xls</code>).</li>
             <li>Open the file. Its password is your student number followed by <code>lab2308</code>, <strong>with no leading zeros</strong>: <code>Xlab2308</code>. For example, student 7 uses <code>7lab2308</code>, and student 12 uses <code>12lab2308</code>.</li>
           </ol>
@@ -455,7 +474,7 @@
           </div>
 
           <h3 id="step-0-7">0.7 Log In to OpenPages (for Module 2)</h3>
-          <p>Find the <strong>watsonx.Gov Application URL</strong> in your Excel file (under PART 2) and open it in your browser. You'll see a TLS warning (TechZone uses a self-signed certificate) - click <strong>Advanced → Proceed to wxgov-govconsole… (unsafe)</strong>. Log in with <code>OpenPagesAdministrator</code> / <code>passw0rd</code>.</p>
+          <p>Find the <strong>watsonx.Gov Application URL</strong> in your Excel file (under PART 2) and open it in your browser. You'll see a TLS warning (TechZone uses a self-signed certificate) - click <strong>Advanced → Proceed to wxgov-govconsole… (unsafe)</strong>. Log in with <code data-copy>OpenPagesAdministrator</code> / <code data-copy>passw0rd</code>.</p>
 
           <figure>
             <img src="assets/screenshots/real-openpages-login.png" alt="OpenPages GRC Login Portal" />
@@ -528,7 +547,7 @@
           <div class="note info" style="margin-top:1rem;">
             <span class="note-title">Prefer git?</span>
             <p>If you have git installed, you can also run:<br>
-            <code>git clone https://github.com/haneen-bakbak/lab-2308.git</code><br>
+            <code data-copy>git clone https://github.com/haneen-bakbak/lab-2308.git</code><br>
             Either way works - you get the same files.</p>
           </div>
 
@@ -555,7 +574,7 @@
           <h3 id="step-1-7">1.7 Talk to Bob</h3>
           <p>In the chat, type:</p>
           <div class="prompt">
-            <button class="copy-btn" onclick="navigator.clipboard.writeText('Hi Bob! I\'m in Lab 2308 at TechXchange. Can you set me up?')">Copy</button>
+            <button class="copy-btn" type="button">Copy</button>
             <p class="prompt-label">Start Here</p>
             <p>"Hi Bob! I'm in Lab 2308 at TechXchange. Can you set me up?"</p>
           </div>
@@ -666,7 +685,7 @@
 
           <h4>Prompt 1 - Find the Compliance Gap</h4>
           <div class="prompt">
-            <button class="copy-btn" onclick="navigator.clipboard.writeText('Which of our risk categories have controls that are still awaiting assessment?')">Copy Prompt</button>
+            <button class="copy-btn" type="button">Copy Prompt</button>
             <p class="prompt-label">Prompt 1</p>
             <p>"Which of our risk categories have controls that are still awaiting assessment?"</p>
           </div>
@@ -674,7 +693,7 @@
 
           <h4>Prompt 2 - Explain the Gap</h4>
           <div class="prompt">
-            <button class="copy-btn" onclick="navigator.clipboard.writeText('Explain the gap briefly.')">Copy Prompt</button>
+            <button class="copy-btn" type="button">Copy Prompt</button>
             <p class="prompt-label">Prompt 2</p>
             <p>"Explain the gap briefly."</p>
           </div>
@@ -682,7 +701,7 @@
 
           <h4>Prompt 3 - Create a New Risk Record in OpenPages</h4>
           <div class="prompt">
-            <button class="copy-btn" onclick="navigator.clipboard.writeText('Log a new risk in OpenPages: Name it \'Inadequate Fraud Detection Controls\', set the category to External Fraud, and note that controls are unassessed.')">Copy Prompt</button>
+            <button class="copy-btn" type="button">Copy Prompt</button>
             <p class="prompt-label">Prompt 3</p>
             <p>"Log a new risk in OpenPages: Name it 'Inadequate Fraud Detection Controls', set the category to External Fraud, and note that controls are unassessed."</p>
           </div>
@@ -691,7 +710,7 @@
 
           <h4>Prompt 4 - Associate the Control to the New Risk</h4>
           <div class="prompt">
-            <button class="copy-btn" onclick="navigator.clipboard.writeText('Link control CTL-04-03-03-01 to our new Inadequate Fraud Detection Controls risk.')">Copy Prompt</button>
+            <button class="copy-btn" type="button">Copy Prompt</button>
             <p class="prompt-label">Prompt 4</p>
             <p>"Link control CTL-04-03-03-01 to our new Inadequate Fraud Detection Controls risk."</p>
           </div>
@@ -774,17 +793,17 @@
           </div>
           <p>Try sending these additional queries to observe the trace inspector in real time:</p>
           <div class="prompt">
-            <button class="copy-btn" onclick="navigator.clipboard.writeText('How many risks are currently in an Open status?')">Copy Prompt</button>
+            <button class="copy-btn" type="button">Copy Prompt</button>
             <p class="prompt-label">Test Prompt A</p>
             <p>"How many risks are currently in an Open status?"</p>
           </div>
           <div class="prompt">
-            <button class="copy-btn" onclick="navigator.clipboard.writeText('List all risks that are High severity.')">Copy Prompt</button>
+            <button class="copy-btn" type="button">Copy Prompt</button>
             <p class="prompt-label">Test Prompt B</p>
             <p>"List all risks that are High severity."</p>
           </div>
           <div class="prompt">
-            <button class="copy-btn" onclick="navigator.clipboard.writeText('Summarise the risk landscape - how many risks exist per status?')">Copy Prompt</button>
+            <button class="copy-btn" type="button">Copy Prompt</button>
             <p class="prompt-label">Test Prompt C</p>
             <p>"Summarise the risk landscape - how many risks exist per status?"</p>
           </div>
@@ -852,6 +871,76 @@
       IBM TechXchange 2026 &middot; Lab 2308: Building Autonomous Risk &amp; Compliance Agents &middot; watsonx Orchestrate + watsonx.governance + OpenPages &middot; Rendered with IBM Carbon Design System
     </div>
   </footer>
+
+  <!-- Copy buttons: prompts, codes, credentials, commands and links -->
+  <script>
+    (function () {
+      var ICON = '<svg viewBox="0 0 32 32" aria-hidden="true"><path d="M28 10v18H10V10h18m0-2H10a2 2 0 0 0-2 2v18a2 2 0 0 0 2 2h18a2 2 0 0 0 2-2V10a2 2 0 0 0-2-2z"/><path d="M4 18H2V4a2 2 0 0 1 2-2h14v2H4z"/></svg>';
+      var CHECK = '<svg viewBox="0 0 32 32" aria-hidden="true"><path d="M13 24 4 15l1.4-1.4L13 21.2 26.6 7.6 28 9z"/></svg>';
+
+      function writeText(text) {
+        if (navigator.clipboard && window.isSecureContext) {
+          return navigator.clipboard.writeText(text);
+        }
+        return new Promise(function (resolve, reject) {
+          var ta = document.createElement('textarea');
+          ta.value = text;
+          ta.setAttribute('readonly', '');
+          ta.style.position = 'fixed';
+          ta.style.opacity = '0';
+          document.body.appendChild(ta);
+          ta.select();
+          try { document.execCommand('copy') ? resolve() : reject(); } catch (e) { reject(e); }
+          document.body.removeChild(ta);
+        });
+      }
+
+      function wire(btn, getText, idleLabel) {
+        btn.innerHTML = ICON + '<span>' + idleLabel + '</span>';
+        btn.addEventListener('click', function () {
+          writeText(getText()).then(function () {
+            btn.classList.add('copied');
+            btn.innerHTML = CHECK + '<span>Copied</span>';
+            setTimeout(function () {
+              btn.classList.remove('copied');
+              btn.innerHTML = ICON + '<span>' + idleLabel + '</span>';
+            }, 1800);
+          });
+        });
+      }
+
+      document.addEventListener('DOMContentLoaded', function () {
+        // Prompt tiles
+        document.querySelectorAll('.prompt .copy-btn').forEach(function (btn) {
+          var idle = btn.textContent.trim();
+          var p = btn.parentElement.querySelector('p:not(.prompt-label)');
+          wire(btn, function () {
+            return p.textContent.trim().replace(/^[“"]/, '').replace(/[”"]$/, '');
+          }, idle);
+        });
+
+        // Inline codes, credentials, commands
+        document.querySelectorAll('code[data-copy]').forEach(function (el) {
+          var chip = document.createElement('button');
+          chip.type = 'button';
+          chip.className = 'copy-chip';
+          chip.setAttribute('aria-label', 'Copy ' + el.textContent.trim());
+          wire(chip, function () { return el.textContent.trim(); }, 'Copy');
+          el.insertAdjacentElement('afterend', chip);
+        });
+
+        // Links
+        document.querySelectorAll('a[data-copy-link]').forEach(function (el) {
+          var chip = document.createElement('button');
+          chip.type = 'button';
+          chip.className = 'copy-chip';
+          chip.setAttribute('aria-label', 'Copy link ' + el.href);
+          wire(chip, function () { return el.href; }, 'Copy link');
+          el.insertAdjacentElement('afterend', chip);
+        });
+      });
+    })();
+  </script>
 
   <!-- Scroll-spy script to highlight active side nav link -->
   <script>
