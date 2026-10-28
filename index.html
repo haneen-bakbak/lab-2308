@@ -201,6 +201,16 @@
     cds-code-snippet { display: block; max-width: 100%; }
     .acc-body { padding: var(--cds-spacing-03) 0; }
     .acc-body p { font-size: 0.875rem; }
+    /* ---- Student number box ---- */
+    .student-box { background: var(--cds-layer-01); border-left: 4px solid var(--cds-interactive); padding: var(--cds-spacing-05) var(--cds-spacing-06); margin: 0 0 var(--cds-spacing-05); max-width: 52rem; }
+    .student-box label { display: block; font-size: 0.75rem; letter-spacing: 0.32px; text-transform: uppercase; color: var(--cds-text-secondary); font-weight: 600; margin-bottom: var(--cds-spacing-03); }
+    .student-box input { font-family: inherit; font-size: 1.125rem; width: 8rem; padding: 0.5rem 0.75rem; border: 1px solid var(--cds-border-strong-01); background: #fff; color: var(--cds-text-primary); border-radius: 0; }
+    .student-box input:focus { outline: 2px solid var(--cds-focus); outline-offset: -2px; }
+    .student-box .student-hint { margin: var(--cds-spacing-03) 0 0; font-size: 0.875rem; color: var(--cds-text-secondary); }
+    .student-box .student-hint.warn { color: #a2191f; }
+    .student-row { display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem; margin-top: var(--cds-spacing-04); }
+    .student-label { min-width: 7.5rem; font-size: 0.875rem; color: var(--cds-text-secondary); }
+    .student-row code { font-size: 1rem; background: #fff; padding: 0.3rem 0.6rem; border: 1px solid var(--cds-border-subtle-01); }
     pre.block {
       background: var(--cds-layer-01); margin: 0 0 var(--cds-spacing-05); padding: var(--cds-spacing-05);
       overflow-x: auto; font-size: 0.8125rem; line-height: 1.54; max-width: 52rem;
@@ -385,10 +395,31 @@
           </ol>
 
           <h3 id="step-c">Step C: Download your Excel file</h3>
+
+          <h4>1. Find your student number</h4>
+          <p>In the <strong>left navigation bar</strong> of TechZone, open <strong>My events</strong>. Under <em>LAB-2308</em> you will see an entry called <strong>Student X - LAB-2308</strong>. The number is your student number. The example below is student 1.</p>
+          <figure style="max-width:22rem;">
+            <img src="assets/screenshots/techzone-my-events-student.png" alt="TechZone left navigation, My events, showing Student 1 - LAB-2308 under LAB-2308" />
+            <figcaption>Figure A. Left nav bar → My events → Student X - LAB-2308 (this example is student 1).</figcaption>
+          </figure>
+
+          <h4>2. Enter your student number</h4>
+          <p>Type your number below and the page shows the exact file name and password to use.</p>
+          <div class="student-box">
+            <label for="student-num">My student number</label>
+            <input id="student-num" type="text" inputmode="numeric" pattern="[0-9]*" maxlength="3" placeholder="e.g. 7" autocomplete="off" />
+            <p id="student-hint" class="student-hint">Enter a number to see your file name and password.</p>
+            <div id="student-result" hidden>
+              <div class="student-row"><span class="student-label">Your Excel file</span><code id="student-file"></code></div>
+              <div class="student-row"><span class="student-label">Its password</span><code id="student-pass"></code></div>
+            </div>
+          </div>
+
+          <h4>3. Download and open the file</h4>
           <ol class="plain">
             <li>Open this link: <a data-copy-link href="https://ibm.biz/lab2308-env" target="_blank" rel="noopener"><strong>https://ibm.biz/lab2308-env</strong></a></li>
-            <li>Download the Excel file that matches <strong>your student number</strong>. The file is named <code>LAB2308_Student_X.xls</code> (<code>X</code> = your student number, for example <code>LAB2308_Student_7.xls</code>).</li>
-            <li>Open the file. Its password is your student number followed by <code>lab2308</code>, <strong>with no leading zeros</strong>: <code>Xlab2308</code>. For example, student 7 uses <code>7lab2308</code>, and student 12 uses <code>12lab2308</code>.</li>
+            <li>Download the Excel file with the file name shown above.</li>
+            <li>Open the file and enter the password shown above.</li>
           </ol>
           <p>This Excel file has everything you need for the next sections: your IBM Cloud login, your OpenPages link and your <strong>MCP SERVER URL</strong>. Keep it open.</p>
         </section>
@@ -928,6 +959,42 @@
           wire(chip, function () { return el.textContent.trim(); }, 'Copy');
           el.insertAdjacentElement('afterend', chip);
         });
+
+        // Student number box: shows file name and password, with copy buttons
+        (function () {
+          var input = document.getElementById('student-num');
+          if (!input) return;
+          var hint = document.getElementById('student-hint');
+          var result = document.getElementById('student-result');
+          var fileEl = document.getElementById('student-file');
+          var passEl = document.getElementById('student-pass');
+          [[fileEl, 'Copy file name'], [passEl, 'Copy password']].forEach(function (pair) {
+            var chip = document.createElement('button');
+            chip.type = 'button';
+            chip.className = 'copy-chip';
+            wire(chip, function () { return pair[0].textContent.trim(); }, pair[1]);
+            pair[0].insertAdjacentElement('afterend', chip);
+          });
+          input.addEventListener('input', function () {
+            var raw = input.value.replace(/\D/g, '');
+            if (input.value !== raw) input.value = raw;
+            var n = raw === '' ? 0 : parseInt(raw, 10);
+            hint.classList.remove('warn');
+            if (raw === '') {
+              result.hidden = true;
+              hint.textContent = 'Enter a number to see your file name and password.';
+            } else if (n < 1) {
+              result.hidden = true;
+              hint.classList.add('warn');
+              hint.textContent = 'Student numbers start at 1. Check the My events list again.';
+            } else {
+              fileEl.textContent = 'LAB2308_Student_' + n + '.xls';
+              passEl.textContent = n + 'lab2308';
+              result.hidden = false;
+              hint.textContent = raw !== String(n) ? 'Leading zeros removed: the password uses no leading zeros.' : '';
+            }
+          });
+        })();
 
         // Links
         document.querySelectorAll('a[data-copy-link]').forEach(function (el) {
