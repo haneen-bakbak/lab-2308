@@ -13,7 +13,7 @@
 | **Overview** | **Overview & Architecture** |
 | **Before You Start** | **IBM ID, Environment Credentials & Your Excel File** |
 | **0** | **Prerequisites — Key Information You Need for This Lab** |
-| 0.1 | Find Your Three Values — Your Excel File and IBM Cloud |
+| 0.1 | What Bob Will Ask You For |
 | 0.2 | Step 1: Log In to IBM Cloud via TechZone App ID |
 | 0.3 | Step 2: Access Your Resources & Launch watsonx Orchestrate |
 | 0.4 | Step 3: Copy Your WxO Instance URL from IBM Cloud |
@@ -167,40 +167,19 @@ This lab bridges two cloud environments:
 
 ---
 
-### 0.1 Find Your Three Values — Your Excel File and IBM Cloud
+### 0.1 What Bob Will Ask You For
 
-Your credentials are in the Excel file you downloaded in **Step C** above.
-**Bob needs three values**, marked with ★ below. Only one of them is in the Excel file: the other two you copy or create yourself in IBM Cloud (steps 0.4 and 0.5).
+When you start Module 1, Bob will ask you for **three pieces of information**. This section shows you what they are and where to get each one. You do not need to have them ready yet: the steps below walk you through finding every one.
 
-```
-============================================================
-  IBM TechXchange 2026 — LAB-2308
-  YOUR ENVIRONMENT INFO   (LAB2308_Student_X.xls)
-============================================================
+| Bob asks for | Where you get it |
+|---|---|
+| **1. ★ MCP SERVER URL** | Already in your Excel file (`LAB2308_Student_X.xls`), under *PART 2 - OpenPages / watsonx.governance*. It ends in `/mcp`. See step 0.6. |
+| **2. ★ WXO INSTANCE URL** | Not in the Excel file. You copy it from IBM Cloud in step 0.4. |
+| **3. ★ IBM CLOUD API KEY** | Not in the Excel file. You create it in IBM Cloud in step 0.5. |
 
-PART 1 - IBM Cloud / watsonx Orchestrate (WxO)
+Your Excel file also holds your IBM Cloud login and your OpenPages login. You use those in the next steps, but you do not give them to Bob.
 
-IBM Cloud Login URL:  https://cloud.ibm.com/authorize/<tenant>   ← use this to log in to IBM Cloud
-App ID Username:      student_<id>@techzone.ibm.com
-App ID Password:      <your password>
-
-(NOT in the Excel file — you copy these from IBM Cloud yourself)
-
-★ WXO INSTANCE URL  (copy it in step 0.4)                  ← GIVE THIS TO BOB (Question 2)
-  https://api.ca-tor.watson-orchestrate.cloud.ibm.com/instances/XXXX   (example of what it looks like)
-
-★ IBM CLOUD API KEY  (create it in step 0.5)               ← GIVE THIS TO BOB (Question 3)
-  AbCdEfGhIjKlMnOpQrStUvWxYz0123456789AbCd_-x   (example of what it looks like)
-
-PART 2 - OpenPages / watsonx.governance
-
-watsonx.Gov Application URL:  https://wxgov-govconsole-demo-XXXX.vsi.techzone.ibm.com/openpages
-★ MCP SERVER URL (give this to Bob):  https://wxgov-govconsole-demo-XXXX.vsi.techzone.ibm.com/mcp   ← GIVE THIS TO BOB (Question 1)
-OpenPages Username:  OpenPagesAdministrator
-OpenPages Password:  passw0rd
-```
-
-> 💡 **The three ★ starred values are all Bob needs.** Only the **★ MCP SERVER URL** is in your Excel file. The **★ WXO INSTANCE URL** you copy from IBM Cloud (step 0.4) and the **★ IBM CLOUD API KEY** you create in IBM Cloud (step 0.5). Have all three ready before you start Module 1.
+> 💡 **Bob handles everything else.** You do not need to edit any files, run any commands, or touch any YAML. Once you give Bob those three values, Bob does the rest.
 
 ---
 
