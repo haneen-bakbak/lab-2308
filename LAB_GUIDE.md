@@ -24,7 +24,7 @@
 | 1.1 | Open IBM Bob |
 | 1.2 | Sign In with Your IBM ID |
 | 1.3 | Select the Lab Team |
-| 1.4 | Check Your Python Version |
+| 1.4 | Python (Bob Handles This) |
 | 1.5 | Bob Sets Everything Up |
 | **2.0** | **Module 2 — Explore OpenPages** |
 | 2.1 | Log In to OpenPages |
@@ -363,14 +363,9 @@ Bob must be using the lab team before it can run the lab setup.
 
 > ⚠️ The screenshot shows `IBM Internal` checked — that is the default. Change it to the lab team before continuing.
 
-### 1.4 Check Your Python Version
+### 1.4 Python (Bob Handles This)
 
-Bob needs Python. **Bob checks this for you automatically** and installs it if it's missing, but it's worth confirming yourself:
-
-- **Windows:** open the **Start** menu, search **Command Prompt**, and run `python --version`. If that fails, try `py --version`.
-- **Mac:** open **Terminal** (**Cmd + Space**, type *Terminal*, press Enter) and run `python3 --version`.
-
-You should see **Python 3.14.3**. Any Python from **3.11 to 3.14** also works. If Python is missing, just continue — Bob will install it for you in the next step (about 2 minutes).
+Bob needs Python (3.11 to 3.14). **There is nothing for you to check.** When you send your first message to Bob in the next step, Bob checks your machine automatically and, if Python is missing, installs it for you (about 2 minutes). Just continue.
 
 ### 1.5 Bob Sets Everything Up
 

@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>IBM TechXchange 2026 — Lab 2308: Build an Autonomous Risk &amp; Compliance Agent</title>
+  <title>IBM TechXchange 2026 - Lab 2308: Build an Autonomous Risk &amp; Compliance Agent</title>
 
   <!-- IBM Plex from the IBM CDN -->
   <link rel="stylesheet" href="https://1.www.s81c.com/common/carbon/plex/sans.css" />
@@ -249,22 +249,22 @@
           <li><a class="sub" href="#step-0-5">0.5 Create Your IBM Cloud API Key</a></li>
           <li><a class="sub" href="#step-0-6">0.6 Find Your MCP Server URL</a></li>
           <li><a class="sub" href="#step-0-7">0.7 Log In to OpenPages</a></li>
-          <li><a href="#section-1">1.0 Module 1 — Setup with Bob</a></li>
+          <li><a href="#section-1">1.0 Module 1 - Setup with Bob</a></li>
           <li><a class="sub" href="#step-1-1">1.1 Open IBM Bob</a></li>
           <li><a class="sub" href="#step-1-2">1.2 Sign In with Your IBM ID</a></li>
           <li><a class="sub" href="#step-1-3">1.3 Select the Lab Team</a></li>
-          <li><a class="sub" href="#step-1-4">1.4 Check Your Python Version</a></li>
+          <li><a class="sub" href="#step-1-4">1.4 Python (Bob Handles This)</a></li>
           <li><a class="sub" href="#step-1-5">1.5 Get the Lab Files</a></li>
           <li><a class="sub" href="#step-1-6">1.6 Open in Bob &amp; Switch Mode</a></li>
           <li><a class="sub" href="#step-1-7">1.7 Talk to Bob</a></li>
-          <li><a href="#section-2">2.0 Module 2 — Explore OpenPages GRC</a></li>
+          <li><a href="#section-2">2.0 Module 2 - Explore OpenPages GRC</a></li>
           <li><a class="sub" href="#step-2-1">2.1 Log In to OpenPages</a></li>
           <li><a class="sub" href="#step-2-2">2.2 Find the Risk Records</a></li>
-          <li><a href="#section-3">3.0 Module 3 — Chat with Risk Agent</a></li>
+          <li><a href="#section-3">3.0 Module 3 - Chat with Risk Agent</a></li>
           <li><a class="sub" href="#step-3-1">3.1 Open Agent Chat</a></li>
           <li><a class="sub" href="#step-3-2">3.2 Guided Test Prompts</a></li>
           <li><a class="sub" href="#step-3-3">3.3 Schema-First Execution</a></li>
-          <li><a href="#section-4">4.0 Module 4 — Telemetry &amp; Traces</a></li>
+          <li><a href="#section-4">4.0 Module 4 - Telemetry &amp; Traces</a></li>
           <li><a class="sub" href="#step-4-1">4.1 Trace &amp; Context Inspector</a></li>
           <li><a class="sub" href="#step-4-2">4.2 Anatomy of an MCP Trace</a></li>
           <li><a class="sub" href="#step-4-3">4.3 Experiment Prompts</a></li>
@@ -352,7 +352,7 @@
         <!-- ================= BEFORE YOU START ================= -->
         <section id="section-before" class="step">
           <div class="step-label"><cds-tag type="blue">Before You Start</cds-tag></div>
-          <h2>Before You Start — IBM ID, Environment Credentials &amp; Your Excel File</h2>
+          <h2>Before You Start - IBM ID, Environment Credentials &amp; Your Excel File</h2>
           <p>Do these three things first, in order. Everything else in the lab depends on them.</p>
 
           <h3 id="step-a">Step A: You need an IBM ID</h3>
@@ -374,16 +374,16 @@
           <p>This Excel file has everything you need for the next sections: your IBM Cloud login, your OpenPages link and your <strong>MCP SERVER URL</strong>. Keep it open.</p>
         </section>
 
-        <!-- ================= SECTION 0 — PREREQUISITES ================= -->
+        <!-- ================= SECTION 0 - PREREQUISITES ================= -->
         <section id="section-0" class="step">
           <div class="step-label"><cds-tag type="blue">Prerequisites</cds-tag></div>
-          <h2>0 Prerequisites — Key Information You Need for This Lab</h2>
+          <h2>0 Prerequisites - Key Information You Need for This Lab</h2>
           <p>Your credentials are in the Excel file you downloaded in Step C. <strong>Bob needs three values</strong>, marked with ★ below. Only one is in the Excel file: the other two you copy or create yourself in IBM Cloud (steps 0.4 and 0.5).</p>
 
-          <h3 id="step-0-1">0.1 Find Your Three Values — Your Excel File and IBM Cloud</h3>
-          <p>Look for the ★ starred lines — those are the only three things you'll paste into Bob:</p>
+          <h3 id="step-0-1">0.1 Find Your Three Values - Your Excel File and IBM Cloud</h3>
+          <p>Look for the ★ starred lines - those are the only three things you'll paste into Bob:</p>
           <pre class="block">============================================================
-  IBM TechXchange 2026 — LAB-2308  ·  YOUR ENVIRONMENT INFO  (LAB2308_Student_X.xls)
+  IBM TechXchange 2026 - LAB-2308  ·  YOUR ENVIRONMENT INFO  (LAB2308_Student_X.xls)
 ============================================================
 
 PART 1 - IBM Cloud / watsonx Orchestrate (WxO)
@@ -392,7 +392,7 @@ IBM Cloud Login URL:  https://cloud.ibm.com/authorize/&lt;tenant&gt;    ← log 
 App ID Username:      student_&lt;id&gt;@techzone.ibm.com
 App ID Password:      &lt;your password&gt;
 
-(NOT in the Excel file — you copy these from IBM Cloud yourself)
+(NOT in the Excel file - you copy these from IBM Cloud yourself)
 
 ★ WXO INSTANCE URL (copy it, step 0.4)        ← give this to Bob (Question 2)
   https://api.ca-tor.watson-orchestrate.cloud.ibm.com/instances/XXXX   (example of what it looks like)
@@ -422,18 +422,18 @@ OpenPages Password:  passw0rd</pre>
 
           <h3 id="step-0-3">0.3–0.4 Open Your WxO Instance &amp; Copy the URL from IBM Cloud</h3>
           <p>Go to <a href="https://cloud.ibm.com/resources" target="_blank" rel="noopener">cloud.ibm.com/resources</a> → <strong>AI / Machine Learning</strong> → click your <strong>watsonx Orchestrate</strong> instance.</p>
-          <p>You will land on the page shown below. <strong>The WxO Instance URL is not in your Excel file — you copy it from the Credentials box here.</strong></p>
+          <p>You will land on the page shown below. <strong>The WxO Instance URL is not in your Excel file - you copy it from the Credentials box here.</strong></p>
 
           <figure>
             <img src="assets/screenshots/real-cloud-wxo-instance-detail.png" alt="watsonx Orchestrate Service Instance in IBM Cloud" />
-            <figcaption>Figure 4. In the <strong>Credentials</strong> box, copy the <strong>URL</strong> field (not the API key) — that is your ★ WXO INSTANCE URL.</figcaption>
+            <figcaption>Figure 4. In the <strong>Credentials</strong> box, copy the <strong>URL</strong> field (not the API key) - that is your ★ WXO INSTANCE URL.</figcaption>
           </figure>
 
           <ol class="plain" style="margin-top:0.5rem;">
             <li>
-              In the <strong>Credentials</strong> box, click the <strong>copy icon</strong> to the right of the <strong>URL</strong> field. Use the copy icon rather than selecting the text — the field is too narrow to show the whole URL.<br>
-              It starts with <code>https://api.</code>…<code>watson-orchestrate.cloud.ibm.com/instances/…</code> and its region (for example <code>ca-tor</code>) may differ from the example — paste exactly what IBM Cloud gives you.<br>
-              This is your <strong>★ WXO INSTANCE URL</strong>. Save it — Bob will ask for this.
+              In the <strong>Credentials</strong> box, click the <strong>copy icon</strong> to the right of the <strong>URL</strong> field. Use the copy icon rather than selecting the text - the field is too narrow to show the whole URL.<br>
+              It starts with <code>https://api.</code>…<code>watson-orchestrate.cloud.ibm.com/instances/…</code> and its region (for example <code>ca-tor</code>) may differ from the example - paste exactly what IBM Cloud gives you.<br>
+              This is your <strong>★ WXO INSTANCE URL</strong>. Save it - Bob will ask for this.
             </li>
             <li>
               Then click the blue <strong>Launch watsonx Orchestrate</strong> button to open your WxO workspace.
@@ -442,7 +442,7 @@ OpenPages Password:  passw0rd</pre>
 
           <div class="note warning" style="margin-top:1rem;">
             <span class="note-title">⚠️ Do NOT use the API key shown on this page.</span>
-            <p>The API key in the Credentials section here is <strong>not</strong> what Bob needs. Bob needs an <strong>IBM Cloud API key</strong> that you create yourself under IAM → API keys — see step 0.5 below.</p>
+            <p>The API key in the Credentials section here is <strong>not</strong> what Bob needs. Bob needs an <strong>IBM Cloud API key</strong> that you create yourself under IAM → API keys - see step 0.5 below.</p>
           </div>
 
           <h3 id="step-0-5">0.5 Create Your IBM Cloud API Key for Bob</h3>
@@ -459,7 +459,7 @@ OpenPages Password:  passw0rd</pre>
           <ol class="plain" start="4">
             <li>Copy the key value immediately (it is only shown once).</li>
           </ol>
-          <p>This is your <strong>★ IBM CLOUD API KEY</strong>. Save it — Bob will ask for this.</p>
+          <p>This is your <strong>★ IBM CLOUD API KEY</strong>. Save it - Bob will ask for this.</p>
 
           <h3 id="step-0-6">0.6 Find Your MCP Server URL for Bob</h3>
           <p>In your Excel file, find the line labelled <strong>MCP SERVER URL (give this to Bob)</strong> (under PART 2). Copy the full URL including <code>https://</code>.</p>
@@ -469,7 +469,7 @@ OpenPages Password:  passw0rd</pre>
           </div>
 
           <h3 id="step-0-7">0.7 Log In to OpenPages (for Module 2)</h3>
-          <p>Find the <strong>watsonx.Gov Application URL</strong> in your Excel file (under PART 2) and open it in your browser. You'll see a TLS warning (TechZone uses a self-signed certificate) — click <strong>Advanced → Proceed to wxgov-govconsole… (unsafe)</strong>. Log in with <code>OpenPagesAdministrator</code> / <code>passw0rd</code>.</p>
+          <p>Find the <strong>watsonx.Gov Application URL</strong> in your Excel file (under PART 2) and open it in your browser. You'll see a TLS warning (TechZone uses a self-signed certificate) - click <strong>Advanced → Proceed to wxgov-govconsole… (unsafe)</strong>. Log in with <code>OpenPagesAdministrator</code> / <code>passw0rd</code>.</p>
 
           <figure>
             <img src="assets/screenshots/real-openpages-login.png" alt="OpenPages GRC Login Portal" />
@@ -480,16 +480,16 @@ OpenPages Password:  passw0rd</pre>
         <!-- ================= MODULE 1 ================= -->
         <section id="section-1" class="step">
           <div class="step-label"><cds-tag type="purple">Module 1</cds-tag></div>
-          <h2>1.0 Module 1 — Start Here: Talk to Bob</h2>
+          <h2>1.0 Module 1 - Start Here: Talk to Bob</h2>
           <p>You will set up everything through a short conversation with Bob. No terminal, no YAML editing, no scripting.</p>
 
           <h3 id="step-1-1">1.1 Open IBM Bob</h3>
           <p>IBM Bob is an application installed on your lab machine (it does not run in a browser).</p>
-          <p><strong>Option A — Desktop icon:</strong> double-click the <strong>IBM Bob</strong> icon on your desktop.</p>
-          <p><strong>Option B — No icon on the desktop (Windows):</strong></p>
+          <p><strong>Option A - Desktop icon:</strong> double-click the <strong>IBM Bob</strong> icon on your desktop.</p>
+          <p><strong>Option B - No icon on the desktop (Windows):</strong></p>
           <ol class="plain">
             <li>Click the <strong>Start</strong> button (Windows logo, bottom-left of the screen) or press the <strong>Windows key</strong>.</li>
-            <li>Type <strong>Bob</strong> — or click <strong>All apps</strong> and scroll to <strong>IBM Bob</strong>.</li>
+            <li>Type <strong>Bob</strong> - or click <strong>All apps</strong> and scroll to <strong>IBM Bob</strong>.</li>
             <li>Click <strong>IBM Bob</strong> to launch it.</li>
           </ol>
           <p>If Bob asks whether to <strong>import settings from another editor</strong>, click <strong>Skip for now</strong>.</p>
@@ -506,30 +506,20 @@ OpenPages Password:  passw0rd</pre>
           <ol class="plain">
             <li>Click the <strong>gear icon</strong> in the top-right corner of the Bob panel to open <strong>Bob Settings</strong>.</li>
             <li>In the left menu, select <strong>General</strong>.</li>
-            <li>Next to <strong>Team</strong>, open the dropdown and select the lab team. Its name will be similar to <strong><code>IBM-TechXchange-2026 (region: us-east)</code></strong> or <strong><code>Lab-2308</code></strong> — your instructor will confirm the exact name. Do <strong>not</strong> leave it on <code>IBM Internal</code>.</li>
+            <li>Next to <strong>Team</strong>, open the dropdown and select the lab team. Its name will be similar to <strong><code>IBM-TechXchange-2026 (region: us-east)</code></strong> or <strong><code>Lab-2308</code></strong> - your instructor will confirm the exact name. Do <strong>not</strong> leave it on <code>IBM Internal</code>.</li>
             <li>Confirm the <strong>checkmark</strong> is next to the lab team.</li>
           </ol>
           <img src="assets/screenshots/bob-settings-team.png" alt="Bob Settings, General tab, Team dropdown" style="max-width:100%;">
           <div class="note warning">
             <span class="note-title">Change the team before continuing</span>
-            <p>The screenshot shows <code>IBM Internal</code> checked — that is the default. Change it to the lab team. If you don't see the lab team in the list, sign out of Bob and sign in again; if it's still missing, ask an instructor.</p>
+            <p>The screenshot shows <code>IBM Internal</code> checked - that is the default. Change it to the lab team. If you don't see the lab team in the list, sign out of Bob and sign in again; if it's still missing, ask an instructor.</p>
           </div>
 
-          <h3 id="step-1-4">1.4 Check Your Python Version</h3>
-          <p>Bob needs Python. <strong>Bob checks this for you automatically</strong> and installs it if it's missing, but it's worth confirming yourself:</p>
-          <div class="table-wrap">
-            <table class="cds-table">
-              <thead><tr><th>Platform</th><th>Check</th></tr></thead>
-              <tbody>
-                <tr><td><strong>Windows</strong></td><td>Open the <strong>Start</strong> menu, search <strong>Command Prompt</strong>, run <code>python --version</code>. If that fails, try <code>py --version</code>.</td></tr>
-                <tr><td><strong>macOS</strong></td><td>Open <strong>Terminal</strong> (<strong>Cmd + Space</strong>, type <em>Terminal</em>, press Enter) and run <code>python3 --version</code>.</td></tr>
-              </tbody>
-            </table>
-          </div>
-          <p>You should see <strong>Python 3.14.3</strong>. Any Python from <strong>3.11 to 3.14</strong> also works. If Python is missing, just continue — Bob will install it for you in the next step (about 2 minutes).</p>
+          <h3 id="step-1-4">1.4 Python (Bob Handles This)</h3>
+          <p>Bob needs Python (3.11 to 3.14). <strong>There is nothing for you to check.</strong> When you send your first message to Bob, Bob checks your machine automatically and, if Python is missing, installs it for you (about 2 minutes). Just continue.</p>
 
           <h3 id="step-1-5">1.5 Get the Lab Files</h3>
-          <p>Download the lab folder to your machine — no git required.</p>
+          <p>Download the lab folder to your machine - no git required.</p>
 
           <div style="margin: 1.25rem 0 1rem;">
             <a href="https://github.com/haneen-bakbak/lab-2308/archive/refs/heads/main.zip"
@@ -540,10 +530,10 @@ OpenPages Password:  passw0rd</pre>
           </div>
 
           <ol class="plain" style="margin-top:1rem;">
-            <li>Click the button above — your browser will download <code>lab-2308-main.zip</code>.</li>
+            <li>Click the button above - your browser will download <code>lab-2308-main.zip</code>.</li>
             <li>Open <strong>File Explorer</strong> (Windows) or <strong>Finder</strong> (macOS) and locate the downloaded ZIP in your <strong>Downloads</strong> folder.</li>
             <li>
-              <strong>Unzip it</strong> — right-click the ZIP → <em>Extract All…</em> (Windows) or double-click (macOS).<br>
+              <strong>Unzip it</strong> - right-click the ZIP → <em>Extract All…</em> (Windows) or double-click (macOS).<br>
               You will get a folder called <code>lab-2308-main</code>. Move it somewhere easy to find, for example:<br>
               <code style="display:block;margin-top:0.4rem;">C:\Users\YourName\Documents\lab-2308-main</code>
             </li>
@@ -553,7 +543,7 @@ OpenPages Password:  passw0rd</pre>
             <span class="note-title">Prefer git?</span>
             <p>If you have git installed, you can also run:<br>
             <code>git clone https://github.com/haneen-bakbak/lab-2308.git</code><br>
-            Either way works — you get the same files.</p>
+            Either way works - you get the same files.</p>
           </div>
 
           <h3 id="step-1-6">1.6 Open the Folder in Bob</h3>
@@ -566,8 +556,8 @@ OpenPages Password:  passw0rd</pre>
             </li>
             <li>
               <strong>Switch to Lab 2308 mode.</strong><br>
-              Look at the <strong>bottom-left corner</strong> of the chat panel — there is a mode selector showing the current mode name (e.g. <em>"Agent"</em>).<br>
-              Click it, then choose <strong>🔬 Lab 2308 — Risk Agent Setup</strong> from the list.
+              Look at the <strong>bottom-left corner</strong> of the chat panel - there is a mode selector showing the current mode name (e.g. <em>"Agent"</em>).<br>
+              Click it, then choose <strong>🔬 Lab 2308 - Risk Agent Setup</strong> from the list.
             </li>
           </ol>
 
@@ -584,7 +574,7 @@ OpenPages Password:  passw0rd</pre>
             <p>"Hi Bob! I'm in Lab 2308 at TechXchange. Can you set me up?"</p>
           </div>
 
-          <p>Bob will ask for three things — one at a time. Have your Excel file open — and the API key you created in step 0.5:</p>
+          <p>Bob will ask for three things - one at a time. Have your Excel file open - and the API key you created in step 0.5:</p>
           <div class="table-wrap">
             <table class="cds-table">
               <thead><tr><th>Bob's question</th><th>Where to find it</th><th>Looks like</th></tr></thead>
@@ -596,7 +586,7 @@ OpenPages Password:  passw0rd</pre>
             </table>
           </div>
 
-          <p>After you confirm all three values, Bob runs setup silently (~2–3 minutes). You'll see friendly progress messages. When Bob says <strong>"🎉 You're all set!"</strong>, your agent is live — proceed to Module 2.</p>
+          <p>After you confirm all three values, Bob runs setup silently (~2–3 minutes). You'll see friendly progress messages. When Bob says <strong>"🎉 You're all set!"</strong>, your agent is live - proceed to Module 2.</p>
 
           <div class="note success">
             <span class="note-title">Something went wrong?</span>
@@ -607,7 +597,7 @@ OpenPages Password:  passw0rd</pre>
         <!-- ================= MODULE 2 ================= -->
         <section id="section-2" class="step">
           <div class="step-label"><cds-tag type="purple">Module 2</cds-tag></div>
-          <h2>2.0 Module 2 — Explore OpenPages GRC</h2>
+          <h2>2.0 Module 2 - Explore OpenPages GRC</h2>
           <p>Before chatting with the agent, spend a couple minutes exploring the source system it will be querying.</p>
 
           <h3 id="step-2-1">2.1 Log In to OpenPages</h3>
@@ -616,11 +606,11 @@ OpenPages Password:  passw0rd</pre>
           <h3 id="step-2-2">2.2 Find the Risk Records</h3>
           <figure>
             <img src="assets/screenshots/openpages-nav-search-annotated.png" alt="OpenPages navigation menu with the Search object type box highlighted" />
-            <figcaption>Figure 6. OpenPages navigation menu — type <strong>Risk</strong> into the highlighted search box.</figcaption>
+            <figcaption>Figure 6. OpenPages navigation menu - type <strong>Risk</strong> into the highlighted search box.</figcaption>
           </figure>
           <ol class="plain">
             <li>Click the top-left <strong>Navigation Menu</strong> (hamburger icon).</li>
-            <li>In the <strong>Search object type</strong> box at the top of the menu, type <strong>Risk</strong> and click the <strong>Risk</strong> entry. There is no tab called "Risk register" — the object type is simply called <strong>Risk</strong>.</li>
+            <li>In the <strong>Search object type</strong> box at the top of the menu, type <strong>Risk</strong> and click the <strong>Risk</strong> entry. There is no tab called "Risk register" - the object type is simply called <strong>Risk</strong>.</li>
             <li>Notice the <strong>Resource ID</strong> format (e.g. <code>I01-RSK-01-01</code> or numeric <code>21011</code>).</li>
           </ol>
 
@@ -656,8 +646,8 @@ OpenPages Password:  passw0rd</pre>
         <!-- ================= MODULE 3 ================= -->
         <section id="section-3" class="step">
           <div class="step-label"><cds-tag type="purple">Module 3</cds-tag></div>
-          <h2>3.0 Module 3 — Chat With Your Risk Agent</h2>
-          <p>Now test your live agent inside watsonx Orchestrate. Follow every step below exactly — the agent dropdown is easy to miss.</p>
+          <h2>3.0 Module 3 - Chat With Your Risk Agent</h2>
+          <p>Now test your live agent inside watsonx Orchestrate. Follow every step below exactly - the agent dropdown is easy to miss.</p>
 
           <h3 id="step-3-1">3.1 Open the Chat and Select Your Agent</h3>
 
@@ -672,14 +662,14 @@ OpenPages Password:  passw0rd</pre>
             <figcaption>Figure 9. Click <strong>Chat</strong> in the left nav. The chat drawer opens with an agent selector at the top.</figcaption>
           </figure>
 
-          <p><strong>Step 2.</strong> At the top of the chat drawer, click the <strong>agent dropdown</strong> — it defaults to <em>AskOrchestrate</em>. Click it and select <strong>lab2308_risk_agent</strong>.</p>
+          <p><strong>Step 2.</strong> At the top of the chat drawer, click the <strong>agent dropdown</strong> - it defaults to <em>AskOrchestrate</em>. Click it and select <strong>lab2308_risk_agent</strong>.</p>
           <figure>
             <img src="assets/screenshots/trace-01-home.png" alt="Agent dropdown open showing lab2308_risk_agent selected" />
-            <figcaption>Figure 10. The agent dropdown is open — <strong>lab2308_risk_agent</strong> is selected (blue dot, checkmark). <em>AskOrchestrate</em> is also listed but has no OpenPages tools.</figcaption>
+            <figcaption>Figure 10. The agent dropdown is open - <strong>lab2308_risk_agent</strong> is selected (blue dot, checkmark). <em>AskOrchestrate</em> is also listed but has no OpenPages tools.</figcaption>
           </figure>
 
           <div class="note warning">
-            <span class="note-title">⚠️ You must select lab2308_risk_agent — not AskOrchestrate.</span>
+            <span class="note-title">⚠️ You must select lab2308_risk_agent - not AskOrchestrate.</span>
             <p>AskOrchestrate is the default and has no OpenPages tools. If you send prompts to it, it will say it cannot query risk data. Always confirm the dropdown shows <strong>lab2308_risk_agent</strong> before typing.</p>
           </div>
 
@@ -688,23 +678,23 @@ OpenPages Password:  passw0rd</pre>
           <h3 id="step-3-2">3.2 Guided Test Prompts: The Compliance Scenario</h3>
           <p>You are a risk analyst at a financial institution. Every control in this environment is sitting at <strong>"Awaiting Assessment"</strong>. Your job is to find the gap, log the risk, and link the control.</p>
 
-          <h4>Prompt 1 — Find the Compliance Gap</h4>
+          <h4>Prompt 1 - Find the Compliance Gap</h4>
           <div class="prompt">
             <button class="copy-btn" onclick="navigator.clipboard.writeText('Which of our risk categories have controls that are still awaiting assessment?')">Copy Prompt</button>
             <p class="prompt-label">Prompt 1</p>
             <p>"Which of our risk categories have controls that are still awaiting assessment?"</p>
           </div>
-          <p><strong>Expected behavior:</strong> The agent calls <code>openpages_get_resource</code> to inspect the <code>SOXControl</code> schema, executes a query for controls with status <code>Awaiting Assessment</code>, groups them by <code>OPSS-Shared-Basel:Risk Category</code>, and highlights the most exposed category. <em>The category depends on the data in your OpenPages environment — seeing <strong>Internal Fraud</strong>, <strong>External Fraud</strong> or another category is expected and fine.</em></p>
+          <p><strong>Expected behavior:</strong> The agent calls <code>openpages_get_resource</code> to inspect the <code>SOXControl</code> schema, executes a query for controls with status <code>Awaiting Assessment</code>, groups them by <code>OPSS-Shared-Basel:Risk Category</code>, and highlights the most exposed category. <em>The category depends on the data in your OpenPages environment - seeing <strong>Internal Fraud</strong>, <strong>External Fraud</strong> or another category is expected and fine.</em></p>
 
-          <h4>Prompt 2 — Explain the Gap</h4>
+          <h4>Prompt 2 - Explain the Gap</h4>
           <div class="prompt">
             <button class="copy-btn" onclick="navigator.clipboard.writeText('Explain the gap briefly.')">Copy Prompt</button>
             <p class="prompt-label">Prompt 2</p>
             <p>"Explain the gap briefly."</p>
           </div>
-          <p><strong>Expected behavior:</strong> The agent summarises which category has the most risks and notes how many controls are still awaiting assessment — a short plain-English explanation using the data already retrieved.</p>
+          <p><strong>Expected behavior:</strong> The agent summarises which category has the most risks and notes how many controls are still awaiting assessment - a short plain-English explanation using the data already retrieved.</p>
 
-          <h4>Prompt 3 — Create a New Risk Record in OpenPages</h4>
+          <h4>Prompt 3 - Create a New Risk Record in OpenPages</h4>
           <div class="prompt">
             <button class="copy-btn" onclick="navigator.clipboard.writeText('Log a new risk in OpenPages: Name it \'Inadequate Fraud Detection Controls\', set the category to External Fraud, and note that controls are unassessed.')">Copy Prompt</button>
             <p class="prompt-label">Prompt 3</p>
@@ -713,7 +703,7 @@ OpenPages Password:  passw0rd</pre>
           <p><em>If your agent named a different category in Prompt 2, you can swap it (and a matching risk name) into the prompt above.</em></p>
           <p><strong>Expected behavior:</strong> The agent finds a parent process (e.g. Retail Banking), calls <code>openpages_upsert_object</code> with <code>object_type: "soxrisk"</code>, and returns the newly assigned numeric Resource ID with a direct clickable link into OpenPages.</p>
 
-          <h4>Prompt 4 — Associate the Control to the New Risk</h4>
+          <h4>Prompt 4 - Associate the Control to the New Risk</h4>
           <div class="prompt">
             <button class="copy-btn" onclick="navigator.clipboard.writeText('Link control CTL-04-03-03-01 to our new Inadequate Fraud Detection Controls risk.')">Copy Prompt</button>
             <p class="prompt-label">Prompt 4</p>
@@ -744,8 +734,8 @@ OpenPages Password:  passw0rd</pre>
         <!-- ================= MODULE 4 ================= -->
         <section id="section-4" class="step">
           <div class="step-label"><cds-tag type="purple">Module 4</cds-tag></div>
-          <h2>4.0 Module 4 — Inspect Live Telemetry &amp; Execution Traces</h2>
-          <p>Every prompt you sent in Module 3 is recorded as a full execution trace — every tool call, every reasoning step, every response. Here's how to find and read them.</p>
+          <h2>4.0 Module 4 - Inspect Live Telemetry &amp; Execution Traces</h2>
+          <p>Every prompt you sent in Module 3 is recorded as a full execution trace - every tool call, every reasoning step, every response. Here's how to find and read them.</p>
 
           <h3 id="step-4-1">4.1 Navigate to AgentOps Observability</h3>
 
@@ -767,10 +757,10 @@ OpenPages Password:  passw0rd</pre>
             <figcaption>Figure 13. <strong>Conversations</strong> tab → hover over a row → click <strong>Debug</strong>.</figcaption>
           </figure>
 
-          <p><strong>Step 4.</strong> The debug view opens — an <strong>Agent flow</strong> node/tree diagram on the left and an <strong>Execution timeline</strong> on the right listing every step. Click any node or timeline entry to expand its full input and output.</p>
+          <p><strong>Step 4.</strong> The debug view opens - an <strong>Agent flow</strong> node/tree diagram on the left and an <strong>Execution timeline</strong> on the right listing every step. Click any node or timeline entry to expand its full input and output.</p>
           <figure>
             <img src="assets/screenshots/trace-07-node-detail.png" alt="Debug view showing node tree and execution timeline with a node expanded" />
-            <figcaption>Figure 14. The debug view — node tree on the left, execution timeline on the right. Click any step to see the exact query sent to OpenPages and the raw response returned.</figcaption>
+            <figcaption>Figure 14. The debug view - node tree on the left, execution timeline on the right. Click any step to see the exact query sent to OpenPages and the raw response returned.</figcaption>
           </figure>
 
           <div class="note info">
@@ -794,7 +784,7 @@ OpenPages Password:  passw0rd</pre>
           <h3 id="step-4-3">4.3 Try Your Own Prompts &amp; Watch the Traces</h3>
           <div class="note warning">
             <span class="note-title">⚠️ Go back to the Chat first.</span>
-            <p>You are currently in AgentOps Observability, which only <em>shows</em> past conversations — you can't type prompts there. To add the queries below, return to the <strong>Chat</strong> page: click <strong>Chat</strong> in the left navigation bar, make sure <strong>lab2308_risk_agent</strong> is selected, and type each prompt in the chat box. Then come back to <strong>Observability → Conversations → Debug</strong> to inspect the new trace.</p>
+            <p>You are currently in AgentOps Observability, which only <em>shows</em> past conversations - you can't type prompts there. To add the queries below, return to the <strong>Chat</strong> page: click <strong>Chat</strong> in the left navigation bar, make sure <strong>lab2308_risk_agent</strong> is selected, and type each prompt in the chat box. Then come back to <strong>Observability → Conversations → Debug</strong> to inspect the new trace.</p>
           </div>
           <p>Try sending these additional queries to observe the trace inspector in real time:</p>
           <div class="prompt">
@@ -808,9 +798,9 @@ OpenPages Password:  passw0rd</pre>
             <p>"List all risks that are High severity."</p>
           </div>
           <div class="prompt">
-            <button class="copy-btn" onclick="navigator.clipboard.writeText('Summarise the risk landscape — how many risks exist per status?')">Copy Prompt</button>
+            <button class="copy-btn" onclick="navigator.clipboard.writeText('Summarise the risk landscape - how many risks exist per status?')">Copy Prompt</button>
             <p class="prompt-label">Test Prompt C</p>
-            <p>"Summarise the risk landscape — how many risks exist per status?"</p>
+            <p>"Summarise the risk landscape - how many risks exist per status?"</p>
           </div>
         </section>
 

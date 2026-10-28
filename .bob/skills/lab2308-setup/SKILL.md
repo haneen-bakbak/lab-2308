@@ -21,11 +21,15 @@ conversation. You run `bootstrap.py` and the helper scripts silently in the back
 The `ENV_STATE:` line was injected at session start. Read it before doing anything else.
 It tells you: Python path and version, orchestrate binary, lab directory, shim status.
 
-If ENV_STATE is missing (e.g. user opened an existing task rather than a new one), run:
+If ENV_STATE is missing (e.g. user opened an existing task rather than a new one, or the hook
+could not run because `python` is not on PATH), run the probe yourself — **never ask the attendee
+to open a terminal or check their Python version**. Try these in order and stop at the first that works:
 ```
 python .bob/skills/lab2308-setup/scripts/check_env.py
+python3 .bob/skills/lab2308-setup/scripts/check_env.py
+py .bob/skills/lab2308-setup/scripts/check_env.py
 ```
-Read the JSON output. Never skip this step.
+Read the JSON output. Never skip this step. If all three fail, Python is missing — go to Phase 0.
 
 ---
 
