@@ -533,9 +533,13 @@
           <h3 id="step-1-2">1.2 Sign In with Your IBM ID</h3>
           <ol class="plain">
             <li>Click the small <strong>Bob icon</strong> at the top of the window, beside the search bar. This opens the Bob chat in the <strong>right-hand side panel</strong>.</li>
-            <li>In that panel, click <strong>Log in</strong>.</li>
+            <li>In that panel, click the blue <strong>Log in to Bob</strong> button.</li>
             <li>Sign in to Bob with the <strong>IBM ID</strong> you already have (the one from Step A).</li>
           </ol>
+          <figure>
+            <img src="assets/screenshots/bob-login.png" alt="Bob window with the Bob panel on the right showing the Log in to Bob button" />
+            <figcaption>Figure B. The Bob panel on the right before you sign in. Click <strong>Log in to Bob</strong>.</figcaption>
+          </figure>
 
           <h3 id="step-1-3">1.3 Select the Lab Team</h3>
           <p>Bob must be using the lab team before it can run the lab setup.</p>
@@ -591,11 +595,29 @@
               <span style="color:#57606a;font-size:0.88rem;">You should see files like <code>bootstrap.py</code>, <code>agents/</code>, and <code>mcp-proxy-shim/</code> in the Explorer panel on the left.</span>
             </li>
             <li>
-              <strong>Switch to Lab 2308 mode.</strong><br>
-              Look at the <strong>bottom-left corner</strong> of the chat panel - there is a mode selector showing the current mode name (e.g. <em>"Agent"</em>).<br>
-              Click it, then choose <strong>🔬 Lab 2308 - Risk Agent Setup</strong> from the list.
+              <strong>Open the mode dropdown.</strong><br>
+              Make sure you are signed in to Bob (step 1.2). At the <strong>bottom of the Bob panel</strong>, just under the message box, there is a dropdown that shows the current mode, usually <strong>Agent</strong>. Click it.
+            </li>
+            <li>
+              <strong>Choose Lab 2308.</strong><br>
+              A list of modes opens. Scroll to the bottom of the list and click <strong>Lab 2308 - Risk Agent Setup</strong> (it may be shortened to <em>Lab 2308 - Risk Agent Set…</em>).
+            </li>
+            <li>
+              <strong>Check it worked.</strong><br>
+              The dropdown at the bottom of the panel now reads <strong>Lab 2308 - Risk Ag…</strong> instead of <em>Agent</em>.
             </li>
           </ol>
+
+          <div style="display:flex;flex-wrap:wrap;gap:1.5rem;max-width:52rem;">
+            <figure style="flex:1 1 20rem;max-width:25rem;margin:0 0 1.5rem;">
+              <img src="assets/screenshots/bob-mode-dropdown.png" alt="Bob mode list open at the bottom of the panel with Lab 2308 - Risk Agent Setup at the bottom of the list" />
+              <figcaption>Figure C. Click the mode dropdown (it says <strong>Agent</strong>), then choose <strong>Lab 2308 - Risk Agent Setup</strong> at the bottom of the list.</figcaption>
+            </figure>
+            <figure style="flex:1 1 20rem;max-width:25rem;margin:0 0 1.5rem;">
+              <img src="assets/screenshots/bob-mode-selected.png" alt="Bob panel with the mode dropdown now showing Lab 2308 - Risk Ag..." />
+              <figcaption>Figure D. Done: the dropdown now shows <strong>Lab 2308 - Risk Ag…</strong>.</figcaption>
+            </figure>
+          </div>
 
           <div class="note info">
             <span class="note-title">Don't see the 🔬 Lab 2308 mode in the list?</span>
